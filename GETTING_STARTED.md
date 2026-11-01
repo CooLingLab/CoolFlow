@@ -10,15 +10,17 @@ CoolFlow is a lightweight **development methodology and documentation standard**
 
 ## Prerequisites
 
-You need a **target application repository** (empty or existing) that your coding Agent can inspect and edit. This is separate from the CoolFlow reference repository.
+You need a **target application repository** (new or existing) that your coding Agent can inspect. This is separate from the CoolFlow reference repository.
 
-Before beginning, have the Agent read the [Development Flow](methodology/flow.md), [Loops](methodology/loops.md), [documentation standard](standards/documentation.md), and [initialization contract](standards/initialization.md). Templates are in [templates/project/](templates/project/). If it cannot access the canonical sources, provide a local copy or paste them; **do not let it guess the rules**.
+The Agent should read the [Development Flow](methodology/flow.md), [Loops](methodology/loops.md), [documentation standard](standards/documentation.md), and [initialization contract](standards/initialization.md) as relevant. Templates are in [templates/project/](templates/project/). If it cannot read the canonical sources, provide a local copy or paste them; **do not let it guess the rules**.
 
-## 1. Initialize the project (documentation only)
+## Choose your starting point
 
-In the **target project's** coding-agent conversation, paste:
+### A. New project — initialize documentation first
 
-> Read the CoolFlow v0.1 draft at https://github.com/CooLingLab/CoolFlow/tree/feat/v0.1-standard-and-init, especially `standards/initialization.md`, `standards/documentation.md`, `methodology/flow.md`, `methodology/loops.md`, and `templates/project/`. Inspect my **current target repository**. Create only missing CoolFlow documentation and folders; preserve all existing files and project-specific instructions. **Do not** write application code, install dependencies, define MVP scope, or create `docs/work/001-mvp/`. Report what was created, what already existed, and any unverified results. If you cannot read the reference files, stop and tell me.
+In your **new target repository**, paste this into the coding Agent:
+
+> Read CoolFlow from https://github.com/CooLingLab/CoolFlow/tree/main, especially `standards/initialization.md`, `standards/documentation.md`, `methodology/flow.md`, `methodology/loops.md` and `templates/project/`. Inspect my **target repository** and initialize only the missing documentation and folders. Preserve existing files and instructions. **Do not** brainstorm product requirements, write app code, install dependencies, define MVP scope, or create `docs/work/001-mvp/` or `spec.md`. Report what was created, what already existed and what remains unverified. If the reference files are inaccessible, stop and tell me.
 
 Expected skeleton in an **empty project**:
 
@@ -34,41 +36,41 @@ docs/
     archive/
 ```
 
-Empty directories may use `.gitkeep` for Git tracking. For existing repositories, the Agent must **not** overwrite files; it should report incompatibilities and only add missing pieces. Repeating initialization should leave existing content unchanged.
+Empty directories may use `.gitkeep` for Git tracking. Initialization must preserve existing content and be idempotent. The optional [`coolflow-init` Skill](skills/coolflow-init/SKILL.md) supports **only** this documentation setup.
 
-The optional [`coolflow-init` Skill](skills/coolflow-init/SKILL.md) supports this step, but is not required.
+### B. Existing project — inspect before adopting
 
-## 2. Start actual discovery (separate instruction)
+Do **not** automatically reinitialize a mature app or overwrite its conventions. Start by pasting:
 
-After initialization, describe the product you want and explicitly start work:
+> Read https://github.com/CooLingLab/CoolFlow/tree/main and inspect my existing repository, including its `AGENTS.md`, code and relevant documentation. Explain its actual state and which parts of CoolFlow would help with **[specific fix or feature]**. Propose the smallest useful, verifiable next step and any non-destructive documentation changes. **Do not** overwrite files or implement the change until we agree on the plan. Skip unrelated stages and tell me if you cannot read the references.
 
-> I want to build **[product idea]** for **[users]** to solve **[problem]**. Using CoolFlow, help me clarify the goal, important domain concepts, critical assumptions, and a tentative MVP roadmap. Open `docs/work/001-mvp/` **only now that discovery has started**. Do not assume the MVP scope is settled. Record unknown decisions honestly and use a concept prototype only if it helps validate a risky assumption. **Do not start implementing yet**.
+After reviewing the plan, continue at the **relevant stage** below. Adopting CoolFlow does not require rebuilding the project's documentation tree or restarting from Idea.
 
-The Agent can update `docs/product.md` (the project-level Product Brief), `docs/domain.md`, `docs/roadmap.md`, and working notes. A substantial objective may use its own optional `docs/work/<objective>/prd.md`; do not confuse that with the project brief. Verified, non-obvious, durable and material engineering experience may later be distilled into optional `docs/solutions/`; raw work history stays with the work item or archive. Record a separate ADR in optional `docs/adr/` only when a consequential architecture or technical decision needs its rationale preserved. Stages may be **skipped or merged** when they add no value.
+## Continue a new project — discovery
 
-## 3. Specify and implement one small increment
+After **new-project initialization**, explicitly start discovery when you are ready:
+
+> I want to build **[product idea]** for **[users]** to solve **[problem]**. Using CoolFlow, help me clarify the goal, important domain concepts, critical assumptions, and a tentative MVP roadmap. Open `docs/work/001-mvp/` **if it helps record discovery**, but do not assume the MVP scope is settled or create a formal `spec.md` just for brainstorming. Record unknown decisions honestly and use a concept prototype only if it helps validate a risky assumption. **Do not start implementing yet**.
+
+The Agent can update `docs/product.md` (the project-level Product Brief), `docs/domain.md`, `docs/roadmap.md`, and discovery notes. **A work directory may exist without a Spec until a specific objective enters Design Spec Loop (Step 6).** A substantial objective may use its own optional `docs/work/<objective>/prd.md`; do not confuse that with the project brief. Verified, non-obvious, durable and material engineering experience may later be distilled into optional `docs/solutions/`; raw work history stays with the work item or archive. Record a separate ADR in optional `docs/adr/` only when a consequential architecture or technical decision needs its rationale preserved. Stages may be **skipped or merged** when they add no value.
+
+## Design and implement a selected increment
 
 Before specifying related work, consult only relevant existing records in `docs/solutions/` if that optional directory exists. Do not read the entire knowledge store by default. Capture a new Solution only after a finding is verified and only when it is non-obvious, durable and material.
 
-When the next increment is chosen, paste:
+When a concrete increment has been selected for **Design Spec Loop (Step 6)**, paste:
 
-> For **[selected feature/increment]**, write one unified `docs/work/<objective>/spec.md` with goals and non-goals, observable acceptance criteria, main design choices, implementation strategy, and verification plan. Obtain independent design review when warranted by complexity or risk. Implement the **smallest complete valuable increment**. Run relevant tests, review the actual changed code, check conformance with the approved Spec, and address failures. If the Spec proves wrong, explicitly revisit the design instead of silently changing requirements. Show direct evidence of what works and identify what remains unverified. **Ask me to accept the result; don't mark it accepted yourself.**
+> For **[selected feature/increment]**, write one unified `docs/work/<objective>/spec.md` with goals and non-goals, observable acceptance criteria, main design choices, implementation strategy, and verification plan. Review the **current Spec draft and relevant context** independently when warranted by complexity or risk; resolve material findings and confirm that the design is ready to implement. Then implement the **smallest complete valuable increment**. Run relevant tests, review the actual changed code, check conformance with the approved Spec, and address failures. If the Spec proves wrong, explicitly revisit the design instead of silently changing requirements. Show direct evidence of what works and identify what remains unverified. **Ask me to accept the result; don't mark it accepted yourself.**
 
 The **Design Spec Loop** evaluates the plan; the **Implementation Loop** verifies the code and behavior. A separate `tasks.md` is optional. Compiling successfully is not, by itself, proof of a working feature.
 
-## 4. Human acceptance, documentation sync, and release
+## Human acceptance, documentation sync, and release
 
 Inspect actual behavior and evidence. If satisfied, explicitly accept the increment:
 
 > I have inspected **[specific functionality/evidence]** and **[accept / request changes]**. If accepted, update only the relevant durable documentation (`docs/features/` for accepted, implemented behavior) and selectively archive important decision and verification evidence. **Distinguish accepted from released.** Do not deploy or publish without a separate explicit instruction.
 
 Release happens only when appropriate. The **Evolution Loop** is available **at any step**, not only after release: feedback, new ideas, or changing needs that warrant reconsidering product assumptions, scope, or direction can send the project back to any relevant step (for example, a failed prototype back to Brainstorm). Ordinary Spec revisions or code/test fixes stay within the local Design Spec or Implementation Loop. Revisit only what needs reconsideration.
-
-## Have an existing app instead?
-
-Don't restart a mature project from Idea or overwrite its conventions. Use:
-
-> Inspect my current repository, its `AGENTS.md`, code, and relevant docs. Apply only the parts of CoolFlow useful for **[specific fix or new feature]**. Preserve existing project structure and data. Define the smallest work objective and verifiable success criteria; implement, test, review, and ask for acceptance. Skip unrelated brainstorming, DDD, and prototypes.
 
 ## Human checkpoints
 
