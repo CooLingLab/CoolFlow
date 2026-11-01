@@ -44,6 +44,8 @@ Use this recommended CoolFlow lifecycle; skip, merge or revisit stages as projec
 6. Update durable docs only to reflect accepted reality. Human acceptance and production release are distinct.
 7. Manage ordinary task lists in the active Agent session; create `tasks.md` only when persistent state is needed.
 8. The project may evolve these conventions independently; it does not need to track upstream CoolFlow releases.
+9. Before related work, consult only relevant existing Solutions. Capture a new Solution only when a verified finding is non-obvious, durable and material; update an existing record instead of duplicating it.
+10. Create an ADR only for a consequential architecture or technical decision. Record one decision per file and supersede old records rather than silently rewriting them.
 
 ## Project-specific Conventions
 
