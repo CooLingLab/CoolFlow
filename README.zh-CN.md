@@ -53,6 +53,18 @@ Skill 会先检查目标目录；如果存在其他文件或文件夹（包括�
 
 [完整使用指南（英文）](GETTING_STARTED.md) · 探索阶段可建立工作目录；确定开发目标、进入 Design Spec Loop 时再编写正式 Spec。
 
+## CoolFlow Skills
+
+CoolFlow 提供三个可选的 Agent Skills：
+
+| Skill | 用途 | 使用时机 |
+| --- | --- | --- |
+| [`coolflow-init`](skills/coolflow-init/SKILL.md) | 创建 CoolFlow 项目文档骨架 | 新建空项目 |
+| [`coolflow-advisor`](skills/coolflow-advisor/SKILL.md) | 针对具体任务推荐方法、Skills 和工具 | 选择开发方法或工具 |
+| [`coolflow-skill-creator`](skills/coolflow-skill-creator/SKILL.md) | 创建、改造、测试和维护 CoolFlow 原生 Skill | 开发或审查 Skill |
+
+`coolflow-init` 是项目初始化入口，另外两个是按需使用的可选 Skill。安装方式遵循当前 Agent 的标准流程；`coolflow-init` 的示例见上文。
+
 ## 四条 Golden Rules
 
 CoolFlow 还整理了四条面向**人类开发者**的判断原则，部分灵感来自空客飞行员金科玉律。即使不使用完整的开发流程，你也可以独立借鉴：
@@ -82,5 +94,3 @@ CoolFlow 定义开发方法和文档规范，不绑定特定 Agent 工具链。�
 
 - [开发框架能力对比](flowecosystem/framework-comparison.md) — 比较主流 AI 开发框架的能力覆盖、工作流、项目状态管理与经验沉淀。
 - [外部方案目录](flowecosystem/catalog.md) — 广义开发框架、Skills、方法与工具研究。
-- [CoolFlow Advisor](skills/coolflow-advisor/SKILL.md) · [精选推荐库](skills/coolflow-advisor/references/recommendations.md) — 可选的按需开发顾问，精选推荐按阶段及具体任务细分，并随 Skill 安装到本地。
-- [CoolFlow Skill Creator](skills/coolflow-skill-creator/SKILL.md) — 用于研发和验证原生 Skill 的可选元 Skill。

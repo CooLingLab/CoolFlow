@@ -53,6 +53,18 @@ Do not use `coolflow-init` for an existing or non-empty project. Follow the insp
 
 [Complete Getting Started guide](GETTING_STARTED.md) · A work directory may be opened during discovery; the formal Spec is written when the chosen work enters Design Spec Loop.
 
+## CoolFlow Skills
+
+CoolFlow includes three optional Agent Skills:
+
+| Skill | Purpose | Use when |
+| --- | --- | --- |
+| [`coolflow-init`](skills/coolflow-init/SKILL.md) | Create the CoolFlow documentation skeleton | Starting a new, empty project |
+| [`coolflow-advisor`](skills/coolflow-advisor/SKILL.md) | Recommend methods, Skills and tools for a specific task | Choosing an approach for a development task |
+| [`coolflow-skill-creator`](skills/coolflow-skill-creator/SKILL.md) | Create, adapt, test and maintain native CoolFlow Skills | Building or reviewing a Skill |
+
+`coolflow-init` is the project setup entry point. The other two are optional on-demand Skills. Install a Skill with your Agent's standard installation method; `coolflow-init` has an example above.
+
 ## Four Golden Rules
 
 CoolFlow also offers four memorable principles for the **human developer**, inspired in part by the Airbus Golden Rules for Pilots. You can use them even without adopting the whole flow:
@@ -82,5 +94,3 @@ CoolFlow defines a development methodology and documentation standard; it does n
 
 - [Framework Comparison](flowecosystem/framework-comparison.md) — compare documented capabilities, workflow coverage, project state and knowledge capture across major AI development frameworks.
 - [Solution Catalog](flowecosystem/catalog.md) — broad ecosystem research by development stage.
-- [CoolFlow Advisor](skills/coolflow-advisor/SKILL.md) · [Curated Recommendations](skills/coolflow-advisor/references/recommendations.md) — optional on-demand adviser with a locally bundled, stage/task-specific selection of concrete Skills, methods and tools.
-- [CoolFlow Skill Creator](skills/coolflow-skill-creator/SKILL.md) — optional Meta Skill for developing and validating native Skills.
