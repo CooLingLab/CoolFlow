@@ -1,7 +1,7 @@
 ---
 title: "Protect every path that can modify a user-owned resource"
 type: "engineering-practice"
-status: "verified"
+status: "illustrative"
 date: "2026-11-01"
 applies_to:
   - "A tool or service has multiple code paths that can replace, move or delete the same resource"
