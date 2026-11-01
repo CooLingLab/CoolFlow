@@ -55,4 +55,4 @@ If the collection grows, add a small number of category folders that match the p
 - [Example: bug-fix knowledge](examples/bug-fix.md)
 - [Example: reusable engineering practice](examples/engineering-practice.md)
 
-Examples are illustrative; adapt them to the project's real evidence and vocabulary.
+When adopting this convention, copy this guidance file to docs/solutions/README.md and copy the record template for each qualifying finding. Examples are illustrative; adapt them to the project's real evidence and vocabulary.
