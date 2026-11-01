@@ -1,5 +1,13 @@
 # CoolFlow
 
+**by Cooling · An AI Software Development SOP**
+
+**A pilot's approach to AI-assisted software development.**
+
+> 一位飞行员，将航空 SOP 中的金科玉律、态势感知与安全理念引入 AI 软件开发，探索如何让个人开发者在充分利用 AI 的同时，始终掌握项目的优先级、实际状态、恢复能力与验证结果。
+
+Created by **Cooling**, a pilot, CoolFlow draws inspiration from aviation's **Standard Operating Procedures (SOPs)**—especially their Golden Rules, situational awareness, and safety mindset. It adapts these ideas into a practical approach for **human-led, AI-assisted software development**.
+
 **One development Flow, two internal quality Loops, one outer Evolution Loop, and a lightweight documentation standard.**
 
 CoolFlow is an AI-oriented software development methodology for individual developers. It tells you **what to clarify, document, validate, and retain** across the product lifecycle. It is **not** an Agent harness, workflow engine, or mandatory skill collection.
