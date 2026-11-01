@@ -6,8 +6,6 @@
 
 CoolFlow is a lightweight development roadmap for independent developers building with AI—from a rough idea to a working, verifiable product.
 
-> **Status:** v0.1 work in progress on `main`, not an official release. Real-project and end-to-end validation are still pending.
-
 ## Why CoolFlow?
 
 AI makes writing code easier, but building a product still raises familiar questions:
