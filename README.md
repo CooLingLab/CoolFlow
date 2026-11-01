@@ -17,7 +17,7 @@ AI makes writing code easier, but building a product still raises familiar quest
 ## What CoolFlow provides
 
 - **One Development Flow:** From idea discovery, prototypes and roadmap to implementation, human acceptance and release.
-- **Three Adaptive Loops:** Refine a Spec, verify code, and revisit decisions when new evidence emerges.
+- **Three Adaptive Loops:** Improve designs through review, validate implementations through testing and code review, and adapt product direction as new information emerges.
 - **Lightweight documentation:** Keep goals, requirements, key decisions and reusable engineering knowledge.
 
 <p align="center">
