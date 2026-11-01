@@ -69,7 +69,7 @@ Golden Rules 是对人的提醒，**不是新的 AI 强制命令或开发阶段*
 
 当你在一个 App 项目中使用 CoolFlow，最终得到的是下面这套**属于你自己的项目文档结构**。这里展示的是使用者的 App，而不是 CoolFlow GitHub 仓库自身的目录。可选文件只有在确实需要时才创建。
 
-\`\`\`text
+```text
 <your-app>/
 ├── AGENTS.md                         # 项目级 Agent 指令
 ├── README.md                         # 面向人类的项目入口
@@ -93,89 +93,28 @@ Golden Rules 是对人的提醒，**不是新的 AI 强制命令或开发阶段*
     ├── architecture.md               # 可选：当前系统架构
     ├── adr/                          # 可选：重要架构决策记录
     └── feature-map.md                # 可选：UI 导航与验证指南
-\`\`\`
+```
 
 ### 哪些文件什么时候创建？
 
 | 时机 | 文件与目录 |
 |---|---|
-| **项目初始化** | \`AGENTS.md\`、\`README.md\`、\`docs/product.md\`、\`roadmap.md\`、\`domain.md\`，以及空的 \`features/\`、\`work/\`、\`work/archive/\` 目录 |
-| **真正开始开发时** | 默认创建一个 \`docs/work/<objective>/spec.md\` |
-| **确实需要时** | \`prd.md\`、\`design.md\`、\`tasks.md\`、\`prototypes/\`、\`architecture.md\`、\`adr/\`、\`feature-map.md\` |
-| **出现经过验证、值得复用的经验时** | 再创建可选的 \`docs/lessons/\`，不为了拥有知识目录而创建 |
+| **项目初始化** | `AGENTS.md`、`README.md`、`docs/product.md`、`roadmap.md`、`domain.md`，以及空的 `features/`、`work/`、`work/archive/` 目录 |
+| **真正开始开发时** | 默认创建一个 `docs/work/<objective>/spec.md` |
+| **确实需要时** | `prd.md`、`design.md`、`tasks.md`、`prototypes/`、`architecture.md`、`adr/`、`feature-map.md` |
+| **出现经过验证、值得复用的经验时** | 再创建可选的 `docs/lessons/`，不为了拥有知识目录而创建 |
 
-**Product Brief 不等于 PRD。** \`docs/product.md\` 是整个产品长期维护的简洁定义，回答产品为什么存在、服务谁、提供什么价值以及边界在哪里。可选的 \`prd.md\` 属于某一项具体开发工作，描述这一轮的用户需求、范围和产品层面的成功标准。统一 Spec 则进一步定义精确行为、实现方式和验证标准。
+**Product Brief 不等于 PRD。** `docs/product.md` 是整个产品长期维护的简洁定义，回答产品为什么存在、服务谁、提供什么价值以及边界在哪里。可选的 `prd.md` 属于某一项具体开发工作，描述这一轮的用户需求、范围和产品层面的成功标准。统一 Spec 则进一步定义精确行为、实现方式和验证标准。
 
-**经验存储在哪里？** \`docs/lessons/\` 保存有证据支持、能够改变未来决策或行动的可复用经验。已完成工作的过程和证据保存在 \`docs/work/archive/\`；重要架构决策的原因保存在 \`docs/adr/\`；只有 Agent 必须长期遵守的高优先级稳定规则才进入 \`AGENTS.md\`。项目也可以自行建立 \`solutions/\` 来保存可复用的解决方案，但 CoolFlow 不强制要求，它与可选的 \`lessons/\` 不是一回事。
+**经验存储在哪里？** `docs/lessons/` 保存有证据支持、能够改变未来决策或行动的可复用经验。已完成工作的过程和证据保存在 `docs/work/archive/`；重要架构决策的原因保存在 `docs/adr/`；只有 Agent 必须长期遵守的高优先级稳定规则才进入 `AGENTS.md`。项目也可以自行建立 `solutions/` 来保存可复用的解决方案，但 CoolFlow 不强制要求，它与可选的 `lessons/` 不是一回事。
 
 对应的可复用源模板按用途组织：
 
-- [Project skeleton](templates/project/)：初始化所需的 \`AGENTS.md\`、\`README.md\` 和核心文档。
+- [Project skeleton](templates/project/)：初始化所需的 `AGENTS.md`、`README.md` 和核心文档。
 - [Work templates](templates/work/)：统一 Spec，以及可选的 PRD、Design、Tasks。
 - [Optional templates](templates/optional/)：Feature Map 和可复用经验模板。
 
 这是一套轻量默认结构，不是必须逐项打勾的清单。已有项目可以保留自己的结构，只采用真正有帮助的部分。
-
-## 仓库结构
-
-下面是 CoolFlow 仓库目前实际维护的文档与模板结构。使用 CoolFlow 初始化的 App 项目，其文档树则定义在[文档规范](standards/documentation.md#canonical-application-documentation-tree)中。
-
-```text
-CoolFlow/
-├── README.md / README.zh-CN.md
-├── GETTING_STARTED.md
-├── AGENTS.md
-│
-├── methodology/                     # 开发方法
-│   ├── flow.md
-│   ├── loops.md
-│   ├── golden-rules.md
-│   └── golden-rules.zh-CN.md
-│
-├── standards/                       # 正式规范
-│   ├── documentation.md
-│   ├── initialization.md
-│   └── reviews.md
-│
-├── templates/                       # 可复用文档模板
-│   ├── project/
-│   │   ├── AGENTS.md
-│   │   ├── README.md
-│   │   └── docs/
-│   │       ├── product.md
-│   │       ├── roadmap.md
-│   │       ├── domain.md
-│   │       ├── features/.gitkeep
-│   │       └── work/
-│   │           ├── .gitkeep
-│   │           └── archive/.gitkeep
-│   ├── work/
-│   │   ├── spec.md
-│   │   ├── prd.md
-│   │   ├── design.md
-│   │   └── tasks.md
-│   └── optional/
-│       └── feature-map.md
-│
-├── skills/
-│   └── coolflow-init/SKILL.md       # 可选初始化 Skill
-│
-├── flowsolutions/                   # 可选外部方案目录
-│   ├── README.md
-│   ├── framework-comparison.md
-│   └── catalog.md
-│
-└── reviews/
-    └── scenarios/                  # 仅开发阶段的评审案例
-```
-
-- [methodology/](methodology/)：定义 Development Flow、Loops 和 Golden Rules。
-- [standards/](standards/)：定义文档、初始化和评审规范。
-- [templates/](templates/)：提供 App 项目和具体开发工作的文档模板。
-- [flowsolutions/](flowsolutions/)：可选的外部开发框架与解决方案目录，不会复制到 App 项目。
-- [reviews/scenarios/](reviews/scenarios/)：仅供开发阶段使用的内部评审案例，正式发布前需排除。
-
-独立的 CoolFlow Dashboard 未来可以可视化阶段与文档，但不负责 Agent 编排或任务执行。
 
 ## 开发与发布
 
