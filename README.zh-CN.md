@@ -28,11 +28,18 @@ AI 让写代码更容易，但做产品仍会遇到这些问题：
 
 ## 快速开始
 
-无需更换 Coding Agent。把下面这段话发送给你的 AI 编程工具：
+使用你现有的 Coding Agent，根据项目情况选择入口：
 
-> 请先阅读 https://github.com/CooLingLab/CoolFlow/blob/main/GETTING_STARTED.md 及其引用的 CoolFlow 方法与文档规范。检查我当前项目的实际状态，帮助我确认目标和下一步最小、可验证的工作，并先提出计划。不要覆盖已有文件或直接开始编码；如果无法读取文档，请说明。
+**新项目——先初始化文档**
 
-[完整使用指南（英文）](GETTING_STARTED.md) 涵盖新项目与现有项目的具体步骤。
+> 请阅读 https://github.com/CooLingLab/CoolFlow/blob/main/GETTING_STARTED.md 及其引用的规范。在我的新项目中，只创建缺失的 CoolFlow 文档和目录，保留已有文件。暂不进行产品探索、编写 Spec 或开发代码，并报告实际修改。
+
+**已有项目——先检查现状**
+
+> 请阅读 https://github.com/CooLingLab/CoolFlow/blob/main/GETTING_STARTED.md 并检查我的现有项目。针对 **[功能或修复]**，建议采用哪些 CoolFlow 步骤，以及下一项最小、可验证的工作。保留原有约定，先提出方案，不要直接修改。
+
+[完整使用指南（英文）](GETTING_STARTED.md) · 探索阶段可建立工作目录；确定开发目标、进入 Design Spec Loop 时再编写正式 Spec。
+
 
 ## 四条 Golden Rules
 
