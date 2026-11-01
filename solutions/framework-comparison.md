@@ -48,9 +48,9 @@ GitHub stars are approximate snapshots retrieved on 2026-11-01. They indicate co
 | Code review | ● | ● | ● | ● | ● | ● | ● | ● |
 | Runtime / UI verification and QA | ◐ | ◐ | ◐ | ● | ● | ● | ● | ● |
 | Explicit human acceptance checkpoint | ● | ◐ | ◐ | ◐ | ◐ | ● | ● | ◐ |
-| Post-acceptance documentation / release workflow | ● | ◐ | ◐ | ● | ◐ | ● | ◐ | ◐ |
+| Post-acceptance documentation / release workflow | ● | ◐ | ◐ | ● | ◐ | ◐ | ◐ | ◐ |
 | Reusable project-learning capture | ◐* | ● | ◐ | ● | ◐ | ◐ | ◐ | ● |
-| Persistent cross-session state / handoff | ◐* | ◐ | ◐ | ● | ◐ | ◐ | ● | ● |
+| Explicit project status + session continuity | ◐* | ◐ | ◐ | ◐ | ◐ | ◐ | ◐ | ● |
 | Explicit cross-stage evolution / learn-and-adjust loop | ● | ◐ | ◐ | ◐ | ◐ | ◐ | ● | ◐ |
 
 * **CoolFlow's knowledge-capture and state mechanisms are under design discussion, not yet normative v0.1 features.** The current Golden Rule “Know the Actual State” expresses a human-facing principle, but CoolFlow does not yet define a canonical project status artifact or an Agent retrieval protocol. Knowledge capture has been discussed as cross-stage, but its trigger, storage and retrieval rules are not yet part of the published standard.
