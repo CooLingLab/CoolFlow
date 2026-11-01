@@ -9,8 +9,9 @@ This is **initialization, not product discovery or implementation**.
 - Follow the [canonical application documentation tree](documentation.md#canonical-application-documentation-tree); do not invent extra default folders or files beyond that tree.
 
 - Check repository status and existing files first. Never overwrite, delete or silently rewrite user files.
-- Create missing: `AGENTS.md`, `README.md`, `docs/product.md`, `docs/roadmap.md`, `docs/domain.md`.
+- Create missing: `AGENTS.md`, `README.md`, `docs/product.md` (the project-level Product Brief, **not a PRD**), `docs/roadmap.md`, `docs/domain.md`.
 - Ensure `docs/features/`, `docs/work/`, and `docs/work/archive/` exist using `.gitkeep` for Git-only empty directories.
+- Do **not** create `docs/lessons/` during initialization; it is optional and should appear only when a verified reusable lesson exists.
 - Fill **AGENTS.md** with self-contained concise eight-stage Flow, three Loops, documentation locations, accepted/in-progress separation, and agent behavior rules.
 - Fill other docs with **templates**, not fabricated product facts. If user provides actual facts, fill only facts they authorized; otherwise keep `Not started`.
 - Do **not** create `docs/work/001-mvp/`, `spec.md`, PRD, prototype, task file, app code, dependencies, CI, or architecture decisions during initialization.
