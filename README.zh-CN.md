@@ -87,11 +87,11 @@ Golden Rules 是对人的提醒，**不是新的 AI 强制命令或开发阶段*
     │   │   ├── tasks.md              # 可选：需要持久化的任务进度
     │   │   └── prototypes/           # 可选：交互原型
     │   └── archive/                  # 已完成工作的精选历史证据
-    ├── lessons/                      # 可选：经过验证、可复用的项目经验
-    │   ├── README.md
-    │   └── <lesson>.md
+    ├── solutions/                    # 可选：经过验证、可复用的工程经验
+    │   └── <solution>.md
     ├── architecture.md               # 可选：当前系统架构
     ├── adr/                          # 可选：重要架构决策记录
+    │   └── <number>-<decision>.md
     └── feature-map.md                # 可选：UI 导航与验证指南
 ```
 
@@ -112,7 +112,7 @@ Golden Rules 是对人的提醒，**不是新的 AI 强制命令或开发阶段*
 
 - [Project skeleton](templates/project/)：初始化所需的 `AGENTS.md`、`README.md` 和核心文档。
 - [Work templates](templates/work/)：统一 Spec，以及可选的 PRD、Design、Tasks。
-- [Optional templates](templates/optional/)：[Feature Map](templates/optional/feature-map.md) 和[可复用经验模板](templates/optional/lessons/lesson-template.md)。
+- [Optional templates](templates/optional/)：[Feature Map](templates/optional/feature-map.md)、[Feature 文档模板](templates/project/docs/features/feature-template.md)、[Solutions 经验规范与模板](templates/optional/solutions/README.md)、[ADR 模板与示例](templates/optional/adr/README.md)。
 
 这是一套轻量默认结构，不是必须逐项打勾的清单。已有项目可以保留自己的结构，只采用真正有帮助的部分。
 
