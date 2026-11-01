@@ -28,11 +28,18 @@ Skip, combine or revisit stages as needed. The flow is a guide, not a rigid chec
 
 ## Get started
 
-Keep your current coding agent. Paste this into your AI coding tool:
+Use your current coding agent. Choose the right starting point:
 
-> Read https://github.com/CooLingLab/CoolFlow/blob/main/GETTING_STARTED.md and the CoolFlow methodology and documentation standards it references. Inspect the actual state of my project, clarify the goal and smallest verifiable next step, and propose a plan first. Do not overwrite existing files or start coding yet. Tell me if you cannot access the documentation.
+**New project — initialize documentation**
 
-The [Getting Started guide](GETTING_STARTED.md) covers both new and existing projects.
+> Read https://github.com/CooLingLab/CoolFlow/blob/main/GETTING_STARTED.md and its linked standards. In my new repository, create only missing CoolFlow documentation and folders. Preserve existing files; do not brainstorm, create a Spec or write code yet. Report what changed.
+
+**Existing project — inspect before adopting**
+
+> Read https://github.com/CooLingLab/CoolFlow/blob/main/GETTING_STARTED.md and inspect my existing repository. For **[feature or fix]**, suggest which CoolFlow steps would help and the smallest verifiable next action. Preserve existing conventions and propose a plan before changing anything.
+
+[Complete Getting Started guide](GETTING_STARTED.md) · A work directory may be opened during discovery; the formal Spec is written when the chosen work enters Design Spec Loop.
+
 
 ## Four Golden Rules
 
