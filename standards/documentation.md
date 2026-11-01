@@ -2,6 +2,58 @@
 
 **Design rule:** durable, accepted project knowledge is separate from exploratory and in-progress work. Keep **one authoritative location per fact**; use links rather than duplicate paragraphs.
 
+## Canonical application documentation tree
+
+The following is the **default documentation tree for an application repository initialized with CoolFlow**. It describes the recommended homes and lifecycle of project documents; it is not a requirement to create every optional file.
+
+```text
+<app-repository>/
+├── AGENTS.md                         # Required at initialization
+├── README.md                         # Required at initialization
+└── docs/
+    ├── product.md                    # Required at initialization
+    ├── roadmap.md                    # Required at initialization
+    ├── domain.md                     # Required at initialization
+    ├── features/                     # Directory required at initialization
+    │   └── <feature>.md              # Accepted/current behavior; add after acceptance
+    └── work/                         # Directory required at initialization
+        ├── <objective>/              # Create only when real work begins
+        │   ├── spec.md               # Default unified Spec
+        │   ├── prd.md                # Optional: substantial product requirements
+        │   ├── design.md             # Optional: deeper technical design
+        │   ├── tasks.md              # Optional: persistent task progress
+        │   ├── brainstorm.md         # Optional: useful discovery record
+        │   └── prototypes/           # Optional: prototype artifacts
+        └── archive/                  # Directory required at initialization
+            └── <completed-work>/    # Selective completed-work evidence
+    ├── architecture.md               # Optional: current system architecture
+    ├── adr/                          # Optional: durable architecture decisions
+    │   └── <decision>.md
+    └── feature-map.md                # Optional: actual UI navigation and verification
+```
+
+### When each part is created
+
+| Location | At initialization | When work begins | After acceptance |
+|---|---|---|---|
+| `AGENTS.md`, `README.md` | Create if missing | Maintain as needed | Keep current |
+| `docs/product.md`, `roadmap.md`, `domain.md` | Create templates; unknown facts stay `Not started` | Update when decisions become durable | Sync accepted changes |
+| `docs/features/` | Create directory | Usually leave unchanged | Add or update accepted feature descriptions |
+| `docs/work/` | Create directory | Create one `<objective>/spec.md` for the actual objective | Archive selectively |
+| `docs/work/archive/` | Create directory | No need to populate | Retain useful historical evidence |
+| Optional documents | Do not create by default | Add only when complexity or a real need justifies them | Maintain or archive when relevant |
+
+**Required at initialization** means create the missing files/directories in the template skeleton. It does not mean invent content, create empty feature documents, or start an implementation objective.
+
+**Default when work starts** means one unified `spec.md` is the starting point. Optional artifacts are not mandatory steps or a fixed document checklist.
+
+### What this tree deliberately does not prescribe
+
+- No default `docs/solutions/`, `docs/knowledge/` or `docs/state.md` is required by CoolFlow v0.1.
+- A project may add its own solution catalog, knowledge base, status note or other documentation if that project benefits from it. Such additions remain project-local choices, not CoolFlow initialization requirements.
+- CoolFlow's own `flowsolutions/` directory belongs to the **CoolFlow methodology repository**. It is an external framework and method catalog, and is not copied into application repositories.
+- Projects may customize document names and locations after initialization. Preserve one authoritative location per fact and keep the project-local `AGENTS.md` / README navigation accurate.
+
 ## Core project docs (created on initialization)
 
 | Path | Purpose |
