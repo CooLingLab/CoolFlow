@@ -1,4 +1,6 @@
-# Product
+# Product Brief
+
+> This is the enduring, project-level definition of the product. It is **not a PRD** and should stay concise; detailed requirements for an individual development objective belong in `docs/work/<objective>/prd.md` when needed.
 
 > Status: Not started
 
