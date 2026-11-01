@@ -78,6 +78,7 @@ After initialization, projects **own their conventions**; they need not pin or t
 | [standards/](standards/) | Documentation, initialization, and review conventions |
 | [templates/](templates/) | Initial project and optional work artifact templates |
 | [skills/coolflow-init/](skills/coolflow-init/) | Optional Skill; no required install |
+| [solutions/](solutions/) | Optional framework comparison and stage-based solution catalog |
 | [reviews/scenarios/](reviews/scenarios/) | **Development-only** Scenario Review fixtures; remove from final release tree |
 
 The separate CoolFlow Dashboard may visualize stages and project documents; the dashboard does not schedule or execute Agents.
