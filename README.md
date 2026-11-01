@@ -63,7 +63,7 @@ The [`coolflow-init` Skill](skills/coolflow-init/SKILL.md) is optional and initi
 
 When you apply CoolFlow to an App, this is the **project documentation structure you get**. It shows the target App's files—not the internal folders of the CoolFlow repository. Optional files are not created unless the project needs them.
 
-\`\`\`text
+```text
 <your-app>/
 ├── AGENTS.md                         # Project-local Agent instructions
 ├── README.md                         # Human-readable project entry
@@ -87,89 +87,28 @@ When you apply CoolFlow to an App, this is the **project documentation structure
     ├── architecture.md               # Optional: current system architecture
     ├── adr/                          # Optional: durable architecture decisions
     └── feature-map.md                # Optional: UI navigation and verification
-\`\`\`
+```
 
 ### What gets created, and when?
 
 | When | Files and folders |
 |---|---|
-| **Project initialization** | \`AGENTS.md\`, \`README.md\`, \`docs/product.md\`, \`roadmap.md\`, \`domain.md\`, plus empty \`features/\`, \`work/\` and \`work/archive/\` directories |
-| **When development begins** | One \`docs/work/<objective>/spec.md\` as the default starting point |
-| **Only when needed** | \`prd.md\`, \`design.md\`, \`tasks.md\`, \`prototypes/\`, \`architecture.md\`, \`adr/\`, \`feature-map.md\` |
-| **When a verified reusable lesson emerges** | Optional \`docs/lessons/\`; do not create it just to have a knowledge folder |
+| **Project initialization** | `AGENTS.md`, `README.md`, `docs/product.md`, `roadmap.md`, `domain.md`, plus empty `features/`, `work/` and `work/archive/` directories |
+| **When development begins** | One `docs/work/<objective>/spec.md` as the default starting point |
+| **Only when needed** | `prd.md`, `design.md`, `tasks.md`, `prototypes/`, `architecture.md`, `adr/`, `feature-map.md` |
+| **When a verified reusable lesson emerges** | Optional `docs/lessons/`; do not create it just to have a knowledge folder |
 
-**Product Brief is not PRD.** \`docs/product.md\` is the concise, long-lived definition of the whole product—problem, audience, vision, value and boundaries. An optional \`prd.md\` belongs to one substantial development objective and describes that increment's user needs, scope and product-level success criteria. The unified \`spec.md\` then defines precise behavior, implementation and verification.
+**Product Brief is not PRD.** `docs/product.md` is the concise, long-lived definition of the whole product—problem, audience, vision, value and boundaries. An optional `prd.md` belongs to one substantial development objective and describes that increment's user needs, scope and product-level success criteria. The unified `spec.md` then defines precise behavior, implementation and verification.
 
-**Where does experience go?** \`docs/lessons/\` stores evidence-backed lessons that should change future decisions or actions. Completed work and its evidence stay in \`docs/work/archive/\`; important architecture rationale belongs in \`docs/adr/\`; only stable, high-priority rules that Agents must always follow belong in \`AGENTS.md\`. A project may independently add a \`solutions/\` directory for reusable solution recipes, but CoolFlow does not require it. It is not the same as the optional \`lessons/\` directory.
+**Where does experience go?** `docs/lessons/` stores evidence-backed lessons that should change future decisions or actions. Completed work and its evidence stay in `docs/work/archive/`; important architecture rationale belongs in `docs/adr/`; only stable, high-priority rules that Agents must always follow belong in `AGENTS.md`. A project may independently add a `solutions/` directory for reusable solution recipes, but CoolFlow does not require it. It is not the same as the optional `lessons/` directory.
 
 The reusable source templates are organized by purpose:
 
-- [Project skeleton](templates/project/) — initial \`AGENTS.md\`, \`README.md\` and core docs.
+- [Project skeleton](templates/project/) — initial `AGENTS.md`, `README.md` and core docs.
 - [Work templates](templates/work/) — unified Spec, optional PRD, design and tasks.
 - [Optional templates](templates/optional/) — feature map and reusable lesson templates.
 
 The tree is a lightweight default, not a mandatory checklist. Existing projects can preserve their own structure and adopt only the parts that help.
-
-## Repository structure
-
-The tree below shows the document and template layout currently maintained by CoolFlow. The separate **application documentation tree** created in a target App repository is defined in the [documentation standard](standards/documentation.md#canonical-application-documentation-tree).
-
-```text
-CoolFlow/
-├── README.md / README.zh-CN.md
-├── GETTING_STARTED.md
-├── AGENTS.md
-│
-├── methodology/                     # Development method
-│   ├── flow.md
-│   ├── loops.md
-│   ├── golden-rules.md
-│   └── golden-rules.zh-CN.md
-│
-├── standards/                       # Normative standards
-│   ├── documentation.md
-│   ├── initialization.md
-│   └── reviews.md
-│
-├── templates/                       # Reusable document templates
-│   ├── project/
-│   │   ├── AGENTS.md
-│   │   ├── README.md
-│   │   └── docs/
-│   │       ├── product.md
-│   │       ├── roadmap.md
-│   │       ├── domain.md
-│   │       ├── features/.gitkeep
-│   │       └── work/
-│   │           ├── .gitkeep
-│   │           └── archive/.gitkeep
-│   ├── work/
-│   │   ├── spec.md
-│   │   ├── prd.md
-│   │   ├── design.md
-│   │   └── tasks.md
-│   └── optional/
-│       └── feature-map.md
-│
-├── skills/
-│   └── coolflow-init/SKILL.md       # Optional initialization Skill
-│
-├── flowsolutions/                   # Optional external solution catalog
-│   ├── README.md
-│   ├── framework-comparison.md
-│   └── catalog.md
-│
-└── reviews/
-    └── scenarios/                  # Development-only review fixtures
-```
-
-- [methodology/](methodology/) defines the Flow, Loops and Golden Rules.
-- [standards/](standards/) defines normative documentation, initialization and review conventions.
-- [templates/](templates/) provides the starting files copied into an App repository or an active work objective.
-- [flowsolutions/](flowsolutions/) is an optional catalog of external frameworks and methods. It is not copied into App projects.
-- [reviews/scenarios/](reviews/scenarios/) contains **development-only** review fixtures and must be excluded from the final release tree.
-
-The separate CoolFlow Dashboard may visualize stages and project documents; the dashboard does not schedule or execute Agents.
 
 ## Development vs release
 
