@@ -43,8 +43,8 @@ These are **human-facing decision principles**, not four new mandatory Agent com
 
 **Three Adaptive Loops**
 
-- **Design Spec Loop (Step 6):** draft/clarify a unified Spec → review when useful → revise → re-review until implementation-ready. EGM is *optional*.
-- **Implementation Loop (Step 7):** code → test → code review → Spec conformance → fix until acceptance criteria are met.
+- **Design Spec Loop (Step 6):** Draft → Review → Refine. Develop a unified Spec until it is ready for implementation.
+- **Implementation Loop (Step 7):** Build → Test → Review → Fix. Check the implementation against the Spec and acceptance criteria until it is ready for human acceptance.
 - **Evolution Loop (cross-stage):** new evidence or changed assumptions **at any step** → reconsider relevant decisions → re-enter **any step that needs revisiting**. It does **not** require a release, roadmap update, fixed starting point, or full restart.
 
 A routine design revision or code/test fix belongs to its local quality Loop; use the Evolution Loop when new learning warrants reconsidering scope, assumptions, or product direction. **Documentation Sync follows Human Acceptance; it is a step, not a fourth Loop.**

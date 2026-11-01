@@ -12,7 +12,7 @@ Consider independent EGM-style Goldfish Review when a feature is novel, complex,
 - Verify the implementation plan is detailed enough to guide a coding Agent.
 - Report actionable issues and supporting evidence.
 
-Revise and re-review material blockers before writing significant code. Small changes can use lightweight checks. The review of **existing code** for design feasibility is *not* a review of new implementation.
+Resolve and verify material blockers before writing significant code. Small changes can use lightweight checks. The review of **existing code** for design feasibility is *not* a review of new implementation.
 
 ## Within the Implementation Loop: review implemented code
 

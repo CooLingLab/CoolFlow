@@ -45,8 +45,8 @@ Golden Rules 是对人的提醒，**不是新的 AI 强制命令或开发阶段*
 
 **三个自适应 Loop**
 
-- **Design Spec Loop（第 6 步）：** 编写统一 Spec → 按需独立评审 → 修订与复审。
-- **Implementation Loop（第 7 步）：** 实现 → 测试 → 代码审查 → 核对 Spec → 修复并重复。
+- **Design Spec Loop（第 6 步）：** 起草 → 评审 → 完善。逐步完善统一 Spec，直到达到可实施的程度。
+- **Implementation Loop（第 7 步）：** 实现 → 测试 → 审查 → 修复。对照 Spec 和验收标准检查实现，直到可以交由人工验收。
 - **Evolution Loop（跨阶段）：** **任意一步**获得新证据或发现原有假设不成立 → 重新审视相关决策 → 回到**任意需要重新处理的步骤**；不要求先发布、不强制更新 Roadmap，也没有固定起点。
 
 普通设计修订或代码修复属于对应的质量 Loop；当新的认知需要改变产品方向、范围或关键假设时，才使用 Evolution Loop。**Documentation Sync 是人工验收后的步骤，并非第四个 Loop。** 小型修复不必机械走完八个阶段。

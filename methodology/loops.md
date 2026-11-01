@@ -10,14 +10,14 @@ The first two Loops are primarily associated with their named stages; the third 
 
 ## 1. Design Spec Loop — design quality
 
-`Draft Unified Spec → Independent Design Review → Revise → Re-review ↻`
+`Draft → Review → Refine ↻`
 
 **Goal:** make the *design*, expressed through the Spec, clear, correct, and implementable.
 
 - The unified `spec.md` carries context, goals/non-goals, behavior and acceptance criteria, technical decisions, trade-offs, implementation strategy, and verification. Optional PRD or detailed design can be linked without duplicating content.
 - Independent review is preferably fresh-context. The reviewer reads the Spec, linked references and relevant **existing code**, rather than inheriting the drafter's assumptions.
 - Seek missing cases, risky assumptions, overengineering, incompatibilities, feasibility issues, and unclear implementation steps.
-- Revise and re-review until important blockers are resolved. The human decides product-critical trade-offs.
+- Refine the Spec and verify that important blockers are resolved. The human decides product-critical trade-offs.
 - EGM Goldfish is a **recommended optional** review method, not a dependency.
 - Reading existing code to check design feasibility **is not the same as reviewing code newly produced for this task**.
 - `tasks.md` is optional and only needed for persistent progress tracking beyond the Agent's session or existing task system.
@@ -26,7 +26,7 @@ The first two Loops are primarily associated with their named stages; the third 
 
 ## 2. Implementation Loop — code quality
 
-`Code → Test → Code Review → Spec Conformance → Fix ↻`
+`Build → Test → Review → Fix ↻`
 
 **Goal:** implement the approved behavior and obtain evidence that it works.
 
