@@ -119,6 +119,8 @@ Keep these destinations distinct:
 
 When starting relevant work, consult only the lessons that match the current context. Add or revise a lesson only when new evidence makes it useful; do not turn lesson capture into a mandatory ceremony.
 
+These lessons are **project-local**. If the same finding is independently validated across multiple projects, promote it to the developer's shared knowledge base; if it becomes a stable, broadly applicable development principle or requirement, consider incorporating it into CoolFlow's own `methodology/` or `standards/`. Do not copy every project's lessons into every other App repository.
+
 ## Document ownership
 
 - `product.md` (**Product Brief**): *why this product exists, for whom and within what boundaries*; `roadmap.md`: *when/which scope*.
