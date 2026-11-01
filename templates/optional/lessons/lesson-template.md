@@ -24,6 +24,6 @@ Where does this lesson apply? Where might it not apply?
 
 ## Evidence
 
-- Related work: \`docs/work/archive/<work-item>/\`
+- Related work: `docs/work/archive/<work-item>/`
 - Verified on: <YYYY-MM-DD>
 - References: <links, test results or source files>
