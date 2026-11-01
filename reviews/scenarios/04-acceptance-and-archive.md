@@ -9,5 +9,6 @@ Expected:
 4. A completed work record is selectively archived under `docs/work/archive/`.
 5. Key trade-offs / verification evidence are preserved; drafts can be pruned.
 6. Acceptance before release is labeled appropriately.
+7. Documentation Sync is a post-acceptance **step**, not the third quality loop; feedback after release belongs to the outer Evolution Loop.
 
 Verify against actual implementation, acceptance evidence and the file diff.

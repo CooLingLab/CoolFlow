@@ -3,7 +3,7 @@
 This repository publishes a **reference methodology and documentation standard**, not an orchestration engine.
 
 ## Goals and scope
-- Preserve the one-Flow/three-Loops model in `methodology/`.
+- Preserve the one-Flow/three-Loops model: internal **Design Spec Loop** and **Implementation Loop**, outer **Evolution Loop**. Documentation Sync is a post-acceptance step, not another Loop.
 - Keep `standards/` the normative source of truth. Templates and optional Skills implement it; never invent conflicting requirements.
 - Prefer short, explicit, Agent-readable Markdown. Avoid workflow-state machines, custom runtimes, agent-router protocols, and mandatory installations.
 - A new project is initialized only when explicitly asked; initialization must never launch product discovery or start writing app code.

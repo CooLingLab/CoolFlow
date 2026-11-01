@@ -13,11 +13,13 @@ Use this recommended CoolFlow lifecycle; skip, merge or revisit stages as projec
 7. Harness + Agent Loop — code → test → code review → Spec conformance → fix.
 8. Human Acceptance → Docs Sync → Release — record accepted reality and learn.
 
-## Quality Loops
+## Three Loops at two levels
 
-- **Design:** Spec → independent review (EGM-style when useful) → revise.
-- **Implementation:** coding → testing → code review → compare with Spec → fix.
-- **Knowledge:** human acceptance → update current docs → selectively archive development work.
+- **Design Spec Loop (internal):** draft unified Spec → independent design review (EGM-style when useful) → revise / re-review until ready.
+- **Implementation Loop (internal):** code → test → code review → Spec conformance → fix, returning to Design Spec Loop if the design itself is wrong.
+- **Evolution Loop (outer):** release → feedback → roadmap → revisit only the necessary Development Flow stages.
+
+**Documentation Sync is not a Loop:** after human acceptance, update accepted/current docs, verify consistency and selectively archive work. Acceptance and release may occur at different times.
 
 ## Documentation Map
 

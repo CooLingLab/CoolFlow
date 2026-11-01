@@ -1,6 +1,6 @@
 # CoolFlow
 
-**One development Flow, three quality Loops, and a lightweight documentation standard.**
+**One development Flow, two internal quality Loops, one outer Evolution Loop, and a lightweight documentation standard.**
 
 CoolFlow is an AI-oriented software development methodology for individual developers. It tells you **what to clarify, document, validate, and retain** across the product lifecycle. It is **not** an Agent harness, workflow engine, or mandatory skill collection.
 
@@ -19,11 +19,13 @@ CoolFlow is an AI-oriented software development methodology for individual devel
 7. Harness + Agent Loop (implement, test, review code, fix)
 8. Human Acceptance → Documentation Sync → Release
 
-**Loops (repeat when necessary)**
+**Three Loops at two levels**
 
-- **Design loop:** draft/clarify Spec → independent design review → revise. EGM is a recommended *optional* method.
-- **Implementation loop:** code → tests → code review → Spec conformance → fix until ready.
-- **Knowledge loop:** accept actual implementation → update durable product/domain/feature docs → selectively archive work records.
+- **Design Spec Loop (internal):** draft/clarify a unified Spec → independent design-spec review → revise → re-review until implementation-ready. EGM is a recommended *optional* method.
+- **Implementation Loop (internal):** code → test → code review → Spec conformance → fix until acceptance criteria are met.
+- **Evolution Loop (outer):** release → collect feedback → reconsider the roadmap → enter the relevant development stages for the next increment.
+
+The **outer Evolution Loop wraps the Development Flow**; the other two loops improve a particular design or implementation inside that flow. **Documentation Sync is a step after Human Acceptance, not a separate top-level Loop.**
 
 Stages may be skipped, merged, reordered, or revisited. For a tiny fix, do not invent a PRD, diagram, or elaborate review merely to complete a template.
 
