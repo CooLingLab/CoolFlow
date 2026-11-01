@@ -30,19 +30,35 @@ AI 让写代码更容易，但做产品仍会遇到这些问题：
 
 使用你现有的 Coding Agent。CoolFlow 不绑定特定 Agent 厂商或安装工具。
 
-**新项目——初始化空目录**
+**新项目——让 Agent 帮你安装 CoolFlow Init**
 
-CoolFlow 提供一个可选的 coolflow-init Skill，遵循开放的 [Agent Skills 规范](https://agentskills.io/specification)。按照你的 Agent 官方说明，将完整的 [skills/coolflow-init/](skills/coolflow-init/) 文件夹安装到用户级/全局 Skills 目录。不同 Agent 的安装位置和方式可能不同。
+打开你平时使用的 Coding Agent（例如 Codex、Claude Code、OpenCode），把下面这段话直接复制给它：
 
-打开一个空项目目录（或仅包含根目录 .git 元数据的目录），然后告诉 Agent：
+```text
+请帮我给当前正在使用的 Agent 安装 CoolFlow Init Skill。
+
+Skill 地址：
+https://github.com/CooLingLab/CoolFlow/tree/main/skills/coolflow-init
+
+请识别当前 Agent 支持的 Skill 安装机制，以及官方支持的全局/用户级 Skills 目录。将整个 coolflow-init/ 文件夹安装到该全局目录，保留文件夹名称和完整内容。选择当前环境下最可靠的方式：Agent 原生安装、Skills 安装工具，或从 GitHub 下载并复制。
+
+不要安装到当前项目或工作区。
+
+安装后，请检查实际安装路径，并验证当前 Agent 是否能够发现这个 Skill，然后告诉我如何调用它。只安装，不要执行 Skill，不要初始化当前项目，也不要修改任何项目文件。如果当前 Agent 不支持全局安装，或者无法验证安装结果，请明确告诉我原因和最简单的下一步；不要猜测安装路径，也不要声称安装成功。
+
+```
+
+**安装完成后**，打开一个全新的空项目目录，告诉 Agent：
 
 > 使用 coolflow-init 初始化这个空项目。
 
-Skill 会在写入前检查目录；如果存在其他文件或文件夹（包括隐藏文件），就会拒绝执行。手动安装、可选的第三方安装工具和不支持 Skill 的 Agent 的手动初始化方式，请查看 [Getting Started](GETTING_STARTED.md)。
+Skill 会先检查目标目录；如果存在其他文件或文件夹（包括隐藏文件），就会拒绝执行。通过检查后，它会创建 CoolFlow 项目文档结构、验证结果，然后停止，不会自动开始 Brainstorm 或编写应用代码。
+
+手动安装和其他备用方式请查看 [Getting Started](GETTING_STARTED.md)。
 
 **已有项目——先检查现状再采用**
 
-不要在已有项目或非空目录中使用 coolflow-init。请按照 [已有项目采用指南](GETTING_STARTED.md#b-existing-project--inspect-before-adopting)，先检查现状、提出选择性采用方案，并在获得确认后再修改文件。
+不要在已有项目或非空目录中使用 `coolflow-init`。请按照[已有项目采用指南](GETTING_STARTED.md#b-existing-project--inspect-before-adopting)，先检查现状、提出选择性采用方案，并在获得确认后再修改文件。
 
 [完整使用指南（英文）](GETTING_STARTED.md) · 探索阶段可建立工作目录；确定开发目标、进入 Design Spec Loop 时再编写正式 Spec。
 

@@ -30,19 +30,32 @@ Skip, combine or revisit stages as needed. The flow is a guide, not a rigid chec
 
 Use CoolFlow with your preferred coding Agent; no specific Agent vendor or installation tool is required.
 
-**New project — initialize an empty directory**
+**New project — install CoolFlow Init**
 
-CoolFlow provides an optional coolflow-init Skill following the open [Agent Skills specification](https://agentskills.io/specification). Install the whole [skills/coolflow-init/](skills/coolflow-init/) folder into your Agent's global/user-level Skills location using its native installation method. The installation path varies by Agent.
+Open the coding Agent you already use (Codex, Claude Code, OpenCode, etc.) and paste this prompt:
 
-Open an empty target directory (or one containing only root-level .git metadata) and ask:
+```text
+Please install the CoolFlow Init Skill for the coding agent I am currently using.
 
-> Use coolflow-init to initialize this empty project.
+Skill source:
+https://github.com/CooLingLab/CoolFlow/tree/main/skills/coolflow-init
 
-The Skill checks the directory before writing. It refuses any other files or folders, including hidden entries. See the [Getting Started guide](GETTING_STARTED.md) for manual installation, an optional third-party installer, and the manual initialization fallback.
+Identify your own supported Skill installation mechanism and global/user-level Skills directory. Install the entire coolflow-init/ folder there, preserving its name and complete contents. Choose the most reliable supported method (your native installer, a Skills installer CLI, or fetching and copying the folder from GitHub). Do not install it into the current project or workspace.
+
+After installation, verify the installed path and whether you can discover the Skill. Tell me how to invoke it. Do not execute the Skill, initialize the current project, or modify any project files. If global installation is unsupported or verification is not possible, explain that clearly and give me the shortest next step; do not guess a path or claim success without evidence.
+```
+
+That's it: your Agent handles the installation. Once installed, open a **new, empty project directory** and ask:
+
+> Use `coolflow-init` to initialize this empty project.
+
+The Skill checks the target directory before writing and refuses any other files or folders, including hidden entries. It creates the CoolFlow project documentation, verifies the result, and stops without starting Brainstorm or writing application code.
+
+For manual installation or other fallback options, see the [Getting Started guide](GETTING_STARTED.md).
 
 **Existing project — inspect before adopting**
 
-Do not use coolflow-init for an existing or non-empty project. Follow the inspect-first [Existing Project Adoption guide](GETTING_STARTED.md#b-existing-project--inspect-before-adopting): review the current project, propose a selective adoption plan, and wait for approval before changing files.
+Do not use `coolflow-init` for an existing or non-empty project. Follow the inspect-first [Existing Project Adoption guide](GETTING_STARTED.md#b-existing-project--inspect-before-adopting): review the current project, propose a selective adoption plan, and wait for approval before changing files.
 
 [Complete Getting Started guide](GETTING_STARTED.md) · A work directory may be opened during discovery; the formal Spec is written when the chosen work enters Design Spec Loop.
 

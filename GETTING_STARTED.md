@@ -28,19 +28,45 @@ The target project root must be either:
 
 Every other entry makes the directory non-empty, including README.md, .gitignore, .DS_Store, other hidden files, directories and symlinks. The Skill must refuse to run without changing anything. Do not delete files just to make a directory eligible; choose a new empty directory instead.
 
-#### Install the Skill globally
+#### Install the Skill — ask your Agent (recommended)
 
-The Skill is located at [skills/coolflow-init/](skills/coolflow-init/). Install the **whole folder**, keeping the folder name coolflow-init, into your Agent's **global/user-level Skills location**.
+You do not need to find the Skills directory or install a tool yourself. Open the coding Agent you already use (Codex, Claude Code, OpenCode, etc.) and paste this prompt:
 
-- **Agent-native installation (recommended):** Follow your Agent's own documentation for installing a user-level or global Skill. The Agent Skills specification defines the Skill format, but does not define one universal installation path; paths and installation procedures vary by Agent.
-- **Manual installation:** Download or clone this repository, then copy skills/coolflow-init/ into the global Skills directory documented by your Agent. Reload or restart the Agent if its documentation requires it.
+```text
+Please install the CoolFlow Init Skill for the coding agent I am currently using.
+
+Skill source:
+https://github.com/CooLingLab/CoolFlow/tree/main/skills/coolflow-init
+
+Identify your own supported Skill installation mechanism and global/user-level Skills directory. Install the entire coolflow-init/ folder there, preserving its name and complete contents. Choose the most reliable supported method (your native installer, a Skills installer CLI, or fetching and copying the folder from GitHub). Do not install it into the current project or workspace.
+
+After installation, verify the installed path and whether you can discover the Skill. Tell me how to invoke it. Do not execute the Skill, initialize the current project, or modify any project files. If global installation is unsupported or verification is not possible, explain that clearly and give me the shortest next step; do not guess a path or claim success without evidence.
+```
+
+The Agent should handle the installation and report where it was installed. This prompt installs the Skill only; it does **not** initialize the current project.
+
+#### Other installation methods (fallback)
+
+If you prefer to install it yourself:
+
+- **Agent-native installation:** Follow your Agent's own documentation for installing a user-level or global Skill. The Agent Skills specification defines the Skill format, but not one universal installation path; paths and procedures vary by Agent.
+- **Manual installation:** Download or clone this repository, then copy the complete skills/coolflow-init/ folder into the global Skills directory documented by your Agent. Preserve the folder name. Reload or restart the Agent if required.
 - **Optional third-party installer:** [Vercel Skills CLI](https://github.com/vercel-labs/skills) can install the Skill for supported Agents:
 
       npx skills add CooLingLab/CoolFlow --skill coolflow-init -g
 
-  This is an optional convenience tool, not a CoolFlow dependency. The CLI currently requires Node.js 22.20 or later, as declared in its [package metadata](https://github.com/vercel-labs/skills/blob/main/package.json); that requirement applies only to this installer, not to CoolFlow or the Skill itself. The CLI will let you choose a supported Agent.
+  This is an optional convenience tool, not a CoolFlow dependency. The CLI requires Node.js 22.20 or later, as declared in its [package metadata](https://github.com/vercel-labs/skills/blob/main/package.json); that requirement applies only to this installer.
 
-Not every coding Agent supports the Agent Skills format or global Skills. If yours does not, use its documented instruction mechanism or the manual fallback below; automatic Skill discovery cannot be guaranteed.
+Not every coding Agent supports the Agent Skills format or global Skills. If yours does not, use its documented instruction mechanism or the manual fallback; automatic Skill discovery cannot be guaranteed.
+
+#### Use the Skill
+
+1. Open a **new, empty target project directory** in your coding Agent.
+2. Ask: **“Use coolflow-init to initialize this empty project.”**
+3. The Agent checks the target root—including hidden entries—before making any changes.
+4. If eligible, it reads the canonical CoolFlow standards and templates, creates the required project files, verifies them, reports the result, and stops. It does not automatically begin Brainstorm or write application code.
+
+If your Agent cannot install or invoke Skills, use the manual initialization fallback below:
 
 #### Use the Skill
 
