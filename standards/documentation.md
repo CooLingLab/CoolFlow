@@ -23,7 +23,8 @@ The following is the **default documentation tree for an application repository 
     │   │   ├── prd.md                # Optional: substantial product requirements
     │   │   ├── design.md             # Optional: deeper technical design
     │   │   ├── tasks.md              # Optional: persistent task progress
-    │   │   ├── brainstorm.md         # Optional: useful discovery record
+    │   │   ├── brainstorm.md         # Optional: discovery notes and product hypotheses
+    │   │   ├── competitive-landscape.md # Optional: substantial competitor / market research
     │   │   └── prototypes/           # Optional: prototype artifacts
     │   └── archive/                  # Directory required at initialization
     │       └── <completed-work>/    # Selective completed-work evidence
@@ -76,6 +77,20 @@ Create `docs/features/`, `docs/work/` and `docs/work/archive/` as part of the sk
 
 ## Work artifacts (created during discovery or development)
 
+## Idea → Brainstorm: competitive landscape
+
+During Step 1, clarify the problem, target users and use context before researching existing solutions. Then conduct a competitive landscape analysis proportionate to the decision:
+
+- Include direct competitors, indirect alternatives, substitutes and current user workarounds.
+- Compare relevant target users, core value, user experience, key capabilities, pricing/business model, user feedback, limitations and unmet needs.
+- Use credible sources; retain links and research dates, and distinguish observed facts from interpretation, assumptions and unknowns.
+- Synthesize whether a meaningful opportunity or differentiation exists. Existing competitors may validate demand; their presence alone does not invalidate an idea. No visible competitor does not prove demand.
+
+For a small idea or narrow feature, a brief scan or an explicit decision that deeper research adds little may be enough. For a new product or unfamiliar market, deeper research may be warranted. This is an exploration activity, not a new stage or a mandatory gate.
+
+Record concise findings in the current work's `brainstorm.md` when useful. Create a separate `competitive-landscape.md` only when the research is substantial enough to maintain independently. Neither document is required for every idea, and neither is created during project initialization.
+
+
 During discovery, **you may open** `docs/work/<objective>/` for exploration notes and prototypes; no Spec is required yet. When an objective is selected for **Design Spec Loop (Step 6)**, create the default unified `docs/work/<objective>/spec.md`. `<objective>` is a descriptive slug or number for a feature, MVP, fix or release. An initial product journey may use `001-mvp` once discovery begins, without claiming the MVP scope is settled.
 
 A complete Spec should be comprehensible by a new Agent and provide:
@@ -102,7 +117,9 @@ Optional artifacts, created for actual need:
 - `prd.md`: optional, substantial product requirements for **one development objective**—user problem, journeys, scope and product-level success criteria; reference from Spec. It is not the project-wide Product Brief.
 - `design.md`: complex technical design too detailed for unified Spec; reference from Spec.
 - `tasks.md`: **only** when independent, persistent task progress is needed across sessions, agents, or time. Do not duplicate existing session, Issue or other task trackers.
-- `brainstorm.md`, `prototypes/`: candidate concepts and working prototypes, in the applicable work directory.
+- `brainstorm.md`: discovery notes, competitor findings, opportunity analysis and product hypotheses.
+- `competitive-landscape.md`: optional, substantial competitor/market research that merits its own maintained record; do not create it by default.
+- `prototypes/`: candidate concepts and working prototypes, in the applicable work directory.
 - `docs/architecture.md`: current system architecture; `docs/adr/`: rationale for consequential architecture decisions. Both are optional and should be created only when complexity merits them.
 - `docs/feature-map.md`: actual navigation paths, actions, stable test identifiers and verification procedures for operating the shipped/accepted UI, when useful. It is **not** a duplicate of `features/`.
 

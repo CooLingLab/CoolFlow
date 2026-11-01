@@ -4,7 +4,7 @@
 
 Use this recommended CoolFlow lifecycle; skip, merge or revisit stages as project complexity requires:
 
-1. Idea → Brainstorm — clarify problem, users and value.
+1. Idea → Brainstorm — clarify problem, users and value; analyze relevant competitors, alternatives and workarounds; identify an opportunity and product hypothesis.
 2. Lightweight strategic DDD — establish core concepts, boundaries and language.
 3. Concept Prototype → Validation — test core assumptions cheaply.
 4. Roadmap — define MVP and future versions.
