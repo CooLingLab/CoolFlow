@@ -9,15 +9,15 @@ Use this recommended CoolFlow lifecycle; skip, merge or revisit stages as projec
 3. Concept Prototype → Validation — test core assumptions cheaply.
 4. Roadmap — define MVP and future versions.
 5. UI Prototype — design interactions for the current version.
-6. Unified Spec → optional independent design review — write an implementable, verifiable design.
-7. Harness + Agent Loop — code → test → code review → Spec conformance → fix.
+6. Design Spec Loop — write a unified, verifiable Spec → review when useful → revise.
+7. Implementation Loop — code → test → code review → Spec conformance → fix (Agent-assisted as appropriate).
 8. Human Acceptance → Docs Sync → Release — record accepted reality and learn.
 
-## Three Loops at two levels
+## Three Adaptive Loops
 
-- **Design Spec Loop (internal):** draft unified Spec → independent design review (EGM-style when useful) → revise / re-review until ready.
-- **Implementation Loop (internal):** code → test → code review → Spec conformance → fix, returning to Design Spec Loop if the design itself is wrong.
-- **Evolution Loop (outer):** release → feedback → roadmap → revisit only the necessary Development Flow stages.
+- **Design Spec Loop (Step 6):** draft a unified Spec → review (EGM-style when useful) → revise / re-review.
+- **Implementation Loop (Step 7):** code → test → code review → Spec conformance → fix; return to Design Spec Loop if the design itself is wrong.
+- **Evolution Loop (cross-stage):** new evidence or changed assumptions **at any step** → reconsider important product decisions → revisit **any relevant step**. A prior release or roadmap revision is **not** required. Routine design/code fixes belong to their local quality Loops.
 
 **Documentation Sync is not a Loop:** after human acceptance, update accepted/current docs, verify consistency and selectively archive work. Acceptance and release may occur at different times.
 

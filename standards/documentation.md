@@ -58,5 +58,5 @@ Optional artifacts, created for actual need:
 2. Preserve user data; don't overwrite existing README, AGENTS, code or docs without approval.
 3. When information is unknown, mark it as `Not started` / `To decide`; don't invent product requirements.
 4. Ask a human for product-critical decisions; automate verifiable documentation/implementation tasks.
-5. Use the **Design Spec Loop** to review and revise material designs before coding; use the **Implementation Loop** for tests, code review and Spec conformance. After acceptance, sync durable docs as a **step**, not a separate Loop. After release, use the outer **Evolution Loop** to incorporate feedback into the roadmap.
+5. Use **Design Spec Loop (Step 6)** to review and revise material designs and **Implementation Loop (Step 7)** for tests, code review and Spec conformance. The **Evolution Loop** may be triggered by new evidence at **any step**, returning to any relevant step when product assumptions, scope or direction need reconsideration; routine quality fixes remain in their local Loops. After acceptance, sync durable docs as a **step**, not a separate Loop. Release and post-release feedback are possible events, not prerequisites for Evolution.
 6. Keep structure lightweight; never add files solely to satisfy a checklist.

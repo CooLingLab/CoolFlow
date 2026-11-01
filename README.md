@@ -8,7 +8,7 @@
 
 Created by **Cooling**, a pilot, CoolFlow is **inspired by the Airbus Golden Rules for Pilots** and aviation **Standard Operating Procedures (SOPs)**—especially their focus on priorities, situational awareness, and safety. These are Cooling's independent adaptations for **human-led, AI-assisted software development**, not Airbus-authored or Airbus-endorsed software guidance.
 
-**One development Flow, two internal quality Loops, one outer Evolution Loop, and a lightweight documentation standard.**
+**One Development Flow · Three Adaptive Loops · A lightweight documentation standard.**
 
 CoolFlow is an AI-oriented software development methodology for individual developers. It tells you **what to clarify, document, validate, and retain** across the product lifecycle. It is **not** an Agent harness, workflow engine, or mandatory skill collection.
 
@@ -37,17 +37,17 @@ These are **human-facing decision principles**, not four new mandatory Agent com
 3. Concept Prototype → Validation
 4. Roadmap (MVP and later versions)
 5. UI Prototype (for the current release)
-6. Unified Spec → optional EGM-style independent design review
-7. Harness + Agent Loop (implement, test, review code, fix)
+6. Design Spec Loop (write a unified Spec, review when useful, revise)
+7. Implementation Loop (code, test, code review, Spec conformance, fix)
 8. Human Acceptance → Documentation Sync → Release
 
-**Three Loops at two levels**
+**Three Adaptive Loops**
 
-- **Design Spec Loop (internal):** draft/clarify a unified Spec → independent design-spec review → revise → re-review until implementation-ready. EGM is a recommended *optional* method.
-- **Implementation Loop (internal):** code → test → code review → Spec conformance → fix until acceptance criteria are met.
-- **Evolution Loop (outer):** release → collect feedback → reconsider the roadmap → enter the relevant development stages for the next increment.
+- **Design Spec Loop (Step 6):** draft/clarify a unified Spec → review when useful → revise → re-review until implementation-ready. EGM is *optional*.
+- **Implementation Loop (Step 7):** code → test → code review → Spec conformance → fix until acceptance criteria are met.
+- **Evolution Loop (cross-stage):** new evidence or changed assumptions **at any step** → reconsider relevant decisions → re-enter **any step that needs revisiting**. It does **not** require a release, roadmap update, fixed starting point, or full restart.
 
-The **outer Evolution Loop wraps the Development Flow**; the other two loops improve a particular design or implementation inside that flow. **Documentation Sync is a step after Human Acceptance, not a separate top-level Loop.**
+A routine design revision or code/test fix belongs to its local quality Loop; use the Evolution Loop when new learning warrants reconsidering scope, assumptions, or product direction. **Documentation Sync follows Human Acceptance; it is a step, not a fourth Loop.**
 
 Stages may be skipped, merged, reordered, or revisited. For a tiny fix, do not invent a PRD, diagram, or elaborate review merely to complete a template.
 

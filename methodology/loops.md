@@ -1,12 +1,12 @@
-# CoolFlow Loops: two internal, one outer
+# CoolFlow Loops: three adaptive feedback cycles
 
-CoolFlow has **one Development Flow** and **three Loops at two levels**:
+CoolFlow has **one Development Flow** and **three Adaptive Loops**:
 
-- **Design Spec Loop:** design quality before substantial coding (internal).
-- **Implementation Loop:** implementation quality during coding (internal).
-- **Evolution Loop:** ongoing product direction across releases (outer; wraps the Flow).
+- **Design Spec Loop (Step 6):** improve design quality through Spec, review, and revision.
+- **Implementation Loop (Step 7):** improve implementation quality through code, tests, reviews, and fixes.
+- **Evolution Loop (cross-stage):** respond to new evidence or changed assumptions **from any step** and revisit **any relevant step**. It has no mandatory entry point or end point.
 
-The Loops describe useful feedback cycles, **not** an Agent orchestration system. Stages and review depth remain adaptable. **Documentation Sync is a post-acceptance step, not a fourth Loop.**
+The first two Loops are primarily associated with their named stages; the third is **cross-stage**, not a mandatory post-release cycle. These are feedback mechanisms, **not** Agent orchestration, fixed stage gates, or a requirement to iterate indefinitely. **Documentation Sync is a post-acceptance step, not a fourth Loop.**
 
 ## 1. Design Spec Loop — design quality
 
@@ -49,16 +49,17 @@ The Loops describe useful feedback cycles, **not** an Agent orchestration system
 - Acceptance may precede production release, so document release status accurately.
 - The project's documentation standard can evolve independently after initialization.
 
-## 3. Evolution Loop — product iteration (outer)
+## 3. Evolution Loop — cross-stage adaptation
 
-`Release → Observe usage / Feedback → Reprioritize Roadmap → Next relevant Flow stages ↻`
+`New Evidence / Changed Assumptions (any step) → Reassess Decisions → Re-enter Relevant Step(s) ↻`
 
-**Goal:** decide what to build or change next based on product use, learning, or new requirements.
+**Goal:** adapt the product direction, scope, or important decisions as new knowledge emerges, **whether before, during, or after implementation and release**.
 
-- This Loop **wraps** the Development Flow; it is not simply another stage after Implementation.
-- Feedback may change product scope, domain assumptions, prototypes, or the roadmap.
-- For future releases, repeat only relevant stages. A minor fix need not restart Brainstorm or strategic DDD.
-- The loop has no mandatory fixed endpoint; stop or pivot based on actual product goals and context.
+- The Evolution Loop can **start from any of the eight steps** and re-enter **any step that is relevant**. It does not require a prior release, a roadmap update, or a fixed sequence.
+- Examples: a concept prototype at Step 3 disproves the target user's assumption, so revisit Step 1; UI design at Step 5 reveals a domain misunderstanding, so revisit Step 2; implementation at Step 7 reveals a product-scope problem, so revisit Step 4; user feedback after Step 8 can lead to any relevant earlier step.
+- Revisit only the decisions and artifacts affected by new evidence. Do not restart all eight stages mechanically.
+- **Distinguish local quality iteration from product evolution:** fixing tests or revising a design within agreed requirements stays in the Implementation or Design Spec Loop. Use the Evolution Loop when the learning warrants rethinking assumptions, scope, or direction.
+- Human judgment remains responsible for product-critical changes. There is no mandated endpoint; stop, continue, or pivot according to what is learned.
 
 ## Review terminology
 
