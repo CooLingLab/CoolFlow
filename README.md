@@ -28,20 +28,23 @@ Skip, combine or revisit stages as needed. The flow is a guide, not a rigid chec
 
 ## Get started
 
-Use your current coding agent. Choose the right starting point:
+Use CoolFlow with your preferred coding Agent; no specific Agent vendor or installation tool is required.
 
-**New project — initialize documentation**
+**New project — initialize an empty directory**
 
-> Read https://github.com/CooLingLab/CoolFlow/blob/main/GETTING_STARTED.md and its linked standards. In my new repository, create only missing CoolFlow documentation and folders. Preserve existing files; do not brainstorm, create a Spec or write code yet. Report what changed.
+CoolFlow provides an optional coolflow-init Skill following the open [Agent Skills specification](https://agentskills.io/specification). Install the whole [skills/coolflow-init/](skills/coolflow-init/) folder into your Agent's global/user-level Skills location using its native installation method. The installation path varies by Agent.
 
-Initialization includes `docs/documentation.md`, a complete project-local standard for later documentation work without accessing CoolFlow. Existing files are preserved.
+Open an empty target directory (or one containing only root-level .git metadata) and ask:
+
+> Use coolflow-init to initialize this empty project.
+
+The Skill checks the directory before writing. It refuses any other files or folders, including hidden entries. See the [Getting Started guide](GETTING_STARTED.md) for manual installation, an optional third-party installer, and the manual initialization fallback.
 
 **Existing project — inspect before adopting**
 
-> Read https://github.com/CooLingLab/CoolFlow/blob/main/GETTING_STARTED.md and inspect my existing repository. For **[feature or fix]**, suggest which CoolFlow steps would help and the smallest verifiable next action. Preserve existing conventions and propose a plan before changing anything.
+Do not use coolflow-init for an existing or non-empty project. Follow the inspect-first [Existing Project Adoption guide](GETTING_STARTED.md#b-existing-project--inspect-before-adopting): review the current project, propose a selective adoption plan, and wait for approval before changing files.
 
 [Complete Getting Started guide](GETTING_STARTED.md) · A work directory may be opened during discovery; the formal Spec is written when the chosen work enters Design Spec Loop.
-
 
 ## Four Golden Rules
 

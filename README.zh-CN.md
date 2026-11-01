@@ -28,20 +28,23 @@ AI 让写代码更容易，但做产品仍会遇到这些问题：
 
 ## 快速开始
 
-使用你现有的 Coding Agent，根据项目情况选择入口：
+使用你现有的 Coding Agent。CoolFlow 不绑定特定 Agent 厂商或安装工具。
 
-**新项目——先初始化文档**
+**新项目——初始化空目录**
 
-> 请阅读 https://github.com/CooLingLab/CoolFlow/blob/main/GETTING_STARTED.md 及其引用的规范。在我的新项目中，只创建缺失的 CoolFlow 文档和目录，保留已有文件。暂不进行产品探索、编写 Spec 或开发代码，并报告实际修改。
+CoolFlow 提供一个可选的 coolflow-init Skill，遵循开放的 [Agent Skills 规范](https://agentskills.io/specification)。按照你的 Agent 官方说明，将完整的 [skills/coolflow-init/](skills/coolflow-init/) 文件夹安装到用户级/全局 Skills 目录。不同 Agent 的安装位置和方式可能不同。
 
-初始化会创建 `docs/documentation.md`，在项目内保存完整文档规范；后续编写文档无需访问 CoolFlow。已有文件会被保留。
+打开一个空项目目录（或仅包含根目录 .git 元数据的目录），然后告诉 Agent：
 
-**已有项目——先检查现状**
+> 使用 coolflow-init 初始化这个空项目。
 
-> 请阅读 https://github.com/CooLingLab/CoolFlow/blob/main/GETTING_STARTED.md 并检查我的现有项目。针对 **[功能或修复]**，建议采用哪些 CoolFlow 步骤，以及下一项最小、可验证的工作。保留原有约定，先提出方案，不要直接修改。
+Skill 会在写入前检查目录；如果存在其他文件或文件夹（包括隐藏文件），就会拒绝执行。手动安装、可选的第三方安装工具和不支持 Skill 的 Agent 的手动初始化方式，请查看 [Getting Started](GETTING_STARTED.md)。
+
+**已有项目——先检查现状再采用**
+
+不要在已有项目或非空目录中使用 coolflow-init。请按照 [已有项目采用指南](GETTING_STARTED.md#b-existing-project--inspect-before-adopting)，先检查现状、提出选择性采用方案，并在获得确认后再修改文件。
 
 [完整使用指南（英文）](GETTING_STARTED.md) · 探索阶段可建立工作目录；确定开发目标、进入 Design Spec Loop 时再编写正式 Spec。
-
 
 ## 四条 Golden Rules
 
