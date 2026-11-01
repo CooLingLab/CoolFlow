@@ -33,4 +33,4 @@ Ask: would a future developer make a materially worse decision, or spend substan
 - [ADR template](adr-template.md)
 - [Example: choosing Expo + React Native](examples/0001-use-expo-react-native.md)
 
-The example is illustrative, not a recommendation for every application.
+Copy the ADR template into the target app as docs/adr/0001-<decision>.md. Optionally copy this guidance file to docs/adr/README.md as an index. The example is illustrative, not a recommendation for every application.
