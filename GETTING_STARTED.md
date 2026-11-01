@@ -48,6 +48,8 @@ The Agent can update `docs/product.md` (the project-level Product Brief), `docs/
 
 ## 3. Specify and implement one small increment
 
+Before specifying related work, consult only relevant existing records in `docs/solutions/` if that optional directory exists. Do not read the entire knowledge store by default. Capture a new Solution only after a finding is verified and only when it is non-obvious, durable and material.
+
 When the next increment is chosen, paste:
 
 > For **[selected feature/increment]**, write one unified `docs/work/<objective>/spec.md` with goals and non-goals, observable acceptance criteria, main design choices, implementation strategy, and verification plan. Obtain independent design review when warranted by complexity or risk. Implement the **smallest complete valuable increment**. Run relevant tests, review the actual changed code, check conformance with the approved Spec, and address failures. If the Spec proves wrong, explicitly revisit the design instead of silently changing requirements. Show direct evidence of what works and identify what remains unverified. **Ask me to accept the result; don't mark it accepted yourself.**
