@@ -29,7 +29,7 @@ Use this recommended CoolFlow lifecycle; skip, merge or revisit stages as projec
 - `docs/features/`: accepted actual feature behavior; never speculative plans.
 - `docs/work/<objective>/spec.md`: full active design for a development objective. Open `work/001-mvp/` when initial discovery begins, **not** on folder initialization.
 - Optional within work: `prd.md` for substantial product requirements; `design.md` for complex technical design; `tasks.md` only for persistent progress tracking; `prototypes/` for explorations.
-- `docs/work/archive/`: selective historical specs, key decisions, and verification evidence.
+- `docs/work/archive/`: selective historical Specs, work-specific decisions and verification evidence.
 - `docs/solutions/`: optional reusable engineering findings.
 - `docs/adr/`: optional rationale for consequential architecture and technical decisions.
 - Optional `docs/solutions/`: verified, non-obvious, durable and material engineering knowledge; consult relevant entries before related work and capture only when the finding is worth reusing.
