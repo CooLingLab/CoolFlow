@@ -1,7 +1,7 @@
 ---
 title: "Make retried create requests safe against duplicate submissions"
 type: "bug-fix"
-status: "verified"
+status: "illustrative"
 date: "2026-11-01"
 applies_to:
   - "Client retries a create operation after a timeout"
