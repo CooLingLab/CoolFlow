@@ -18,4 +18,4 @@ To decide after product and technical stack are chosen.
 - [Domain](docs/domain.md)
 - [Accepted features](docs/features/)
 - [Development work](docs/work/)
-- [Reusable lessons](docs/lessons/) (optional; create when needed)
+- Reusable lessons: `docs/lessons/` (optional; document here when created)
