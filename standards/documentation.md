@@ -87,12 +87,12 @@ Optional artifacts, created for actual need:
 - `design.md`: complex technical design too detailed for unified Spec; reference from Spec.
 - `tasks.md`: **only** when independent, persistent task progress is needed across sessions, agents, or time. Do not duplicate existing session, Issue or other task trackers.
 - `brainstorm.md`, `prototypes/`: candidate concepts and working prototypes, in the applicable work directory.
-- `docs/architecture.md`, `docs/adr/`: current system architecture and durable decision rationale, only if complexity merits them.
+- `docs/architecture.md`: current system architecture; `docs/adr/`: rationale for consequential architecture decisions. Both are optional and should be created only when complexity merits them.
 - `docs/feature-map.md`: actual navigation paths, actions, stable test identifiers and verification procedures for operating the shipped/accepted UI, when useful. It is **not** a duplicate of `features/`.
 
 ## Accepted knowledge and archiving
 
-- `docs/features/<feature>.md` describes behavior **actually implemented and accepted**, not planned behavior. Future ideas stay in `roadmap.md` or open work Specs.
+- `docs/features/<feature>.md` describes behavior **actually implemented and accepted**, not planned behavior. Future ideas stay in `roadmap.md` or open work Specs. Use the [Feature record template](../templates/project/docs/features/feature-template.md) as a starting point.
 - Acceptance triggers updates of relevant current docs; it does **not** imply production release.
 - First sync the accepted truth. Then move a completed work directory to `docs/work/archive/`, selectively retaining important Specs, design/decision rationale and verification evidence; prune temporary drafts only when safe and appropriate.
 - Keep the provenance of important choices. An ADR may be superseded, not erased.
@@ -101,7 +101,7 @@ Optional artifacts, created for actual need:
 
 ## Reusable project Solutions (optional)
 
-`docs/solutions/` is the optional home for **verified engineering knowledge that should help solve future work**. It replaces the earlier `docs/lessons/` proposal. Create it only when the project has a finding worth preserving; it is not part of the initialization skeleton.
+`docs/solutions/` is the optional home for **verified engineering knowledge that should help solve future work**. Create it only when the project has a finding worth preserving; it is not part of the initialization skeleton. See the [Solutions guidance and template](../templates/optional/solutions/README.md).
 
 A separate Solution is worth recording when the finding is:
 
@@ -129,7 +129,7 @@ These Solutions are **project-local**. If a finding is independently validated a
 
 `docs/adr/` stores durable records of **why the project made consequential architecture or technical decisions**. It is not a general decision diary and is not required for every feature or implementation choice.
 
-Create one ADR per decision when the choice affects architecture, data ownership, system boundaries, security, deployment, a foundational technology or a hard-to-reverse dependency. A useful ADR normally records context, decision drivers, options considered, the chosen decision and its consequences.
+Create one ADR per decision when the choice affects architecture, data ownership, system boundaries, security, deployment, a foundational technology or a hard-to-reverse dependency. A useful ADR normally records context, decision drivers, options considered, the chosen decision and its consequences. See the [ADR template and example](../templates/optional/adr/README.md).
 
 Use sequential, descriptive filenames such as `0001-use-expo-react-native.md`. Preserve accepted records. If a decision changes, create a new ADR and mark the earlier one as superseded instead of silently rewriting history. An optional README index may summarize the records when the collection grows.
 
