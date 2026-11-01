@@ -112,7 +112,7 @@ Golden Rules 是对人的提醒，**不是新的 AI 强制命令或开发阶段*
 
 - [Project skeleton](templates/project/)：初始化所需的 `AGENTS.md`、`README.md` 和核心文档。
 - [Work templates](templates/work/)：统一 Spec，以及可选的 PRD、Design、Tasks。
-- [Optional templates](templates/optional/)：Feature Map 和可复用经验模板。
+- [Optional templates](templates/optional/)：[Feature Map](templates/optional/feature-map.md) 和[可复用经验模板](templates/optional/lessons/lesson-template.md)。
 
 这是一套轻量默认结构，不是必须逐项打勾的清单。已有项目可以保留自己的结构，只采用真正有帮助的部分。
 
