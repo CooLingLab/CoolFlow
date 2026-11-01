@@ -37,7 +37,9 @@ CoolFlow 是一套开放、轻量、可按需调整的 AI 辅助软件开发方�
 | **三个反馈循环（Adaptive Loops）** | 持续完善 Spec、验证实现，并在获得新信息时重新审视产品方向。 |
 | **一套轻量文档规范（Documentation Standard）** | 保留产品目标、需求、决策与值得复用的工程经验，让你和 AI 都更容易接续工作。 |
 
-![CoolFlow 开发流程与反馈循环](docs/diagrams/coolflow-diagram.zh-CN.svg)
+<p align="center">
+  <img src="docs/diagrams/coolflow-diagram.zh-CN.svg" alt="CoolFlow 开发流程与反馈循环">
+</p>
 
 **流程是一张地图，不是一张必须逐项打勾的清单。**
 
