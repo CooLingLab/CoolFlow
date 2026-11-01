@@ -106,7 +106,7 @@ The reusable source templates are organized by purpose:
 
 - [Project skeleton](templates/project/) — initial `AGENTS.md`, `README.md` and core docs.
 - [Work templates](templates/work/) — unified Spec, optional PRD, design and tasks.
-- [Optional templates](templates/optional/) — feature map and reusable lesson templates.
+- [Optional templates](templates/optional/) — [feature map](templates/optional/feature-map.md) and [reusable lesson template](templates/optional/lessons/lesson-template.md).
 
 The tree is a lightweight default, not a mandatory checklist. Existing projects can preserve their own structure and adopt only the parts that help.
 
