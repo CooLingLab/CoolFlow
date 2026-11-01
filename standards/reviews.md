@@ -22,6 +22,6 @@ Resolve and verify material blockers before writing significant code. Small chan
 - Resolve discrepancies by changing code or explicitly revisiting requirements with a human.
 - Seek human acceptance of the actual result; sync durable docs afterward.
 
-**After human acceptance**, synchronize durable feature/domain/roadmap documentation and archive relevant work records. This is a step, not a separate Knowledge Loop. **At any Development Flow step**, new evidence that changes product direction, assumptions or scope can activate the cross-stage Evolution Loop, returning to any relevant step. Ordinary design and code corrections remain in their local quality Loops; post-release feedback is only one possible Evolution trigger.
+**After human acceptance**, synchronize durable feature/domain/roadmap documentation and archive relevant work records. This is a step, not a separate Knowledge Loop. **At any Development Flow step**, feedback, new ideas, or changing needs that warrant reconsidering product direction, assumptions or scope can activate the cross-stage Evolution Loop, returning to any relevant step. Ordinary design and code corrections remain in their local quality Loops; post-release feedback is only one possible Evolution trigger.
 
 CoolFlow does not require EGM, Spec Kit, OpenSpec or a particular agent runner. These are optional tools and sources of good practices.

@@ -62,7 +62,7 @@ Inspect actual behavior and evidence. If satisfied, explicitly accept the increm
 
 > I have inspected **[specific functionality/evidence]** and **[accept / request changes]**. If accepted, update only the relevant durable documentation (`docs/features/` for accepted, implemented behavior) and selectively archive important decision and verification evidence. **Distinguish accepted from released.** Do not deploy or publish without a separate explicit instruction.
 
-Release happens only when appropriate. The **Evolution Loop** is available **at any step**, not only after release: new evidence that changes product assumptions, scope, or direction can send the project back to any relevant step (for example, a failed prototype back to Brainstorm). Ordinary Spec revisions or code/test fixes stay within the local Design Spec or Implementation Loop. Revisit only what needs reconsideration.
+Release happens only when appropriate. The **Evolution Loop** is available **at any step**, not only after release: feedback, new ideas, or changing needs that warrant reconsidering product assumptions, scope, or direction can send the project back to any relevant step (for example, a failed prototype back to Brainstorm). Ordinary Spec revisions or code/test fixes stay within the local Design Spec or Implementation Loop. Revisit only what needs reconsideration.
 
 ## Have an existing app instead?
 

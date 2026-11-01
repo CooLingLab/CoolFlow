@@ -4,7 +4,7 @@ CoolFlow has **one Development Flow** and **three Adaptive Loops**:
 
 - **Design Spec Loop (Step 6):** improve design quality through Spec, review, and revision.
 - **Implementation Loop (Step 7):** improve implementation quality through code, tests, reviews, and fixes.
-- **Evolution Loop (cross-stage):** respond to new evidence or changed assumptions **from any step** and revisit **any relevant step**. It has no mandatory entry point or end point.
+- **Evolution Loop (cross-stage):** reassess feedback, new ideas, or changing needs **from any step** and adapt **any relevant step** as needed. It has no mandatory entry point or end point.
 
 The first two Loops are primarily associated with their named stages; the third is **cross-stage**, not a mandatory post-release cycle. These are feedback mechanisms, **not** Agent orchestration, fixed stage gates, or a requirement to iterate indefinitely. **Documentation Sync is a post-acceptance step, not a fourth Loop.**
 
@@ -51,13 +51,14 @@ The first two Loops are primarily associated with their named stages; the third 
 
 ## 3. Evolution Loop — cross-stage adaptation
 
-`New Evidence / Changed Assumptions (any step) → Reassess Decisions → Re-enter Relevant Step(s) ↻`
+`New Input → Reassess → Adapt ↻`
 
-**Goal:** adapt the product direction, scope, or important decisions as new knowledge emerges, **whether before, during, or after implementation and release**.
+**Goal:** reassess and, when warranted, adapt the product direction, scope, or important decisions in response to feedback, new ideas, or changing needs, **whether before, during, or after implementation and release**.
 
 - The Evolution Loop can **start from any of the eight steps** and re-enter **any step that is relevant**. It does not require a prior release, a roadmap update, or a fixed sequence.
 - Examples: a concept prototype at Step 3 disproves the target user's assumption, so revisit Step 1; UI design at Step 5 reveals a domain misunderstanding, so revisit Step 2; implementation at Step 7 reveals a product-scope problem, so revisit Step 4; user feedback after Step 8 can lead to any relevant earlier step.
-- Revisit only the decisions and artifacts affected by new evidence. Do not restart all eight stages mechanically.
+- New input can include an issue, a feature request, a new idea, or a feature becoming outdated. Reassessment may lead to action, further observation, or a decision not to adopt the input.
+- Revisit only the decisions and artifacts affected by the input. Do not restart all eight stages mechanically.
 - **Distinguish local quality iteration from product evolution:** fixing tests or revising a design within agreed requirements stays in the Implementation or Design Spec Loop. Use the Evolution Loop when the learning warrants rethinking assumptions, scope, or direction.
 - Human judgment remains responsible for product-critical changes. There is no mandated endpoint; stop, continue, or pivot according to what is learned.
 

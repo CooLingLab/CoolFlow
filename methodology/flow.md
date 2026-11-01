@@ -2,7 +2,7 @@
 
 The human developer's overarching priorities are described by the [Golden Rules](golden-rules.md). The rules guide decisions across every stage but do not create additional phases or mandatory artifacts.
 
-CoolFlow describes **one flexible Development Flow and three adaptive Loops**, not a rigid stage scheduler. The **Evolution Loop can be triggered from any stage**, whenever new evidence or changed assumptions call for reconsidering a product decision; it may return to any relevant stage. Each stage suggests outputs and questions; the developer and Agent decide what adds value. No engine, transition state, or gate file is required.
+CoolFlow describes **one flexible Development Flow and three adaptive Loops**, not a rigid stage scheduler. The **Evolution Loop can be triggered from any stage**, whenever feedback, new ideas, or changing needs call for reconsidering a product decision; it may return to any relevant stage. Each stage suggests outputs and questions; the developer and Agent decide what adds value. No engine, transition state, or gate file is required.
 
 | Stage | Purpose | Typical result |
 | --- | --- | --- |
@@ -21,6 +21,6 @@ CoolFlow describes **one flexible Development Flow and three adaptive Loops**, n
 
 For a new app, the first work objective can be `work/001-mvp/`, **opened when discovery actually starts** (not during folder initialization). The label does not presume MVP scope is already final.
 
-**Evolution Loop (cross-stage):** New evidence or changed assumptions **at any step** → reassess product direction, scope, or key decisions → return to **any relevant step**. For example, a failed concept prototype (Step 3) might return to Brainstorm (Step 1), or an invalid product assumption uncovered during implementation (Step 7) might require revisiting Roadmap (Step 4). Post-release feedback is one trigger, **not a prerequisite**. Ordinary design or code corrections remain in the corresponding local quality Loop. Never require a fixed start/end, automatic roadmap revision, or mechanical repetition of all eight stages.
+**Evolution Loop (cross-stage):** New Input → Reassess → Adapt. At **any step**, feedback, new ideas, or changing needs may prompt reconsideration of product direction, scope, or key decisions and a return to **any relevant step**. For example, a failed concept prototype (Step 3) might return to Brainstorm (Step 1), or an invalid product assumption uncovered during implementation (Step 7) might require revisiting Roadmap (Step 4). Post-release feedback is one trigger, **not a prerequisite**. Ordinary design or code corrections remain in the corresponding local quality Loop. Never require a fixed start/end, automatic roadmap revision, or mechanical repetition of all eight stages.
 
 See [quality loops](loops.md) and [documentation rules](../standards/documentation.md).

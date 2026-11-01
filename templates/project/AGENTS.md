@@ -17,7 +17,7 @@ Use this recommended CoolFlow lifecycle; skip, merge or revisit stages as projec
 
 - **Design Spec Loop (Step 6):** Draft → Review → Refine. Develop a unified Spec until it is ready for implementation.
 - **Implementation Loop (Step 7):** Build → Test → Review → Fix. Check the implementation against the Spec and acceptance criteria until it is ready for human acceptance; return to Design Spec Loop if the design itself is wrong.
-- **Evolution Loop (cross-stage):** new evidence or changed assumptions **at any step** → reconsider important product decisions → revisit **any relevant step**. A prior release or roadmap revision is **not** required. Routine design/code fixes belong to their local quality Loops.
+- **Evolution Loop (cross-stage):** New Input → Reassess → Adapt. At **any step**, reconsider important product decisions in response to feedback, new ideas, or changing needs, and revisit **any relevant step** as needed. A prior release or roadmap revision is **not** required. Routine design/code fixes belong to their local quality Loops.
 
 **Documentation Sync is not a Loop:** after human acceptance, update accepted/current docs, verify consistency and selectively archive work. Acceptance and release may occur at different times.
 

@@ -45,7 +45,7 @@ These are **human-facing decision principles**, not four new mandatory Agent com
 
 - **Design Spec Loop (Step 6):** Draft → Review → Refine. Develop a unified Spec until it is ready for implementation.
 - **Implementation Loop (Step 7):** Build → Test → Review → Fix. Check the implementation against the Spec and acceptance criteria until it is ready for human acceptance.
-- **Evolution Loop (cross-stage):** new evidence or changed assumptions **at any step** → reconsider relevant decisions → re-enter **any step that needs revisiting**. It does **not** require a release, roadmap update, fixed starting point, or full restart.
+- **Evolution Loop (cross-stage):** New Input → Reassess → Adapt. Revisit relevant decisions in response to feedback, new ideas, or changing needs, and adjust the flow as needed. It can start at **any step** and revisit **any relevant step**, without requiring a release, roadmap update, or full restart.
 
 A routine design revision or code/test fix belongs to its local quality Loop; use the Evolution Loop when new learning warrants reconsidering scope, assumptions, or product direction. **Documentation Sync follows Human Acceptance; it is a step, not a fourth Loop.**
 
