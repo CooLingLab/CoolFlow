@@ -57,13 +57,15 @@ Do not use `coolflow-init` for an existing or non-empty project. Follow the insp
 
 CoolFlow includes three optional Agent Skills:
 
-| Skill | Purpose | Use when |
-| --- | --- | --- |
-| [`coolflow-init`](skills/coolflow-init/SKILL.md) | Create the CoolFlow documentation skeleton | Starting a new, empty project |
-| [`coolflow-advisor`](skills/coolflow-advisor/SKILL.md) | Recommend methods, Skills and tools for a specific task | Choosing an approach for a development task |
-| [`coolflow-skill-creator`](skills/coolflow-skill-creator/SKILL.md) | Create, adapt, test and maintain native CoolFlow Skills | Building or reviewing a Skill |
+| Skill | Purpose | Why it matters | Use when |
+| --- | --- | --- | --- |
+| [`coolflow-init`](skills/coolflow-init/SKILL.md) | Create the CoolFlow documentation skeleton | Gives every new project the same CoolFlow starting point, not a one-off setup | Starting a new, empty project |
+| [`coolflow-advisor`](skills/coolflow-advisor/SKILL.md) | Recommend methods, Skills and tools for a specific task | Keeps method and tool choices small, relevant and grounded in the current task | Choosing an approach for a development task |
+| [`coolflow-skill-creator`](skills/coolflow-skill-creator/SKILL.md) | Create, adapt, test and maintain native CoolFlow Skills | Turns external ideas and repeated practice into a maintained personal Skill library—an asset that improves through real use and validation | Building or reviewing a Skill |
 
 `coolflow-init` is the project setup entry point. The other two are optional on-demand Skills. Install a Skill with your Agent's standard installation method; `coolflow-init` has an example above.
+
+**What mature CoolFlow looks like:** Every project starts from the same clear, flexible flow; each iteration leaves durable documentation and evidence; and your Skill library becomes a personal arsenal of adapted, validated capabilities that make the next project faster and more reliable.
 
 ## Four Golden Rules
 

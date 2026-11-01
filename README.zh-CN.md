@@ -57,13 +57,15 @@ Skill 会先检查目标目录；如果存在其他文件或文件夹（包括�
 
 CoolFlow 提供三个可选的 Agent Skills：
 
-| Skill | 用途 | 使用时机 |
-| --- | --- | --- |
-| [`coolflow-init`](skills/coolflow-init/SKILL.md) | 创建 CoolFlow 项目文档骨架 | 新建空项目 |
-| [`coolflow-advisor`](skills/coolflow-advisor/SKILL.md) | 针对具体任务推荐方法、Skills 和工具 | 选择开发方法或工具 |
-| [`coolflow-skill-creator`](skills/coolflow-skill-creator/SKILL.md) | 创建、改造、测试和维护 CoolFlow 原生 Skill | 开发或审查 Skill |
+| Skill | 用途 | 为什么需要 | 使用时机 |
+| --- | --- | --- | --- |
+| [`coolflow-init`](skills/coolflow-init/SKILL.md) | 创建 CoolFlow 项目文档骨架 | 让每个新项目都从同一套 CoolFlow 框架开始，而不只是一次性的初始化 | 新建空项目 |
+| [`coolflow-advisor`](skills/coolflow-advisor/SKILL.md) | 针对具体任务推荐方法、Skills 和工具 | 针对当前任务给出少量、相关、可执行的选择，减少盲目试错 | 选择开发方法或工具 |
+| [`coolflow-skill-creator`](skills/coolflow-skill-creator/SKILL.md) | 创建、改造、测试和维护 CoolFlow 原生 Skill | 把外部方法与重复实践沉淀成自己的 Skill 资产，并经过真实使用和反复验证，越用越成熟 | 开发或审查 Skill |
 
 `coolflow-init` 是项目初始化入口，另外两个是按需使用的可选 Skill。安装方式遵循当前 Agent 的标准流程；`coolflow-init` 的示例见上文。
+
+**CoolFlow 的成熟形态：** 每个项目都沿着同一套清晰而灵活的流程推进，每次迭代都留下可复用的文档和验证证据；你的 Skill 库则沉淀为一份真正的数字资产——一套经过自己改造、经过真实任务反复验证的个人武器库，让下一个项目更快、更稳。
 
 ## 四条 Golden Rules
 
