@@ -15,6 +15,12 @@ This repository publishes a **reference methodology and documentation standard**
 - Default to a **unified Spec**. A separate tasks file is not required when the coding Agent already tracks the plan in its session.
 - Review the design before significant implementation; review code and Spec conformance afterward; update durable docs only after acceptance.
 
+## External solution references
+- `solutions/` is a **non-normative, optional reference catalog**; `standards/` remains authoritative.
+- Do not install, invoke, or combine external frameworks merely because they appear in the catalog.
+- Prefer the smallest relevant component; treat a complete suite as an explicit workflow alternative when its artifacts, gates, or state model overlap with CoolFlow.
+- Keep parent frameworks and their bundled Skills/playbooks distinct, and verify upstream compatibility before recommending installation.
+
 ## Validation
 - During development, maintain internal cases under `reviews/scenarios/`; use an **independent reviewer Agent** with explicit evidence to check outcomes.
 - Internal Scenario Review files must **not be included in the final release tree**.
