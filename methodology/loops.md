@@ -14,8 +14,8 @@ The first two Loops are primarily associated with their named stages; the third 
 
 **Goal:** make the *design*, expressed through the Spec, clear, correct, and implementable.
 
-- The unified `spec.md` carries context, goals/non-goals, behavior and acceptance criteria, technical decisions, trade-offs, implementation strategy, and verification. Optional PRD or detailed design can be linked without duplicating content.
-- Independent review is preferably fresh-context. The reviewer reads the Spec, linked references and relevant **existing code**, rather than inheriting the drafter's assumptions.
+- When a selected objective enters this Loop, draft its unified `spec.md`; earlier discovery may have used the work directory without a Spec. The Spec carries context, goals/non-goals, behavior and acceptance criteria, technical decisions, trade-offs, implementation strategy, and verification. Optional PRD or detailed design can be linked without duplicating content.
+- Independent review is preferably fresh-context. The reviewer reads the **current Spec draft**, linked references and relevant **existing code**, rather than inheriting the drafter's assumptions.
 - Seek missing cases, risky assumptions, overengineering, incompatibilities, feasibility issues, and unclear implementation steps.
 - Refine the Spec and verify that important blockers are resolved. The human decides product-critical trade-offs.
 - EGM Goldfish is a **recommended optional** review method, not a dependency.
