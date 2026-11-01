@@ -4,7 +4,7 @@ The **Design Review** and **Code Review** below are part of the recommended deve
 
 ## Within the Design Spec Loop: review before coding
 
-Consider independent EGM-style Goldfish Review when a feature is novel, complex, risky or irreversible. Provide the reviewer with the approved unified Spec, optionally linked PRD/design, and relevant existing code/context. The independent reviewer should:
+Consider independent EGM-style Goldfish Review when a feature is novel, complex, risky or irreversible. Provide the reviewer with the **current Spec draft**, optionally linked PRD/design, and relevant existing code/context. The independent reviewer should:
 
 - Challenge missing user behavior, validation cases and failure modes.
 - Check assumptions against existing code and constraints.
@@ -12,7 +12,7 @@ Consider independent EGM-style Goldfish Review when a feature is novel, complex,
 - Verify the implementation plan is detailed enough to guide a coding Agent.
 - Report actionable issues and supporting evidence.
 
-Resolve and verify material blockers before writing significant code. Small changes can use lightweight checks. The review of **existing code** for design feasibility is *not* a review of new implementation.
+Resolve and verify material blockers, then confirm the design is ready to implement before writing significant code. Small changes can use lightweight checks. The review of **existing code** for design feasibility is *not* a review of new implementation.
 
 ## Within the Implementation Loop: review implemented code
 
