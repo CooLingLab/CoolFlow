@@ -19,7 +19,7 @@ CoolFlow describes **one flexible Development Flow and three adaptive Loops**, n
 
 **Human Acceptance is distinct from Release.** After acceptance, Documentation Sync updates the current project truth and selectively archives work; it is **not an independent top-level Loop**. Accepted but not yet shipped behavior must be described accurately, including release status when relevant.
 
-For a new app, the first work objective can be `work/001-mvp/`, **opened when discovery actually starts** (not during folder initialization). The label does not presume MVP scope is already final.
+For a new app, the first work objective can be `work/001-mvp/`, **opened during discovery when useful** (not during folder initialization). Discovery notes and prototypes may live there without a Spec; write the unified `spec.md` when the selected objective reaches **Design Spec Loop (Step 6)**. The directory label does not presume MVP scope is already final.
 
 **Evolution Loop (cross-stage):** New Input → Reassess → Adapt. At **any step**, feedback, new ideas, or changing needs may prompt reconsideration of product direction, scope, or key decisions and a return to **any relevant step**. For example, a failed concept prototype (Step 3) might return to Brainstorm (Step 1), or an invalid product assumption uncovered during implementation (Step 7) might require revisiting Roadmap (Step 4). Post-release feedback is one trigger, **not a prerequisite**. Ordinary design or code corrections remain in the corresponding local quality Loop. Never require a fixed start/end, automatic roadmap revision, or mechanical repetition of all eight stages.
 
