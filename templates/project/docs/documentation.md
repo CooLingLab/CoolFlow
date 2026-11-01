@@ -58,7 +58,7 @@ The following is the **default documentation tree for an application repository 
 - No default `docs/solutions/`, `docs/adr/`, `docs/knowledge/` or `docs/state.md` is required by CoolFlow v0.1.
 - `docs/solutions/` is the recommended optional home for verified, reusable engineering knowledge. it is not created during initialization.
 - `docs/adr/` is the optional home for Architecture Decision Records: one consequential decision per file. It is not created during initialization.
-- CoolFlow's own `flowsolutions/` directory belongs to the **CoolFlow methodology repository**. It catalogs external frameworks and methods and is not copied into application repositories. An App's `docs/solutions/` is its own engineering knowledge store; the names are related but serve different purposes.
+- CoolFlow's own `flowecosystem/` directory belongs to the **CoolFlow methodology repository**. It catalogs external frameworks and methods and is not copied into application repositories. An App's `docs/solutions/` is its own engineering knowledge store; the names are related but serve different purposes.
 - Projects may customize document names and locations after initialization. Preserve one authoritative location per fact and keep the project-local `AGENTS.md` / README navigation accurate.
 
 ## Core project docs (created on initialization)
