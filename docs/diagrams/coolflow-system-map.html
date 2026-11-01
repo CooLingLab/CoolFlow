@@ -1,0 +1,710 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CoolFlow — AI Software Development System</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      color-scheme: light;
+      --paper: #ffffff;
+      --paper-2: #ececec;
+      --surface: #f5f5f5;
+      --ink: #2d3142;
+      --muted: #4f5d75;
+      --soft: #7a8399;
+      --rule: rgba(45,49,66,0.12);
+      --rule-solid: #bfc0c0;
+      --accent: #eb6c36;
+      --accent-tint: rgba(235,108,54,0.08);
+      --link: #2e5aa8;
+      --navy: #1b2838;
+      --navy-text: #f5f5f5;
+      --loop-blue: #2e5aa8;
+      --loop-green: #2d7d46;
+      --loop-purple: #6b4c9a;
+      --amber: #d97706;
+      --sans: -apple-system, "Segoe UI", "PingFang SC", "Microsoft YaHei", "Noto Sans SC", sans-serif;
+      --serif: Georgia, "Times New Roman", "Songti SC", "SimSun", serif;
+      --mono: ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+    }
+    :root[data-theme="dark"] {
+      color-scheme: dark;
+      --paper: #121212;
+      --paper-2: #393e53;
+      --surface: #393e53;
+      --ink: #f5f5f5;
+      --muted: #bfc0c0;
+      --soft: #8e98ac;
+      --rule: rgba(245,245,245,0.12);
+      --rule-solid: rgba(191,192,192,0.25);
+      --accent: #f08a59;
+      --accent-tint: rgba(240,138,89,0.10);
+      --link: #6a95d8;
+      --navy: #1e293b;
+      --navy-text: #f5f5f5;
+      --loop-blue: #6a95d8;
+      --loop-green: #58b372;
+      --loop-purple: #a78bfa;
+      --amber: #f59e0b;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root:not([data-theme="light"]) {
+        color-scheme: dark;
+        --paper: #121212;
+        --paper-2: #393e53;
+        --surface: #393e53;
+        --ink: #f5f5f5;
+        --muted: #bfc0c0;
+        --soft: #8e98ac;
+        --rule: rgba(245,245,245,0.12);
+        --rule-solid: rgba(191,192,192,0.25);
+        --accent: #f08a59;
+        --accent-tint: rgba(240,138,89,0.10);
+        --link: #6a95d8;
+        --navy: #1e293b;
+        --navy-text: #f5f5f5;
+        --loop-blue: #6a95d8;
+        --loop-green: #58b372;
+        --loop-purple: #a78bfa;
+        --amber: #f59e0b;
+      }
+    }
+    body {
+      font-family: var(--sans);
+      background: var(--paper);
+      color: var(--ink);
+      min-height: 100vh;
+      padding: 2.5rem 2rem;
+    }
+    .frame {
+      max-width: 1480px;
+      width: 100%;
+      margin: 0 auto;
+    }
+    .eyebrow {
+      font: 500 0.72rem var(--mono);
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 0.5rem;
+    }
+    h1 {
+      font: 400 clamp(1.6rem, 2.4vw + 0.75rem, 2.25rem)/1.15 var(--serif);
+      letter-spacing: -0.02em;
+      margin-bottom: 0.6rem;
+    }
+    .subtitle {
+      max-width: 78ch;
+      color: var(--muted);
+      font-size: 0.95rem;
+      line-height: 1.55;
+      margin-bottom: 1.5rem;
+    }
+    .diagram-container {
+      background: var(--paper-2);
+      border: 1px solid var(--rule);
+      border-radius: 8px;
+      padding: 1.25rem;
+      overflow-x: auto;
+    }
+    svg {
+      width: 100%;
+      min-width: 1280px;
+      display: block;
+    }
+    svg text {
+      font-family: var(--sans);
+    }
+    .mono {
+      font-family: var(--mono);
+    }
+    .cards {
+      display: grid;
+      grid-template-columns: 1.15fr 1fr 0.95fr;
+      gap: 1rem;
+      margin-top: 1.5rem;
+    }
+    .card {
+      background: var(--paper);
+      border: 1px solid var(--rule);
+      border-radius: 6px;
+      padding: 1.25rem;
+    }
+    .card-label {
+      font: 500 0.65rem var(--mono);
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 0.45rem;
+    }
+    .card-header {
+      display: flex;
+      align-items: center;
+      gap: 0.55rem;
+      margin-bottom: 0.75rem;
+      padding-bottom: 0.75rem;
+      border-bottom: 1px solid var(--rule);
+    }
+    .card-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--muted);
+    }
+    .card-dot.coral { background: var(--accent); }
+    .card-dot.blue { background: var(--loop-blue); }
+    .card-dot.purple { background: var(--loop-purple); }
+    .card h3 {
+      font-size: 0.92rem;
+      font-weight: 600;
+    }
+    .card p, .card li {
+      color: var(--muted);
+      font-size: 0.82rem;
+      line-height: 1.55;
+    }
+    .card ul {
+      list-style: none;
+    }
+    .card li {
+      padding-left: 0.9rem;
+      position: relative;
+      margin-bottom: 0.25rem;
+    }
+    .card li::before {
+      content: '—';
+      position: absolute;
+      left: 0;
+      color: var(--soft);
+    }
+    .footer {
+      display: flex;
+      justify-content: space-between;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+      margin-top: 1.75rem;
+      padding-top: 1.25rem;
+      border-top: 1px solid var(--rule);
+      color: var(--soft);
+      font: 0.72rem var(--mono);
+      letter-spacing: 0.06em;
+    }
+    @media (max-width: 900px) {
+      .cards { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <div class="frame">
+    <p class="eyebrow">CoolFlow · AI-Assisted Software Engineering SOP</p>
+    <h1>CoolFlow — AI Software Development System</h1>
+    <p class="subtitle">One Development Flow · Three Adaptive Loops · Four Golden Rules — 面向个人开发者的 AI 辅助软件工程标准作业程序（推荐的八阶段主干可按需跳过、合并、重排或重访；包含双局部质量环、跨阶段演化环与文档契约）。</p>
+
+    <div class="diagram-container">
+      <svg viewBox="0 0 1440 896" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="coolflow-process-title coolflow-process-desc">
+        <title id="coolflow-process-title">CoolFlow — AI Software Development System</title>
+        <desc id="coolflow-process-desc">展示面向个人开发者的 CoolFlow AI 辅助软件开发完整流程：顶部为四条黄金法则，中部为从 01 Idea 到 08 Release 的八阶段主流程，阶段 06 与 07 分别展开蓝色的 Design Spec Loop 与绿色的 Implementation Loop，外围由紫色虚线 Evolution Loop 环绕全部八阶段并支持任意阶段进出，底部列出各阶段对应文档产物及可选工程知识库。</desc>
+
+        <defs>
+          <pattern id="dots" width="22" height="22" patternUnits="userSpaceOnUse">
+            <circle cx="11" cy="11" r="0.85" fill="var(--ink)" fill-opacity="0.10"/>
+          </pattern>
+          <marker id="arrow" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
+            <polygon points="0 0, 8 3, 0 6" fill="var(--ink)"/>
+          </marker>
+          <marker id="arrow-muted" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
+            <polygon points="0 0, 8 3, 0 6" fill="var(--muted)"/>
+          </marker>
+          <marker id="arrow-blue" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
+            <polygon points="0 0, 8 3, 0 6" fill="var(--loop-blue)"/>
+          </marker>
+          <marker id="arrow-green" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
+            <polygon points="0 0, 8 3, 0 6" fill="var(--loop-green)"/>
+          </marker>
+          <marker id="arrow-purple" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto-start-reverse">
+            <polygon points="0 0, 8 3, 0 6" fill="var(--loop-purple)"/>
+          </marker>
+          <marker id="arrow-amber" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
+            <polygon points="0 0, 8 3, 0 6" fill="var(--amber)"/>
+          </marker>
+          <marker id="arrow-accent" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
+            <polygon points="0 0, 8 3, 0 6" fill="var(--accent)"/>
+          </marker>
+        </defs>
+
+        <!-- Canvas Background -->
+        <rect width="1440" height="896" fill="var(--paper)"/>
+        <rect width="1440" height="896" fill="url(#dots)" opacity="0.6"/>
+
+        <!-- ===================================================== -->
+        <!-- 1. TOP BANNER: FOUR GOLDEN RULES (y: 16..88)          -->
+        <!-- ===================================================== -->
+        <rect x="24" y="16" width="1392" height="72" rx="8" fill="var(--navy)" stroke="var(--ink)" stroke-width="1"/>
+        <text x="44" y="38" fill="var(--amber)" font-size="12" font-weight="600" class="mono" letter-spacing="0.08em">FOUR GOLDEN RULES · 四条黄金法则（全局约束全部阶段与循环，非开发阶段）</text>
+        
+        <!-- Rule 1 -->
+        <rect x="44" y="48" width="348" height="32" rx="4" fill="var(--paper)" fill-opacity="0.10" stroke="var(--navy-text)" stroke-opacity="0.25" stroke-width="0.8"/>
+        <text x="56" y="68" fill="var(--navy-text)" font-size="12" font-weight="600">1. Keep It Working → Ship Small → Improve</text>
+
+        <!-- Rule 2 -->
+        <rect x="404" y="48" width="300" height="32" rx="4" fill="var(--paper)" fill-opacity="0.10" stroke="var(--navy-text)" stroke-opacity="0.25" stroke-width="0.8"/>
+        <text x="416" y="68" fill="var(--navy-text)" font-size="12" font-weight="600">2. Know the Actual State（掌握真实状态）</text>
+
+        <!-- Rule 3 -->
+        <rect x="716" y="48" width="308" height="32" rx="4" fill="var(--paper)" fill-opacity="0.10" stroke="var(--navy-text)" stroke-opacity="0.25" stroke-width="0.8"/>
+        <text x="728" y="68" fill="var(--navy-text)" font-size="12" font-weight="600">3. Keep a Way Back（保留回退路径）</text>
+
+        <!-- Rule 4 -->
+        <rect x="1036" y="48" width="360" height="32" rx="4" fill="var(--paper)" fill-opacity="0.10" stroke="var(--navy-text)" stroke-opacity="0.25" stroke-width="0.8"/>
+        <text x="1048" y="68" fill="var(--navy-text)" font-size="12" font-weight="600">4. Prove It Works（以实证验证结果）</text>
+
+        <!-- ===================================================== -->
+        <!-- 2. OUTER RING: EVOLUTION LOOP (y: 108..620)           -->
+        <!-- ===================================================== -->
+        <rect x="24" y="108" width="1392" height="512" rx="8" fill="var(--loop-purple)" fill-opacity="0.02" stroke="var(--loop-purple)" stroke-width="1.6" stroke-dasharray="8,5"/>
+        
+        <!-- Evolution Loop Top Banner Label -->
+        <rect x="44" y="98" width="988" height="20" rx="4" fill="var(--paper)"/>
+        <text x="52" y="112" fill="var(--loop-purple)" font-size="12" font-weight="600">LOOP 3 · EVOLUTION LOOP（跨阶段演化环 · 紫色虚线环绕全部八阶段：任意阶段产生新证据/假设变化 → 重评产品方向/范围/决策 → 重入任意相关阶段）</text>
+
+        <!-- Evolution Loop Bottom Guardrail Note -->
+        <rect x="44" y="608" width="1040" height="20" rx="4" fill="var(--paper)"/>
+        <text x="52" y="622" fill="var(--loop-purple)" font-size="12" font-weight="500">演化环准则：源自任意阶段 · 回到任意相关阶段 · 绝非仅连接 Release · 不要求从 01 重启或走遍全部阶段 · 不隐含自动更新 Roadmap</text>
+
+        <!-- ===================================================== -->
+        <!-- 3. ALL CONNECTORS & ARROWS (DRAWN BEFORE BOXES)       -->
+        <!-- ===================================================== -->
+        
+        <!-- Evolution Loop Top Track & Multi-Stage Taps (01..08) -->
+        <!-- Continuous dashed purple bus inside top of Evolution Loop at y=132 -->
+        <path d="M 1360 132 H 124" fill="none" stroke="var(--loop-purple)" stroke-width="1.2" stroke-dasharray="5,4"/>
+        
+        <!-- Multi-stage bi-directional taps to Evolution Bus -->
+        <!-- Stage 01 Re-enter -->
+        <line x1="124" y1="132" x2="124" y2="232" stroke="var(--loop-purple)" stroke-width="1.2" stroke-dasharray="4,3" marker-start="url(#arrow-purple)" marker-end="url(#arrow-purple)"/>
+        <!-- Stage 01 Trigger out -->
+        <line x1="156" y1="232" x2="156" y2="132" stroke="var(--loop-purple)" stroke-width="1.2" stroke-dasharray="4,3" marker-start="url(#arrow-purple)" marker-end="url(#arrow-purple)"/>
+        <!-- Stage 02 Re-enter -->
+        <line x1="268" y1="132" x2="268" y2="232" stroke="var(--loop-purple)" stroke-width="1.2" stroke-dasharray="4,3" marker-start="url(#arrow-purple)" marker-end="url(#arrow-purple)"/>
+        <!-- Stage 03 Trigger out (Failed Validation) -->
+        <line x1="412" y1="232" x2="412" y2="132" stroke="var(--loop-purple)" stroke-width="1.4" stroke-dasharray="4,3" marker-start="url(#arrow-purple)" marker-end="url(#arrow-purple)"/>
+        <!-- Stage 04 Re-enter -->
+        <line x1="556" y1="132" x2="556" y2="232" stroke="var(--loop-purple)" stroke-width="1.2" stroke-dasharray="4,3" marker-start="url(#arrow-purple)" marker-end="url(#arrow-purple)"/>
+        <!-- Stage 05 Re-enter -->
+        <line x1="700" y1="132" x2="700" y2="232" stroke="var(--loop-purple)" stroke-width="1.2" stroke-dasharray="4,3" marker-start="url(#arrow-purple)" marker-end="url(#arrow-purple)"/>
+        <!-- Stage 06 Re-enter -->
+        <line x1="848" y1="132" x2="848" y2="180" stroke="var(--loop-purple)" stroke-width="1.2" stroke-dasharray="4,3" marker-start="url(#arrow-purple)" marker-end="url(#arrow-purple)"/>
+        <!-- Stage 07 Trigger out / Re-enter -->
+        <line x1="1060" y1="132" x2="1060" y2="180" stroke="var(--loop-purple)" stroke-width="1.2" stroke-dasharray="4,3" marker-start="url(#arrow-purple)" marker-end="url(#arrow-purple)"/>
+        <line x1="1124" y1="180" x2="1124" y2="132" stroke="var(--loop-purple)" stroke-width="1.2" stroke-dasharray="4,3" marker-start="url(#arrow-purple)" marker-end="url(#arrow-purple)"/>
+        <!-- Stage 08 Trigger out -->
+        <line x1="1360" y1="180" x2="1360" y2="132" stroke="var(--loop-purple)" stroke-width="1.2" stroke-dasharray="4,3" marker-start="url(#arrow-purple)" marker-end="url(#arrow-purple)"/>
+
+        <!-- Evolution Loop Tap Labels (with paper masks, >=6px off line) -->
+        <rect x="336" y="140" width="152" height="16" rx="2" fill="var(--paper)"/>
+        <text x="412" y="152" fill="var(--loop-purple)" font-size="12" font-weight="500" text-anchor="middle">关键假设变化时演化 ↕</text>
+
+        <rect x="596" y="112" width="380" height="16" rx="2" fill="var(--paper)"/>
+        <text x="786" y="124" fill="var(--loop-purple)" font-size="12" font-weight="500" text-anchor="middle">← 发现新证据 / 假设变化 → 重回任意相关阶段 (01..08)</text>
+
+        <!-- Start & Project Initialization to Stage 01 -->
+        <!-- Start (x:40..72, y:268..296) -> 01 (x:88, y:282) -->
+        <line x1="72" y1="282" x2="88" y2="282" stroke="var(--ink)" stroke-width="1.4" marker-end="url(#arrow)"/>
+        <!-- Project Init (x:88..312, y:160..204) -> 01 (x:184, y:232) -->
+        <line x1="200" y1="204" x2="200" y2="232" stroke="var(--muted)" stroke-width="1.2" stroke-dasharray="4,3" marker-end="url(#arrow-muted)"/>
+
+        <!-- Main Sequential Flow Arrows (01 -> 02 -> 03 -> 04 -> 05 -> 06) -->
+        <line x1="208" y1="282" x2="224" y2="282" stroke="var(--ink)" stroke-width="1.4" marker-end="url(#arrow)"/>
+        <line x1="352" y1="282" x2="368" y2="282" stroke="var(--ink)" stroke-width="1.4" marker-end="url(#arrow)"/>
+        <line x1="496" y1="282" x2="512" y2="282" stroke="var(--ink)" stroke-width="1.4" marker-end="url(#arrow)"/>
+        <line x1="640" y1="282" x2="656" y2="282" stroke="var(--ink)" stroke-width="1.4" marker-end="url(#arrow)"/>
+        <line x1="768" y1="282" x2="784" y2="282" stroke="var(--ink)" stroke-width="1.4" marker-end="url(#arrow)"/>
+
+        <!-- Stage 06 Internal Loop Arrows (Blue) -->
+        <!-- 6.1 (y:224..256) -> 6.2 (y:272..304) -> 6.3 (y:320..352) -> 6.4 (y:368..400) -> Diamond (y:420..484) -->
+        <line x1="888" y1="256" x2="888" y2="272" stroke="var(--loop-blue)" stroke-width="1.2" marker-end="url(#arrow-blue)"/>
+        <line x1="888" y1="304" x2="888" y2="320" stroke="var(--loop-blue)" stroke-width="1.2" marker-end="url(#arrow-blue)"/>
+        <line x1="888" y1="352" x2="888" y2="368" stroke="var(--loop-blue)" stroke-width="1.2" marker-end="url(#arrow-blue)"/>
+        <line x1="888" y1="400" x2="888" y2="420" stroke="var(--loop-blue)" stroke-width="1.2" marker-end="url(#arrow-blue)"/>
+
+        <!-- Stage 06 Decision NO -> Return to Revise Spec (left side loop inside 06) -->
+        <path d="M 816 452 H 804 Q 796 452 796 444 V 344 Q 796 336 804 336 H 816" fill="none" stroke="var(--loop-blue)" stroke-width="1.2" marker-end="url(#arrow-blue)"/>
+        <rect x="788" y="384" width="24" height="16" rx="2" fill="var(--paper)"/>
+        <text x="800" y="396" fill="var(--loop-blue)" font-size="8" font-weight="600" class="mono" text-anchor="middle">NO</text>
+
+        <!-- Stage 06 Decision YES -> Proceed to Stage 07 -->
+        <path d="M 960 452 H 988 Q 996 452 996 444 V 248 Q 996 240 1004 240 H 1016" fill="none" stroke="var(--ink)" stroke-width="1.4" marker-end="url(#arrow)"/>
+        <rect x="968" y="428" width="24" height="14" rx="2" fill="var(--paper)"/>
+        <text x="980" y="438" fill="var(--ink)" font-size="8" font-weight="600" class="mono" text-anchor="middle">YES</text>
+
+        <!-- Stage 07 Internal Loop Arrows (Green) -->
+        <!-- 7.1 Code (y:224..252) -> 7.2 Test (y:268..296) -> 7.3 Review (y:312..340) -> 7.4 Conformance (y:356..384) -> Diamond (y:408..472) -->
+        <line x1="1120" y1="252" x2="1120" y2="268" stroke="var(--loop-green)" stroke-width="1.2" marker-end="url(#arrow-green)"/>
+        <line x1="1120" y1="296" x2="1120" y2="312" stroke="var(--loop-green)" stroke-width="1.2" marker-end="url(#arrow-green)"/>
+        <line x1="1120" y1="340" x2="1120" y2="356" stroke="var(--loop-green)" stroke-width="1.2" marker-end="url(#arrow-green)"/>
+        <line x1="1120" y1="384" x2="1120" y2="408" stroke="var(--loop-green)" stroke-width="1.2" marker-end="url(#arrow-green)"/>
+
+        <!-- Stage 07 Decision NO (Implementation Defect) -> Fix (y:488..516) -> Repeat to Code -->
+        <line x1="1120" y1="472" x2="1120" y2="488" stroke="var(--loop-green)" stroke-width="1.2" marker-end="url(#arrow-green)"/>
+        <rect x="1128" y="472" width="84" height="14" rx="2" fill="var(--paper)"/>
+        <text x="1170" y="482" fill="var(--loop-green)" font-size="12" font-weight="500" text-anchor="middle">NO:实现缺陷</text>
+
+        <!-- Fix (1188, 502) -> right corridor (1204) -> up to Code (1188, 238) -->
+        <path d="M 1188 502 H 1200 Q 1208 502 1208 494 V 246 Q 1208 238 1200 238 H 1188" fill="none" stroke="var(--loop-green)" stroke-width="1.2" marker-end="url(#arrow-green)"/>
+
+        <!-- Stage 07 Decision NO (Spec Flawed) -> Return to Stage 06 Design Spec Loop -->
+        <path d="M 1044 440 H 1020 Q 1012 440 1012 448 V 528 Q 1012 536 1004 536 H 896 Q 888 536 888 528 V 516" fill="none" stroke="var(--accent)" stroke-width="1.4" stroke-dasharray="5,3" marker-end="url(#arrow-accent)"/>
+        <rect x="900" y="544" width="168" height="16" rx="2" fill="var(--paper)"/>
+        <text x="984" y="556" fill="var(--accent)" font-size="12" font-weight="600" text-anchor="middle">NO: Spec 缺陷 → 退回 06</text>
+
+        <!-- Stage 07 Decision YES -> Proceed to Stage 08 Human Acceptance -->
+        <path d="M 1196 440 H 1216 Q 1224 440 1224 432 V 256 Q 1224 248 1232 248 H 1252" fill="none" stroke="var(--ink)" stroke-width="1.4" marker-end="url(#arrow)"/>
+        <rect x="1196" y="416" width="24" height="14" rx="2" fill="var(--paper)"/>
+        <text x="1208" y="426" fill="var(--ink)" font-size="8" font-weight="600" class="mono" text-anchor="middle">YES</text>
+
+        <!-- Stage 08 Internal Sequential Arrows (A -> B -> C) -->
+        <!-- A. Human Acceptance (y:224..284) -> B. Doc Sync (y:316..376) -> C. Release (y:408..468) -->
+        <line x1="1320" y1="284" x2="1320" y2="316" stroke="var(--ink)" stroke-width="1.4" marker-end="url(#arrow)"/>
+        <rect x="1328" y="292" width="60" height="16" rx="2" fill="var(--paper)"/>
+        <text x="1358" y="304" fill="var(--amber)" font-size="12" font-weight="600" text-anchor="middle">显式接受</text>
+
+        <line x1="1320" y1="376" x2="1320" y2="408" stroke="var(--ink)" stroke-width="1.4" marker-end="url(#arrow)"/>
+        <rect x="1328" y="384" width="60" height="16" rx="2" fill="var(--paper)"/>
+        <text x="1358" y="396" fill="var(--muted)" font-size="12" font-weight="500" text-anchor="middle">单独授权</text>
+
+        <!-- Stage 08 Human Acceptance Rejected -> Return to 06 or 07 -->
+        <path d="M 1252 268 H 1244 Q 1236 268 1236 276 V 568 Q 1236 576 1228 576 H 860 Q 852 576 852 568 V 516" fill="none" stroke="var(--amber)" stroke-width="1.3" stroke-dasharray="5,4" marker-end="url(#arrow-amber)"/>
+        <line x1="1120" y1="576" x2="1120" y2="532" stroke="var(--amber)" stroke-width="1.3" stroke-dasharray="5,4" marker-end="url(#arrow-amber)"/>
+        <rect x="1024" y="582" width="224" height="16" rx="2" fill="var(--paper)"/>
+        <text x="1136" y="594" fill="var(--amber)" font-size="12" font-weight="600" text-anchor="middle">验收被拒：退回 07 改实现 或 退回 06 改设计</text>
+
+        <!-- Dashed Tethers from Stages 01..08 to Documentation Artifacts (y: 656) -->
+        <line x1="148" y1="332" x2="148" y2="660" stroke="var(--muted)" stroke-width="0.8" stroke-dasharray="3,3"/>
+        <line x1="288" y1="332" x2="288" y2="660" stroke="var(--muted)" stroke-width="0.8" stroke-dasharray="3,3"/>
+        <line x1="432" y1="332" x2="432" y2="660" stroke="var(--muted)" stroke-width="0.8" stroke-dasharray="3,3"/>
+        <line x1="576" y1="332" x2="576" y2="660" stroke="var(--muted)" stroke-width="0.8" stroke-dasharray="3,3"/>
+        <line x1="712" y1="332" x2="712" y2="660" stroke="var(--muted)" stroke-width="0.8" stroke-dasharray="3,3"/>
+        <line x1="888" y1="516" x2="888" y2="660" stroke="var(--muted)" stroke-width="0.8" stroke-dasharray="3,3"/>
+        <line x1="1120" y1="532" x2="1120" y2="660" stroke="var(--muted)" stroke-width="0.8" stroke-dasharray="3,3"/>
+        <line x1="1320" y1="516" x2="1320" y2="660" stroke="var(--muted)" stroke-width="0.8" stroke-dasharray="3,3"/>
+
+        <!-- ===================================================== -->
+        <!-- 4. NODES & CONTAINERS (DRAWN AFTER CONNECTORS)        -->
+        <!-- ===================================================== -->
+
+        <!-- START NODE -->
+        <rect x="40" y="268" width="32" height="28" rx="6" fill="var(--paper)"/>
+        <rect x="40" y="268" width="32" height="28" rx="6" fill="var(--navy)" stroke="var(--ink)" stroke-width="1"/>
+        <text x="56" y="286" fill="var(--navy-text)" font-size="8" font-weight="600" class="mono" text-anchor="middle">START</text>
+
+        <!-- OPTIONAL PRE-FLOW: PROJECT INITIALIZATION -->
+        <rect x="88" y="156" width="248" height="48" rx="6" fill="var(--paper)"/>
+        <rect x="88" y="156" width="248" height="48" rx="6" fill="var(--surface)" stroke="var(--muted)" stroke-width="1" stroke-dasharray="4,3"/>
+        <text x="100" y="174" fill="var(--ink)" font-size="12" font-weight="600">Project Initialization（可选前置）</text>
+        <text x="100" y="192" fill="var(--muted)" font-size="12">非 Stage 00 · 不默认建 solutions/ 与 adr/</text>
+
+        <!-- STAGE 01: Idea -> Brainstorm -->
+        <rect x="88" y="232" width="120" height="100" rx="6" fill="var(--paper)"/>
+        <rect x="88" y="232" width="120" height="100" rx="6" fill="var(--surface)" stroke="var(--ink)" stroke-width="1.2"/>
+        <rect x="96" y="240" width="28" height="14" rx="2" fill="var(--navy)"/>
+        <text x="110" y="250" fill="var(--navy-text)" font-size="8" font-weight="600" class="mono" text-anchor="middle">01</text>
+        <text x="148" y="268" fill="var(--ink)" font-size="12" font-weight="600" text-anchor="middle">Idea →</text>
+        <text x="148" y="284" fill="var(--ink)" font-size="12" font-weight="600" text-anchor="middle">Brainstorm</text>
+        <text x="148" y="304" fill="var(--muted)" font-size="12" text-anchor="middle">问题·愿景·未知</text>
+        <text x="148" y="320" fill="var(--soft)" font-size="8" class="mono" text-anchor="middle">DISCOVERY</text>
+
+        <!-- STAGE 02: Lightweight Strategic DDD -->
+        <rect x="224" y="232" width="128" height="100" rx="6" fill="var(--paper)"/>
+        <rect x="224" y="232" width="128" height="100" rx="6" fill="var(--surface)" stroke="var(--ink)" stroke-width="1.2"/>
+        <rect x="232" y="240" width="28" height="14" rx="2" fill="var(--navy)"/>
+        <text x="246" y="250" fill="var(--navy-text)" font-size="8" font-weight="600" class="mono" text-anchor="middle">02</text>
+        <text x="288" y="268" fill="var(--ink)" font-size="12" font-weight="600" text-anchor="middle">Lightweight</text>
+        <text x="288" y="284" fill="var(--ink)" font-size="12" font-weight="600" text-anchor="middle">Strategic DDD</text>
+        <text x="288" y="304" fill="var(--muted)" font-size="12" text-anchor="middle">统一语言·限界上下文</text>
+        <text x="288" y="320" fill="var(--soft)" font-size="8" class="mono" text-anchor="middle">DOMAIN MODEL</text>
+
+        <!-- STAGE 03: Concept Prototype -> Validation -->
+        <rect x="368" y="232" width="128" height="100" rx="6" fill="var(--paper)"/>
+        <rect x="368" y="232" width="128" height="100" rx="6" fill="var(--surface)" stroke="var(--ink)" stroke-width="1.2"/>
+        <rect x="376" y="240" width="28" height="14" rx="2" fill="var(--navy)"/>
+        <text x="390" y="250" fill="var(--navy-text)" font-size="8" font-weight="600" class="mono" text-anchor="middle">03</text>
+        <text x="432" y="268" fill="var(--ink)" font-size="12" font-weight="600" text-anchor="middle">Concept Proto</text>
+        <text x="432" y="284" fill="var(--ink)" font-size="12" font-weight="600" text-anchor="middle">→ Validation</text>
+        <text x="432" y="304" fill="var(--muted)" font-size="12" text-anchor="middle">体验假设·可行性验证</text>
+        <text x="432" y="320" fill="var(--loop-purple)" font-size="8" font-weight="600" class="mono" text-anchor="middle">REASSESS IF NEEDED</text>
+
+        <!-- STAGE 04: Roadmap -->
+        <rect x="512" y="232" width="128" height="100" rx="6" fill="var(--paper)"/>
+        <rect x="512" y="232" width="128" height="100" rx="6" fill="var(--surface)" stroke="var(--ink)" stroke-width="1.2"/>
+        <rect x="520" y="240" width="28" height="14" rx="2" fill="var(--navy)"/>
+        <text x="534" y="250" fill="var(--navy-text)" font-size="8" font-weight="600" class="mono" text-anchor="middle">04</text>
+        <text x="576" y="276" fill="var(--ink)" font-size="12" font-weight="600" text-anchor="middle">Roadmap</text>
+        <text x="576" y="300" fill="var(--muted)" font-size="12" text-anchor="middle">MVP范围·版本优先级</text>
+        <text x="576" y="320" fill="var(--soft)" font-size="8" class="mono" text-anchor="middle">OPTIONAL PRD</text>
+
+        <!-- STAGE 05: UI Prototype -->
+        <rect x="656" y="232" width="112" height="100" rx="6" fill="var(--paper)"/>
+        <rect x="656" y="232" width="112" height="100" rx="6" fill="var(--surface)" stroke="var(--ink)" stroke-width="1.2"/>
+        <rect x="664" y="240" width="28" height="14" rx="2" fill="var(--navy)"/>
+        <text x="678" y="250" fill="var(--navy-text)" font-size="8" font-weight="600" class="mono" text-anchor="middle">05</text>
+        <text x="712" y="276" fill="var(--ink)" font-size="12" font-weight="600" text-anchor="middle">UI Prototype</text>
+        <text x="712" y="300" fill="var(--muted)" font-size="12" text-anchor="middle">交互细节·用户旅程</text>
+        <text x="712" y="320" fill="var(--soft)" font-size="8" class="mono" text-anchor="middle">PRE-CODE UX</text>
+
+        <!-- ===================================================== -->
+        <!-- STAGE 06: DESIGN SPEC LOOP (LOCAL LOOP 1 - BLUE)      -->
+        <!-- ===================================================== -->
+        <rect x="784" y="180" width="204" height="336" rx="8" fill="var(--paper)"/>
+        <rect x="784" y="180" width="204" height="336" rx="8" fill="var(--loop-blue)" fill-opacity="0.05" stroke="var(--loop-blue)" stroke-width="1.5"/>
+        <rect x="796" y="190" width="36" height="16" rx="2" fill="var(--loop-blue)"/>
+        <text x="814" y="201" fill="var(--navy-text)" font-size="8" font-weight="600" class="mono" text-anchor="middle">06</text>
+        <text x="840" y="202" fill="var(--loop-blue)" font-size="12" font-weight="600">Design Spec Loop</text>
+        <text x="796" y="216" fill="var(--muted)" font-size="12">局部质量环 1 · 设计与规约</text>
+
+        <!-- 6.1 Draft Unified Spec -->
+        <rect x="816" y="224" width="144" height="32" rx="4" fill="var(--paper)"/>
+        <rect x="816" y="224" width="144" height="32" rx="4" fill="var(--surface)" stroke="var(--loop-blue)" stroke-width="1"/>
+        <text x="888" y="244" fill="var(--ink)" font-size="12" font-weight="600" text-anchor="middle">Draft Unified Spec</text>
+
+        <!-- 6.2 Independent Design Review -->
+        <rect x="816" y="272" width="144" height="32" rx="4" fill="var(--paper)"/>
+        <rect x="816" y="272" width="144" height="32" rx="4" fill="var(--surface)" stroke="var(--loop-blue)" stroke-width="1"/>
+        <text x="888" y="292" fill="var(--ink)" font-size="12" font-weight="600" text-anchor="middle">Review if useful</text>
+
+        <!-- 6.3 Revise Spec -->
+        <rect x="816" y="320" width="144" height="32" rx="4" fill="var(--paper)"/>
+        <rect x="816" y="320" width="144" height="32" rx="4" fill="var(--surface)" stroke="var(--loop-blue)" stroke-width="1"/>
+        <text x="888" y="340" fill="var(--ink)" font-size="12" font-weight="600" text-anchor="middle">Revise Spec</text>
+
+        <!-- 6.4 Re-review -->
+        <rect x="816" y="368" width="144" height="32" rx="4" fill="var(--paper)"/>
+        <rect x="816" y="368" width="144" height="32" rx="4" fill="var(--surface)" stroke="var(--loop-blue)" stroke-width="1"/>
+        <text x="888" y="388" fill="var(--ink)" font-size="12" font-weight="600" text-anchor="middle">Re-review if useful</text>
+
+        <!-- 6.5 Decision Diamond: Spec Ready? -->
+        <polygon points="888,420 960,452 888,484 816,452" fill="var(--paper)"/>
+        <polygon points="888,420 960,452 888,484 816,452" fill="var(--amber)" fill-opacity="0.14" stroke="var(--amber)" stroke-width="1.4"/>
+        <text x="888" y="448" fill="var(--ink)" font-size="12" font-weight="600" text-anchor="middle">Spec 清晰就绪?</text>
+        <text x="888" y="464" fill="var(--muted)" font-size="8" class="mono" text-anchor="middle">READY FOR IMPL</text>
+
+        <!-- EGM Optional Badge -->
+        <rect x="796" y="492" width="180" height="18" rx="3" fill="var(--paper)" stroke="var(--loop-blue)" stroke-width="0.8" stroke-dasharray="3,2"/>
+        <text x="886" y="505" fill="var(--loop-blue)" font-size="12" text-anchor="middle">评审按需 · EGM 可选</text>
+
+        <!-- ===================================================== -->
+        <!-- STAGE 07: IMPLEMENTATION LOOP (LOCAL LOOP 2 - GREEN)  -->
+        <!-- ===================================================== -->
+        <rect x="1008" y="180" width="212" height="352" rx="8" fill="var(--paper)"/>
+        <rect x="1008" y="180" width="212" height="352" rx="8" fill="var(--loop-green)" fill-opacity="0.05" stroke="var(--loop-green)" stroke-width="1.5"/>
+        <rect x="1020" y="190" width="36" height="16" rx="2" fill="var(--loop-green)"/>
+        <text x="1038" y="201" fill="var(--navy-text)" font-size="8" font-weight="600" class="mono" text-anchor="middle">07</text>
+        <text x="1064" y="202" fill="var(--loop-green)" font-size="12" font-weight="600">Implementation Loop</text>
+        <text x="1020" y="216" fill="var(--muted)" font-size="12">局部质量环 2 · 编码与验证</text>
+
+        <!-- 7.1 Code -->
+        <rect x="1048" y="224" width="140" height="28" rx="4" fill="var(--paper)"/>
+        <rect x="1048" y="224" width="140" height="28" rx="4" fill="var(--surface)" stroke="var(--loop-green)" stroke-width="1"/>
+        <text x="1118" y="242" fill="var(--ink)" font-size="12" font-weight="600" text-anchor="middle">Code（编码实现）</text>
+
+        <!-- 7.2 Test -->
+        <rect x="1048" y="268" width="140" height="28" rx="4" fill="var(--paper)"/>
+        <rect x="1048" y="268" width="140" height="28" rx="4" fill="var(--surface)" stroke="var(--loop-green)" stroke-width="1"/>
+        <text x="1118" y="286" fill="var(--ink)" font-size="12" font-weight="600" text-anchor="middle">Test（自动/手工测试）</text>
+
+        <!-- 7.3 Code Review -->
+        <rect x="1048" y="312" width="140" height="28" rx="4" fill="var(--paper)"/>
+        <rect x="1048" y="312" width="140" height="28" rx="4" fill="var(--surface)" stroke="var(--loop-green)" stroke-width="1"/>
+        <text x="1118" y="330" fill="var(--ink)" font-size="12" font-weight="600" text-anchor="middle">Code Review</text>
+
+        <!-- 7.4 Spec Conformance -->
+        <rect x="1048" y="356" width="140" height="28" rx="4" fill="var(--paper)"/>
+        <rect x="1048" y="356" width="140" height="28" rx="4" fill="var(--surface)" stroke="var(--loop-green)" stroke-width="1"/>
+        <text x="1118" y="374" fill="var(--ink)" font-size="12" font-weight="600" text-anchor="middle">Spec Conformance</text>
+
+        <!-- 7.5 Decision Diamond: Satisfy Spec & Evidence? -->
+        <polygon points="1120,408 1196,440 1120,472 1044,440" fill="var(--paper)"/>
+        <polygon points="1120,408 1196,440 1120,472 1044,440" fill="var(--amber)" fill-opacity="0.14" stroke="var(--amber)" stroke-width="1.4"/>
+        <text x="1120" y="436" fill="var(--ink)" font-size="12" font-weight="600" text-anchor="middle">符合Spec且证据充分?</text>
+        <text x="1120" y="452" fill="var(--muted)" font-size="8" class="mono" text-anchor="middle">CONFORMANCE</text>
+
+        <!-- 7.6 Fix -> Repeat -->
+        <rect x="1048" y="488" width="140" height="28" rx="4" fill="var(--paper)"/>
+        <rect x="1048" y="488" width="140" height="28" rx="4" fill="var(--surface)" stroke="var(--loop-green)" stroke-width="1"/>
+        <text x="1118" y="506" fill="var(--ink)" font-size="12" font-weight="600" text-anchor="middle">Fix → Repeat</text>
+
+        <!-- ===================================================== -->
+        <!-- STAGE 08: HUMAN ACCEPTANCE -> DOC SYNC -> RELEASE     -->
+        <!-- ===================================================== -->
+        <rect x="1240" y="180" width="160" height="336" rx="8" fill="var(--paper)"/>
+        <rect x="1240" y="180" width="160" height="336" rx="8" fill="var(--surface)" stroke="var(--ink)" stroke-width="1.5"/>
+        <rect x="1252" y="190" width="32" height="16" rx="2" fill="var(--navy)"/>
+        <text x="1268" y="201" fill="var(--navy-text)" font-size="8" font-weight="600" class="mono" text-anchor="middle">08</text>
+        <text x="1292" y="202" fill="var(--ink)" font-size="12" font-weight="600">验收 · 同步 · 发布</text>
+        <text x="1252" y="216" fill="var(--muted)" font-size="12">三步顺序推进（非循环）</text>
+
+        <!-- 8.A Human Acceptance (Focal Amber/Coral) -->
+        <rect x="1252" y="224" width="136" height="60" rx="6" fill="var(--paper)"/>
+        <rect x="1252" y="224" width="136" height="60" rx="6" fill="var(--amber)" fill-opacity="0.14" stroke="var(--amber)" stroke-width="1.5"/>
+        <text x="1320" y="244" fill="var(--ink)" font-size="12" font-weight="600" text-anchor="middle">A. Human Acceptance</text>
+        <text x="1320" y="260" fill="var(--muted)" font-size="12" text-anchor="middle">查验真实行为与证据</text>
+        <text x="1320" y="276" fill="var(--amber)" font-size="8" font-weight="600" class="mono" text-anchor="middle">≠ RELEASE</text>
+
+        <!-- 8.B Documentation Sync -->
+        <rect x="1252" y="316" width="136" height="60" rx="6" fill="var(--paper)"/>
+        <rect x="1252" y="316" width="136" height="60" rx="6" fill="var(--surface)" stroke="var(--ink)" stroke-width="1.2"/>
+        <text x="1320" y="336" fill="var(--ink)" font-size="12" font-weight="600" text-anchor="middle">B. Doc Sync</text>
+        <text x="1320" y="352" fill="var(--muted)" font-size="12" text-anchor="middle">更新 features/ 与归档</text>
+        <text x="1320" y="368" fill="var(--soft)" font-size="8" font-weight="600" class="mono" text-anchor="middle">STEP, NOT A 4TH LOOP</text>
+
+        <!-- 8.C Release -->
+        <rect x="1252" y="408" width="136" height="60" rx="6" fill="var(--paper)"/>
+        <rect x="1252" y="408" width="136" height="60" rx="6" fill="var(--accent-tint)" stroke="var(--accent)" stroke-width="1.4"/>
+        <text x="1320" y="428" fill="var(--ink)" font-size="12" font-weight="600" text-anchor="middle">C. Release（发布）</text>
+        <text x="1320" y="444" fill="var(--muted)" font-size="12" text-anchor="middle">按授权与发布安排部署</text>
+        <text x="1320" y="460" fill="var(--accent)" font-size="8" font-weight="600" class="mono" text-anchor="middle">AUTHORIZED DEPLOY</text>
+
+        <!-- Stage 08 Explicit Distinction Banner -->
+        <rect x="1248" y="476" width="144" height="32" rx="4" fill="var(--paper)" stroke="var(--amber)" stroke-width="0.8"/>
+        <text x="1320" y="490" fill="var(--ink)" font-size="12" font-weight="600" text-anchor="middle">验收 ≠ 发布</text>
+        <text x="1320" y="504" fill="var(--muted)" font-size="12" text-anchor="middle">Doc Sync 是步骤非第4环</text>
+
+        <!-- ===================================================== -->
+        <!-- 5. BOTTOM: DOCUMENTATION & ARTIFACTS (y: 644..816)    -->
+        <!-- ===================================================== -->
+        <rect x="24" y="640" width="1392" height="176" rx="8" fill="var(--surface)" stroke="var(--rule-solid)" stroke-width="1"/>
+        <text x="44" y="658" fill="var(--muted)" font-size="12" font-weight="600">DOCUMENTATION &amp; ARTIFACTS · 各阶段主要文档产物与按需知识库</text>
+
+        <!-- Stage 01 Artifact -->
+        <rect x="88" y="668" width="120" height="52" rx="4" fill="var(--paper)" stroke="var(--rule-solid)" stroke-width="0.8"/>
+        <text x="148" y="686" fill="var(--ink)" font-size="9" font-weight="600" class="mono" text-anchor="middle">docs/product.md</text>
+        <text x="148" y="706" fill="var(--muted)" font-size="12" text-anchor="middle">Brainstorm 记录</text>
+
+        <!-- Stage 02 Artifact -->
+        <rect x="224" y="668" width="128" height="52" rx="4" fill="var(--paper)" stroke="var(--rule-solid)" stroke-width="0.8"/>
+        <text x="288" y="686" fill="var(--ink)" font-size="9" font-weight="600" class="mono" text-anchor="middle">docs/domain.md</text>
+        <text x="288" y="706" fill="var(--muted)" font-size="12" text-anchor="middle">领域模型与不变量</text>
+
+        <!-- Stage 03 Artifact -->
+        <rect x="368" y="668" width="128" height="52" rx="4" fill="var(--paper)" stroke="var(--rule-solid)" stroke-width="0.8"/>
+        <text x="432" y="686" fill="var(--ink)" font-size="9" font-weight="600" class="mono" text-anchor="middle">.../prototypes/</text>
+        <text x="432" y="706" fill="var(--muted)" font-size="12" text-anchor="middle">docs/work/&lt;obj&gt;/</text>
+
+        <!-- Stage 04 Artifact -->
+        <rect x="512" y="668" width="128" height="52" rx="4" fill="var(--paper)" stroke="var(--rule-solid)" stroke-width="0.8"/>
+        <text x="576" y="686" fill="var(--ink)" font-size="9" font-weight="600" class="mono" text-anchor="middle">docs/roadmap.md</text>
+        <text x="576" y="706" fill="var(--muted)" font-size="12" text-anchor="middle">可选 PRD</text>
+
+        <!-- Stage 05 Artifact -->
+        <rect x="656" y="668" width="112" height="52" rx="4" fill="var(--paper)" stroke="var(--rule-solid)" stroke-width="0.8"/>
+        <text x="712" y="686" fill="var(--ink)" font-size="9" font-weight="600" class="mono" text-anchor="middle">UI Prototype</text>
+        <text x="712" y="706" fill="var(--muted)" font-size="12" text-anchor="middle">交互与设计说明</text>
+
+        <!-- Stage 06 Artifact -->
+        <rect x="784" y="668" width="204" height="52" rx="4" fill="var(--paper)" stroke="var(--rule-solid)" stroke-width="0.8"/>
+        <text x="886" y="686" fill="var(--ink)" font-size="9" font-weight="600" class="mono" text-anchor="middle">docs/work/&lt;obj&gt;/spec.md</text>
+        <text x="886" y="706" fill="var(--muted)" font-size="12" text-anchor="middle">默认统一 Spec · 可选 design.md / PRD</text>
+
+        <!-- Stage 07 Artifact -->
+        <rect x="1008" y="668" width="212" height="52" rx="4" fill="var(--paper)" stroke="var(--rule-solid)" stroke-width="0.8"/>
+        <text x="1114" y="686" fill="var(--ink)" font-size="9" font-weight="600" class="mono" text-anchor="middle">Tested Code + Evidence</text>
+        <text x="1114" y="706" fill="var(--muted)" font-size="12" text-anchor="middle">测试与评审证据 · 可选 tasks.md</text>
+
+        <!-- Stage 08 Artifact -->
+        <rect x="1240" y="668" width="160" height="52" rx="4" fill="var(--paper)" stroke="var(--rule-solid)" stroke-width="0.8"/>
+        <text x="1320" y="686" fill="var(--ink)" font-size="9" font-weight="600" class="mono" text-anchor="middle">docs/features/ +</text>
+        <text x="1320" y="702" fill="var(--ink)" font-size="9" font-weight="600" class="mono" text-anchor="middle">docs/work/archive/</text>
+
+        <!-- Optional Documentation Area (Bottom Sub-strip y: 732..804) -->
+        <rect x="44" y="732" width="412" height="68" rx="4" fill="var(--paper)" stroke="var(--muted)" stroke-width="0.8" stroke-dasharray="4,3"/>
+        <text x="56" y="752" fill="var(--ink)" font-size="12" font-weight="600">可选知识沉淀：docs/solutions/</text>
+        <text x="56" y="772" fill="var(--muted)" font-size="12">存放已验证、可复用的工程知识（初始化时不默认创建）</text>
+        <text x="56" y="790" fill="var(--soft)" font-size="8" class="mono">OPTIONAL · VERIFIED ENGINEERING KNOWLEDGE</text>
+
+        <rect x="472" y="732" width="412" height="68" rx="4" fill="var(--paper)" stroke="var(--muted)" stroke-width="0.8" stroke-dasharray="4,3"/>
+        <text x="484" y="752" fill="var(--ink)" font-size="12" font-weight="600">可选架构决策：docs/adr/</text>
+        <text x="484" y="772" fill="var(--muted)" font-size="12">记录重要架构决策及理由（初始化时不默认创建）</text>
+        <text x="484" y="790" fill="var(--soft)" font-size="8" class="mono">OPTIONAL · ARCHITECTURE DECISION RECORDS</text>
+
+        <rect x="900" y="732" width="500" height="68" rx="4" fill="var(--paper)" stroke="var(--muted)" stroke-width="0.8" stroke-dasharray="4,3"/>
+        <text x="912" y="752" fill="var(--ink)" font-size="12" font-weight="600">按需可选文档：architecture.md · feature-map.md · tasks.md · PRD · design.md</text>
+        <text x="912" y="772" fill="var(--muted)" font-size="12">仅在确实对项目或特性有价值时创建，非每个项目/特性的强制产物</text>
+        <text x="912" y="790" fill="var(--soft)" font-size="8" class="mono">CREATED ONLY WHEN USEFUL · NOT MANDATORY</text>
+
+        <!-- ===================================================== -->
+        <!-- 6. LEGEND STRIP (y: 832..884)                         -->
+        <!-- ===================================================== -->
+        <line x1="24" y1="832" x2="1416" y2="832" stroke="var(--rule)" stroke-width="1"/>
+        <text x="24" y="860" fill="var(--muted)" font-size="8" font-weight="600" class="mono" letter-spacing="0.14em">LEGEND</text>
+
+        <!-- Legend 1: Main Flow -->
+        <rect x="96" y="848" width="20" height="14" rx="3" fill="var(--surface)" stroke="var(--ink)" stroke-width="1.2"/>
+        <text x="124" y="860" fill="var(--ink)" font-size="12">八阶段主流程 (01–08)</text>
+
+        <!-- Legend 2: Design Spec Loop -->
+        <rect x="276" y="848" width="20" height="14" rx="3" fill="var(--loop-blue)" fill-opacity="0.15" stroke="var(--loop-blue)" stroke-width="1.2"/>
+        <text x="304" y="860" fill="var(--loop-blue)" font-size="12" font-weight="500">Loop 1: Design Spec Loop (06 局部环)</text>
+
+        <!-- Legend 3: Implementation Loop -->
+        <rect x="548" y="848" width="20" height="14" rx="3" fill="var(--loop-green)" fill-opacity="0.15" stroke="var(--loop-green)" stroke-width="1.2"/>
+        <text x="576" y="860" fill="var(--loop-green)" font-size="12" font-weight="500">Loop 2: Implementation Loop (07 局部环)</text>
+
+        <!-- Legend 4: Evolution Loop -->
+        <line x1="840" y1="855" x2="872" y2="855" stroke="var(--loop-purple)" stroke-width="1.6" stroke-dasharray="6,4" marker-start="url(#arrow-purple)" marker-end="url(#arrow-purple)"/>
+        <text x="880" y="860" fill="var(--loop-purple)" font-size="12" font-weight="500">Loop 3: Evolution Loop (跨阶段演化环)</text>
+
+        <!-- Legend 5: Decision / Acceptance -->
+        <polygon points="1140,847 1152,855 1140,863 1128,855" fill="var(--amber)" fill-opacity="0.2" stroke="var(--amber)" stroke-width="1.2"/>
+        <text x="1160" y="860" fill="var(--amber)" font-size="12" font-weight="500">质量门禁 / 人工验收 (Amber)</text>
+      </svg>
+    </div>
+
+    <div class="cards">
+      <article class="card">
+        <p class="card-label">THREE ADAPTIVE LOOPS · 三个自适应循环</p>
+        <div class="card-header">
+          <span class="card-dot blue"></span>
+          <h3>局部质量反馈与跨阶段产品演化严格分离</h3>
+        </div>
+        <ul>
+          <li><strong>Design Spec Loop（阶段 06 蓝环）</strong>：Draft → 按需评审（可选 EGM）→ 修订 → 按需再评审，确保编码前 Spec 清晰自洽。</li>
+          <li><strong>Implementation Loop（阶段 07 绿环）</strong>：Code → Test → Review → Spec Conformance；实现缺陷回 Fix，Spec 缺陷退回 06。</li>
+          <li><strong>Evolution Loop（外围紫虚线环）</strong>：任意阶段的新证据或假设变化需要重估方向、范围或决策时可触发，重评后可重入任意相关阶段，绝非仅挂在 Release 后。</li>
+        </ul>
+      </article>
+
+      <article class="card">
+        <p class="card-label">STAGE 08 &amp; PRE-FLOW · 关键边界</p>
+        <div class="card-header">
+          <span class="card-dot coral"></span>
+          <h3>验收 ≠ 发布，文档同步不是第四个循环</h3>
+        </div>
+        <ul>
+          <li><strong>Human Acceptance ≠ Release</strong>：人工验收检验真实行为与测试证据；Release 在验收后遵循已有授权与发布安排。</li>
+          <li><strong>Documentation Sync 是顺序步骤</strong>：验收通过后更新 <code>docs/features/</code> 及受影响文档、归档证据，不属于第 4 个 Loop。</li>
+          <li><strong>Project Initialization 为可选前置</strong>：非 Stage 00，不代表研发已启动，且不默认创建 <code>solutions/</code> 或 <code>adr/</code>。</li>
+        </ul>
+      </article>
+
+      <article class="card">
+        <p class="card-label">FOUR GOLDEN RULES &amp; DOCS · 全局原则与产物</p>
+        <div class="card-header">
+          <span class="card-dot purple"></span>
+          <h3>四条黄金法则与轻量化文档契约</h3>
+        </div>
+        <ul>
+          <li><strong>Keep It Working → Ship Small → Improve</strong>：小步交付可用增量，持续演进。</li>
+          <li><strong>Know the Actual State &amp; Keep a Way Back</strong>：掌握真实系统状态，始终保留安全回退路径。</li>
+          <li><strong>Prove It Works</strong>：以自动化/手工测试与审查证据支撑验收，按需沉淀 <code>solutions/</code> 与 <code>adr/</code>。</li>
+        </ul>
+      </article>
+    </div>
+
+    <footer class="footer">
+      <span>COOLFLOW · AI SOFTWARE DEVELOPMENT SYSTEM</span>
+      <span>1 MAIN FLOW · 3 ADAPTIVE LOOPS · 4 GOLDEN RULES</span>
+    </footer>
+  </div>
+</body>
+</html>
