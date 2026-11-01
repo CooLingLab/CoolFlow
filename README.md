@@ -33,7 +33,9 @@ CoolFlow is an attempt to bridge that gap—especially for people starting with 
 | **Three Adaptive Loops** | Refine a Spec, verify implementation, and revisit product decisions whenever new evidence calls for it. |
 | **Lightweight documentation** | Keep product goals, requirements, decisions and reusable engineering knowledge understandable to both you and your AI agent. |
 
-![CoolFlow development flow and feedback loops](docs/diagrams/coolflow-diagram.en.svg)
+<p align="center">
+  <img src="docs/diagrams/coolflow-diagram.en.svg" alt="CoolFlow development flow and feedback loops">
+</p>
 
 **The flow is a map, not a checklist.** Skip, combine, reorder or revisit stages when that makes sense. A small bug fix doesn't need a PRD or a prototype; a complex new product may benefit from both discovery and validation before implementation.
 
