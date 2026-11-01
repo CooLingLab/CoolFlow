@@ -51,7 +51,7 @@ The following is the **default documentation tree for an application repository 
 
 - No default `docs/solutions/`, `docs/knowledge/` or `docs/state.md` is required by CoolFlow v0.1.
 - A project may add its own solution catalog, knowledge base, status note or other documentation if that project benefits from it. Such additions remain project-local choices, not CoolFlow initialization requirements.
-- CoolFlow's own `flowsolutions/` directory belongs to the **CoolFlow methodology repository**. It is an external framework and method catalog, and is not copied into application repositories.
+- CoolFlow's own `flowsolutions/` directory belongs to the **CoolFlow methodology repository**. It catalogs external frameworks and methods and is not copied into application repositories. An App may independently create its own `solutions/` directory if useful; that directory belongs to the App and is outside this default standard. The two names refer to different things.
 - Projects may customize document names and locations after initialization. Preserve one authoritative location per fact and keep the project-local `AGENTS.md` / README navigation accurate.
 
 ## Core project docs (created on initialization)
