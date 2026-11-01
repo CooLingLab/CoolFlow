@@ -2,128 +2,92 @@
 
 **English** | [简体中文](README.zh-CN.md)
 
-**by Cooling · An AI Software Development SOP**
+## AI can write code. Building software takes more than code.
 
-**A pilot's approach to AI-assisted software development.**
+**A lightweight development roadmap for people building with AI.**
 
-Created by **Cooling**, a pilot, CoolFlow is **inspired by the Airbus Golden Rules for Pilots** and aviation **Standard Operating Procedures (SOPs)**—especially their focus on priorities, situational awareness, and safety. These are Cooling's independent adaptations for **human-led, AI-assisted software development**, not Airbus-authored or Airbus-endorsed software guidance.
+**Build with AI. Stay in control.**
 
-**One Development Flow · Three Adaptive Loops · A lightweight documentation standard.**
+From a rough idea to something people can actually use, CoolFlow helps you understand what to do next, when to design or validate, and which decisions are worth keeping. It is a practical reference for individual developers—not a claim to define the one correct way to build software.
 
-CoolFlow is an AI-oriented software development methodology for individual developers. It tells you **what to clarify, document, validate, and retain** across the product lifecycle. It is **not** an Agent harness, workflow engine, or mandatory skill collection.
+> **Status: v0.1 development draft.** This branch is under review, not an official release. Real-project and end-to-end validation are still pending.
 
-> **Status: v0.1 development draft.** The `feat/v0.1-standard-and-init` branch is for review; it is not a release.
+## Why CoolFlow?
 
-## CoolFlow Golden Rules
+AI has made writing code dramatically more accessible. You can describe a screen, build a feature, or fix a bug with a coding agent. But as projects grow, it's easy to run into a different kind of difficulty:
 
-**The Four Golden Rules for AI-Assisted Software Development**  
-*By Cooling · Creator of CoolFlow*
+- You have plenty of ideas, but you're not sure what to build first.
+- AI keeps changing the code while the product direction becomes less clear.
+- A feature looks finished, but you can't tell whether it has actually been verified.
+- After several iterations, important decisions and lessons become hard to recover.
 
-CoolFlow's four [Golden Rules](methodology/golden-rules.md) are **human-facing principles for AI-assisted software development**, not rules limited to people who adopt the CoolFlow framework. They help the developer retain engineering priorities, situational awareness, recoverability and independent judgment throughout the product lifecycle:
+**Knowing how to ask AI to write code is not the same as having a clear process for building a product.**
 
-1. **Keep It Working → Ship Small → Improve** — protect verified behavior, deliver small valuable increments, then improve.
-2. **Know the Actual State** — distinguish what is planned, executed, verified, accepted and released.
-3. **Keep a Way Back** — maintain useful version checkpoints and realistic recovery options.
-4. **Prove It Works** — confirm results with direct, reproducible evidence rather than an Agent's assertion.
+CoolFlow is an attempt to bridge that gap—especially for people starting with AI-assisted development, without getting in the way of developers who already have their own workflow.
 
-These are **human-facing decision principles**, not four new mandatory Agent commands or workflow stages. Specific Agent execution instructions belong in the target project's `AGENTS.md`.
+## What does CoolFlow provide?
 
-## The model
+| | What it helps with |
+| --- | --- |
+| **One Development Flow** | Navigate from idea, domain understanding and prototypes to planning, implementation, human acceptance and release. |
+| **Three Adaptive Loops** | Refine a Spec, verify implementation, and revisit product decisions whenever new evidence calls for it. |
+| **Lightweight documentation** | Keep product goals, requirements, decisions and reusable engineering knowledge understandable to both you and your AI agent. |
 
 ![CoolFlow development flow and feedback loops](docs/diagrams/coolflow-diagram.en.svg)
 
-**Flow (recommended, adaptable)**
+**The flow is a map, not a checklist.** Skip, combine, reorder or revisit stages when that makes sense. A small bug fix doesn't need a PRD or a prototype; a complex new product may benefit from both discovery and validation before implementation.
 
-1. Idea → Brainstorm
-2. Lightweight strategic DDD
-3. Concept Prototype → Validation
-4. Roadmap (MVP and later versions)
-5. UI Prototype (for the current release)
-6. Design Spec Loop (write a unified Spec, review when useful, revise)
-7. Implementation Loop (code, test, code review, Spec conformance, fix)
-8. Human Acceptance → Documentation Sync → Release
+[Explore the Development Flow](methodology/flow.md) · [Understand the three Loops](methodology/loops.md)
 
-**Three Adaptive Loops**
+## Start using it
 
-- **Design Spec Loop (Step 6):** Draft → Review → Refine. Develop a unified Spec until it is ready for implementation.
-- **Implementation Loop (Step 7):** Build → Test → Review → Fix. Check the implementation against the Spec and acceptance criteria until it is ready for human acceptance.
-- **Evolution Loop (cross-stage):** New Input → Reassess → Adapt. Revisit relevant decisions in response to feedback, new ideas, or changing needs, and adjust the flow as needed. It can start at **any step** and revisit **any relevant step**, without requiring a release, roadmap update, or full restart.
+You don't need to install a new app, switch coding agents, adopt an orchestration engine, or use a dashboard. Start with the tool and repository you already have.
 
-A routine design revision or code/test fix belongs to its local quality Loop; use the Evolution Loop when new learning warrants reconsidering scope, assumptions, or product direction. **Documentation Sync follows Human Acceptance; it is a step, not a fourth Loop.**
+For a **new project**, use the [Getting Started guide](GETTING_STARTED.md) to initialize only the necessary documents, clarify the idea, and choose a first small, verifiable increment. For an **existing project**, apply only the parts that help with the next feature or fix—there is no need to start over.
 
-Stages may be skipped, merged, reordered, or revisited. For a tiny fix, do not invent a PRD, diagram, or elaborate review merely to complete a template.
+**A first prompt to try:**
 
-## Getting started
+> Read the [CoolFlow v0.1 draft](https://github.com/CooLingLab/CoolFlow/tree/feat/v0.1-standard-and-init), especially its methodology, documentation standard, and Getting Started guide. Inspect my current project and help me clarify its actual state, goals, and next smallest verifiable step. Propose the plan before writing code. Preserve existing files and instructions; tell me if you cannot access the reference material.
 
-**Start here:** [Getting Started — from an idea to your first accepted increment](GETTING_STARTED.md). The guide provides copyable prompts for a **new project** and an **existing app**, plus the boundary between initialization, implementation, acceptance, and release.
+The optional [`coolflow-init` Skill](skills/coolflow-init/SKILL.md) can create the documentation skeleton; **it does not implement an app**. The methodology and standards, not the Skill, are the source of truth.
 
-CoolFlow requires **no installation, dashboard, orchestration engine, or specific AI agent**. Have your coding agent read the [Flow](methodology/flow.md), [Loops](methodology/loops.md), [documentation standard](standards/documentation.md), and [initialization contract](standards/initialization.md) before working in your **target application repository**.
+## Four Golden Rules
 
-The [`coolflow-init` Skill](skills/coolflow-init/SKILL.md) is optional and initializes documentation **only**. The Standard remains the authoritative source.
+CoolFlow also offers four memorable principles for the **human developer**. You can use them even without adopting the whole flow:
 
-## Reusable document templates
+1. **Keep It Working → Ship Small → Improve** — protect what already works, deliver small increments, then improve.
+2. **Know the Actual State** — distinguish planned, changed, tested, accepted and released.
+3. **Keep a Way Back** — keep practical version checkpoints and recovery options.
+4. **Prove It Works** — trust direct, reproducible evidence, not just an AI agent's claim.
 
-When you apply CoolFlow to an App, this is the **project documentation structure you get**. It shows the target App's files—not the internal folders of the CoolFlow repository. Optional files are not created unless the project needs them.
+These are decision principles, **not mandatory commands for AI agents**. Put concrete agent instructions in the target project's `AGENTS.md`.
 
-```text
-<your-app>/
-├── AGENTS.md                         # Project-local Agent instructions
-├── README.md                         # Human-readable project entry
-└── docs/
-    ├── product.md                    # Product Brief: why, for whom and value; NOT a PRD
-    ├── roadmap.md                    # MVP and future priorities
-    ├── domain.md                     # Domain language, boundaries and rules
-    ├── features/                     # Accepted, implemented behavior
-    │   └── <feature>.md              # Added after acceptance
-    ├── work/
-    │   ├── <objective>/              # Created when actual work begins
-    │   │   ├── spec.md               # Default unified Spec
-    │   │   ├── prd.md                # Optional: substantial product requirements
-    │   │   ├── design.md             # Optional: deeper technical design
-    │   │   ├── tasks.md              # Optional: persistent task progress
-    │   │   └── prototypes/           # Optional: working prototypes
-    │   └── archive/                  # Selective evidence from completed work
-    ├── solutions/                    # Optional: verified, reusable engineering knowledge
-    │   └── <solution>.md
-    ├── architecture.md               # Optional: current system architecture
-    ├── adr/                          # Optional: consequential architecture decisions
-    │   └── <number>-<decision>.md
-    └── feature-map.md                # Optional: UI navigation and verification
-```
+[Read the Golden Rules](methodology/golden-rules.md)
 
-### What gets created, and when?
+## Why was this started by a pilot?
 
-| When | Files and folders |
-|---|---|
-| **Project initialization** | `AGENTS.md`, `README.md`, `docs/product.md`, `roadmap.md`, `domain.md`, plus empty `features/`, `work/` and `work/archive/` directories |
-| **When development begins** | One `docs/work/<objective>/spec.md` as the default starting point |
-| **Only when needed** | `prd.md`, `design.md`, `tasks.md`, `prototypes/`, `architecture.md`, `solutions/`, `adr/`, `feature-map.md` |
-| **When a verified reusable finding emerges** | Optional `docs/solutions/`; do not create it just to have a knowledge folder |
-| **When a consequential architecture decision is made** | Optional `docs/adr/`; create one record per decision |
+I'm Cooling, a pilot who enjoys building software with AI.
 
-**Product Brief is not PRD.** `docs/product.md` is the concise, long-lived definition of the whole product—problem, audience, vision, value and boundaries. An optional `prd.md` belongs to one substantial development objective and describes that increment's user needs, scope and product-level success criteria. The unified `spec.md` then defines precise behavior, implementation and verification.
+Aviation uses standard operating procedures, situational awareness, cross-checks and risk management to bring structure to complex work. While experimenting with AI-assisted development, I saw some useful parallels: know your priorities, understand the real state, keep a way back, and verify outcomes.
 
-**Where does experience go?** `docs/solutions/` is the optional home for verified, non-obvious, durable and material engineering knowledge, inspired by Compound Engineering. Completed work evidence stays in `docs/work/archive/`; important architecture rationale belongs in `docs/adr/`; stable, high-priority instructions belong in `AGENTS.md`. Solutions and ADRs are different: Solutions capture reusable engineering findings; ADRs preserve why this project made a consequential technical choice. Neither is created during initialization, and neither is required after every feature or fix.
+CoolFlow is **an independent adaptation of ideas inspired in part by aviation SOPs and the Airbus Golden Rules for Pilots**. It is **not** Airbus-authored or Airbus-endorsed software guidance, and it doesn't claim that aviation and software engineering work the same way.
 
-The reusable source templates are organized by purpose:
+The goal isn't to reinvent software engineering. It's to make useful practices easier to understand, apply, adapt and improve together.
 
-- [Project skeleton](templates/project/) — initial `AGENTS.md`, `README.md` and core docs.
-- [Work templates](templates/work/) — unified Spec, optional PRD, design and tasks.
-- [Optional templates](templates/optional/) — [Feature Map](templates/optional/feature-map.md), [Feature record](templates/project/docs/features/feature-template.md), [Solutions guidance and templates](templates/optional/solutions/README.md), and [ADR template and example](templates/optional/adr/README.md).
+## Dig deeper
 
-The tree is a lightweight default, not a mandatory checklist. Existing projects can preserve their own structure and adopt only the parts that help.
+- [Getting Started](GETTING_STARTED.md) — copyable prompts for new and existing projects, including human checkpoints.
+- [Development Flow](methodology/flow.md) and [Adaptive Loops](methodology/loops.md) — the full method.
+- [Documentation Standard](standards/documentation.md) and [Initialization Contract](standards/initialization.md) — what to document and when.
+- [Project and work templates](templates/) — reusable, optional templates, including Spec, Solutions and ADR guidance.
+- [Golden Rules](methodology/golden-rules.md) — the four human-facing principles.
 
-## Development vs release
+Documentation is a lightweight default, not an obligation to produce every file. An existing repository can retain its own conventions. This project is **not** an agent harness, a workflow engine, or a mandatory Skills collection.
 
-`reviews/scenarios/` contains **internal development validation cases**. Keep it while designing and testing CoolFlow, but **exclude it from the final published release tree**. Removing files from a future commit does not remove them from Git history.
+### Related ideas
 
-See [internal review guidelines](reviews/scenarios/README.md). No release has been made.
+CoolFlow has learned from [EGM](https://github.com/google/elephant-goldfish-model), [GitHub Spec Kit](https://github.com/github/spec-kit), [OpenSpec](https://github.com/Fission-AI/OpenSpec), and the [Agent Skills specification](https://agentskills.io/specification). None is required to use CoolFlow.
 
-## References
+---
 
-- [EGM (Elephant-Goldfish Model)](https://github.com/google/elephant-goldfish-model) — independent review of technical design.
-- [GitHub Spec Kit](https://github.com/github/spec-kit) — specification and implementation convergence.
-- [OpenSpec](https://github.com/Fission-AI/OpenSpec) — working changes and accepted/current specs.
-- [Agent Skills](https://agentskills.io/specification) — portable `SKILL.md` format.
-
-CoolFlow draws on these ideas but does not require or bundle them.
+*CoolFlow by Cooling · An independent, evolving approach to human-led, AI-assisted software development.*
