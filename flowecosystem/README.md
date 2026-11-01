@@ -1,4 +1,4 @@
-# CoolFlow Flow Solutions
+# CoolFlow Ecosystem
 
 This directory is a **reference catalog**, not a bundled toolchain or a mandatory dependency list.
 

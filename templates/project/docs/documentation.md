@@ -85,6 +85,15 @@ A complete Spec should be comprehensible by a new Agent and provide:
 - Implementation strategy, dependencies and meaningful validation method.
 - Open questions / assumptions clearly distinguished from decisions.
 
+### When to create each work artifact
+
+- `spec.md`: the default unified Spec. Create it when a selected objective enters **Design Spec Loop (Step 6)**, not just because discovery or brainstorming has started.
+- `prd.md`: optional; use only when one objective has substantial product requirements, user journeys or scope that benefit from a separate product-focused document. Link it from the Spec.
+- `design.md`: optional; use when technical design is too detailed for the unified Spec. Link it from the Spec.
+- `tasks.md`: optional; use only when task progress must persist across Agent sessions, agents or time and no existing tracker is sufficient.
+
+The CoolFlow reference repository maintains matching starter templates under `templates/work/`; the default initialization does **not** copy them into an application. If a matching template is already available locally, use it as a starting point. Otherwise, create the document using the requirements in this standard. Do not create optional artifacts merely because a template exists, and do not require access to CoolFlow just to write project documentation.
+
 Optional artifacts, created for actual need:
 - `prd.md`: optional, substantial product requirements for **one development objective**—user problem, journeys, scope and product-level success criteria; reference from Spec. It is not the project-wide Product Brief.
 - `design.md`: complex technical design too detailed for unified Spec; reference from Spec.

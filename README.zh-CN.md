@@ -70,5 +70,5 @@ CoolFlow 由飞行员 Cooling 发起。航空 SOP、态势感知和交叉检查�
 
 CoolFlow 定义开发方法和文档规范，不绑定特定 Agent 工具链。你可以通过以下资料了解现有方案，并选择最小、合适的补充工具：
 
-- [开发框架能力对比](flowsolutions/framework-comparison.md) — 比较主流 AI 开发框架的能力覆盖、工作流、项目状态管理与经验沉淀。
-- [外部方案目录](flowsolutions/catalog.md) — 按照 CoolFlow 的开发阶段查找可借鉴的框架、Skills、方法和工具。
+- [开发框架能力对比](flowecosystem/framework-comparison.md) — 比较主流 AI 开发框架的能力覆盖、工作流、项目状态管理与经验沉淀。
+- [外部方案目录](flowecosystem/catalog.md) — 按照 CoolFlow 的开发阶段查找可借鉴的框架、Skills、方法和工具。

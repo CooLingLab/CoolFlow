@@ -16,14 +16,14 @@ This repository publishes a **reference methodology and documentation standard**
 - Review the design before significant implementation; review code and Spec conformance afterward; update durable docs only after acceptance.
 
 ## External solution references
-- `flowsolutions/` is a **non-normative, optional reference catalog**; `standards/` remains authoritative.
+- `flowecosystem/` is a **non-normative, optional reference catalog**; `standards/` remains authoritative.
 - Do not install, invoke, or combine external frameworks merely because they appear in the catalog.
 - Prefer the smallest relevant component; treat a complete suite as an explicit workflow alternative when its artifacts, gates, or state model overlap with CoolFlow.
 - Keep parent frameworks and their bundled Skills/playbooks distinct, and verify upstream compatibility before recommending installation.
 
 ## Validation
-- During development, maintain internal cases under `reviews/scenarios/`; use an **independent reviewer Agent** with explicit evidence to check outcomes.
-- Internal Scenario Review files must **not be included in the final release tree**.
+- During development, maintain internal cases under `flowreviews/scenarios/`; use an **independent reviewer Agent** with explicit evidence to check outcomes.
+- Keep internal Scenario Review files in the CoolFlow source repository; do not copy them into target application repositories.
 - Never claim a test or Agent review passed unless it has actually run and evidence exists.
 
 ## Working on this repository

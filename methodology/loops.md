@@ -69,6 +69,6 @@ The first two Loops are primarily associated with their named stages; the third 
 | Design Spec Review (EGM-style) | Design expressed in the Spec, assumptions, feasibility and implementation strategy | Before substantial coding |
 | Code Review | Newly changed code and tests | After coding, within Implementation Loop |
 | Spec Conformance | Expected behavior versus actual implementation | Within Implementation Loop and acceptance |
-| Scenario Review | **CoolFlow itself**: do agents follow the Standard correctly? | Internal CoolFlow development only; remove from final release tree |
+| Scenario Review | **CoolFlow itself**: do Agents follow the Standard correctly? | Internal CoolFlow validation in `flowreviews/scenarios/`; retained in the source repository, not copied to target applications |
 
 Do not mistake internal CoolFlow **Scenario Review** for a fourth product-development Loop.

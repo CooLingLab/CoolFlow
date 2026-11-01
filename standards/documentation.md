@@ -58,7 +58,7 @@ The following is the **default documentation tree for an application repository 
 - No default `docs/solutions/`, `docs/adr/`, `docs/knowledge/` or `docs/state.md` is required by CoolFlow v0.1.
 - `docs/solutions/` is the recommended optional home for verified, reusable engineering knowledge. it is not created during initialization.
 - `docs/adr/` is the optional home for Architecture Decision Records: one consequential decision per file. It is not created during initialization.
-- CoolFlow's own `flowsolutions/` directory belongs to the **CoolFlow methodology repository**. It catalogs external frameworks and methods and is not copied into application repositories. An App's `docs/solutions/` is its own engineering knowledge store; the names are related but serve different purposes.
+- CoolFlow's own `flowecosystem/` directory belongs to the **CoolFlow methodology repository**. It catalogs external frameworks and methods and is not copied into application repositories. An App's `docs/solutions/` is its own engineering knowledge store; the names are related but serve different purposes.
 - Projects may customize document names and locations after initialization. Preserve one authoritative location per fact and keep the project-local `AGENTS.md` / README navigation accurate.
 
 ## Core project docs (created on initialization)
@@ -84,6 +84,19 @@ A complete Spec should be comprehensible by a new Agent and provide:
 - Design/architecture decisions and major alternative trade-offs.
 - Implementation strategy, dependencies and meaningful validation method.
 - Open questions / assumptions clearly distinguished from decisions.
+
+### When to use the work templates
+
+CoolFlow maintains starter templates for these work artifacts:
+
+| Artifact | When to use it | Template |
+| --- | --- | --- |
+| `spec.md` | The default unified Spec; create it when a selected objective enters Design Spec Loop (Step 6), not during brainstorming alone. | [Spec template](../templates/work/spec.md) |
+| `prd.md` | Optional: when one objective has substantial product requirements, user journeys or scope that deserve a separate product-focused document. | [PRD template](../templates/work/prd.md) |
+| `design.md` | Optional: when technical design is too detailed for the unified Spec; link to it from the Spec. | [Detailed design template](../templates/work/design.md) |
+| `tasks.md` | Optional: only when task progress must persist across Agent sessions, agents or time and no existing tracker is sufficient. | [Persistent tasks template](../templates/work/tasks.md) |
+
+These templates are starting points, not a checklist. Do not create optional artifacts merely because a template exists. During discovery, use notes and prototypes as needed; write the unified Spec only when the selected objective enters Design Spec Loop.
 
 Optional artifacts, created for actual need:
 - `prd.md`: optional, substantial product requirements for **one development objective**—user problem, journeys, scope and product-level success criteria; reference from Spec. It is not the project-wide Product Brief.
