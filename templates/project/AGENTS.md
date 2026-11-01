@@ -23,13 +23,14 @@ Use this recommended CoolFlow lifecycle; skip, merge or revisit stages as projec
 
 ## Documentation Map
 
-- `docs/product.md`: long-term product purpose and positioning.
+- `docs/product.md`: concise project-level Product Brief (why, for whom, value and boundaries); it is **not a PRD**.
 - `docs/roadmap.md`: planned releases, including not-yet-built items.
 - `docs/domain.md`: domain terms, boundaries and core rules.
 - `docs/features/`: accepted actual feature behavior; never speculative plans.
 - `docs/work/<objective>/spec.md`: full active design for a development objective. Open `work/001-mvp/` when initial discovery begins, **not** on folder initialization.
 - Optional within work: `prd.md` for substantial product requirements; `design.md` for complex technical design; `tasks.md` only for persistent progress tracking; `prototypes/` for explorations.
 - `docs/work/archive/`: selective historical specs, key decisions, and verification evidence.
+- Optional `docs/lessons/`: verified, reusable project-specific experience; consult relevant entries before related work and add only evidence-backed lessons that change future action.
 - Optional `docs/feature-map.md`: where/how to navigate and verify actual UI.
 
 ## Working Rules
