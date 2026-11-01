@@ -67,6 +67,8 @@ Golden Rules 是对人的提醒，**不是新的 AI 强制命令或开发阶段*
 
 ## 文档约定
 
+完整的[应用项目文档树](standards/documentation.md#canonical-application-documentation-tree)，包括初始化必需、按需可选和开发后创建的文件，统一定义在文档规范中。
+
 首次初始化应具备 `AGENTS.md`、`README.md`、`docs/product.md`、`docs/roadmap.md`、`docs/domain.md`，以及 `docs/features/`、`docs/work/`、`docs/work/archive/` 目录（必要时用 `.gitkeep` 占位）。
 
 - `docs/features/`：真实实现且**已经人工验收**的功能。
