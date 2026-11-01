@@ -103,6 +103,7 @@ Golden Rules 是对人的提醒，**不是新的 AI 强制命令或开发阶段*
 | **真正开始开发时** | 默认创建一个 `docs/work/<objective>/spec.md` |
 | **确实需要时** | `prd.md`、`design.md`、`tasks.md`、`prototypes/`、`architecture.md`、`solutions/`、`adr/`、`feature-map.md` |
 | **出现经过验证、值得复用的工程经验时** | 再创建可选的 `docs/solutions/`，不为了拥有知识目录而创建 |
+| **做出重要架构或技术决策时** | 再创建可选的 `docs/adr/`，每项决策单独记录 |
 
 **Product Brief 不等于 PRD。** `docs/product.md` 是整个产品长期维护的简洁定义，回答产品为什么存在、服务谁、提供什么价值以及边界在哪里。可选的 `prd.md` 属于某一项具体开发工作，描述这一轮的用户需求、范围和产品层面的成功标准。统一 Spec 则进一步定义精确行为、实现方式和验证标准。
 
