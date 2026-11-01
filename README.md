@@ -6,8 +6,6 @@
 
 **A pilot's approach to AI-assisted software development.**
 
-> 一位飞行员，将航空 SOP 中的金科玉律、态势感知与安全理念引入 AI 软件开发，探索如何让个人开发者在充分利用 AI 的同时，始终掌握项目的优先级、实际状态、恢复能力与验证结果。
-
 Created by **Cooling**, a pilot, CoolFlow is **inspired by the Airbus Golden Rules for Pilots** and aviation **Standard Operating Procedures (SOPs)**—especially their focus on priorities, situational awareness, and safety. These are Cooling's independent adaptations for **human-led, AI-assisted software development**, not Airbus-authored or Airbus-endorsed software guidance.
 
 **One development Flow, two internal quality Loops, one outer Evolution Loop, and a lightweight documentation standard.**
