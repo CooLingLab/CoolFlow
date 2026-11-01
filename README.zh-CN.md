@@ -78,17 +78,64 @@ Golden Rules 是对人的提醒，**不是新的 AI 强制命令或开发阶段*
 
 初始化后的项目可以独立演进，不要求绑定 CoolFlow 的上游版本。
 
-## 仓库导航
+## 仓库结构
 
-| 路径 | 作用 |
-| --- | --- |
-| [Getting Started](GETTING_STARTED.md) | 英文完整入门指南与可复制提示词 |
-| [methodology/](methodology/) | Flow、Loops 与 Golden Rules |
-| [standards/](standards/) | 文档、初始化与审查规范 |
-| [templates/](templates/) | 项目和工作文档模板 |
-| [skills/coolflow-init/](skills/coolflow-init/) | 可选初始化 Skill |
-| [flowsolutions/](flowsolutions/) | 可选外部开发框架比较与分阶段解决方案目录 |
-| [reviews/scenarios/](reviews/scenarios/) | **仅限开发阶段**的内部场景测试，正式发布前需清理 |
+下面是 CoolFlow 仓库目前实际维护的文档与模板结构。使用 CoolFlow 初始化的 App 项目，其文档树则定义在[文档规范](standards/documentation.md#canonical-application-documentation-tree)中。
+
+```text
+CoolFlow/
+├── README.md / README.zh-CN.md
+├── GETTING_STARTED.md
+├── AGENTS.md
+│
+├── methodology/                     # Development method
+│   ├── flow.md
+│   ├── loops.md
+│   ├── golden-rules.md
+│   └── golden-rules.zh-CN.md
+│
+├── standards/                       # Normative standards
+│   ├── documentation.md
+│   ├── initialization.md
+│   └── reviews.md
+│
+├── templates/                       # Reusable document templates
+│   ├── project/
+│   │   ├── AGENTS.md
+│   │   ├── README.md
+│   │   └── docs/
+│   │       ├── product.md
+│   │       ├── roadmap.md
+│   │       ├── domain.md
+│   │       ├── features/.gitkeep
+│   │       └── work/
+│   │           ├── .gitkeep
+│   │           └── archive/.gitkeep
+│   ├── work/
+│   │   ├── spec.md
+│   │   ├── prd.md
+│   │   ├── design.md
+│   │   └── tasks.md
+│   └── optional/
+│       └── feature-map.md
+│
+├── skills/
+│   └── coolflow-init/SKILL.md       # Optional initialization Skill
+│
+├── flowsolutions/                   # Optional external solution catalog
+│   ├── README.md
+│   ├── framework-comparison.md
+│   └── catalog.md
+│
+└── reviews/
+    └── scenarios/                  # Development-only review fixtures
+```
+
+- `methodology/`：定义 Development Flow、Loops 和 Golden Rules。
+- `standards/`：定义文档、初始化和评审规范。
+- `templates/`：提供 App 项目和具体开发工作的文档模板。
+- `flowsolutions/`：可选的外部开发框架与解决方案目录，不会复制到 App 项目。
+- `reviews/scenarios/`：仅供开发阶段使用的内部评审案例，正式发布前需排除。
 
 独立的 CoolFlow Dashboard 未来可以可视化阶段与文档，但不负责 Agent 编排或任务执行。
 
