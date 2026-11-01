@@ -21,7 +21,7 @@ AI makes writing code easier, but building a product still raises familiar quest
 - **Lightweight documentation:** Keep goals, requirements, key decisions and reusable engineering knowledge.
 
 <p align="center">
-  <img src="docs/diagrams/coolflow-diagram.en.svg" alt="CoolFlow development flow and feedback loops">
+  <img src="methodology/flow-diagram.en.svg" alt="CoolFlow development flow and feedback loops">
 </p>
 
 Skip, combine or revisit stages as needed. The flow is a guide, not a rigid checklist.
@@ -34,7 +34,7 @@ Use your current coding agent. Choose the right starting point:
 
 > Read https://github.com/CooLingLab/CoolFlow/blob/main/GETTING_STARTED.md and its linked standards. In my new repository, create only missing CoolFlow documentation and folders. Preserve existing files; do not brainstorm, create a Spec or write code yet. Report what changed.
 
-Initialization includes `docs/documentation.md`, a complete project-local standard for later documentation work without accessing CoolFlow. Existing files are preserved.
+Initialization includes \`docs/documentation.md\`, a complete project-local standard for later documentation work without accessing CoolFlow. Existing files are preserved.
 
 **Existing project — inspect before adopting**
 
@@ -52,7 +52,7 @@ CoolFlow also offers four memorable principles for the **human developer**, insp
 3. **Keep a Way Back** — keep practical version checkpoints and recovery options.
 4. **Prove It Works** — trust direct, reproducible evidence, not just an AI agent's claim.
 
-These are decision principles, **not mandatory commands for AI agents**. Put concrete agent instructions in the target project's `AGENTS.md`.
+These are decision principles, **not mandatory commands for AI agents**. Put concrete agent instructions in the target project's \`AGENTS.md\`.
 
 [Read the Golden Rules](methodology/golden-rules.md)
 
@@ -65,3 +65,10 @@ CoolFlow was started by Cooling, a pilot exploring AI-assisted software developm
 - [Getting Started](GETTING_STARTED.md) — new and existing projects.
 - [Development Flow](methodology/flow.md) · [Adaptive Loops](methodology/loops.md) — the method.
 - [Documentation Standard](standards/documentation.md) · [Templates](templates/) — documentation conventions and reusable templates.
+
+## Ecosystem & Tool Selection
+
+CoolFlow defines a development methodology and documentation standard; it does not bundle or require a particular Agent toolchain. These references help you compare external approaches and choose the smallest useful complement:
+
+- [Framework Comparison](flowsolutions/framework-comparison.md) — compare documented capabilities, workflow coverage, project state and knowledge capture across major AI development frameworks.
+- [Solution Catalog](flowsolutions/catalog.md) — find external frameworks, Skills, methods and tools by CoolFlow stage and development need.

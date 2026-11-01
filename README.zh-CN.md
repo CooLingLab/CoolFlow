@@ -21,7 +21,7 @@ AI 让写代码更容易，但做产品仍会遇到这些问题：
 - **轻量文档规范：** 保留目标、需求、关键决策和可复用经验。
 
 <p align="center">
-  <img src="docs/diagrams/coolflow-diagram.zh-CN.svg" alt="CoolFlow 开发流程与反馈循环">
+  <img src="methodology/flow-diagram.zh-CN.svg" alt="CoolFlow 开发流程与反馈循环">
 </p>
 
 流程可以按需跳过、合并或回到之前的阶段，不必机械执行。
@@ -34,7 +34,7 @@ AI 让写代码更容易，但做产品仍会遇到这些问题：
 
 > 请阅读 https://github.com/CooLingLab/CoolFlow/blob/main/GETTING_STARTED.md 及其引用的规范。在我的新项目中，只创建缺失的 CoolFlow 文档和目录，保留已有文件。暂不进行产品探索、编写 Spec 或开发代码，并报告实际修改。
 
-初始化会创建 `docs/documentation.md`，在项目内保存完整文档规范；后续编写文档无需访问 CoolFlow。已有文件会被保留。
+初始化会创建 \`docs/documentation.md\`，在项目内保存完整文档规范；后续编写文档无需访问 CoolFlow。已有文件会被保留。
 
 **已有项目——先检查现状**
 
@@ -52,7 +52,7 @@ CoolFlow 还整理了四条面向**人类开发者**的判断原则，部分灵�
 3. **Keep a Way Back** — 保留可靠的版本检查点和真正可行的恢复方案。
 4. **Prove It Works** — 用可复查的实际证据确认结果，而不是只听 AI 说“已经完成”。
 
-它们是对人的提醒，**不是强制要求 AI 执行的四条命令**。具体的 Agent 规则应由目标项目的 `AGENTS.md` 承担。
+它们是对人的提醒，**不是强制要求 AI 执行的四条命令**。具体的 Agent 规则应由目标项目的 \`AGENTS.md\` 承担。
 
 [阅读 Golden Rules 中文版](methodology/golden-rules.zh-CN.md)
 
@@ -65,3 +65,10 @@ CoolFlow 由飞行员 Cooling 发起。航空 SOP、态势感知和交叉检查�
 - [Getting Started（英文）](GETTING_STARTED.md) — 新项目和已有项目入门。
 - [开发流程](methodology/flow.md) · [反馈循环](methodology/loops.md) — 完整方法。
 - [文档规范](standards/documentation.md) · [模板](templates/) — 文档约定与可复用模板。
+
+## 生态与工具选型
+
+CoolFlow 定义开发方法和文档规范，不绑定特定 Agent 工具链。你可以通过以下资料了解现有方案，并选择最小、合适的补充工具：
+
+- [开发框架能力对比](flowsolutions/framework-comparison.md) — 比较主流 AI 开发框架的能力覆盖、工作流、项目状态管理与经验沉淀。
+- [外部方案目录](flowsolutions/catalog.md) — 按照 CoolFlow 的开发阶段查找可借鉴的框架、Skills、方法和工具。
