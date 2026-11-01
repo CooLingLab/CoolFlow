@@ -81,4 +81,5 @@ CoolFlow was started by Cooling, a pilot exploring AI-assisted software developm
 CoolFlow defines a development methodology and documentation standard; it does not bundle or require a particular Agent toolchain. These references help you compare external approaches and choose the smallest useful complement:
 
 - [Framework Comparison](flowecosystem/framework-comparison.md) — compare documented capabilities, workflow coverage, project state and knowledge capture across major AI development frameworks.
-- [Solution Catalog](flowecosystem/catalog.md) — find external frameworks, Skills, methods and tools by CoolFlow stage and development need.
+- [Solution Catalog](flowecosystem/catalog.md) — broad ecosystem research by development stage.
+- [CoolFlow Advisor](skills/coolflow-advisor/SKILL.md) · [Curated Recommendations](skills/coolflow-advisor/references/recommendations.md) — optional on-demand adviser with a locally bundled, stage/task-specific selection of concrete Skills, methods and tools.
