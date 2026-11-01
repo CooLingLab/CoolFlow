@@ -36,7 +36,7 @@ The [Getting Started guide](GETTING_STARTED.md) covers both new and existing pro
 
 ## Four Golden Rules
 
-CoolFlow also offers four memorable principles for the **human developer**. You can use them even without adopting the whole flow:
+CoolFlow also offers four memorable principles for the **human developer**, inspired in part by the Airbus Golden Rules for Pilots. You can use them even without adopting the whole flow:
 
 1. **Keep It Working → Ship Small → Improve** — protect what already works, deliver small increments, then improve.
 2. **Know the Actual State** — distinguish planned, changed, tested, accepted and released.
@@ -49,7 +49,7 @@ These are decision principles, **not mandatory commands for AI agents**. Put con
 
 ## Why a pilot?
 
-CoolFlow was started by Cooling, a pilot exploring AI-assisted software development. Aviation SOPs, situational awareness and cross-checks inspired its emphasis on priorities, actual state, recoverability and verification. The approach draws in part on the Airbus Golden Rules for Pilots.
+CoolFlow was started by Cooling, a pilot exploring AI-assisted software development. Aviation SOPs, situational awareness and cross-checks inspired its emphasis on priorities, actual state, recoverability and verification.
 
 ## More documentation
 
