@@ -11,7 +11,7 @@ This repository publishes a **reference methodology and documentation standard**
 
 ## Document lifecycle
 - Durable truth: product, roadmap, domain, accepted feature specs.
-- In-progress: `docs/work/<objective>/spec.md` with optional PRD, design, tasks, prototypes.
+- In-progress: discovery may use `docs/work/<objective>/` without a Spec; create unified `spec.md` in Design Spec Loop, with optional PRD, design, tasks and prototypes.
 - Default to a **unified Spec**. A separate tasks file is not required when the coding Agent already tracks the plan in its session.
 - Review the design before significant implementation; review code and Spec conformance afterward; update durable docs only after acceptance.
 
