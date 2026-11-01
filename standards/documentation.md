@@ -16,16 +16,16 @@ The following is the **default documentation tree for an application repository 
     ├── domain.md                     # Required at initialization
     ├── features/                     # Directory required at initialization
     │   └── <feature>.md              # Accepted/current behavior; add after acceptance
-    └── work/                         # Directory required at initialization
-        ├── <objective>/              # Create only when real work begins
-        │   ├── spec.md               # Default unified Spec
-        │   ├── prd.md                # Optional: substantial product requirements
-        │   ├── design.md             # Optional: deeper technical design
-        │   ├── tasks.md              # Optional: persistent task progress
-        │   ├── brainstorm.md         # Optional: useful discovery record
-        │   └── prototypes/           # Optional: prototype artifacts
-        └── archive/                  # Directory required at initialization
-            └── <completed-work>/    # Selective completed-work evidence
+    ├── work/                         # Directory required at initialization
+    │   ├── <objective>/              # Create only when real work begins
+    │   │   ├── spec.md               # Default unified Spec
+    │   │   ├── prd.md                # Optional: substantial product requirements
+    │   │   ├── design.md             # Optional: deeper technical design
+    │   │   ├── tasks.md              # Optional: persistent task progress
+    │   │   ├── brainstorm.md         # Optional: useful discovery record
+    │   │   └── prototypes/           # Optional: prototype artifacts
+    │   └── archive/                  # Directory required at initialization
+    │       └── <completed-work>/    # Selective completed-work evidence
     ├── architecture.md               # Optional: current system architecture
     ├── adr/                          # Optional: durable architecture decisions
     │   └── <decision>.md
