@@ -65,18 +65,56 @@ Golden Rules 是对人的提醒，**不是新的 AI 强制命令或开发阶段*
 
 [`coolflow-init` 可选 Skill](skills/coolflow-init/SKILL.md) 只用于方便地初始化文档骨架，权威依据仍是标准文档。
 
-## 文档约定
+## Reusable document templates · 项目文档模板
 
-完整的[应用项目文档树](standards/documentation.md#canonical-application-documentation-tree)，包括初始化必需、按需可选和开发后创建的文件，统一定义在文档规范中。
+当你在一个 App 项目中使用 CoolFlow，最终得到的是下面这套**属于你自己的项目文档结构**。这里展示的是使用者的 App，而不是 CoolFlow GitHub 仓库自身的目录。可选文件只有在确实需要时才创建。
 
-首次初始化应具备 `AGENTS.md`、`README.md`、`docs/product.md`、`docs/roadmap.md`、`docs/domain.md`，以及 `docs/features/`、`docs/work/`、`docs/work/archive/` 目录（必要时用 `.gitkeep` 占位）。
+\`\`\`text
+<your-app>/
+├── AGENTS.md                         # 项目级 Agent 指令
+├── README.md                         # 面向人类的项目入口
+└── docs/
+    ├── product.md                    # Product Brief：产品定义，不是 PRD
+    ├── roadmap.md                    # MVP 与后续版本规划
+    ├── domain.md                     # 领域语言、边界与规则
+    ├── features/                     # 已实现、已验收的功能
+    │   └── <feature>.md              # 功能验收后添加
+    ├── work/
+    │   ├── <objective>/              # 真正开始一项开发工作时创建
+    │   │   ├── spec.md               # 默认统一 Spec
+    │   │   ├── prd.md                # 可选：复杂的产品需求
+    │   │   ├── design.md             # 可选：深入的技术设计
+    │   │   ├── tasks.md              # 可选：需要持久化的任务进度
+    │   │   └── prototypes/           # 可选：交互原型
+    │   └── archive/                  # 已完成工作的精选历史证据
+    ├── lessons/                      # 可选：经过验证、可复用的项目经验
+    │   ├── README.md
+    │   └── <lesson>.md
+    ├── architecture.md               # 可选：当前系统架构
+    ├── adr/                          # 可选：重要架构决策记录
+    └── feature-map.md                # 可选：UI 导航与验证指南
+\`\`\`
 
-- `docs/features/`：真实实现且**已经人工验收**的功能。
-- `docs/work/<objective>/spec.md`：具体开发工作开始后建立的统一 Spec；`prd.md`、`design.md`、`tasks.md` 按需可选。
-- `docs/work/archive/`：按需保存完成工作的关键决策、设计与验证证据。
-- `docs/feature-map.md`（可选）：方便 Agent 操作和验证实际 UI，不是重复的功能需求文档。
+### 哪些文件什么时候创建？
 
-初始化后的项目可以独立演进，不要求绑定 CoolFlow 的上游版本。
+| 时机 | 文件与目录 |
+|---|---|
+| **项目初始化** | \`AGENTS.md\`、\`README.md\`、\`docs/product.md\`、\`roadmap.md\`、\`domain.md\`，以及空的 \`features/\`、\`work/\`、\`work/archive/\` 目录 |
+| **真正开始开发时** | 默认创建一个 \`docs/work/<objective>/spec.md\` |
+| **确实需要时** | \`prd.md\`、\`design.md\`、\`tasks.md\`、\`prototypes/\`、\`architecture.md\`、\`adr/\`、\`feature-map.md\` |
+| **出现经过验证、值得复用的经验时** | 再创建可选的 \`docs/lessons/\`，不为了拥有知识目录而创建 |
+
+**Product Brief 不等于 PRD。** \`docs/product.md\` 是整个产品长期维护的简洁定义，回答产品为什么存在、服务谁、提供什么价值以及边界在哪里。可选的 \`prd.md\` 属于某一项具体开发工作，描述这一轮的用户需求、范围和产品层面的成功标准。统一 Spec 则进一步定义精确行为、实现方式和验证标准。
+
+**经验存储在哪里？** \`docs/lessons/\` 保存有证据支持、能够改变未来决策或行动的可复用经验。已完成工作的过程和证据保存在 \`docs/work/archive/\`；重要架构决策的原因保存在 \`docs/adr/\`；只有 Agent 必须长期遵守的高优先级稳定规则才进入 \`AGENTS.md\`。项目也可以自行建立 \`solutions/\` 来保存可复用的解决方案，但 CoolFlow 不强制要求，它与可选的 \`lessons/\` 不是一回事。
+
+对应的可复用源模板按用途组织：
+
+- [Project skeleton](templates/project/)：初始化所需的 \`AGENTS.md\`、\`README.md\` 和核心文档。
+- [Work templates](templates/work/)：统一 Spec，以及可选的 PRD、Design、Tasks。
+- [Optional templates](templates/optional/)：Feature Map 和可复用经验模板。
+
+这是一套轻量默认结构，不是必须逐项打勾的清单。已有项目可以保留自己的结构，只采用真正有帮助的部分。
 
 ## 仓库结构
 
