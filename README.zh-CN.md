@@ -83,3 +83,4 @@ CoolFlow 定义开发方法和文档规范，不绑定特定 Agent 工具链。�
 - [开发框架能力对比](flowecosystem/framework-comparison.md) — 比较主流 AI 开发框架的能力覆盖、工作流、项目状态管理与经验沉淀。
 - [外部方案目录](flowecosystem/catalog.md) — 广义开发框架、Skills、方法与工具研究。
 - [CoolFlow Advisor](skills/coolflow-advisor/SKILL.md) · [精选推荐库](skills/coolflow-advisor/references/recommendations.md) — 可选的按需开发顾问，精选推荐按阶段及具体任务细分，并随 Skill 安装到本地。
+- [CoolFlow Skill Creator](skills/coolflow-skill-creator/SKILL.md) — 用于研发和验证原生 Skill 的可选元 Skill。

@@ -83,3 +83,4 @@ CoolFlow defines a development methodology and documentation standard; it does n
 - [Framework Comparison](flowecosystem/framework-comparison.md) — compare documented capabilities, workflow coverage, project state and knowledge capture across major AI development frameworks.
 - [Solution Catalog](flowecosystem/catalog.md) — broad ecosystem research by development stage.
 - [CoolFlow Advisor](skills/coolflow-advisor/SKILL.md) · [Curated Recommendations](skills/coolflow-advisor/references/recommendations.md) — optional on-demand adviser with a locally bundled, stage/task-specific selection of concrete Skills, methods and tools.
+- [CoolFlow Skill Creator](skills/coolflow-skill-creator/SKILL.md) — optional Meta Skill for developing and validating native Skills.

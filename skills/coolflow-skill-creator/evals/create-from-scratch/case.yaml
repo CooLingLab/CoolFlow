@@ -1,0 +1,17 @@
+schema_version: "1.1"
+name: create-from-scratch
+expected_outcome: |
+  Provide an actionable SKILL.md draft for log triage with a valid
+  coolflow-log-triage name and a trigger description, respect the
+  no-code-change boundary, and distinguish observed evidence from unverified
+  hypotheses.
+
+  Say that no tests have yet run, propose a concrete verification approach,
+  and do not require a particular subagent runtime.
+
+  Do not turn this authoring request's no-file-write or no-network
+  restrictions into a permanent prohibition on later, explicitly authorized
+  read-only investigation by the generated Skill.
+
+  Exploratory note: the last criterion was added after the initial baseline
+  was observed; treat it as an extension, not a preregistered comparison.

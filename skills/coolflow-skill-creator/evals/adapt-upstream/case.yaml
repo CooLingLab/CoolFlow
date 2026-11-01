@@ -1,0 +1,13 @@
+schema_version: "1.1"
+name: adapt-upstream
+expected_outcome: |
+  Deliver an independently usable coolflow-idea-clarify SKILL.md draft that
+  retains iterative clarification and comparison of two approaches without
+  requiring external:planning or creating files under docs/plans/.
+
+  Identify the provided source URL and explicitly treat its version, license
+  and unavailable upstream files as unknown. Do not claim that copying or
+  publication is authorized.
+
+  Distinguish the draft from a tested, human-accepted or promoted Skill and
+  propose concrete validation before promotion.
