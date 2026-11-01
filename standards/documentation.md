@@ -26,12 +26,11 @@ The following is the **default documentation tree for an application repository 
     │   │   └── prototypes/           # Optional: prototype artifacts
     │   └── archive/                  # Directory required at initialization
     │       └── <completed-work>/    # Selective completed-work evidence
-    ├── lessons/                      # Optional: verified, reusable project learnings
-    │   ├── README.md                 # Optional index and retrieval guidance
-    │   └── <lesson>.md               # One focused lesson per file
+    ├── solutions/                    # Optional: verified, reusable engineering knowledge
+    │   └── <solution>.md              # One focused finding per file
     ├── architecture.md               # Optional: current system architecture
-    ├── adr/                          # Optional: durable architecture decisions
-    │   └── <decision>.md
+    ├── adr/                          # Optional: consequential architecture decisions
+    │   └── <number>-<decision>.md     # One decision per file
     └── feature-map.md                # Optional: actual UI navigation and verification
 ```
 
@@ -44,7 +43,8 @@ The following is the **default documentation tree for an application repository 
 | `docs/features/` | Create directory | Usually leave unchanged | Add or update accepted feature descriptions |
 | `docs/work/` | Create directory | Create one `<objective>/spec.md` for the actual objective | Archive selectively |
 | `docs/work/archive/` | Create directory | No need to populate | Retain useful historical evidence |
-| `docs/lessons/` | Do not create by default | Create when a verified reusable lesson emerges | Maintain only while lessons remain useful |
+| `docs/solutions/` | Do not create by default | Create when a non-obvious, durable and material engineering finding is verified | Keep useful findings current; remove misleading or obsolete guidance |
+| `docs/adr/` | Do not create by default | Create one record when a consequential architecture or technical decision needs a durable rationale | Preserve history; supersede old decisions with new ADRs rather than rewriting them |
 | Optional documents | Do not create by default | Add only when complexity or a real need justifies them | Maintain or archive when relevant |
 
 **Required at initialization** means create the missing files/directories in the template skeleton. It does not mean invent content, create empty feature documents, or start an implementation objective.
@@ -53,9 +53,10 @@ The following is the **default documentation tree for an application repository 
 
 ### What this tree deliberately does not prescribe
 
-- No default `docs/solutions/`, `docs/knowledge/` or `docs/state.md` is required by CoolFlow v0.1.
-- A project may add its own `solutions/` directory, status note or other documentation if useful. These remain project-local choices, not CoolFlow initialization requirements. For reusable experience, CoolFlow recommends the more focused optional `docs/lessons/` described below rather than a generic `docs/knowledge/` bucket.
-- CoolFlow's own `flowsolutions/` directory belongs to the **CoolFlow methodology repository**. It catalogs external frameworks and methods and is not copied into application repositories. An App may independently create its own `solutions/` directory if useful; that directory belongs to the App and is outside this default standard. The two names refer to different things.
+- No default `docs/solutions/`, `docs/adr/`, `docs/knowledge/` or `docs/state.md` is required by CoolFlow v0.1.
+- `docs/solutions/` is the recommended optional home for verified, reusable engineering knowledge. It replaces the earlier `docs/lessons/` proposal; it is not created during initialization.
+- `docs/adr/` is the optional home for Architecture Decision Records: one consequential decision per file. It is not created during initialization.
+- CoolFlow's own `flowsolutions/` directory belongs to the **CoolFlow methodology repository**. It catalogs external frameworks and methods and is not copied into application repositories. An App's `docs/solutions/` is its own engineering knowledge store; the names are related but serve different purposes.
 - Projects may customize document names and locations after initialization. Preserve one authoritative location per fact and keep the project-local `AGENTS.md` / README navigation accurate.
 
 ## Core project docs (created on initialization)
@@ -98,28 +99,41 @@ Optional artifacts, created for actual need:
 - Never assume an empty template means the stage is completed; `Not started` means not decided or not filled.
 - Projects own their documents and may customize paths and conventions. No forced upstream version pinning or automatic migration.
 
-## Reusable project lessons (optional)
+## Reusable project Solutions (optional)
 
-`docs/lessons/` is the home for **verified, reusable experience learned while building this specific project**. Create it only when a lesson worth reusing actually exists; it is not part of the initialization skeleton.
+`docs/solutions/` is the optional home for **verified engineering knowledge that should help solve future work**. It replaces the earlier `docs/lessons/` proposal. Create it only when the project has a finding worth preserving; it is not part of the initialization skeleton.
 
-A lesson should be concise and actionable. Capture:
-- **Context:** the situation, stack or conditions where it applies.
-- **Finding:** what was observed, including evidence or a reproducible example.
-- **Lesson:** what the project learned.
-- **Recommended action:** what a future developer or Agent should do differently.
-- **Applicability / limits:** where the lesson does and does not apply; include a verification date or source work when useful.
+A separate Solution is worth recording when the finding is:
 
-Do not store raw brainstorming, every debugging transcript, unverified guesses, or generic notes that do not change future decisions or actions. Keep detailed incident/work evidence in the relevant work item or `docs/work/archive/`, then distill only the durable insight into `docs/lessons/`.
+1. **Non-obvious:** a future developer is unlikely to recover the important reasoning from the final code, tests or ordinary documentation.
+2. **Durable:** it should remain useful beyond the exact change that revealed it.
+3. **Material:** forgetting it could cause a repeated failure, meaningful risk or substantial rediscovery.
 
-Keep these destinations distinct:
+A Solution may capture a verified root cause and fix, a technical constraint, a reusable engineering practice, or a failed approach that would otherwise be repeated. Keep one focused finding per file and link to its source work, tests, commit or other evidence. Search for overlap first; update an existing canonical record rather than creating a near-duplicate.
+
+Do not store raw brainstorming, every debugging transcript, unverified guesses or information already obvious from code and tests. Capture only after the finding is verified, while its reasoning and evidence are available. Before related work, consult only the Solutions relevant to the task. Revisit records when code, dependencies or external conditions make them stale.
+
+Keep knowledge in its narrowest durable home:
 - `docs/work/archive/`: historical evidence of what happened in a completed work item.
-- `docs/lessons/`: reusable findings extracted from experience.
-- `docs/adr/`: why an important architecture or technical decision was made.
-- `AGENTS.md`: only high-priority, stable instructions that future Agents must consistently follow.
+- `docs/solutions/`: reusable engineering findings extracted from experience.
+- `docs/adr/`: why a consequential architecture or technical decision was made.
+- Tests, types and assertions: behavior that can be enforced mechanically.
+- Code comments: local rationale needed beside one code path.
+- `AGENTS.md`: only stable, high-priority instructions that future Agents must consistently follow.
 
-When starting relevant work, consult only the lessons that match the current context. Add or revise a lesson only when new evidence makes it useful; do not turn lesson capture into a mandatory ceremony.
+Do not turn experience capture into a mandatory ceremony after every feature or bug fix. The Evolution Loop can produce useful experience at any stage; Solutions are a storage option, not an extra development stage.
 
-These lessons are **project-local**. If the same finding is independently validated across multiple projects, promote it to the developer's shared knowledge base; if it becomes a stable, broadly applicable development principle or requirement, consider incorporating it into CoolFlow's own `methodology/` or `standards/`. Do not copy every project's lessons into every other App repository.
+These Solutions are **project-local**. If a finding is independently validated across multiple projects, it may be promoted to the developer's shared knowledge base. Only broadly validated development principles belong in CoolFlow's own `methodology/` or `standards/`.
+
+## Architecture Decision Records (ADR, optional)
+
+`docs/adr/` stores durable records of **why the project made consequential architecture or technical decisions**. It is not a general decision diary and is not required for every feature or implementation choice.
+
+Create one ADR per decision when the choice affects architecture, data ownership, system boundaries, security, deployment, a foundational technology or a hard-to-reverse dependency. A useful ADR normally records context, decision drivers, options considered, the chosen decision and its consequences.
+
+Use sequential, descriptive filenames such as `0001-use-expo-react-native.md`. Preserve accepted records. If a decision changes, create a new ADR and mark the earlier one as superseded instead of silently rewriting history. An optional README index may summarize the records when the collection grows.
+
+An ADR records the **rationale** for a decision; the current system design belongs in `architecture.md` or the relevant Spec. Do not create ADRs for routine UI details, variable names, ordinary bug fixes or every feature.
 
 ## Document ownership
 
@@ -130,7 +144,8 @@ These lessons are **project-local**. If the same finding is independently valida
 - Optional `tasks.md`: *mutable execution progress*, not another source of requirements.
 - `features/`: *what is accepted and true now*.
 - `feature-map.md`: *where and how to operate/verify implemented features*.
-- Optional `lessons/`: *what verified experience should change future decisions or actions*.
+- Optional `solutions/`: *what verified engineering experience should change future work*.
+- Optional `adr/`: *why a consequential architecture or technical decision was made*.
 
 ## AI rules
 
@@ -139,5 +154,5 @@ These lessons are **project-local**. If the same finding is independently valida
 3. When information is unknown, mark it as `Not started` / `To decide`; don't invent product requirements.
 4. Ask a human for product-critical decisions; automate verifiable documentation/implementation tasks.
 5. Use **Design Spec Loop (Step 6)** to review and revise material designs and **Implementation Loop (Step 7)** for tests, code review and Spec conformance. The **Evolution Loop** may be triggered by new evidence at **any step**, returning to any relevant step when product assumptions, scope or direction need reconsideration; routine quality fixes remain in their local Loops. After acceptance, sync durable docs as a **step**, not a separate Loop. Release and post-release feedback are possible events, not prerequisites for Evolution.
-6. When relevant, consult matching verified lessons before work; capture only durable, evidence-backed learnings that will change future action.
+6. When relevant, consult matching verified Solutions before work; capture only non-obvious, durable and material findings. Record an ADR only for a consequential architecture or technical decision, not every feature or fix.
 7. Keep structure lightweight; never add files solely to satisfy a checklist.
