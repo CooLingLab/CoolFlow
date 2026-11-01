@@ -1,12 +1,14 @@
 # CoolFlow
 
+**English** | [简体中文](README.zh-CN.md)
+
 **by Cooling · An AI Software Development SOP**
 
 **A pilot's approach to AI-assisted software development.**
 
 > 一位飞行员，将航空 SOP 中的金科玉律、态势感知与安全理念引入 AI 软件开发，探索如何让个人开发者在充分利用 AI 的同时，始终掌握项目的优先级、实际状态、恢复能力与验证结果。
 
-Created by **Cooling**, a pilot, CoolFlow draws inspiration from aviation's **Standard Operating Procedures (SOPs)**—especially their Golden Rules, situational awareness, and safety mindset. It adapts these ideas into a practical approach for **human-led, AI-assisted software development**.
+Created by **Cooling**, a pilot, CoolFlow is **inspired by the Airbus Golden Rules for Pilots** and aviation **Standard Operating Procedures (SOPs)**—especially their focus on priorities, situational awareness, and safety. These are Cooling's independent adaptations for **human-led, AI-assisted software development**, not Airbus-authored or Airbus-endorsed software guidance.
 
 **One development Flow, two internal quality Loops, one outer Evolution Loop, and a lightweight documentation standard.**
 
@@ -51,15 +53,13 @@ The **outer Evolution Loop wraps the Development Flow**; the other two loops imp
 
 Stages may be skipped, merged, reordered, or revisited. For a tiny fix, do not invent a PRD, diagram, or elaborate review merely to complete a template.
 
-## What you can do
+## Getting started
 
-**Reference-only (no installation required):**
+**Start here:** [Getting Started — from an idea to your first accepted increment](GETTING_STARTED.md). The guide provides copyable prompts for a **new project** and an **existing app**, plus the boundary between initialization, implementation, acceptance, and release.
 
-> 参考 CoolFlow，帮我初始化当前仓库的文件夹结构、核心文档模板和 AGENTS.md。只初始化，不开发功能。
+CoolFlow requires **no installation, dashboard, orchestration engine, or specific AI agent**. Have your coding agent read the [Flow](methodology/flow.md), [Loops](methodology/loops.md), [documentation standard](standards/documentation.md), and [initialization contract](standards/initialization.md) before working in your **target application repository**.
 
-Read [the lifecycle](methodology/flow.md), [the loops](methodology/loops.md), and [the documentation standard](standards/documentation.md) and follow [initialization rules](standards/initialization.md).
-
-**Optional Skill:** [coolflow-init](skills/coolflow-init/SKILL.md) packages the repeatable initialization procedure. The **Standard remains the single source of truth**; the Skill is only an executor.
+The [`coolflow-init` Skill](skills/coolflow-init/SKILL.md) is optional and initializes documentation **only**. The Standard remains the authoritative source.
 
 ## Documentation conventions
 
