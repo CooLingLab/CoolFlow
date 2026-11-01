@@ -34,7 +34,7 @@ Use your current coding agent. Choose the right starting point:
 
 > Read https://github.com/CooLingLab/CoolFlow/blob/main/GETTING_STARTED.md and its linked standards. In my new repository, create only missing CoolFlow documentation and folders. Preserve existing files; do not brainstorm, create a Spec or write code yet. Report what changed.
 
-Initialization includes \`docs/documentation.md\`, a complete project-local standard for later documentation work without accessing CoolFlow. Existing files are preserved.
+Initialization includes `docs/documentation.md`, a complete project-local standard for later documentation work without accessing CoolFlow. Existing files are preserved.
 
 **Existing project — inspect before adopting**
 
@@ -52,7 +52,7 @@ CoolFlow also offers four memorable principles for the **human developer**, insp
 3. **Keep a Way Back** — keep practical version checkpoints and recovery options.
 4. **Prove It Works** — trust direct, reproducible evidence, not just an AI agent's claim.
 
-These are decision principles, **not mandatory commands for AI agents**. Put concrete agent instructions in the target project's \`AGENTS.md\`.
+These are decision principles, **not mandatory commands for AI agents**. Put concrete agent instructions in the target project's `AGENTS.md`.
 
 [Read the Golden Rules](methodology/golden-rules.md)
 
