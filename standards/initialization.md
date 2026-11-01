@@ -43,9 +43,16 @@ This restriction applies to coolflow-init. **Do not use the Skill for an existin
 - After approval, change only the agreed files. Preserve existing content, project-specific instructions, code, and uncommitted work. Report conflicts instead of silently replacing anything.
 - Adoption does not require restarting at Idea or adopting every CoolFlow stage.
 
-## Template source
+## Template source and path resolution
 
-Canonical templates live in templates/project/. Copy the required files to the target paths; replace only explicitly supported placeholders. The documentation template implements [the source standard](documentation.md) without links to CoolFlow-only files; keep both aligned when changing the standard. If the template is unavailable, provide an equivalent complete, self-contained local standard from that source, not a summary or broken links.
+Canonical templates live in `templates/project/` in the CoolFlow source repository. When `coolflow-init` is installed globally as a Skill, it must retrieve the standards and templates from the canonical CoolFlow GitHub repository after the target-directory preflight passes.
+
+- Do not infer a CoolFlow repository root from the Skill installation path, Agent configuration directory, or target project directory.
+- Do not expect `standards/` or `templates/` to exist beside the installed Skill or inside the Agent configuration directory.
+- Do not create local copies of CoolFlow's `standards/` or `templates/` in the target application. Copy only the required project files listed in this contract.
+- If the canonical source files cannot be retrieved completely, stop before writing and report the unavailable source.
+
+Copy the required files to the target paths; replace only explicitly supported placeholders. The documentation template implements [the source standard](documentation.md) without links to CoolFlow-only files; keep both aligned when changing the standard.
 
 ## Acceptance checks
 
@@ -53,6 +60,6 @@ Canonical templates live in templates/project/. Copy the required files to the t
 2. Required directories exist in Git.
 3. No unintended code, dependencies, product plans, or initial work objective was created.
 4. The Skill accepts an empty directory and a directory containing only root-level .git metadata (directory or regular file).
-5. The Skill rejects every other root entry—including hidden files—before writing anything; refusal leaves the target unchanged.
+5. The Skill rejects every other root entry—including hidden files—before any source lookup, network request, or write; refusal leaves the target unchanged and triggers no standards/templates path search.
 6. Existing Project Adoption inspects first and makes no changes before the user approves a specific plan.
 7. Files and reports contain no fabricated facts.
