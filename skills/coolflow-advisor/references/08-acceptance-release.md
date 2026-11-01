@@ -1,60 +1,40 @@
 # Stage 8 — Human Acceptance → Documentation Sync → Release
 
-[精选推荐索引](recommendations.md) · [CoolFlow 方法论](../../../methodology/flow.md)
+[精选推荐索引](recommendations.md) · [CoolFlow 文档规范](../../../standards/documentation.md)
 
-**阶段目标：**人类检查实际行为并接受；同步已验收事实；发布是单独授权的动作。
+**目标：**人工接受实际行为、同步已验收事实；交付/发布需单独授权。
 
-**条目状态：本文件所有条目均为候选（核查未完成），不进入 Advisor 默认推荐。** 现有记录不足以证明每项均完成来源、能力、依赖与适配四项核查；候选顺序、A/B/C 与 L0–L3 为初评，不是核查通过。未实测与未核查不同；L0/L1 轻量适配不降优先级。核查规则见[索引](recommendations.md#默认推荐的核查门槛)。
+**收录依据：**仅保留本对话已讨论的具体工具；每个任务最多两个选择。核查通过=阅读官方源码及关联依赖、确定 CoolFlow 适配方案，不等于已安装或做过受控对照测试。运行时仍需校验环境及权限。
 
 ## 8.1 设计人工验收测试情境
 
-**适用场景：**需要一组覆盖真实用户行为、边界和失败路径的测试脚本。
+**何时使用：**把实际用户行为、失败路径变成手工验收脚本。
 
-- **候选 1： [test-scenarios](https://github.com/phuryn/pm-skills/tree/main/pm-execution/skills/test-scenarios)**（Skill）。**用途：**把需求转成可以由人执行的测试场景。 **局限：**测试用例通过不自动等于用户接受；要确认对应目标版本。 **CoolFlow 适配：**直接使用；尊重项目现有文档规范 **等级：**B / L0。
+- **首选：[test-scenarios](https://github.com/phuryn/pm-skills/blob/main/pm-execution/skills/test-scenarios/SKILL.md)**（具体 Skill；B / L0）。**核查通过（源码与依赖检查，未实机验证）** **能力：**把用户故事转换成可执行的人工测试情境。**依赖/限制：**纯文本方法，测试设计不等于真实运行与人工接受。**CoolFlow 适配：**用 CoolFlow Spec 验收条件定义行为，人工决定是否通过。**核查依据：**[上游文件](https://github.com/phuryn/pm-skills/blob/main/pm-execution/skills/test-scenarios/SKILL.md)，Git blob `d5a25a7185d1681f97c1506d2ff1ccc083a7ce95`（2026-11-01）。
 
-- **候选 2： [qa（gstack）](https://github.com/garrytan/gstack/tree/main/qa)**（Skill）。**用途：**对运行中的产品做端到端操作检查。 **局限：**依赖浏览器与 gstack 运行环境；人工验收仍需人类亲自判断。 **CoolFlow 适配：**原版运行需核查 gstack 共享脚本与宿主能力；缺少依赖时只能借鉴方法并改造，不视为原版独立使用。 **等级：**待复核 / L2。
+## 8.2 发布前验证
 
+**何时使用：**证据充分后再宣布可交付，不替代人工验收。
 
-## 8.2 验收后的文档同步
+- **首选：[verification-before-completion](https://github.com/obra/superpowers/blob/main/skills/verification-before-completion/SKILL.md)**（具体 Skill；A / L0）。**核查通过（源码与依赖检查，未实机验证）** **能力：**完成声明前要求实际测试结果而非猜测。**依赖/限制：**需可执行验证命令/可见工具输出。**CoolFlow 适配：**映射到当前 CoolFlow Spec 验收标准；不取代人工验收。**核查依据：**[上游文件](https://github.com/obra/superpowers/blob/main/skills/verification-before-completion/SKILL.md)，Git blob `7d45333cc4a49c57a80df6c1fe2fa777a207afbc`（2026-11-01）。
 
-**适用场景：**已验收代码与文档存在差异，需更新真实现状而不是复制计划。
+## 8.3 完成开发分支与交付
 
-- **候选 1： [document-release（gstack）](https://github.com/garrytan/gstack/tree/main/document-release)**（Skill）。**用途：**检查已有实现、发布和文档是否一致。 **局限：**有自带文档分类和发布前提，不可覆盖 CoolFlow 本地规范。 **CoolFlow 适配：**对齐 docs/features/、product.md、domain.md、roadmap.md 等；仅记录已验收事实。 **等级：**待复核 / L2。
+**何时使用：**按仓库规则处理已验收变更、分支或 PR。
 
-- **候选 2： [documentation-and-adrs](https://github.com/addyosmani/agent-skills/tree/main/skills/documentation-and-adrs)**（Skill）。**用途：**提供维护文档与 ADR 的方法。 **局限：**不应将临时草稿全部升级为长期文档。 **CoolFlow 适配：**直接使用；尊重项目现有文档规范 **等级：**B / L0。
+- **首选：[finishing-a-development-branch](https://github.com/obra/superpowers/blob/main/skills/finishing-a-development-branch/SKILL.md)**（具体 Skill；A / L0）。**核查通过（源码与依赖检查，未实机验证）** **能力：**通过测试后提供分支合并、保留或清理等选项。**依赖/限制：**需要 Git 环境；原版可执行合并/分支清理。**CoolFlow 适配：**执行每个有影响的 Git 操作前遵守人类授权，不等同于上线。**核查依据：**[上游文件](https://github.com/obra/superpowers/blob/main/skills/finishing-a-development-branch/SKILL.md)，Git blob `fa8aecaf8813f1b19d19996f7957d1b0121f2d9c`（2026-11-01）。
 
+- **备选：[ship](https://github.com/garrytan/gstack/blob/main/ship/SKILL.md)**（具体 Skill；B / L3）。**核查通过（源码与依赖检查，未实机验证）** **能力：**串联测试、变更记录、推送与 PR 流程。**依赖/限制：**gstack 共享运行环境与脚本、Git/PR 权限，具有写入与推送副作用。**CoolFlow 适配：**仅相关授权明确且环境具备时调用；禁止默认自动发布。**核查依据：**[上游文件](https://github.com/garrytan/gstack/blob/main/ship/SKILL.md)，Git blob `32de83e7db47b9e1828110bb5c481949b5461412`（2026-11-01）。
 
-## 8.3 发布前证据与风险复核
+## 8.4 编写版本更新说明
 
-**适用场景：**验收已完成，希望再次核对部署前的状态和关键约束。
+**何时使用：**根据真实变更写面向用户的发布说明。
 
-- **候选 1： [verification-before-completion（Superpowers）](https://github.com/obra/superpowers/tree/main/skills/verification-before-completion)**（Skill）。**用途：**用实际证据检查准备情况，避免过早声称完成。 **局限：**不能替代部署权限、用户批准或渠道审核。 **CoolFlow 适配：**直接使用；尊重项目现有文档规范 **等级：**A / L0。
+- **首选：[release-notes](https://github.com/phuryn/pm-skills/blob/main/pm-execution/skills/release-notes/SKILL.md)**（具体 Skill；B / L0）。**核查通过（源码与依赖检查，未实机验证）** **能力：**从变更记录生成用户可读的更新说明。**依赖/限制：**纯文本方法；需实际发布内容，不能凭规划猜测已发布。**CoolFlow 适配：**注明已发布/未发布，审阅实际 Diff 与验收事实。**核查依据：**[上游文件](https://github.com/phuryn/pm-skills/blob/main/pm-execution/skills/release-notes/SKILL.md)，Git blob `148bf1cb176851d13531a54facc207824b22f493`（2026-11-01）。
 
-- **候选 2： [shipping-and-launch](https://github.com/addyosmani/agent-skills/tree/main/skills/shipping-and-launch)**（Skill）。**用途：**整理上线与交付检查重点。 **局限：**需按平台具体发布约束另外核实。 **CoolFlow 适配：**直接使用；尊重项目现有文档规范 **等级：**待复核 / 待核实（接入前核查）。
+## 8.5 发布后用户反馈访谈
 
+**何时使用：**以真实反馈支持下一轮 Evolution Loop。
 
-## 8.4 完成开发分支、合并和交付
-
-**适用场景：**工作已被接受，需要按仓库规则结束分支或交付变更。
-
-- **候选 1： [finishing-a-development-branch（Superpowers）](https://github.com/obra/superpowers/tree/main/skills/finishing-a-development-branch)**（Skill）。**用途：**有序处理分支完成、验证与合并选择。 **局限：**不能绕过人工批准，不能未经授权直接发布。 **CoolFlow 适配：**直接使用；尊重项目现有文档规范 **等级：**A / L0。
-
-- **候选 2： [ship（gstack）](https://github.com/garrytan/gstack/tree/main/ship)**（Skill）。**用途：**集成从验证到交付的一揽子操作。 **局限：**执行权限较大、依赖 gstack；不适合默认自动调用。 **CoolFlow 适配：**只能在用户明确授权对应交付动作时使用。 **等级：**B / L3。
-
-
-## 8.5 生成版本说明和发布记录
-
-**适用场景：**已经决定发布某个版本，需要准确概括用户可见变化。
-
-- **候选 1： [release-notes](https://github.com/phuryn/pm-skills/tree/main/pm-execution/skills/release-notes)**（Skill）。**用途：**帮助把变更转成面向用户的说明。 **局限：**必须区分已发布与尚未发布的功能，基于真实 Diff/发布内容。 **CoolFlow 适配：**直接使用；尊重项目现有文档规范 **等级：**B / L0。
-
-
-
-## 8.6 发布后的反馈与下一轮迭代
-
-**适用场景：**已有真实用户反馈，希望判断继续、调整还是回到前一阶段。
-
-- **候选 1： [interview-script](https://github.com/phuryn/pm-skills/tree/main/pm-product-discovery/skills/interview-script)**（Skill）。**用途：**帮助开展真实用户反馈访谈。 **局限：**不把少量主观评价当成统计显著需求。 **CoolFlow 适配：**直接使用；尊重项目现有文档规范 **等级：**B / L0。
-
-- **候选 2： [retro（gstack）](https://github.com/garrytan/gstack/tree/main/retro)**（Skill）。**用途：**复盘流程和质量问题，发现值得沉淀的经验。 **局限：**复盘不等于自动修改产品方向。 **CoolFlow 适配：**原版运行需核查 gstack 共享脚本与宿主能力；缺少依赖时只能借鉴方法并改造，不视为原版独立使用。 **等级：**待复核 / L2。
+- **首选：[interview-script](https://github.com/phuryn/pm-skills/blob/main/pm-product-discovery/skills/interview-script/SKILL.md)**（具体 Skill；B / L0）。**核查通过（源码与依赖检查，未实机验证）** **能力：**用非引导式问题设计真实用户访谈。**依赖/限制：**文本 Skill；访谈提纲不等于已经收集到用户证据。**CoolFlow 适配：**只在需访谈时使用；结果分清事实与假设。**核查依据：**[上游文件](https://github.com/phuryn/pm-skills/blob/main/pm-product-discovery/skills/interview-script/SKILL.md)，Git blob `7ec574e0d107507cb6c1926d2620e2ac822c00b6`（2026-11-01）。
 

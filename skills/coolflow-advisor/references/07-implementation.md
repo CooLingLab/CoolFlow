@@ -1,70 +1,52 @@
 # Stage 7 — Implementation Loop
 
-[精选推荐索引](recommendations.md) · [CoolFlow 方法论](../../../methodology/flow.md)
+[精选推荐索引](recommendations.md) · [CoolFlow 文档规范](../../../standards/documentation.md)
 
-**阶段目标：**Coding → Testing → Review → Spec Conformance → Fix；在证据不足时继续迭代。
+**目标：**Coding → Testing → Review → Spec Conformance → Fix；以证据验证实现。
 
-**条目状态：本文件所有条目均为候选（核查未完成），不进入 Advisor 默认推荐。** 现有记录不足以证明每项均完成来源、能力、依赖与适配四项核查；候选顺序、A/B/C 与 L0–L3 为初评，不是核查通过。未实测与未核查不同；L0/L1 轻量适配不降优先级。核查规则见[索引](recommendations.md#默认推荐的核查门槛)。
+**收录依据：**仅保留本对话已讨论的具体工具；每个任务最多两个选择。核查通过=阅读官方源码及关联依赖、确定 CoolFlow 适配方案，不等于已安装或做过受控对照测试。运行时仍需校验环境及权限。
 
-## 7.1 按确认的计划执行代码
+## 7.1 按计划执行编码
 
-**适用场景：**已有 Spec/计划，需要小步实现而不是重新设计需求。
+**何时使用：**按已确认 Spec/计划小步实现并验证。
 
-- **候选 1： [executing-plans（Superpowers）](https://github.com/obra/superpowers/tree/main/skills/executing-plans)**（Skill）。**用途：**按照计划执行、检查和汇报增量结果。 **局限：**可能引入其自有任务管理和执行约定。 **CoolFlow 适配：**仅采用执行纪律，仍以 CoolFlow Spec 与当前工具链为准。 **等级：**A / L1。
+- **首选：[executing-plans](https://github.com/obra/superpowers/blob/main/skills/executing-plans/SKILL.md)**（具体 Skill；A / L1）。**核查通过（源码与依赖检查，未实机验证）** **能力：**按实现计划逐任务执行、检查与交付。**依赖/限制：**当前版明确为同一会话内执行，依赖可用的代码与测试工具；部分下游审查需适配。**CoolFlow 适配：**以 CoolFlow Spec 为准，不强制引入额外任务控制器。**核查依据：**[上游文件](https://github.com/obra/superpowers/blob/main/skills/executing-plans/SKILL.md)，Git blob `ac77129d7c695734105004b6da10169de8d13df3`（2026-11-01）。
 
-- **候选 2： [implement](https://github.com/mattpocock/skills/tree/main/skills/engineering/implement)**（Skill）。**用途：**面向单个可实现任务的完成和验证流程。 **局限：**通常与 Matt Pocock 的 tickets 工作流衔接，单独使用需核对前提。 **CoolFlow 适配：**直接使用；尊重项目现有文档规范 **等级：**B / L1。
-
+- **备选：[implement](https://github.com/mattpocock/skills/blob/main/skills/engineering/implement/SKILL.md)**（具体 Skill；B / L1）。**核查通过（源码与依赖检查，未实机验证）** **能力：**按 Spec 或 ticket 实现并运行测试。**依赖/限制：**Ticket 模式依赖 tracker；还会调用 `tdd` Skill。**CoolFlow 适配：**无 ticket 时基于本地 Spec；按需补装或内化 TDD 方法。**核查依据：**[上游文件](https://github.com/mattpocock/skills/blob/main/skills/engineering/implement/SKILL.md)，Git blob `bd49e472984c7b99aac40286fdae749bb955a842`（2026-11-01）。
 
 ## 7.2 测试驱动开发
 
-**适用场景：**边开发边设计测试边界，避免只有实现没有可验证行为。
+**何时使用：**需要 Red-Green-Refactor、行为测试边界。
 
-- **候选 1： [tdd](https://github.com/mattpocock/skills/tree/main/skills/engineering/tdd)**（Skill）。**用途：**强调可观察的外部行为和明确的测试边界。 **局限：**不是所有原型、探索或配置改动都值得完整 TDD。 **CoolFlow 适配：**直接使用；尊重项目现有文档规范 **等级：**A / L0。
+- **首选：[tdd](https://github.com/mattpocock/skills/blob/main/skills/engineering/tdd/SKILL.md)**（具体 Skill；A / L0）。**核查通过（源码与依赖检查，未实机验证）** **能力：**围绕行为和质量约束执行 Red-Green-Refactor。**依赖/限制：**需项目有实际可运行的测试环境。**CoolFlow 适配：**按项目测试框架执行，不固定技术栈。**核查依据：**[上游文件](https://github.com/mattpocock/skills/blob/main/skills/engineering/tdd/SKILL.md)，Git blob `01eadaa34e7c9a63a67d6dc3cce1cc81b0e49985`（2026-11-01）。
 
-- **候选 2： [test-driven-development（Superpowers）](https://github.com/obra/superpowers/tree/main/skills/test-driven-development)**（Skill）。**用途：**给出 Red-Green-Refactor 的可执行纪律。 **局限：**按项目实际测试环境裁剪，不强制所有工作完全同一循环。 **CoolFlow 适配：**直接使用；尊重项目现有文档规范 **等级：**A / L0。
+- **备选：[test-driven-development](https://github.com/obra/superpowers/blob/main/skills/test-driven-development/SKILL.md)**（具体 Skill；A / L0）。**核查通过（源码与依赖检查，未实机验证）** **能力：**强调先看测试失败，再实现最小可通过代码。**依赖/限制：**需项目测试工具，原版倾向强制对所有代码修改使用 TDD。**CoolFlow 适配：**只在适合的代码变更中调用，避免对探索性原型机械应用。**核查依据：**[上游文件](https://github.com/obra/superpowers/blob/main/skills/test-driven-development/SKILL.md)，Git blob `46838cc9e893c06259e3bdad0fc2425b36242f15`（2026-11-01）。
 
+## 7.3 Bug 根因分析
 
-## 7.3 系统性 Bug 根因定位
+**何时使用：**先复现、定位因果，再修复和回归。
 
-**适用场景：**测试失败、行为异常、修复反复失败，需要先定位因果而非猜测。
+- **首选：[systematic-debugging](https://github.com/obra/superpowers/blob/main/skills/systematic-debugging/SKILL.md)**（具体 Skill；A / L0）。**核查通过（源码与依赖检查，未实机验证）** **能力：**先定位根因、获取证据后修复。**依赖/限制：**需要真实代码、日志或运行环境才能验证猜想。**CoolFlow 适配：**真实复现及测试结果作为结论证据。**核查依据：**[上游文件](https://github.com/obra/superpowers/blob/main/skills/systematic-debugging/SKILL.md)，Git blob `62fc752aaef59a8bbed5d305f4cadc60f8ae07ed`（2026-11-01）。
 
-- **候选 1： [systematic-debugging（Superpowers）](https://github.com/obra/superpowers/tree/main/skills/systematic-debugging)**（Skill）。**用途：**基于证据区分症状与根因，避免盲目修改。 **局限：**调试过程可能较长；极简明确错误可以直接修复。 **CoolFlow 适配：**直接使用；尊重项目现有文档规范 **等级：**A / L0。
+- **备选：[diagnosing-bugs](https://github.com/mattpocock/skills/blob/main/skills/engineering/diagnosing-bugs/SKILL.md)**（具体 Skill；A / L1）。**核查通过（源码与依赖检查，未实机验证）** **能力：**将复杂 bug 诊断分阶段为假设、实验、定位和修复。**依赖/限制：**需真实运行证据；部分约定会读取 GLOSSARY 与 ADR。**CoolFlow 适配：**优先读 `docs/domain.md` 与相关 ADR/solutions，不强制创建 glossary。**核查依据：**[上游文件](https://github.com/mattpocock/skills/blob/main/skills/engineering/diagnosing-bugs/SKILL.md)，Git blob `d039541ddd1c46e6ddbd662fe99d49b686fc5e12`（2026-11-01）。
 
-- **候选 2： [diagnosing-bugs](https://github.com/mattpocock/skills/tree/main/skills/engineering/diagnosing-bugs)**（Skill）。**用途：**针对 Bug 进行可复现的排查和假设验证。 **局限：**必须查看实际运行/日志，不以主观猜测作结论。 **CoolFlow 适配：**直接使用；尊重项目现有文档规范 **等级：**A / L0。
+## 7.4 代码审查
 
+**何时使用：**围绕 Diff、Spec 与编码标准检查风险。
 
-## 7.4 代码审查与风险识别
+- **首选：[code-review](https://github.com/mattpocock/skills/blob/main/skills/engineering/code-review/SKILL.md)**（具体 Skill；A / L2）。**核查通过（源码与依赖检查，未实机验证）** **能力：**按 Standards 与 Spec 两个视角复核代码变更。**依赖/限制：**原版并行调用两个审查子 Agent；需真实 Diff 和 Spec。**CoolFlow 适配：**需宿主有子 Agent，或明确改成顺序审查而非声称原版运行。**核查依据：**[上游文件](https://github.com/mattpocock/skills/blob/main/skills/engineering/code-review/SKILL.md)，Git blob `83183e0ad36fd0eef25d37c7e483284b7e34c1f0`（2026-11-01）。
 
-**适用场景：**实现完成，需要独立检查正确性、可维护性和实际变更范围。
+- **备选：[review](https://github.com/garrytan/gstack/blob/main/review/SKILL.md)**（具体 Skill；B / L3）。**核查通过（源码与依赖检查，未实机验证）** **能力：**面向 PR 的多角度代码审查。**依赖/限制：**依赖 gstack 共享 preamble、命令和完整 repo 环境。**CoolFlow 适配：**具备 gstack 支持时使用；不自动修改或发布。**核查依据：**[上游文件](https://github.com/garrytan/gstack/blob/main/review/SKILL.md)，Git blob `8ae90451443897b3e68c796ab0c75960d5f48553`（2026-11-01）。
 
-- **候选 1： [code-review](https://github.com/mattpocock/skills/tree/main/skills/engineering/code-review)**（Skill）。**用途：**围绕实际变更找功能或设计风险，适合定向 Review。 **局限：**要阅读真实 Diff 和测试结果，避免泛泛而谈。 **CoolFlow 适配：**原版需要审查子 Agent；不支持时可改为单 Agent 分步骤审查，并明确属于适配版。 **等级：**A / L2。
+## 7.5 实施结果验证
 
-- **候选 2： [review（gstack）](https://github.com/garrytan/gstack/tree/main/review)**（Skill）。**用途：**提供较完整的工程审查流程。 **局限：**gstack 运行环境较重；不要把该套件作为必要依赖。 **CoolFlow 适配：**原版运行需核查 gstack 共享脚本与宿主能力；缺少依赖时只能借鉴方法并改造，不视为原版独立使用。 **等级：**B / L3。
+**何时使用：**在声称完成前核查测试、输出与 Spec。
 
+- **首选：[verification-before-completion](https://github.com/obra/superpowers/blob/main/skills/verification-before-completion/SKILL.md)**（具体 Skill；A / L0）。**核查通过（源码与依赖检查，未实机验证）** **能力：**完成声明前要求实际测试结果而非猜测。**依赖/限制：**需可执行验证命令/可见工具输出。**CoolFlow 适配：**映射到当前 CoolFlow Spec 验收标准；不取代人工验收。**核查依据：**[上游文件](https://github.com/obra/superpowers/blob/main/skills/verification-before-completion/SKILL.md)，Git blob `7d45333cc4a49c57a80df6c1fe2fa777a207afbc`（2026-11-01）。
 
-## 7.5 完成前证据核查和 Spec Conformance
+## 7.6 多任务子 Agent 协作
 
-**适用场景：**Agent 声称实现完成，需要核对测试结果、实际运行与已确认要求。
+**何时使用：**任务独立且具备真实子 Agent 调度环境。
 
-- **候选 1： [verification-before-completion（Superpowers）](https://github.com/obra/superpowers/tree/main/skills/verification-before-completion)**（Skill）。**用途：**在宣布完成前要求直接验证证据。 **局限：**通过构建不等于人工验收，也不等于正式发布。 **CoolFlow 适配：**将验证结果对应 CoolFlow Spec 验收标准；用户仍负责最终验收。 **等级：**A / L0。
-
-- **候选 2： [verify（gstack）](https://github.com/garrytan/gstack/tree/main/verify)**（Skill）。**用途：**聚焦实际验证证据与已完成工作的交付检查。 **局限：**依赖 gstack 环境，复杂程度因项目而异。 **CoolFlow 适配：**原版运行需核查 gstack 共享脚本与宿主能力；缺少依赖时只能借鉴方法并改造，不视为原版独立使用。 **等级：**待复核 / L2。
-
-
-## 7.6 多任务并行和子 Agent 分工
-
-**适用场景：**多个任务边界清晰，确实能减少等待并可独立集成。
-
-- **候选 1： [subagent-driven-development（Superpowers）](https://github.com/obra/superpowers/tree/main/skills/subagent-driven-development)**（Skill）。**用途：**为独立子任务配置专门执行和审查上下文。 **局限：**多 Agent 带来合并、成本和冲突开销；并非默认更快。 **CoolFlow 适配：**直接使用；尊重项目现有文档规范 **等级：**A / 待核实（接入前核查）。
-
-- **候选 2： [pair-agent（gstack）](https://github.com/garrytan/gstack/tree/main/pair-agent)**（Skill）。**用途：**面向协作式 Agent 执行。 **局限：**依赖运行环境，不应当作为 CoolFlow 通用规范。 **CoolFlow 适配：**原版运行需核查 gstack 共享脚本与宿主能力；缺少依赖时只能借鉴方法并改造，不视为原版独立使用。 **等级：**待复核 / L2。
-
-
-## 7.7 安全性和上线风险检查
-
-**适用场景：**项目涉及账户、支付、敏感数据或外部服务，需要专项检查。
-
-- **候选 1： [security-and-hardening](https://github.com/addyosmani/agent-skills/tree/main/skills/security-and-hardening)**（Skill）。**用途：**从常见安全弱点和硬化措施检视实现。 **局限：**Skill 审查不能代替实际安全测试、供应链扫描和授权审批。 **CoolFlow 适配：**直接使用；尊重项目现有文档规范 **等级：**待复核 / 待核实（接入前核查）。
-
-- **候选 2： [cso（gstack）](https://github.com/garrytan/gstack/tree/main/cso)**（Skill）。**用途：**较系统的安全审查角色。 **局限：**需要适配 gstack；安全发现应以具体证据为准。 **CoolFlow 适配：**原版运行需核查 gstack 共享脚本与宿主能力；缺少依赖时只能借鉴方法并改造，不视为原版独立使用。 **等级：**待复核 / L2。
+- **首选：[subagent-driven-development](https://github.com/obra/superpowers/blob/main/skills/subagent-driven-development/SKILL.md)**（具体 Skill；A / L2）。**核查通过（源码与依赖检查，未实机验证）** **能力：**将独立任务交给新上下文子 Agent 并逐步复核。**依赖/限制：**必须有实际子 Agent 调度与隔离能力，且要管理并行成本。**CoolFlow 适配：**宿主不支持时不推荐运行原版；不内置多 Agent 引擎。**核查依据：**[上游文件](https://github.com/obra/superpowers/blob/main/skills/subagent-driven-development/SKILL.md)，Git blob `ea170ed101d61a52fdee0ade8368ec0723980a5c`（2026-11-01）。
 

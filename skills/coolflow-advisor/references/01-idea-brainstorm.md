@@ -1,54 +1,42 @@
 # Stage 1 — Idea → Brainstorm
 
-[精选推荐索引](recommendations.md) · [CoolFlow 方法论](../../../methodology/flow.md)
+[精选推荐索引](recommendations.md) · [CoolFlow 文档规范](../../../standards/documentation.md)
 
-**阶段目标：**澄清问题、用户、现有替代方案、机会和产品假设；不要提前创建正式 Spec。
+**目标：**明确问题、用户、替代方案与产品假设；不提前创建正式 Spec。
 
-**条目状态：本文件所有条目均为候选（核查未完成），不进入 Advisor 默认推荐。** 现有记录不足以证明每项均完成来源、能力、依赖与适配四项核查；候选顺序、A/B/C 与 L0–L3 为初评，不是核查通过。未实测与未核查不同；L0/L1 轻量适配不降优先级。核查规则见[索引](recommendations.md#默认推荐的核查门槛)。
+**收录依据：**仅保留本对话已讨论的具体工具；每个任务最多两个选择。核查通过=阅读官方源码及关联依赖、确定 CoolFlow 适配方案，不等于已安装或做过受控对照测试。运行时仍需校验环境及权限。
 
-## 1.1 问题澄清与深度追问
+## 1.1 产品创意发散
 
-**适用场景：**只有一个模糊想法，希望用问答找到真正的问题与边界。
+**何时使用：**从产品、设计和工程视角提出新产品方向。
 
-- **候选 1： [grill-me](https://github.com/mattpocock/skills/tree/main/skills/productivity/grill-me)**（Skill）。**用途：**逐题追问，暴露未经验证的假设。 **局限：**原版依赖同仓库 grilling；只装入口文件可能无法独立运行。 **CoolFlow 适配：**补装 grilling 或将其追问法内化为 CoolFlow 轻量适配版；不强制写额外文件。 **等级：**A / L1。
+- **首选：[brainstorm-ideas-new](https://github.com/phuryn/pm-skills/blob/main/pm-product-discovery/skills/brainstorm-ideas-new/SKILL.md)**（具体 Skill；B / L0）。**核查通过（源码与依赖检查，未实机验证）** **能力：**生成产品/设计/工程三视角产品创意。**依赖/限制：**纯文本流程；必须先明确问题，避免未经验证的功能堆砌。**CoolFlow 适配：**保持探索笔记可选，不提前创建正式 Spec。**核查依据：**[上游文件](https://github.com/phuryn/pm-skills/blob/main/pm-product-discovery/skills/brainstorm-ideas-new/SKILL.md)，Git blob `449ef41b53a1218261fb192053c56b233a28e1db`（2026-11-01）。
 
-- **候选 2： [interview-me](https://github.com/addyosmani/agent-skills/tree/main/skills/interview-me)**（Skill）。**用途：**以结构化问题收集需求、成功标准和约束。 **局限：**偏需求访谈；不能替代真实用户访谈。 **CoolFlow 适配：**直接使用；尊重项目现有文档规范 **等级：**待复核 / 待核实（接入前核查）。
+## 1.2 深入追问、澄清需求
 
-**候选比较（完成核查后适用）：**需要高强度反问选 grill-me；需要较有条理的需求澄清选 interview-me。
+**何时使用：**想法模糊、希望厘清决策和约束。
 
-## 1.2 新产品创意发散
+- **首选：[grill-me](https://github.com/mattpocock/skills/blob/main/skills/productivity/grill-me/SKILL.md)**（具体 Skill；A / L1）。**核查通过（源码与依赖检查，未实机验证）** **能力：**通过决策树式追问澄清模糊需求。**依赖/限制：**入口文件只转调同仓库 `grilling`；单装入口无法执行追问方法。**CoolFlow 适配：**连同 `grilling` 安装或合并指令，不强制新建文件。**核查依据：**[上游文件](https://github.com/mattpocock/skills/blob/main/skills/productivity/grill-me/SKILL.md)，Git blob `3947ff9c4ad980d14fc07fccbf659d47c114e81d`（2026-11-01）。
 
-**适用场景：**希望从产品、设计、工程三个视角探索解决方案。
+- **备选：[brainstorming](https://github.com/obra/superpowers/blob/main/skills/brainstorming/SKILL.md)**（具体 Skill；A / L1）。**核查通过（源码与依赖检查，未实机验证）** **能力：**对设计选择逐步提问、权衡备选并确认方向。**依赖/限制：**原版有 Superpowers 文档路径和后续 `writing-plans` 交接。**CoolFlow 适配：**轻量修改路径与强制交接；保留核心问答与方案比较。**核查依据：**[上游文件](https://github.com/obra/superpowers/blob/main/skills/brainstorming/SKILL.md)，Git blob `7f5eef02f894c4f24cea313660c0465ce9c084ed`（2026-11-01）。
 
-- **候选 1： [brainstorm-ideas-new](https://github.com/phuryn/pm-skills/tree/main/pm-product-discovery/skills/brainstorm-ideas-new)**（Skill）。**用途：**多视角生成候选功能并标出验证假设。 **局限：**容易过早形成大功能清单；先明确用户问题。 **CoolFlow 适配：**直接使用；尊重项目现有文档规范 **等级：**B / 待核实（接入前核查）。
+## 1.3 创业定位与价值判断
 
-- **候选 2： [idea-refine](https://github.com/addyosmani/agent-skills/tree/main/skills/idea-refine)**（Skill）。**用途：**帮助澄清和收敛初步概念。 **局限：**不是完整竞品研究。 **CoolFlow 适配：**直接使用；尊重项目现有文档规范 **等级：**待复核 / 待核实（接入前核查）。
+**何时使用：**判断产品价值、目标客户和切入点。
 
+- **首选：[office-hours](https://github.com/garrytan/gstack/blob/main/office-hours/SKILL.md)**（具体 Skill；B / L2）。**核查通过（源码与依赖检查，未实机验证）** **能力：**从创业者角度检查产品价值、目标客户及可行切口。**依赖/限制：**依赖 gstack 共享前置内容、脚本与运行环境。**CoolFlow 适配：**具备 gstack 环境时可原版运行；否则只提取提问方法，不能称原版已可运行。**核查依据：**[上游文件](https://github.com/garrytan/gstack/blob/main/office-hours/SKILL.md)，Git blob `9bc0af744558834bab5d7c1218528250f8c9599b`（2026-11-01）。
 
-## 1.3 设计方向共识与方案比较
+## 1.4 竞品研究与横向比较
 
-**适用场景：**思路已初步明确，但需要讨论路线、权衡和获得人类确认。
+**何时使用：**比较直接竞品、间接替代品和现有解决办法。
 
-- **候选 1： [brainstorming（Superpowers）](https://github.com/obra/superpowers/tree/main/skills/brainstorming)**（Skill）。**用途：**结构化探索需求、备选设计和设计确认，适合 CoolFlow Brainstorm。 **局限：**原版会要求设计文档确认后调用 writing-plans，且可能指定外部文档路径。 **CoolFlow 适配：****A 级候选：轻量适配而不降优先级**；保留高质量提问与方案权衡，移除强制 writing-plans 交接，将输出记入 CoolFlow 当前 work/ 下可选 brainstorm.md，正式 Spec 留在 Step 6。 **等级：**A / L1。
+- **首选：[competitive-research-snapshot](https://github.com/deanpeters/Product-Manager-Skills/blob/main/skills/competitive-research-snapshot/SKILL.md)**（具体 Skill；B / L1）。**核查通过（源码与依赖检查，未实机验证）** **能力：**基于证据生成竞品快照、比较矩阵与决策结论。**依赖/限制：**引用同仓库 `autonomous-investigation` 与 `intelligence-collection-disciplines` 研究协议；需要实际联网来源。**CoolFlow 适配：**按需补齐文本协议；大规模研究才创建 `competitive-landscape.md`。**核查依据：**[上游文件](https://github.com/deanpeters/Product-Manager-Skills/blob/main/skills/competitive-research-snapshot/SKILL.md)，Git blob `80b082f69919143a29ed8440c156bf162fea9ebe`（2026-11-01）。
 
-- **候选 2： [office-hours（gstack）](https://github.com/garrytan/gstack/tree/main/office-hours)**（Skill）。**用途：**从产品视角挑战想法，帮助识别不清晰的价值定位。 **局限：**依赖 gstack 环境，不能假设单独复制 SKILL.md 就能运行。 **CoolFlow 适配：**借鉴问答方法即可；不接管 CoolFlow 下游流程。 **等级：**B / L2。
+- **备选：[competitor-analysis](https://github.com/browserbase/skills/blob/main/skills/competitor-analysis/SKILL.md)**（具体 Skill；B / L2）。**核查通过（源码与依赖检查，未实机验证）** **能力：**用 Browserbase 搜索和浏览器研究生成竞品报告。**依赖/限制：**需 Browserbase API/CLI、密钥、联网及运行配置；不是纯文本 Skill。**CoolFlow 适配：**仅用户具备外部服务权限并接受依赖时使用，报告保留事实来源。**核查依据：**[上游文件](https://github.com/browserbase/skills/blob/main/skills/competitor-analysis/SKILL.md)，Git blob `2ebfdfaa3776fd264f9efc2ec2ef25f00d70200a`（2026-11-01）。
 
+## 1.5 准备真实用户访谈
 
-## 1.4 竞品、替代方案和市场研究
+**何时使用：**准备非引导式访谈提纲。
 
-**适用场景：**需要理解用户已经如何解决问题，区分直接竞品、间接方案和替代方法。
+- **首选：[interview-script](https://github.com/phuryn/pm-skills/blob/main/pm-product-discovery/skills/interview-script/SKILL.md)**（具体 Skill；B / L0）。**核查通过（源码与依赖检查，未实机验证）** **能力：**用非引导式问题设计真实用户访谈。**依赖/限制：**文本 Skill；访谈提纲不等于已经收集到用户证据。**CoolFlow 适配：**只在需访谈时使用；结果分清事实与假设。**核查依据：**[上游文件](https://github.com/phuryn/pm-skills/blob/main/pm-product-discovery/skills/interview-script/SKILL.md)，Git blob `7ec574e0d107507cb6c1926d2620e2ac822c00b6`（2026-11-01）。
 
-- **候选 1： [competitor-analysis](https://github.com/phuryn/pm-skills/tree/main/pm-market-research/skills/competitor-analysis)**（Skill）。**用途：**提供竞品比较的分析框架，便于形成有来源的比较矩阵。 **局限：**AI 分析不能替代核实官方信息、真实定价和用户反馈。 **CoolFlow 适配：**直接使用；尊重项目现有文档规范 **等级：**B / 待核实（接入前核查）。
-
-- **候选 2： [research](https://github.com/mattpocock/skills/tree/main/skills/engineering/research)**（Skill）。**用途：**针对开放问题开展来源导向的研究并提炼判断。 **局限：**比竞品专用 Skill 更通用，需要指定比较维度。 **CoolFlow 适配：**直接使用；尊重项目现有文档规范 **等级：**B / 待核实（接入前核查）。
-
-
-## 1.5 用户访谈问题设计
-
-**适用场景：**需要向真实或潜在用户核实需求，不想把假设当事实。
-
-- **候选 1： [interview-script](https://github.com/phuryn/pm-skills/tree/main/pm-product-discovery/skills/interview-script)**（Skill）。**用途：**设计以行为和过去经历为主的访谈提纲。 **局限：**访谈提纲不等于真实用户证据；避免引导式问题。 **CoolFlow 适配：**直接使用；尊重项目现有文档规范 **等级：**B / L0。
-
-- **候选 2： [interview-me](https://github.com/addyosmani/agent-skills/tree/main/skills/interview-me)**（Skill）。**用途：**让 Agent 向开发者系统询问未定义的需求。 **局限：**访谈对象是开发者而非市场用户时更合适。 **CoolFlow 适配：**直接使用；尊重项目现有文档规范 **等级：**待复核 / 待核实（接入前核查）。
-
-**候选比较（完成核查后适用）：**外部用户用 interview-script；澄清开发者需求用 interview-me。

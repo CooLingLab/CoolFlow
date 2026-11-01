@@ -1,50 +1,32 @@
 # Stage 3 — Concept Prototype → Validation
 
-[精选推荐索引](recommendations.md) · [CoolFlow 方法论](../../../methodology/flow.md)
+[精选推荐索引](recommendations.md) · [CoolFlow 文档规范](../../../standards/documentation.md)
 
-**阶段目标：**围绕一个具体产品假设快速制作可丢弃原型，并通过真实证据判断结论。
+**目标：**用可丢弃原型或低成本实验回答最关键的产品问题。
 
-**条目状态：本文件所有条目均为候选（核查未完成），不进入 Advisor 默认推荐。** 现有记录不足以证明每项均完成来源、能力、依赖与适配四项核查；候选顺序、A/B/C 与 L0–L3 为初评，不是核查通过。未实测与未核查不同；L0/L1 轻量适配不降优先级。核查规则见[索引](recommendations.md#默认推荐的核查门槛)。
+**收录依据：**仅保留本对话已讨论的具体工具；每个任务最多两个选择。核查通过=阅读官方源码及关联依赖、确定 CoolFlow 适配方案，不等于已安装或做过受控对照测试。运行时仍需校验环境及权限。
 
-## 3.1 识别最危险的产品假设
+## 3.1 业务逻辑交互原型
 
-**适用场景：**不确定需求、可行性、可用性或商业价值，需决定先验证什么。
+**何时使用：**验证状态机、业务规则和操作中的边界行为。
 
-- **候选 1： [identify-assumptions-new](https://github.com/phuryn/pm-skills/tree/main/pm-product-discovery/skills/identify-assumptions-new)**（Skill）。**用途：**把产品假设按风险维度展开，避免只验证容易的部分。 **局限：**输出是假设清单，不是市场事实。 **CoolFlow 适配：**直接使用；尊重项目现有文档规范 **等级：**B / 待核实（接入前核查）。
+- **首选：[prototype（Logic）](https://github.com/mattpocock/skills/blob/main/skills/engineering/prototype/SKILL.md)**（具体 Skill；A / L1）。**核查通过（源码与依赖检查，未实机验证）** **能力：**生成用于回答单一问题的可丢弃原型（逻辑或 UI 两分支）。**依赖/限制：****必须连同 `LOGIC.md` 和 `UI.md`** 保存；逻辑分支可用独立 HTML，UI 分支需要可显示的路由/页面环境。**CoolFlow 适配：**放 `docs/work/<objective>/prototypes/`，完成验证后记录结论，不强制进入正式实现。**核查依据：**[上游文件](https://github.com/mattpocock/skills/blob/main/skills/engineering/prototype/SKILL.md)，Git blob `a0044501fe0d385b4d8575b610188ede9b236ccf`（2026-11-01）。
 
-- **候选 2： [prioritize-assumptions](https://github.com/phuryn/pm-skills/tree/main/pm-product-discovery/skills/prioritize-assumptions)**（Skill）。**用途：**按风险和验证价值聚焦先做哪个实验。 **局限：**先有足够明确的假设清单才有意义。 **CoolFlow 适配：**直接使用；尊重项目现有文档规范 **等级：**B / 待核实（接入前核查）。
+## 3.2 核心体验概念原型
 
+**何时使用：**生成并比较尚未进入正式实现的交互视觉方案。
 
-## 3.2 状态、逻辑和交互机制原型
+- **首选：[prototype（UI）](https://github.com/mattpocock/skills/blob/main/skills/engineering/prototype/SKILL.md)**（具体 Skill；A / L1）。**核查通过（源码与依赖检查，未实机验证）** **能力：**生成用于回答单一问题的可丢弃原型（逻辑或 UI 两分支）。**依赖/限制：****必须连同 `LOGIC.md` 和 `UI.md`** 保存；逻辑分支可用独立 HTML，UI 分支需要可显示的路由/页面环境。**CoolFlow 适配：**放 `docs/work/<objective>/prototypes/`，完成验证后记录结论，不强制进入正式实现。**核查依据：**[上游文件](https://github.com/mattpocock/skills/blob/main/skills/engineering/prototype/SKILL.md)，Git blob `a0044501fe0d385b4d8575b610188ede9b236ccf`（2026-11-01）。
 
-**适用场景：**想知道某个状态机或业务规则在操作中是否合理。
+## 3.3 识别产品关键假设
 
-- **候选 1： [prototype — logic branch](https://github.com/mattpocock/skills/tree/main/skills/engineering/prototype)**（Skill）。**用途：**专门生成可操作的临时逻辑展示，快速测试边界行为。 **局限：**原版按自身目录习惯存放丢弃原型。 **CoolFlow 适配：**优先放在 CoolFlow 当前 work/<objective>/prototypes/ 或临时分支；明确可丢弃。 **等级：**A / L0。
+**何时使用：**寻找用户价值、可行性和市场风险中最危险的假设。
 
-
-
-## 3.3 快速可视化概念界面
-
-**适用场景：**需要对比几种根本不同的交互方向，而不是先实现正式 App。
-
-- **候选 1： [prototype — UI branch](https://github.com/mattpocock/skills/tree/main/skills/engineering/prototype)**（Skill）。**用途：**同一个具体 Skill 的 UI 分支，可快速比较视觉/交互候选。 **局限：**不是正式设计系统，也不应与 Step 5 UI 原型混淆。 **CoolFlow 适配：**直接使用；尊重项目现有文档规范 **等级：**A / L0。
-
-- **候选 2： [design-html（gstack）](https://github.com/garrytan/gstack/tree/main/design-html)**（Skill）。**用途：**用于把明确的设计方向变成可查看 HTML。 **局限：**依赖 gstack 专有脚本/共享说明，不能按独立 Skill 直接复制。 **CoolFlow 适配：**仅在已经采用 gstack 环境时优先；普通原型可直接让 Agent 写 HTML。 **等级：**待复核 / L2。
-
+- **首选：[identify-assumptions-new](https://github.com/phuryn/pm-skills/blob/main/pm-product-discovery/skills/identify-assumptions-new/SKILL.md)**（具体 Skill；B / L0）。**核查通过（源码与依赖检查，未实机验证）** **能力：**识别新产品的高风险假设。**依赖/限制：**纯文本方法；输出是待证实假设，不是市场证据。**CoolFlow 适配：**在探索资料中记录，避免虚构验证结果。**核查依据：**[上游文件](https://github.com/phuryn/pm-skills/blob/main/pm-product-discovery/skills/identify-assumptions-new/SKILL.md)，Git blob `3ddc8bc514b2a05cf5f0914635f144940797f5ac`（2026-11-01）。
 
 ## 3.4 设计低成本验证实验
 
-**适用场景：**需要检验是否真的有人愿意完成关键行为。
+**何时使用：**把假设变成可以观察、衡量的实验。
 
-- **候选 1： [brainstorm-experiments-new](https://github.com/phuryn/pm-skills/tree/main/pm-product-discovery/skills/brainstorm-experiments-new)**（Skill）。**用途：**将假设转成可观察的低成本实验，例如落地页或原型任务。 **局限：**实验方案必须定义实际可测行为，不等于执行或得到结论。 **CoolFlow 适配：**直接使用；尊重项目现有文档规范 **等级：**B / 待核实（接入前核查）。
-
-
-
-## 3.5 验证浏览器原型的实际交互
-
-**适用场景：**已经有 HTML 原型，需要运行、点击、记录失败场景。
-
-- **候选 1： [browser-testing-with-devtools](https://github.com/addyosmani/agent-skills/tree/main/skills/browser-testing-with-devtools)**（Skill）。**用途：**使用浏览器开发者工具检查页面交互和行为证据。 **局限：**需要可用浏览器和对应权限；截图漂亮不等于体验验证。 **CoolFlow 适配：**直接使用；尊重项目现有文档规范 **等级：**待复核 / 待核实（接入前核查）。
-
-- **候选 2： [qa（gstack）](https://github.com/garrytan/gstack/tree/main/qa)**（Skill）。**用途：**可用于已有运行应用的交互 QA。 **局限：**依赖 gstack 运行环境；可能重于临时原型。 **CoolFlow 适配：**原版运行需核查 gstack 共享脚本与宿主能力；缺少依赖时只能借鉴方法并改造，不视为原版独立使用。 **等级：**待复核 / L2。
+- **首选：[brainstorm-experiments-new](https://github.com/phuryn/pm-skills/blob/main/pm-product-discovery/skills/brainstorm-experiments-new/SKILL.md)**（具体 Skill；B / L0）。**核查通过（源码与依赖检查，未实机验证）** **能力：**针对假设设计低成本产品实验。**依赖/限制：**输出实验设计而非用户结果；真正执行仍需条件和资源。**CoolFlow 适配：**对每个实验写清可观察行为与通过标准。**核查依据：**[上游文件](https://github.com/phuryn/pm-skills/blob/main/pm-product-discovery/skills/brainstorm-experiments-new/SKILL.md)，Git blob `8c946a51839c85b7ffb666c268ca4b06513166ed`（2026-11-01）。
 
