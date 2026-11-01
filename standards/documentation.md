@@ -18,7 +18,7 @@ The following is the **default documentation tree for an application repository 
     │   └── <feature>.md              # Accepted/current behavior; add after acceptance
     ├── work/                         # Directory required at initialization
     │   ├── <objective>/              # Create only when real work begins
-    │   │   ├── spec.md               # Default unified Spec
+    │   │   ├── spec.md               # Draft when objective enters Design Spec Loop
     │   │   ├── prd.md                # Optional: substantial product requirements
     │   │   ├── design.md             # Optional: deeper technical design
     │   │   ├── tasks.md              # Optional: persistent task progress
@@ -36,12 +36,12 @@ The following is the **default documentation tree for an application repository 
 
 ### When each part is created
 
-| Location | At initialization | When work begins | After acceptance |
+| Location | At initialization | During discovery / development | After acceptance |
 |---|---|---|---|
 | `AGENTS.md`, `README.md` | Create if missing | Maintain as needed | Keep current |
 | `docs/product.md`, `roadmap.md`, `domain.md` | Create templates; unknown facts stay `Not started` | Update when decisions become durable | Sync accepted changes |
 | `docs/features/` | Create directory | Usually leave unchanged | Add or update accepted feature descriptions |
-| `docs/work/` | Create directory | Create one `<objective>/spec.md` for the actual objective | Archive selectively |
+| `docs/work/` | Create directory | Open an objective directory during discovery if useful; create its `spec.md` when entering Design Spec Loop | Archive selectively |
 | `docs/work/archive/` | Create directory | No need to populate | Retain useful historical evidence |
 | `docs/solutions/` | Do not create by default | Create when a non-obvious, durable and material engineering finding is verified | Keep useful findings current; remove misleading or obsolete guidance |
 | `docs/adr/` | Do not create by default | Create one record when a consequential architecture or technical decision needs a durable rationale | Preserve history; supersede old decisions with new ADRs rather than rewriting them |
@@ -49,7 +49,7 @@ The following is the **default documentation tree for an application repository 
 
 **Required at initialization** means create the missing files/directories in the template skeleton. It does not mean invent content, create empty feature documents, or start an implementation objective.
 
-**Default when work starts** means one unified `spec.md` is the starting point. Optional artifacts are not mandatory steps or a fixed document checklist.
+**During discovery**, an objective directory can hold notes or prototypes without a Spec. **When a selected objective enters Design Spec Loop**, write its unified `spec.md` to define the implementable design and verification criteria. A Spec is not required merely to brainstorm; optional artifacts are not a fixed checklist.
 
 ### What this tree deliberately does not prescribe
 
@@ -71,9 +71,9 @@ The following is the **default documentation tree for an application repository 
 
 Create `docs/features/`, `docs/work/` and `docs/work/archive/` as part of the skeleton; use `.gitkeep` if the Git directory is otherwise empty.
 
-## Work artifacts (created only after development begins)
+## Work artifacts (created during discovery or development)
 
-Default: **one unified** `docs/work/<objective>/spec.md`. `<objective>` is a descriptive slug or number; may represent one feature, an MVP, a fix, or a release objective. For an initial product journey, use `001-mvp` when discovery starts, without claiming its scope is settled.
+During discovery, **you may open** `docs/work/<objective>/` for exploration notes and prototypes; no Spec is required yet. When an objective is selected for **Design Spec Loop (Step 6)**, create the default unified `docs/work/<objective>/spec.md`. `<objective>` is a descriptive slug or number for a feature, MVP, fix or release. An initial product journey may use `001-mvp` once discovery begins, without claiming the MVP scope is settled.
 
 A complete Spec should be comprehensible by a new Agent and provide:
 - Context, goal and non-goals.
@@ -153,6 +153,6 @@ An ADR records the **rationale** for a decision; the current system design belon
 2. Preserve user data; don't overwrite existing README, AGENTS, code or docs without approval.
 3. When information is unknown, mark it as `Not started` / `To decide`; don't invent product requirements.
 4. Ask a human for product-critical decisions; automate verifiable documentation/implementation tasks.
-5. Use **Design Spec Loop (Step 6)** to review and revise material designs and **Implementation Loop (Step 7)** for tests, code review and Spec conformance. The **Evolution Loop** may be triggered at **any step** by feedback, new ideas, or changing needs, returning to any relevant step when product assumptions, scope or direction need reconsideration; routine quality fixes remain in their local Loops. After acceptance, sync durable docs as a **step**, not a separate Loop. Release and post-release feedback are possible events, not prerequisites for Evolution.
+5. Create the unified `spec.md` when the chosen objective enters **Design Spec Loop (Step 6)**, not solely because discovery started; use that Loop to review and revise material designs and **Implementation Loop (Step 7)** for tests, code review and Spec conformance. The **Evolution Loop** may be triggered at **any step** by feedback, new ideas, or changing needs, returning to any relevant step when product assumptions, scope or direction need reconsideration; routine quality fixes remain in their local Loops. After acceptance, sync durable docs as a **step**, not a separate Loop. Release and post-release feedback are possible events, not prerequisites for Evolution.
 6. When relevant, consult matching verified Solutions before work; capture only non-obvious, durable and material findings. Record an ADR only for a consequential architecture or technical decision, not every feature or fix.
 7. Keep structure lightweight; never add files solely to satisfy a checklist.
