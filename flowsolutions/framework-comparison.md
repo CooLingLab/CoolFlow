@@ -50,17 +50,33 @@ GitHub stars are approximate snapshots retrieved on 2026-11-01. They indicate co
 | Explicit human acceptance checkpoint | ● | ◐ | ◐ | ◐ | ◐ | ● | ● | ◐ |
 | Post-acceptance documentation / release workflow | ● | ◐ | ◐ | ● | ◐ | ◐ | ◐ | ◐ |
 | Reusable project-learning capture | ◐* | ● | ◐ | ● | ◐ | ◐ | ◐ | ● |
-| Explicit project status + session continuity | ◐* | ◐ | ◐ | ◐ | ◐ | ◐ | ◐ | ● |
+| Project-state awareness (position, progress, next action) | —* | ◐ | ◐ | ◐ | — | — | ◐ | ● |
+| Session handoff / resume context | — | ● | ◐ | ● | ● | — | ◐ | ● |
 | Explicit cross-stage evolution / learn-and-adjust loop | ● | ◐ | ◐ | ◐ | ◐ | ◐ | ● | ◐ |
 
-* **CoolFlow's knowledge-capture and state mechanisms are under design discussion, not yet normative v0.1 features.** The current Golden Rule “Know the Actual State” expresses a human-facing principle, but CoolFlow does not yet define a canonical project status artifact or an Agent retrieval protocol. Knowledge capture has been discussed as cross-stage, but its trigger, storage and retrieval rules are not yet part of the published standard.
+* **CoolFlow's `—*` is deliberate.** “Know the Actual State” is a human-facing Golden Rule, not an Agent-readable project-state mechanism. CoolFlow v0.1 does not prescribe a STATE.md, status schema, automatic retrieval protocol or session-handoff format. Cross-stage knowledge capture is also not yet a normative feature.
 
 ### What the comparison reveals
 
 1. **CoolFlow's strongest distinction is its product-lifecycle framing.** It explicitly includes lightweight strategic DDD, concept validation, roadmap and UI prototyping before the implementation-heavy loops. BMAD also covers much of this territory, so CoolFlow should not claim to be the only full-lifecycle method.
 2. **Implementation quality is a mature, crowded area.** Superpowers, Compound Engineering, GStack, PStack, Addy Skills, BMAD and GSD Core all provide substantial implementation, testing or review workflows. CoolFlow should reference proven solutions rather than reimplement every engineering practice.
-3. **Knowledge capture and state continuity are different capabilities.** Compound Engineering, GStack and GSD Core provide concrete learning or memory mechanisms. PStack focuses more on turning repeated corrections into better Skills and structural enforcement. These should not be treated as interchangeable.
+3. **State awareness, session handoff and knowledge capture are three different capabilities.** GSD Core has the clearest explicit project-state model; GStack has scoped persistent project/run state; Compound Engineering and PStack have useful handoff mechanisms. A solution corpus or Agent memory is not automatically a current project-state model.
 4. **A complete suite may overlap with CoolFlow's artifacts and lifecycle.** Spec Kit, OpenSpec, BMAD, GSD Core and Compound Engineering can each introduce their own planning files, lifecycle commands or state conventions. Adopting one wholesale requires an explicit integration decision.
+
+### What “state awareness” means in this comparison
+
+**Project-state awareness** means a workflow can recover a durable view of the project's current position, progress and likely next action from explicit project artifacts or state records. A plan file, a general memory store, a status badge, or a session transcript alone does not qualify as a complete project-state model.
+
+**Session handoff / resume** means preserving enough context about an interrupted unit of work for a later session or a cold-start Agent to continue safely. It is related to project state, but it answers a different question.
+
+- **GSD Core — explicit project state.** `STATE.md` is read at the start of workflows and updated after significant actions; it combines machine-readable frontmatter with a compact human-readable digest. `state validate` and `state sync` check or repair drift against filesystem evidence. A versioned `.planning/state.json` is published for external readers such as dashboards. Session handoff is separate: GSD also has `HANDOFF.json` and `.continue-here.md`. See [STATE.md reference](https://github.com/open-gsd/gsd-core/blob/next/docs/reference/state-md.md), [state consistency gates](https://github.com/open-gsd/gsd-core/blob/next/docs/features/statemd-consistency-gates.md), [machine-readable state contract](https://github.com/open-gsd/gsd-core/blob/next/docs/features/machine-readable-state-contract-planningstatejson.md), and [pause-work workflow](https://github.com/open-gsd/gsd-core/blob/next/gsd-core/workflows/pause-work.md).
+- **GStack — partial/scoped project state.** It keeps per-project checkpoints, learnings and timeline data under a persistent state root, and its unattended autoplan runner maintains structured run state. This is more than chat memory, but it is not one small, canonical lifecycle digest equivalent to GSD's STATE.md. See [GStack state root](https://github.com/garrytan/gstack/blob/main/docs/state-root.md) and [autoplan state implementation](https://github.com/garrytan/gstack/blob/main/lib/autoplan-state.ts).
+- **Compound Engineering — partial/scoped state and explicit handoff.** Plans and work-unit state support execution continuity, while `ce-handoff` provides a dedicated create/resume workflow. It does not prescribe one universal project-wide status digest. See [ce-handoff](https://github.com/EveryInc/compound-engineering-plugin/blob/main/docs/guides/ce-handoff.md).
+- **PStack — explicit session handoff, not project-wide state.** Its “Pause safely” playbook writes a resume note containing intent, progress, verified work, current state, next steps and key files. See [pause-safely](https://github.com/cursor/plugins/blob/main/harness/pstack/claude-code/skills/poteto-mode/playbooks/pause-safely.md).
+- **BMAD and Superpowers — artifact-led continuity.** Their plans and workflow-specific resume guidance help continue work, but the reviewed sources do not establish a single canonical project-state digest with the same explicit read/update/validate contract as GSD.
+- **CoolFlow — principle only.** The Golden Rule asks the human to know the actual state; v0.1 intentionally does not define an Agent state file or state engine.
+
+GitHub Spec Kit and OpenSpec are primarily specification/change-management systems. Their per-change artifacts and lifecycle statuses should not be confused with a project-wide view of current position and next action.
 
 ## Adjacent specification-driven systems
 
