@@ -14,9 +14,12 @@ CoolFlow is an AI-oriented software development methodology for individual devel
 
 > **Status: v0.1 development draft.** The `feat/v0.1-standard-and-init` branch is for review; it is not a release.
 
-## Golden Rules (for human developers)
+## CoolFlow Golden Rules
 
-CoolFlow's four [Golden Rules](methodology/golden-rules.md) help the **human developer** retain engineering priorities, situational awareness, recoverability and independent judgment throughout AI-assisted development:
+**The Four Golden Rules for AI-Assisted Software Development**  
+*By Cooling · Creator of CoolFlow*
+
+CoolFlow's four [Golden Rules](methodology/golden-rules.md) are **human-facing principles for AI-assisted software development**, not rules limited to people who adopt the CoolFlow framework. They help the developer retain engineering priorities, situational awareness, recoverability and independent judgment throughout the product lifecycle:
 
 1. **Keep It Working → Ship Small → Improve** — protect verified behavior, deliver small valuable increments, then improve.
 2. **Know the Actual State** — distinguish what is planned, executed, verified, accepted and released.

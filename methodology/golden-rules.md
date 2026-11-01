@@ -1,6 +1,9 @@
 # CoolFlow Golden Rules
 
-**A pilot's approach to AI software development — by Cooling.** Inspired by aviation SOP principles, these Golden Rules help human developers keep priorities clear, maintain situational awareness, retain a way back, and verify real outcomes. They are adapted for software engineering, not copied from aircraft procedures.
+**The Four Golden Rules for AI-Assisted Software Development**  
+*By Cooling · Creator of CoolFlow*
+
+Inspired by a **pilot's approach** to aviation SOP principles, these Golden Rules help human developers keep priorities clear, maintain situational awareness, retain a way back, and verify real outcomes. They are adapted for software engineering, not copied from aircraft procedures, and are **applicable beyond the CoolFlow methodology**.
 
 > **Audience: human developers.** These rules help a person maintain practical control of the **whole AI-assisted software development lifecycle**, even when an Agent performs most of the actual work.
 >
