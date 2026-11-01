@@ -81,11 +81,11 @@ When you apply CoolFlow to an App, this is the **project documentation structure
     │   │   ├── tasks.md              # Optional: persistent task progress
     │   │   └── prototypes/           # Optional: working prototypes
     │   └── archive/                  # Selective evidence from completed work
-    ├── lessons/                      # Optional: verified, reusable project lessons
-    │   ├── README.md
-    │   └── <lesson>.md
+    ├── solutions/                    # Optional: verified, reusable engineering knowledge
+    │   └── <solution>.md
     ├── architecture.md               # Optional: current system architecture
-    ├── adr/                          # Optional: durable architecture decisions
+    ├── adr/                          # Optional: consequential architecture decisions
+    │   └── <number>-<decision>.md
     └── feature-map.md                # Optional: UI navigation and verification
 ```
 
@@ -106,7 +106,7 @@ The reusable source templates are organized by purpose:
 
 - [Project skeleton](templates/project/) — initial `AGENTS.md`, `README.md` and core docs.
 - [Work templates](templates/work/) — unified Spec, optional PRD, design and tasks.
-- [Optional templates](templates/optional/) — [feature map](templates/optional/feature-map.md) and [reusable lesson template](templates/optional/lessons/lesson-template.md).
+- [Optional templates](templates/optional/) — [Feature Map](templates/optional/feature-map.md), [Feature record](templates/project/docs/features/feature-template.md), [Solutions guidance and templates](templates/optional/solutions/README.md), and [ADR template and example](templates/optional/adr/README.md).
 
 The tree is a lightweight default, not a mandatory checklist. Existing projects can preserve their own structure and adopt only the parts that help.
 
