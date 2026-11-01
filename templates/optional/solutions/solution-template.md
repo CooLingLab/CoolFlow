@@ -1,6 +1,6 @@
 ---
 title: "<short, searchable title>"
-type: "bug-fix | engineering-practice | technical-constraint | workflow"
+type: "bug-fix" # Choose: bug-fix, engineering-practice, technical-constraint, workflow
 status: "verified"
 date: "YYYY-MM-DD"
 applies_to: []
