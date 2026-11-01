@@ -26,7 +26,7 @@ When refusing, explain that coolflow-init is only for an empty project directory
 
 After the preflight passes, read the canonical CoolFlow standards and templates. Do not guess or replace them with a summary.
 
-When running from a CoolFlow source checkout, use:
+When running from a CoolFlow source checkout, first locate the CoolFlow repository root. If this Skill is at skills/coolflow-init/SKILL.md, the repository root is two parent directories above the Skill folder. Resolve the following paths from that repository root, never from the target project root:
 1. standards/initialization.md
 2. standards/documentation.md
 3. methodology/flow.md

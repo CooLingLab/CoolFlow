@@ -38,7 +38,7 @@ The Skill is located at [skills/coolflow-init/](skills/coolflow-init/). Install 
 
       npx skills add CooLingLab/CoolFlow --skill coolflow-init -g
 
-  This is an optional convenience tool, not a CoolFlow dependency. The CLI currently requires Node.js 22.20 or later; that requirement applies only to this installer, not to CoolFlow or the Skill itself. The CLI will let you choose a supported Agent.
+  This is an optional convenience tool, not a CoolFlow dependency. The CLI currently requires Node.js 22.20 or later, as declared in its [package metadata](https://github.com/vercel-labs/skills/blob/main/package.json); that requirement applies only to this installer, not to CoolFlow or the Skill itself. The CLI will let you choose a supported Agent.
 
 Not every coding Agent supports the Agent Skills format or global Skills. If yours does not, use its documented instruction mechanism or the manual fallback below; automatic Skill discovery cannot be guaranteed.
 
