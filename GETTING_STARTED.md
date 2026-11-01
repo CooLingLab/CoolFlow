@@ -28,6 +28,7 @@ Expected skeleton in an **empty project**:
 AGENTS.md
 README.md
 docs/
+  documentation.md  # complete project-local documentation standard
   product.md  # concise project-level Product Brief, not a PRD
   roadmap.md
   domain.md
@@ -37,6 +38,8 @@ docs/
 ```
 
 Empty directories may use `.gitkeep` for Git tracking. Initialization must preserve existing content and be idempotent. The optional [`coolflow-init` Skill](skills/coolflow-init/SKILL.md) supports **only** this documentation setup.
+
+After initialization, the project follows its own `docs/documentation.md`; future documentation work does not require access to CoolFlow. Projects may adapt that local standard independently. Existing files, including an existing local standard, are preserved and conflicts reported.
 
 ### B. Existing project — inspect before adopting
 

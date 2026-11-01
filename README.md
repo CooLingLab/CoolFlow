@@ -34,6 +34,8 @@ Use your current coding agent. Choose the right starting point:
 
 > Read https://github.com/CooLingLab/CoolFlow/blob/main/GETTING_STARTED.md and its linked standards. In my new repository, create only missing CoolFlow documentation and folders. Preserve existing files; do not brainstorm, create a Spec or write code yet. Report what changed.
 
+Initialization includes `docs/documentation.md`, a complete project-local standard for later documentation work without accessing CoolFlow. Existing files are preserved.
+
 **Existing project — inspect before adopting**
 
 > Read https://github.com/CooLingLab/CoolFlow/blob/main/GETTING_STARTED.md and inspect my existing repository. For **[feature or fix]**, suggest which CoolFlow steps would help and the smallest verifiable next action. Preserve existing conventions and propose a plan before changing anything.

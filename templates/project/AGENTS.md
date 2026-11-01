@@ -21,18 +21,9 @@ Use this recommended CoolFlow lifecycle; skip, merge or revisit stages as projec
 
 **Documentation Sync is not a Loop:** after human acceptance, update accepted/current docs, verify consistency and selectively archive work. Acceptance and release may occur at different times.
 
-## Documentation Map
+## Documentation
 
-- `docs/product.md`: concise project-level Product Brief (why, for whom, value and boundaries); it is **not a PRD**.
-- `docs/roadmap.md`: planned releases, including not-yet-built items.
-- `docs/domain.md`: domain terms, boundaries and core rules.
-- `docs/features/`: accepted actual feature behavior; never speculative plans.
-- `docs/work/<objective>/`: may be opened during discovery for notes/prototypes (for example, `work/001-mvp/`); not at initialization. Create its unified `spec.md` when the chosen objective enters **Design Spec Loop**, not merely because discovery began.
-- Optional within work: `prd.md` for substantial product requirements; `design.md` for complex technical design; `tasks.md` only for persistent progress tracking; `prototypes/` for explorations.
-- `docs/work/archive/`: selective historical Specs, work-specific decisions and verification evidence.
-- Optional `docs/solutions/`: verified, non-obvious, durable and material engineering knowledge; consult relevant entries before related work and capture only when the finding is worth reusing.
-- Optional `docs/adr/`: one record per consequential architecture or technical decision; preserve history and supersede decisions rather than silently rewriting them.
-- Optional `docs/feature-map.md`: where/how to navigate and verify actual UI.
+Follow `docs/documentation.md` when creating, updating or archiving project documents.
 
 ## Working Rules
 
@@ -42,10 +33,8 @@ Use this recommended CoolFlow lifecycle; skip, merge or revisit stages as projec
 4. For substantial changes: review the current Spec draft and related context before coding, resolve important findings and confirm design readiness; review new code and Spec conformance after coding.
 5. AI may implement and verify routine work. Ask the human to decide major product trade-offs and to accept the result.
 6. Update durable docs only to reflect accepted reality. Human acceptance and production release are distinct.
-7. Manage ordinary task lists in the active Agent session; create `tasks.md` only when persistent state is needed.
-8. The project may evolve these conventions independently; it does not need to track upstream CoolFlow releases.
-9. Before related work, consult only relevant existing Solutions. Capture a new Solution only when a verified finding is non-obvious, durable and material; update an existing record instead of duplicating it.
-10. Create an ADR only for a consequential architecture or technical decision. Record one decision per file and supersede old records rather than silently rewriting them.
+7. Manage ordinary task lists in the active Agent session.
+8. Before related work, consult relevant existing Solutions when available.
 
 ## Project-specific Conventions
 

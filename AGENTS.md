@@ -7,7 +7,7 @@ This repository publishes a **reference methodology and documentation standard**
 - Keep `standards/` the normative source of truth. Templates and optional Skills implement it; never invent conflicting requirements.
 - Prefer short, explicit, Agent-readable Markdown. Avoid workflow-state machines, custom runtimes, agent-router protocols, and mandatory installations.
 - A new project is initialized only when explicitly asked; initialization must never launch product discovery or start writing app code.
-- The project-local `AGENTS.md` template must include a self-contained concise overview of lifecycle and documentation rules.
+- The project-local `AGENTS.md` template must include a self-contained concise lifecycle overview and reference `docs/documentation.md` for documentation rules.
 
 ## Document lifecycle
 - Durable truth: product, roadmap, domain, accepted feature specs.
