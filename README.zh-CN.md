@@ -101,12 +101,12 @@ Golden Rules 是对人的提醒，**不是新的 AI 强制命令或开发阶段*
 |---|---|
 | **项目初始化** | `AGENTS.md`、`README.md`、`docs/product.md`、`roadmap.md`、`domain.md`，以及空的 `features/`、`work/`、`work/archive/` 目录 |
 | **真正开始开发时** | 默认创建一个 `docs/work/<objective>/spec.md` |
-| **确实需要时** | `prd.md`、`design.md`、`tasks.md`、`prototypes/`、`architecture.md`、`adr/`、`feature-map.md` |
-| **出现经过验证、值得复用的经验时** | 再创建可选的 `docs/lessons/`，不为了拥有知识目录而创建 |
+| **确实需要时** | `prd.md`、`design.md`、`tasks.md`、`prototypes/`、`architecture.md`、`solutions/`、`adr/`、`feature-map.md` |
+| **出现经过验证、值得复用的工程经验时** | 再创建可选的 `docs/solutions/`，不为了拥有知识目录而创建 |
 
 **Product Brief 不等于 PRD。** `docs/product.md` 是整个产品长期维护的简洁定义，回答产品为什么存在、服务谁、提供什么价值以及边界在哪里。可选的 `prd.md` 属于某一项具体开发工作，描述这一轮的用户需求、范围和产品层面的成功标准。统一 Spec 则进一步定义精确行为、实现方式和验证标准。
 
-**经验存储在哪里？** `docs/lessons/` 保存有证据支持、能够改变未来决策或行动的可复用经验。已完成工作的过程和证据保存在 `docs/work/archive/`；重要架构决策的原因保存在 `docs/adr/`；只有 Agent 必须长期遵守的高优先级稳定规则才进入 `AGENTS.md`。项目也可以自行建立 `solutions/` 来保存可复用的解决方案，但 CoolFlow 不强制要求，它与可选的 `lessons/` 不是一回事。经过多个项目验证的通用经验，可以提升到开发者共享知识库；只有足够稳定、普遍适用的开发原则，才考虑纳入 CoolFlow 的 `methodology/` 或 `standards/`。
+**经验存储在哪里？** `docs/solutions/` 是可选的工程经验库，保存经过验证、非显而易见、长期有用且值得复用的工程知识，设计思路参考 Compound Engineering。已完成工作的历史证据保存在 `docs/work/archive/`；重要架构决策的原因保存在 `docs/adr/`；只有 Agent 必须长期遵守的高优先级稳定规则才进入 `AGENTS.md`。Solutions 和 ADR 不同：前者沉淀可复用的工程发现，后者记录项目为什么做出重要技术选择。两者都不在初始化时创建，也不要求每次功能开发或 Bug 修复后都创建。
 
 对应的可复用源模板按用途组织：
 
