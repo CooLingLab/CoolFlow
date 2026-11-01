@@ -88,18 +88,18 @@ CoolFlow/
 ├── GETTING_STARTED.md
 ├── AGENTS.md
 │
-├── methodology/                     # Development method
+├── methodology/                     # 开发方法
 │   ├── flow.md
 │   ├── loops.md
 │   ├── golden-rules.md
 │   └── golden-rules.zh-CN.md
 │
-├── standards/                       # Normative standards
+├── standards/                       # 正式规范
 │   ├── documentation.md
 │   ├── initialization.md
 │   └── reviews.md
 │
-├── templates/                       # Reusable document templates
+├── templates/                       # 可复用文档模板
 │   ├── project/
 │   │   ├── AGENTS.md
 │   │   ├── README.md
@@ -120,22 +120,22 @@ CoolFlow/
 │       └── feature-map.md
 │
 ├── skills/
-│   └── coolflow-init/SKILL.md       # Optional initialization Skill
+│   └── coolflow-init/SKILL.md       # 可选初始化 Skill
 │
-├── flowsolutions/                   # Optional external solution catalog
+├── flowsolutions/                   # 可选外部方案目录
 │   ├── README.md
 │   ├── framework-comparison.md
 │   └── catalog.md
 │
 └── reviews/
-    └── scenarios/                  # Development-only review fixtures
+    └── scenarios/                  # 仅开发阶段的评审案例
 ```
 
-- `methodology/`：定义 Development Flow、Loops 和 Golden Rules。
-- `standards/`：定义文档、初始化和评审规范。
-- `templates/`：提供 App 项目和具体开发工作的文档模板。
-- `flowsolutions/`：可选的外部开发框架与解决方案目录，不会复制到 App 项目。
-- `reviews/scenarios/`：仅供开发阶段使用的内部评审案例，正式发布前需排除。
+- [methodology/](methodology/)：定义 Development Flow、Loops 和 Golden Rules。
+- [standards/](standards/)：定义文档、初始化和评审规范。
+- [templates/](templates/)：提供 App 项目和具体开发工作的文档模板。
+- [flowsolutions/](flowsolutions/)：可选的外部开发框架与解决方案目录，不会复制到 App 项目。
+- [reviews/scenarios/](reviews/scenarios/)：仅供开发阶段使用的内部评审案例，正式发布前需排除。
 
 独立的 CoolFlow Dashboard 未来可以可视化阶段与文档，但不负责 Agent 编排或任务执行。
 
