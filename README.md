@@ -125,11 +125,11 @@ CoolFlow/
     └── scenarios/                  # Development-only review fixtures
 ```
 
-- `methodology/` defines the Flow, Loops and Golden Rules.
-- `standards/` defines normative documentation, initialization and review conventions.
-- `templates/` provides the starting files copied into an App repository or an active work objective.
-- `flowsolutions/` is an optional catalog of external frameworks and methods. It is not copied into App projects.
-- `reviews/scenarios/` contains **development-only** review fixtures and must be excluded from the final release tree.
+- [methodology/](methodology/) defines the Flow, Loops and Golden Rules.
+- [standards/](standards/) defines normative documentation, initialization and review conventions.
+- [templates/](templates/) provides the starting files copied into an App repository or an active work objective.
+- [flowsolutions/](flowsolutions/) is an optional catalog of external frameworks and methods. It is not copied into App projects.
+- [reviews/scenarios/](reviews/scenarios/) contains **development-only** review fixtures and must be excluded from the final release tree.
 
 The separate CoolFlow Dashboard may visualize stages and project documents; the dashboard does not schedule or execute Agents.
 
