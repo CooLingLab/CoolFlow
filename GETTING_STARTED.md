@@ -26,7 +26,7 @@ Expected skeleton in an **empty project**:
 AGENTS.md
 README.md
 docs/
-  product.md
+  product.md  # concise project-level Product Brief, not a PRD
   roadmap.md
   domain.md
   features/
@@ -44,7 +44,7 @@ After initialization, describe the product you want and explicitly start work:
 
 > I want to build **[product idea]** for **[users]** to solve **[problem]**. Using CoolFlow, help me clarify the goal, important domain concepts, critical assumptions, and a tentative MVP roadmap. Open `docs/work/001-mvp/` **only now that discovery has started**. Do not assume the MVP scope is settled. Record unknown decisions honestly and use a concept prototype only if it helps validate a risky assumption. **Do not start implementing yet**.
 
-The Agent can update `docs/product.md`, `docs/domain.md`, `docs/roadmap.md`, and working notes. Stages may be **skipped or merged** when they add no value.
+The Agent can update `docs/product.md` (the project-level Product Brief), `docs/domain.md`, `docs/roadmap.md`, and working notes. A substantial objective may use its own optional `docs/work/<objective>/prd.md`; do not confuse that with the project brief. Verified reusable experience may later be distilled into optional `docs/lessons/`; raw work history stays with the work item or archive. Stages may be **skipped or merged** when they add no value.
 
 ## 3. Specify and implement one small increment
 
