@@ -146,14 +146,31 @@ These capabilities are not owned by one CoolFlow stage.
 
 **Important distinction:** a solution document, a persistent Agent memory, a project decision record and a reusable Skill are different artifacts. See [Framework Comparison](framework-comparison.md) and the CoolFlow design discussion before choosing a canonical knowledge model.
 
-### Project state and session continuity
+### Project-state awareness
+
+Project-state awareness means the Agent can recover the project's current position, progress and likely next action from durable, explicit project artifacts. It is not the same as remembering a conversation or saving a solution.
+
+| Solution | Mechanism | What to understand |
+|---|---|---|
+| [GSD Core: STATE.md and state.json](https://github.com/open-gsd/gsd-core/blob/next/docs/reference/state-md.md) | Reads STATE.md at workflow start; updates it after significant actions; validates/syncs against project artifacts; publishes versioned state.json for external readers | The clearest explicit project-state implementation in this comparison. The JSON is a derived read contract for dashboards, not a second source of truth. |
+| [GStack](https://github.com/garrytan/gstack/blob/main/docs/state-root.md) | Persistent per-project buckets for checkpoints, learnings and timeline; structured on-disk state for unattended autoplan runs | More than chat memory, but state is distributed across project/run artifacts rather than one compact lifecycle digest equivalent to GSD STATE.md. |
+| [Compound Engineering](https://github.com/EveryInc/compound-engineering-plugin) | Plans, work-unit execution state and dedicated handoff workflow | Useful scoped work state; does not prescribe one universal project-wide status digest. |
+| [BMAD Method](https://github.com/bmad-code-org/BMAD-METHOD) | Durable product, architecture and workflow artifacts | Supports artifact-based continuity, but the reviewed sources do not show a single canonical project-state digest with GSD's read/update/validate contract. |
+| [Superpowers](https://github.com/obra/superpowers) | Design documents, implementation plans and task checklists | Useful task-level progress context, not a dedicated project-wide state model. |
+
+GSD's implementation is worth studying even if CoolFlow never adopts it: [STATE.md schema](https://github.com/open-gsd/gsd-core/blob/next/docs/reference/state-md.md), [consistency gates](https://github.com/open-gsd/gsd-core/blob/next/docs/features/statemd-consistency-gates.md), and [machine-readable state contract](https://github.com/open-gsd/gsd-core/blob/next/docs/features/machine-readable-state-contract-planningstatejson.md).
+
+### Session handoff and resume
 
 | Solution | Mechanism | Main trade-off |
 |---|---|---|
-| [GSD Core: STATE.md and state.json](https://github.com/open-gsd/gsd-core/blob/next/docs/reference/state-md.md) | Human-readable state digest plus a separate versioned JSON snapshot for integrations | Strong explicit state model, but requires lifecycle-aware commands and maintenance logic |
-| [GStack: GBrain and learnings](https://github.com/garrytan/gstack) | Persistent searchable knowledge and optional cross-machine sync | Powerful retrieval, but introduces a separate knowledge service / storage choice |
-| [PStack: session pickup / pause safely](https://github.com/cursor/plugins/tree/main/pstack) | Structured handoff and session-resumption playbooks | Useful for in-flight work; not the same as a canonical project lifecycle status file |
-| [BMAD](https://github.com/bmad-code-org/BMAD-METHOD) | Durable briefs, specs, architecture and workflow artifacts | Carries important context in project files; less centered on one compact status digest |
+| [Compound Engineering: ce-handoff](https://github.com/EveryInc/compound-engineering-plugin/blob/main/docs/guides/ce-handoff.md) | Dedicated create/resume Skill for handing work between sessions | Explicit handoff contract, scoped to continuing a unit of work rather than defining all project state |
+| [GStack](https://github.com/garrytan/gstack) | Project checkpoints, CEO/design handoffs and context-restore workflows | Persistent cross-session context with a separate local state store |
+| [PStack: pause safely](https://github.com/cursor/plugins/blob/main/harness/pstack/claude-code/skills/poteto-mode/playbooks/pause-safely.md) | Writes a cold-start resume note with intent, progress, verification, current state, next steps and key files | Strong explicit pause discipline; not a project-wide lifecycle state file |
+| [GSD Core: pause-work / resume-work](https://github.com/open-gsd/gsd-core/blob/next/gsd-core/workflows/pause-work.md) | Separate HANDOFF.json and .continue-here.md alongside STATE.md | Separates the project's current state from the details of an interrupted session |
+| [BMAD: brainstorming resume](https://github.com/bmad-code-org/BMAD-METHOD/tree/main/skills/bmad-brainstorming/references) | Workflow-specific resume guidance | Useful within that workflow; not a universal project handoff contract |
+
+**Do not conflate the three:** project-state awareness answers “where is the project now?”; session handoff answers “where did this work stop, and how can it safely continue?”; knowledge capture answers “what reusable lesson should future work retrieve?”
 
 ### Skill quality and routing
 
