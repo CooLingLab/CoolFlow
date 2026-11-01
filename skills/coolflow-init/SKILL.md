@@ -26,6 +26,7 @@ If the Skill was installed separately and the relative paths are absent, locate 
 3. Create only **missing** files at target paths:
    - `AGENTS.md` ← project AGENTS template.
    - `README.md` ← project README template.
+   - `docs/documentation.md` ← complete project-local documentation standard template.
    - `docs/product.md`, `docs/roadmap.md`, `docs/domain.md` ← core templates.
    - `docs/features/.gitkeep`, `docs/work/.gitkeep`, `docs/work/archive/.gitkeep` if needed for empty directories in Git.
 4. Preserve existing files exactly. In particular, do not overwrite a preexisting project `AGENTS.md` or README. For conflicts or incompatible file types, explain the problem and request authorization before changing anything.
@@ -37,5 +38,6 @@ If the Skill was installed separately and the relative paths are absent, locate 
 
 - The repository's Standard remains useful even when this Skill is not installed; do not require users to install it.
 - Do not force projects to pin upstream CoolFlow versions or migrate when Standard changes.
+- After initialization, follow the project's `docs/documentation.md` without requiring CoolFlow access. Preserve a pre-existing local standard and report any conflict.
 - A separate `tasks.md` is not an initialization artifact, and is not normally required for everyday implementation.
 - Do not claim the initialization succeeded without checking the filesystem or repository changes.

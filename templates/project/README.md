@@ -13,6 +13,7 @@ To decide after product and technical stack are chosen.
 ## Documentation
 
 - [Agent instructions](AGENTS.md)
+- [Documentation standard](docs/documentation.md)
 - [Product Brief](docs/product.md)
 - [Roadmap](docs/roadmap.md)
 - [Domain](docs/domain.md)

@@ -34,6 +34,8 @@ AI 让写代码更容易，但做产品仍会遇到这些问题：
 
 > 请阅读 https://github.com/CooLingLab/CoolFlow/blob/main/GETTING_STARTED.md 及其引用的规范。在我的新项目中，只创建缺失的 CoolFlow 文档和目录，保留已有文件。暂不进行产品探索、编写 Spec 或开发代码，并报告实际修改。
 
+初始化会创建 `docs/documentation.md`，在项目内保存完整文档规范；后续编写文档无需访问 CoolFlow。已有文件会被保留。
+
 **已有项目——先检查现状**
 
 > 请阅读 https://github.com/CooLingLab/CoolFlow/blob/main/GETTING_STARTED.md 并检查我的现有项目。针对 **[功能或修复]**，建议采用哪些 CoolFlow 步骤，以及下一项最小、可验证的工作。保留原有约定，先提出方案，不要直接修改。

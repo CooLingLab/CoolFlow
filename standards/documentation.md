@@ -11,6 +11,7 @@ The following is the **default documentation tree for an application repository 
 ├── AGENTS.md                         # Required at initialization
 ├── README.md                         # Required at initialization
 └── docs/
+    ├── documentation.md              # Required at initialization; local documentation standard
     ├── product.md                    # Required at initialization
     ├── roadmap.md                    # Required at initialization
     ├── domain.md                     # Required at initialization
@@ -39,6 +40,7 @@ The following is the **default documentation tree for an application repository 
 | Location | At initialization | During discovery / development | After acceptance |
 |---|---|---|---|
 | `AGENTS.md`, `README.md` | Create if missing | Maintain as needed | Keep current |
+| `docs/documentation.md` | Copy the complete local standard if missing | Follow and adapt it to project needs | Keep project conventions current |
 | `docs/product.md`, `roadmap.md`, `domain.md` | Create templates; unknown facts stay `Not started` | Update when decisions become durable | Sync accepted changes |
 | `docs/features/` | Create directory | Usually leave unchanged | Add or update accepted feature descriptions |
 | `docs/work/` | Create directory | Open an objective directory during discovery if useful; create its `spec.md` when entering Design Spec Loop | Archive selectively |
@@ -63,8 +65,9 @@ The following is the **default documentation tree for an application repository 
 
 | Path | Purpose |
 | --- | --- |
-| `AGENTS.md` | Self-contained concise lifecycle, docs rules, working boundaries, project-local index |
+| `AGENTS.md` | Self-contained concise lifecycle and working boundaries; reference the local documentation standard |
 | `README.md` | Human-readable project entry; no invented features |
+| `docs/documentation.md` | Complete project-local documentation standard; independently maintained after initialization |
 | `docs/product.md` | A concise project-level Product Brief: problem, audience, vision, value, boundaries and current positioning; **not a PRD** |
 | `docs/roadmap.md` | MVP, future versions and priority; explicitly distinguishes planned from accepted |
 | `docs/domain.md` | Ubiquitous language, domain boundaries, core rules; may remain unfilled initially |
