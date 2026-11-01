@@ -100,7 +100,7 @@ When you apply CoolFlow to an App, this is the **project documentation structure
 
 **Product Brief is not PRD.** `docs/product.md` is the concise, long-lived definition of the whole product—problem, audience, vision, value and boundaries. An optional `prd.md` belongs to one substantial development objective and describes that increment's user needs, scope and product-level success criteria. The unified `spec.md` then defines precise behavior, implementation and verification.
 
-**Where does experience go?** `docs/lessons/` stores evidence-backed lessons that should change future decisions or actions. Completed work and its evidence stay in `docs/work/archive/`; important architecture rationale belongs in `docs/adr/`; only stable, high-priority rules that Agents must always follow belong in `AGENTS.md`. A project may independently add a `solutions/` directory for reusable solution recipes, but CoolFlow does not require it. It is not the same as the optional `lessons/` directory.
+**Where does experience go?** `docs/lessons/` stores evidence-backed lessons that should change future decisions or actions. Completed work and its evidence stay in `docs/work/archive/`; important architecture rationale belongs in `docs/adr/`; only stable, high-priority rules that Agents must always follow belong in `AGENTS.md`. A project may independently add a `solutions/` directory for reusable solution recipes, but CoolFlow does not require it. It is not the same as the optional `lessons/` directory. Lessons that prove useful across multiple projects can be promoted to a shared knowledge base; only broadly validated development principles belong in CoolFlow's `methodology/` or `standards/`.
 
 The reusable source templates are organized by purpose:
 
