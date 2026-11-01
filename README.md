@@ -72,16 +72,64 @@ New project initialization yields `AGENTS.md`, `README.md`, `docs/product.md`, `
 
 After initialization, projects **own their conventions**; they need not pin or track future CoolFlow versions.
 
-## Repository guide
+## Repository structure
 
-| Path | Purpose |
-| --- | --- |
-| [methodology/](methodology/) | The lifecycle and its loops |
-| [standards/](standards/) | Documentation, initialization, and review conventions |
-| [templates/](templates/) | Initial project and optional work artifact templates |
-| [skills/coolflow-init/](skills/coolflow-init/) | Optional Skill; no required install |
-| [flowsolutions/](flowsolutions/) | Optional framework comparison and stage-based solution catalog |
-| [reviews/scenarios/](reviews/scenarios/) | **Development-only** Scenario Review fixtures; remove from final release tree |
+The tree below shows the document and template layout currently maintained by CoolFlow. The separate **application documentation tree** created in a target App repository is defined in the [documentation standard](standards/documentation.md#canonical-application-documentation-tree).
+
+```text
+CoolFlow/
+├── README.md / README.zh-CN.md
+├── GETTING_STARTED.md
+├── AGENTS.md
+│
+├── methodology/                     # Development method
+│   ├── flow.md
+│   ├── loops.md
+│   ├── golden-rules.md
+│   └── golden-rules.zh-CN.md
+│
+├── standards/                       # Normative standards
+│   ├── documentation.md
+│   ├── initialization.md
+│   └── reviews.md
+│
+├── templates/                       # Reusable document templates
+│   ├── project/
+│   │   ├── AGENTS.md
+│   │   ├── README.md
+│   │   └── docs/
+│   │       ├── product.md
+│   │       ├── roadmap.md
+│   │       ├── domain.md
+│   │       ├── features/.gitkeep
+│   │       └── work/
+│   │           ├── .gitkeep
+│   │           └── archive/.gitkeep
+│   ├── work/
+│   │   ├── spec.md
+│   │   ├── prd.md
+│   │   ├── design.md
+│   │   └── tasks.md
+│   └── optional/
+│       └── feature-map.md
+│
+├── skills/
+│   └── coolflow-init/SKILL.md       # Optional initialization Skill
+│
+├── flowsolutions/                   # Optional external solution catalog
+│   ├── README.md
+│   ├── framework-comparison.md
+│   └── catalog.md
+│
+└── reviews/
+    └── scenarios/                  # Development-only review fixtures
+```
+
+- `methodology/` defines the Flow, Loops and Golden Rules.
+- `standards/` defines normative documentation, initialization and review conventions.
+- `templates/` provides the starting files copied into an App repository or an active work objective.
+- `flowsolutions/` is an optional catalog of external frameworks and methods. It is not copied into App projects.
+- `reviews/scenarios/` contains **development-only** review fixtures and must be excluded from the final release tree.
 
 The separate CoolFlow Dashboard may visualize stages and project documents; the dashboard does not schedule or execute Agents.
 
