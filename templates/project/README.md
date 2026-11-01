@@ -18,4 +18,5 @@ To decide after product and technical stack are chosen.
 - [Domain](docs/domain.md)
 - [Accepted features](docs/features/)
 - [Development work](docs/work/)
-- Reusable lessons: `docs/lessons/` (optional; document here when created)
+- [Reusable engineering Solutions](docs/solutions/) (optional; add when useful)
+- [Architecture Decision Records](docs/adr/) (optional; add consequential decisions only)
