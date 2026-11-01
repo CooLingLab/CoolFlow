@@ -32,26 +32,20 @@ Use CoolFlow with your preferred coding Agent; no specific Agent vendor or insta
 
 **New project — install CoolFlow Init**
 
-Open the coding Agent you already use (Codex, Claude Code, OpenCode, etc.) and paste this prompt:
+Open your coding Agent and send:
 
 ```text
-Please install the CoolFlow Init Skill for the coding agent I am currently using.
-
-Skill source:
+Please install this Skill globally using the standard installation method for your current Agent:
 https://github.com/CooLingLab/CoolFlow/tree/main/skills/coolflow-init
-
-Identify your own supported Skill installation mechanism and global/user-level Skills directory. Install the entire coolflow-init/ folder there, preserving its name and complete contents. Choose the most reliable supported method (your native installer, a Skills installer CLI, or fetching and copying the folder from GitHub). Do not install it into the current project or workspace.
-
-After installation, verify the installed path and whether you can discover the Skill. Tell me how to invoke it. Do not execute the Skill, initialize the current project, or modify any project files. If global installation is unsupported or verification is not possible, explain that clearly and give me the shortest next step; do not guess a path or claim success without evidence.
 ```
 
-That's it: your Agent handles the installation. Once installed, open a **new, empty project directory** and ask:
+After installation, open a **new, empty project directory** and ask:
 
 > Use `coolflow-init` to initialize this empty project.
 
 The Skill checks the target directory before writing and refuses any other files or folders, including hidden entries. It creates the CoolFlow project documentation, verifies the result, and stops without starting Brainstorm or writing application code.
 
-For manual installation or other fallback options, see the [Getting Started guide](GETTING_STARTED.md).
+If your Agent cannot install Skills, see the manual installation and optional installer methods in the [Getting Started guide](GETTING_STARTED.md).
 
 **Existing project — inspect before adopting**
 
