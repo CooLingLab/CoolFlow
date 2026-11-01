@@ -85,7 +85,7 @@ Golden Rules 是对人的提醒，**不是新的 AI 强制命令或开发阶段*
 | [standards/](standards/) | 文档、初始化与审查规范 |
 | [templates/](templates/) | 项目和工作文档模板 |
 | [skills/coolflow-init/](skills/coolflow-init/) | 可选初始化 Skill |
-| [solutions/](solutions/) | 可选外部开发框架比较与分阶段解决方案目录 |
+| [flowsolutions/](solutions/) | 可选外部开发框架比较与分阶段解决方案目录 |
 | [reviews/scenarios/](reviews/scenarios/) | **仅限开发阶段**的内部场景测试，正式发布前需清理 |
 
 独立的 CoolFlow Dashboard 未来可以可视化阶段与文档，但不负责 Agent 编排或任务执行。
