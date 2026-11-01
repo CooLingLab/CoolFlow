@@ -11,8 +11,8 @@ This directory contains **verified, reusable lessons learned while building this
 
 ## What belongs elsewhere
 
-- Completed work evidence: \`docs/work/archive/\`
-- Architecture decision rationale: \`docs/adr/\`
-- High-priority instructions that Agents must always follow: \`AGENTS.md\`
+- Completed work evidence: `docs/work/archive/`
+- Architecture decision rationale: `docs/adr/`
+- High-priority instructions that Agents must always follow: `AGENTS.md`
 
 Use the reusable [lesson template](https://github.com/CooLingLab/CoolFlow/blob/feat/v0.1-standard-and-init/templates/optional/lessons/lesson-template.md) when creating a new entry.
