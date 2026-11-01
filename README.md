@@ -30,6 +30,8 @@ These are **human-facing decision principles**, not four new mandatory Agent com
 
 ## The model
 
+![CoolFlow development flow and feedback loops](docs/diagrams/coolflow-diagram.en.svg)
+
 **Flow (recommended, adaptable)**
 
 1. Idea → Brainstorm

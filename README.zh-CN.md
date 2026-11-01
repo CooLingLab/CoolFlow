@@ -32,6 +32,8 @@ Golden Rules 是对人的提醒，**不是新的 AI 强制命令或开发阶段*
 
 ## 开发模型
 
+![CoolFlow 开发流程与反馈循环](docs/diagrams/coolflow-diagram.zh-CN.svg)
+
 **一个 Development Flow（灵活、按需采用）**
 
 1. Idea → Brainstorm：厘清用户、问题与核心价值。
