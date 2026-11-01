@@ -97,6 +97,7 @@ When you apply CoolFlow to an App, this is the **project documentation structure
 | **When development begins** | One `docs/work/<objective>/spec.md` as the default starting point |
 | **Only when needed** | `prd.md`, `design.md`, `tasks.md`, `prototypes/`, `architecture.md`, `solutions/`, `adr/`, `feature-map.md` |
 | **When a verified reusable finding emerges** | Optional `docs/solutions/`; do not create it just to have a knowledge folder |
+| **When a consequential architecture decision is made** | Optional `docs/adr/`; create one record per decision |
 
 **Product Brief is not PRD.** `docs/product.md` is the concise, long-lived definition of the whole product—problem, audience, vision, value and boundaries. An optional `prd.md` belongs to one substantial development objective and describes that increment's user needs, scope and product-level success criteria. The unified `spec.md` then defines precise behavior, implementation and verification.
 
