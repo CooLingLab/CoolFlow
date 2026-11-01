@@ -26,6 +26,9 @@ The following is the **default documentation tree for an application repository 
     │   │   └── prototypes/           # Optional: prototype artifacts
     │   └── archive/                  # Directory required at initialization
     │       └── <completed-work>/    # Selective completed-work evidence
+    ├── lessons/                      # Optional: verified, reusable project learnings
+    │   ├── README.md                 # Optional index and retrieval guidance
+    │   └── <lesson>.md               # One focused lesson per file
     ├── architecture.md               # Optional: current system architecture
     ├── adr/                          # Optional: durable architecture decisions
     │   └── <decision>.md
@@ -41,6 +44,7 @@ The following is the **default documentation tree for an application repository 
 | `docs/features/` | Create directory | Usually leave unchanged | Add or update accepted feature descriptions |
 | `docs/work/` | Create directory | Create one `<objective>/spec.md` for the actual objective | Archive selectively |
 | `docs/work/archive/` | Create directory | No need to populate | Retain useful historical evidence |
+| `docs/lessons/` | Do not create by default | Create when a verified reusable lesson emerges | Maintain only while lessons remain useful |
 | Optional documents | Do not create by default | Add only when complexity or a real need justifies them | Maintain or archive when relevant |
 
 **Required at initialization** means create the missing files/directories in the template skeleton. It does not mean invent content, create empty feature documents, or start an implementation objective.
@@ -50,7 +54,7 @@ The following is the **default documentation tree for an application repository 
 ### What this tree deliberately does not prescribe
 
 - No default `docs/solutions/`, `docs/knowledge/` or `docs/state.md` is required by CoolFlow v0.1.
-- A project may add its own solution catalog, knowledge base, status note or other documentation if that project benefits from it. Such additions remain project-local choices, not CoolFlow initialization requirements.
+- A project may add its own `solutions/` directory, status note or other documentation if useful. These remain project-local choices, not CoolFlow initialization requirements. For reusable experience, CoolFlow recommends the more focused optional `docs/lessons/` described below rather than a generic `docs/knowledge/` bucket.
 - CoolFlow's own `flowsolutions/` directory belongs to the **CoolFlow methodology repository**. It catalogs external frameworks and methods and is not copied into application repositories. An App may independently create its own `solutions/` directory if useful; that directory belongs to the App and is outside this default standard. The two names refer to different things.
 - Projects may customize document names and locations after initialization. Preserve one authoritative location per fact and keep the project-local `AGENTS.md` / README navigation accurate.
 
@@ -60,7 +64,7 @@ The following is the **default documentation tree for an application repository 
 | --- | --- |
 | `AGENTS.md` | Self-contained concise lifecycle, docs rules, working boundaries, project-local index |
 | `README.md` | Human-readable project entry; no invented features |
-| `docs/product.md` | Problem, audience, product vision and current positioning; *not* the brainstorm transcript |
+| `docs/product.md` | A concise project-level Product Brief: problem, audience, vision, value, boundaries and current positioning; **not a PRD** |
 | `docs/roadmap.md` | MVP, future versions and priority; explicitly distinguishes planned from accepted |
 | `docs/domain.md` | Ubiquitous language, domain boundaries, core rules; may remain unfilled initially |
 
@@ -78,7 +82,7 @@ A complete Spec should be comprehensible by a new Agent and provide:
 - Open questions / assumptions clearly distinguished from decisions.
 
 Optional artifacts, created for actual need:
-- `prd.md`: substantial product scope, user journeys and product-level success criteria; reference from Spec.
+- `prd.md`: optional, substantial product requirements for **one development objective**—user problem, journeys, scope and product-level success criteria; reference from Spec. It is not the project-wide Product Brief.
 - `design.md`: complex technical design too detailed for unified Spec; reference from Spec.
 - `tasks.md`: **only** when independent, persistent task progress is needed across sessions, agents, or time. Do not duplicate existing session, Issue or other task trackers.
 - `brainstorm.md`, `prototypes/`: candidate concepts and working prototypes, in the applicable work directory.
@@ -94,15 +98,37 @@ Optional artifacts, created for actual need:
 - Never assume an empty template means the stage is completed; `Not started` means not decided or not filled.
 - Projects own their documents and may customize paths and conventions. No forced upstream version pinning or automatic migration.
 
+## Reusable project lessons (optional)
+
+`docs/lessons/` is the home for **verified, reusable experience learned while building this specific project**. Create it only when a lesson worth reusing actually exists; it is not part of the initialization skeleton.
+
+A lesson should be concise and actionable. Capture:
+- **Context:** the situation, stack or conditions where it applies.
+- **Finding:** what was observed, including evidence or a reproducible example.
+- **Lesson:** what the project learned.
+- **Recommended action:** what a future developer or Agent should do differently.
+- **Applicability / limits:** where the lesson does and does not apply; include a verification date or source work when useful.
+
+Do not store raw brainstorming, every debugging transcript, unverified guesses, or generic notes that do not change future decisions or actions. Keep detailed incident/work evidence in the relevant work item or `docs/work/archive/`, then distill only the durable insight into `docs/lessons/`.
+
+Keep these destinations distinct:
+- `docs/work/archive/`: historical evidence of what happened in a completed work item.
+- `docs/lessons/`: reusable findings extracted from experience.
+- `docs/adr/`: why an important architecture or technical decision was made.
+- `AGENTS.md`: only high-priority, stable instructions that future Agents must consistently follow.
+
+When starting relevant work, consult only the lessons that match the current context. Add or revise a lesson only when new evidence makes it useful; do not turn lesson capture into a mandatory ceremony.
+
 ## Document ownership
 
-- `product.md`: *why this product*; `roadmap.md`: *when/which scope*.
-- Optional `prd.md`: *what user-facing outcome this increment needs*.
+- `product.md` (**Product Brief**): *why this product exists, for whom and within what boundaries*; `roadmap.md`: *when/which scope*.
+- Optional `prd.md`: *what user-facing outcome this particular increment needs*; it is not the project-level Product Brief.
 - Unified `spec.md`: *precise expected behavior + implementable solution*.
 - Optional `design.md`: *deeper technical details referenced by Spec*.
 - Optional `tasks.md`: *mutable execution progress*, not another source of requirements.
 - `features/`: *what is accepted and true now*.
 - `feature-map.md`: *where and how to operate/verify implemented features*.
+- Optional `lessons/`: *what verified experience should change future decisions or actions*.
 
 ## AI rules
 
@@ -111,4 +137,5 @@ Optional artifacts, created for actual need:
 3. When information is unknown, mark it as `Not started` / `To decide`; don't invent product requirements.
 4. Ask a human for product-critical decisions; automate verifiable documentation/implementation tasks.
 5. Use **Design Spec Loop (Step 6)** to review and revise material designs and **Implementation Loop (Step 7)** for tests, code review and Spec conformance. The **Evolution Loop** may be triggered by new evidence at **any step**, returning to any relevant step when product assumptions, scope or direction need reconsideration; routine quality fixes remain in their local Loops. After acceptance, sync durable docs as a **step**, not a separate Loop. Release and post-release feedback are possible events, not prerequisites for Evolution.
-6. Keep structure lightweight; never add files solely to satisfy a checklist.
+6. When relevant, consult matching verified lessons before work; capture only durable, evidence-backed learnings that will change future action.
+7. Keep structure lightweight; never add files solely to satisfy a checklist.
