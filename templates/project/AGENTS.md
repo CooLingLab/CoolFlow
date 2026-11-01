@@ -27,7 +27,7 @@ Use this recommended CoolFlow lifecycle; skip, merge or revisit stages as projec
 - `docs/roadmap.md`: planned releases, including not-yet-built items.
 - `docs/domain.md`: domain terms, boundaries and core rules.
 - `docs/features/`: accepted actual feature behavior; never speculative plans.
-- `docs/work/<objective>/spec.md`: full active design for a development objective. Open `work/001-mvp/` when initial discovery begins, **not** on folder initialization.
+- `docs/work/<objective>/`: may be opened during discovery for notes/prototypes (for example, `work/001-mvp/`); not at initialization. Create its unified `spec.md` when the chosen objective enters **Design Spec Loop**, not merely because discovery began.
 - Optional within work: `prd.md` for substantial product requirements; `design.md` for complex technical design; `tasks.md` only for persistent progress tracking; `prototypes/` for explorations.
 - `docs/work/archive/`: selective historical Specs, work-specific decisions and verification evidence.
 - Optional `docs/solutions/`: verified, non-obvious, durable and material engineering knowledge; consult relevant entries before related work and capture only when the finding is worth reusing.
@@ -39,7 +39,7 @@ Use this recommended CoolFlow lifecycle; skip, merge or revisit stages as projec
 1. Read the files relevant to the current task; do not assume an empty template is complete.
 2. Preserve existing project content, conventions and code. No destructive replacement without permission.
 3. Do not invent requirements, user decisions or successful tests. Mark unknowns `Not started` / `To decide`.
-4. For substantial changes: independently review the design before coding; review the new code and Spec conformance after coding.
+4. For substantial changes: review the current Spec draft and related context before coding, resolve important findings and confirm design readiness; review new code and Spec conformance after coding.
 5. AI may implement and verify routine work. Ask the human to decide major product trade-offs and to accept the result.
 6. Update durable docs only to reflect accepted reality. Human acceptance and production release are distinct.
 7. Manage ordinary task lists in the active Agent session; create `tasks.md` only when persistent state is needed.
