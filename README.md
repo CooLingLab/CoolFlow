@@ -49,7 +49,7 @@ These are decision principles, **not mandatory commands for AI agents**. Put con
 
 ## Why a pilot?
 
-CoolFlow was started by Cooling, a pilot exploring AI-assisted software development. Aviation SOPs, situational awareness and cross-checks inspired its emphasis on priorities, actual state, recoverability and verification. The approach draws in part on the Airbus Golden Rules for Pilots, but it is **independent and neither authored nor endorsed by Airbus**.
+CoolFlow was started by Cooling, a pilot exploring AI-assisted software development. Aviation SOPs, situational awareness and cross-checks inspired its emphasis on priorities, actual state, recoverability and verification. The approach draws in part on the Airbus Golden Rules for Pilots.
 
 ## More documentation
 
