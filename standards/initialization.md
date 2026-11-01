@@ -6,6 +6,8 @@ This is **initialization, not product discovery or implementation**.
 
 ## Required outcomes
 
+- Follow the [canonical application documentation tree](documentation.md#canonical-application-documentation-tree); do not invent extra default folders or files beyond that tree.
+
 - Check repository status and existing files first. Never overwrite, delete or silently rewrite user files.
 - Create missing: `AGENTS.md`, `README.md`, `docs/product.md`, `docs/roadmap.md`, `docs/domain.md`.
 - Ensure `docs/features/`, `docs/work/`, and `docs/work/archive/` exist using `.gitkeep` for Git-only empty directories.
