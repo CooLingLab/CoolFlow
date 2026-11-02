@@ -6,7 +6,7 @@ Use after identifying the need and any source constraints. The [bundled CoolFlow
 
 Before writing, identify:
 
-1. **Need and scope:** the repeatable problem, intended users, situations that should and should not trigger the Skill, and whether an existing Skill already suffices.
+1. **Need and scope:** the repeatable problem, intended users, situations that should and should not trigger the Skill, and whether an existing Skill already suffices — answered by the candidate survey in workflow step 1, not assumed.
 2. **Inputs and outputs:** what information or authorization is needed, what a useful result looks like, and how to proceed with missing information.
 3. **Behavior:** the smallest sequence of decisions, examples or checks that addresses the need; explain why important boundaries matter.
 4. **Compatibility:** relevant CoolFlow stage(s) or cross-stage use, project-local document rules, human decisions and actual environment needs. Classify by stage in a catalog, not by forcing a physical directory hierarchy.

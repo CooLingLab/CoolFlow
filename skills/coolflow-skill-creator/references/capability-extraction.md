@@ -1,6 +1,6 @@
 # Source research and capability extraction
 
-Use this reference for adapting, combining, or evaluating external material. For a Skill created from scratch, identify the user need and existing overlap without inventing an upstream source.
+Use this reference for adapting, combining, or evaluating external material. Start from the candidate survey in workflow step 1: local Skills first, then public candidates. For a Skill the user explicitly wants created from scratch, identify the user need and the overlap already found in that survey without inventing an upstream source.
 
 ## Establish the source
 
