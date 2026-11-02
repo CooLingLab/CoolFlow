@@ -4,21 +4,24 @@
 
 **AI can write code. Building software takes more than code.**
 
-CoolFlow is a lightweight development roadmap for independent developers building with AI—from a rough idea to a working, verifiable product.
+CoolFlow is a lightweight engineering method for independent developers building with AI—from a rough idea to a working, verifiable product.
 
 ## Why CoolFlow?
 
-AI makes writing code easier, but building a product still raises familiar questions:
+AI can give you a fast pair of hands. It cannot give you project experience. For an independent developer, the hard part is rarely writing code—it is:
 
-- What should you build first?
-- Is the AI changing code without a clear product direction?
-- Does a feature actually work, or does it only look finished?
+- **Sequencing:** knowing what a project should settle first and what can wait, and which problems get more expensive when ignored.
+- **Structure:** seeing how product, domain, architecture and features fit together, instead of jumping straight into pages and features.
+- **Judgment:** knowing what "good enough" means, what needs review, and what counts as accepted—not just whether it runs.
+- **Compounding:** turning each project's mistakes into the next project's starting point, instead of starting from zero every time.
+
+CoolFlow turns the part of project experience that can be written down into a practical engineering method. It does not decide for you, but it gives you something to lean on before you have the experience—and a place to keep the experience you gain.
 
 ## What CoolFlow provides
 
-- **One Development Flow:** From idea discovery, prototypes and roadmap to implementation, human acceptance and release.
+- **One Development Flow:** From idea discovery, prototypes and roadmap to implementation, human acceptance and release—with the questions each stage should answer and the output it should leave behind.
 - **Three Adaptive Loops:** Improve designs through review, validate implementations through testing and code review, and adapt product direction as new information emerges.
-- **Lightweight documentation:** Keep goals, requirements, key decisions and reusable engineering knowledge.
+- **Lightweight documentation:** Give goals, domain, architecture, key decisions and reusable engineering knowledge a stable home.
 
 <p align="center">
   <img src="methodology/flow-diagram.en.svg" alt="CoolFlow development flow and feedback loops">
