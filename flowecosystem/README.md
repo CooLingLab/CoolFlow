@@ -8,6 +8,7 @@ It maps mature external frameworks, Skills, methods and tools to the stages and 
 
 - [Framework Comparison](framework-comparison.md) — compare lifecycle coverage, engineering practices, state management and knowledge capture across major AI development frameworks.
 - [Solution Catalog](catalog.md) — broad research catalog of external methods, frameworks and Skills.
+- [Engineering Practices](engineering-practices.md) — optional practices for parallel work, review, release verification, permissions and decision records in AI-assisted development.
 - [CoolFlow Advisor curated recommendations](../skills/coolflow-advisor/references/recommendations.md) — task-by-task **selected concrete Skills/tools**, bundled locally with the optional Advisor Skill.
 
 ## Selection principles
