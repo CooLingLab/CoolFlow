@@ -35,6 +35,7 @@ The first two Loops are primarily associated with their named stages; the third 
 - Check implementation against the **approved Spec and acceptance criteria**, not just the test suite.
 - When code and Spec diverge, identify whether the implementation is wrong or the requirement needs human reconsideration.
 - If the Spec is incomplete or flawed, **return to the Design Spec Loop**. Never silently rewrite requirements to rationalize broken code.
+- Work autonomously within the approved behavior and constraints. Pause for human judgment when proceeding would change product intent, materially expand scope, or commit to a significant unresolved trade-off; present the evidence and decision needed rather than silently deciding.
 - Repeat until evidence supports human acceptance, or report unresolved blockers.
 
 **Exit:** tested, reviewed implementation is ready for a human acceptance decision.
