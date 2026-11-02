@@ -8,14 +8,14 @@ CoolFlow is a lightweight engineering method for independent developers building
 
 ## Why CoolFlow?
 
-AI can give you a fast pair of hands. It cannot give you project experience. For an independent developer, the hard part is rarely writing code—it is:
+AI makes writing code easier. It does not give us a framework for running a project. What actually gets in the way is rarely code:
 
-- **Sequencing:** knowing what a project should settle first and what can wait, and which problems get more expensive when ignored.
-- **Structure:** seeing how product, domain, architecture and features fit together, instead of jumping straight into pages and features.
-- **Judgment:** knowing what "good enough" means, what needs review, and what counts as accepted—not just whether it runs.
-- **Compounding:** turning each project's mistakes into the next project's starting point, instead of starting from zero every time.
+- What should a project do first, and what can wait?
+- How do product, domain, architecture and features connect?
+- When is something good enough, what needs review, and what counts as accepted?
+- What should this project leave behind for the next one?
 
-CoolFlow turns the part of project experience that can be written down into a practical engineering method. It does not decide for you, but it gives you something to lean on before you have the experience—and a place to keep the experience you gain.
+CoolFlow does not hand you ready-made experience. It builds these questions into a flow and a set of documents, so you have a structure before you have the experience—and a place to keep the experience you gain.
 
 ## What CoolFlow provides
 
