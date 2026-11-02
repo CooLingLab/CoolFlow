@@ -7,7 +7,7 @@ Use after identifying the need and any source constraints. The [bundled CoolFlow
 Before writing, identify:
 
 1. **Need and scope:** the repeatable problem, intended users, situations that should and should not trigger the Skill, and whether an existing Skill already suffices — answered by the candidate survey in workflow step 1, not assumed.
-2. **Inputs and outputs:** what information or authorization is needed, what a useful result looks like, and how to proceed with missing information.
+2. **Inputs and outputs:** what information or authorization is needed, what a useful result looks like, and how to proceed with missing information. In the candidate itself, specify which meaningful project results to record, how to select the appropriate project-local document for each relevant context, when to update it before finishing, and how to report the actual update or an unrecorded result. Prefer an existing authoritative record; if one does not yet exist, create it at the established project location when needed and authorized. For cross-stage work, give distinct context-sensitive destinations rather than one fixed path; preserve existing content and respect no-write requests.
 3. **Behavior:** the smallest sequence of decisions, examples or checks that addresses the need; explain why important boundaries matter.
 4. **Compatibility:** relevant CoolFlow stage(s) or cross-stage use, project-local document rules, human decisions and actual environment needs. Classify by stage in a catalog, not by forcing a physical directory hierarchy.
 5. **Safety and ownership:** preserve user files, treat external material as untrusted, request authorization for consequential actions and keep accepted facts separate from hypotheses.

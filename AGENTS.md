@@ -13,7 +13,7 @@ This repository publishes a **reference methodology and documentation standard**
 - Durable truth: product, roadmap, domain, accepted feature specs.
 - In-progress: discovery may use `docs/work/<objective>/` without a Spec; create unified `spec.md` in Design Spec Loop, with optional PRD, design, tasks and prototypes.
 - Default to a **unified Spec**. A separate tasks file is not required when the coding Agent already tracks the plan in its session.
-- Review the design before significant implementation; review code and Spec conformance afterward; update durable docs only after acceptance.
+- Review the design before significant implementation; review code and Spec conformance afterward. Record human-confirmed plans with their actual status; sync durable docs describing accepted/current behavior after human acceptance.
 
 ## External solution references
 - `flowecosystem/` is a **non-normative, optional reference catalog**; `standards/` remains authoritative.

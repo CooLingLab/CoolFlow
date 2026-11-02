@@ -32,7 +32,7 @@ Follow `docs/documentation.md` when creating, updating or archiving project docu
 3. Do not invent requirements, user decisions or successful tests. Mark unknowns `Not started` / `To decide`.
 4. For substantial changes: review the current Spec draft and related context before coding, resolve important findings and confirm design readiness; review new code and Spec conformance after coding.
 5. AI may implement and verify routine work. Ask the human to decide major product trade-offs and to accept the result.
-6. Update durable docs only to reflect accepted reality. Human acceptance and production release are distinct.
+6. Record human-confirmed plans with their actual status; sync durable docs describing accepted/current behavior after human acceptance. Acceptance and production release are distinct.
 7. Manage ordinary task lists in the active Agent session.
 8. Before related work, consult relevant existing Solutions when available.
 

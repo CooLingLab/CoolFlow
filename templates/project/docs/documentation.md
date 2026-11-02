@@ -62,6 +62,18 @@ The following is the **default documentation tree for an application repository 
 - CoolFlow's own `flowecosystem/` directory belongs to the **CoolFlow methodology repository**. It catalogs external frameworks and methods and is not copied into application repositories. An App's `docs/solutions/` is its own engineering knowledge store; the names are related but serve different purposes.
 - Projects may customize document names and locations after initialization. Preserve one authoritative location per fact and keep the project-local `AGENTS.md` / README navigation accurate.
 
+## Recording results from Agent Skills
+
+When a Skill produces project-specific decisions, findings or open questions worth retaining, identify the appropriate project document and record the useful result within the authorized scope. Read the project-local documentation rules and relevant existing work first. Update a meaningful checkpoint during longer discussions when useful, and complete the record before finishing the task; do not rely on the chat ending to trigger a later write. Preserve existing content and report which documents were actually updated.
+
+Choose the destination by the content and current work, following project-local conventions before these defaults:
+
+- During discovery, use the current work objective's existing notes or, when useful, `docs/work/<objective>/brainstorm.md`. Discovery alone does not require a Spec.
+- For a selected objective in Design Spec Loop, capture relevant requirements, design decisions, trade-offs and open questions in its unified `docs/work/<objective>/spec.md` or the project's equivalent.
+- Record human-confirmed, durable project-level plans and decisions in the relevant product, roadmap or domain document with their actual status. A roadmap may summarize future feature scope labeled as planned or proposed; keep detailed unaccepted behavior and unresolved designs in work records or a Spec. After human acceptance, sync affected accepted/current facts to product, roadmap, domain and feature documents as relevant; acceptance does not require release.
+
+Distinguish observed facts, user claims, decisions, unverified findings, assumptions and unresolved questions from one another; user claims may not be independently verified. Update an existing authoritative record where possible rather than duplicating it; do not create an extra document for every Skill invocation. If the user requests a discussion-only result, writes are unavailable, or the project or appropriate destination cannot be determined, leave the documents unchanged and say what remains unrecorded and, when known, where it could go. Ask for the missing target when it is necessary to proceed.
+
 ## Core project docs (created on initialization)
 
 | Path | Purpose |

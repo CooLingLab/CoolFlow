@@ -1,0 +1,33 @@
+schema_version: "1.1"
+name: result-recording
+expected_outcome: |
+  Provide a usable Brainstorm SKILL.md draft and a concrete validation plan,
+  with no writes or network access during this authoring request. The draft
+  itself must direct future use to record meaningful project results in an
+  appropriate document before finishing an authorized project task, rather
+  than only suggesting a write or depending on the chat ending.
+
+  Resolve the target using the project's own instructions and documentation
+  conventions. Distinguish discovery notes from the selected objective's
+  Design Spec and do not require a Spec during initial discovery. Prefer an
+  existing authoritative document; allow creation at a known project location
+  when needed and authorized. Preserve existing content; distinguish observed
+  facts, user claims, decisions, unverified findings, assumptions and open
+  questions from one another; user claims may not be independently verified.
+  A roadmap may summarize future feature scope labeled as planned or proposed;
+  keep detailed unaccepted behavior and unresolved designs in work records or
+  the Spec. Mark confirmed plans accurately and sync accepted/current facts
+  after human acceptance without waiting for release. Identify the updated document,
+  or report an unrecorded result when writes are prohibited, the target is
+  unclear, or writing fails.
+
+  This authoring request's no-write restriction must not be turned into a
+  permanent prohibition on future authorized documentation updates. The
+  draft must not require a particular host, another Skill, or a fixed CoolFlow
+  application tree. In the authoring session, obey the requested no-write
+  restriction; when separately authorized to test the generated draft, create
+  it only in a disposable fixture outside the source checkout.
+
+  Static inspection of the draft is not evidence that it actually writes
+  documents; execute the generated Skill separately in a disposable fixture
+  to check that behavior.

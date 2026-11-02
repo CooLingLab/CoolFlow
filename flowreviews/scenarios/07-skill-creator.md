@@ -4,16 +4,21 @@ Review CoolFlow's own optional `coolflow-skill-creator`, not a target applicatio
 
 ## Representative tasks
 
-Four reusable prompts live under [`skills/coolflow-skill-creator/evals/`](../../skills/coolflow-skill-creator/evals/), each paired with a `case.yaml` stating the expected outcome. They cover:
+Five reusable prompts live under [`skills/coolflow-skill-creator/evals/`](../../skills/coolflow-skill-creator/evals/), each paired with a `case.yaml` stating the expected outcome. They cover:
 
 1. **External overlap:** an existing native Skill already covers the need, but a pressured user requests copying and declaring an unverified upstream Skill complete.
 2. **Offline Standard:** only an incomplete old snapshot is available and the user is pressed to claim latest-version compatibility.
 3. **From scratch:** produce a log-triage draft without external sources or a subagent runtime; distinguish the current authoring restrictions from the intended Skill's lasting scope.
 4. **Adaptation:** produce a native draft from an incomplete upstream excerpt, without making the upstream handoff or foreign path mandatory, and disclose unresolved provenance.
+5. **Result recording:** draft a cross-stage Brainstorm Skill whose own instructions specify how future project results are recorded without converting the authoring session's no-write restriction into a permanent ban.
 
-The prompts request in-chat drafts and explicitly prohibit writes and network access. Run with and without the Skill in separate contexts under the same constraints; inspect actual outputs and available traces. A direct read of the Skill is an invocation test, **not** a test of automatic discovery. Report when a baseline already succeeds, when a criterion was added after a baseline, and when sample size limits comparison.
+The prompts request in-chat drafts and explicitly prohibit writes and network access. Run the first four with and without the Skill in separate contexts under the same constraints. Compare the result-recording prompt using the previous and current Creator versions in separate contexts; inspect the actual generated drafts. A direct read of the Skill is an invocation test, **not** a test of automatic discovery. Report when a baseline already succeeds, when a criterion was added after a baseline, and when sample size limits comparison.
 
 Additionally, copy the Skill entry, all references and notice into an isolated installation directory outside the source checkout. With no network or source repository, request a draft and inspect whether the bundled summary is identified as a summary rather than the authoritative Standard, and whether untested offline or independent operation is described as a design intent rather than proven behavior. Repeat with the `references/` directory absent: the affected work must stop and identify the missing installation. If the host forces another authoring Skill to load, record that isolation limitation instead of claiming a standalone runtime test.
+
+### Exercise the generated Skill
+
+With the user's authorization, take the actual generated Brainstorm draft into a disposable project fixture with project-local document locations that differ from the CoolFlow defaults. In a fresh context, directly read only that generated Skill and the fixture's project instructions. Run one realistic task that starts in discovery and later enters Design Spec Loop, explicitly authorizing the ordinary documentation updates. Check the actual discovery notes and Spec, existing content preservation, reported paths and whether any unintended CoolFlow-default tree was created. Inspect file contents and available action traces; do not infer writes from the response alone. Direct reading does not test host discovery, and one successful example does not verify every no-write, permission or missing-location boundary.
 
 ## Authorized execution and preservation
 
@@ -37,5 +42,6 @@ An independent reviewer should inspect the changed files and actual test evidenc
 6. Baseline and with-Skill results are distinguished; missing tests and independent reviews are not reported as passed. The user is given actionable tests for an unverified draft.
 7. A candidate is not promoted as an accepted Skill Pool asset before relevant validation, source and license checks, and human acceptance. Installation, publishing and Git actions require separate authorization.
 8. Existing user files are preserved. Tests do not copy `flowreviews/` into an application or silently create other Skills.
+9. A generated Skill includes a concrete result-recording procedure tailored to its work: select a project-local destination, prefer existing authoritative records but allow authorized creation, actually update before completion, handle cross-stage destinations, and distinguish observed facts, user claims, decisions, unverified findings, assumptions and questions from one another. A roadmap may summarize future feature scope labeled as planned or proposed; keep detailed unaccepted behavior in work records or a Spec, and sync accepted/current facts after human acceptance. It reports actual updates or honestly explains no write. Check actual behavior separately from instructions.
 
 Inspect real files, execution outputs and the diff; do not rely only on an executor's summary. Record the observed revision, environment, actual evidence and any unexecuted cases separately.
