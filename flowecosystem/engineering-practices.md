@@ -75,9 +75,16 @@ Nothing here changes the normative requirements in `methodology/` or `standards/
 - **Problem:** Agent-written code runs on a developer machine or a shared runner, polluting state and exposing credentials. "Works on my machine" becomes the only evidence.
 - **Worth using when:** running automated tests or builds, executing generated code, or working on several tasks in parallel.
 - **Main cost:** image and startup time, compute resources, and harder debugging inside an isolated environment.
-- **Relationship to CoolFlow:** supports reproducible **Prove It Works** evidence. Build isolation is not the same as an execution sandbox (practice 13); a project may need one, the other, or both.
+- **Relationship to CoolFlow:** supports reproducible **Prove It Works** evidence. Build isolation is not the same as an execution sandbox (practice 14); a project may need one, the other, or both.
 
-### 10. Post-deployment verification
+### 10. Committed lockfiles and locked CI installs
+
+- **Problem:** version ranges in a manifest can resolve to different dependency versions on different machines or at different times. Local and CI results diverge, and an unreviewed transitive update can change behavior or introduce supply-chain risk.
+- **Worth using when:** the project uses a package manager that produces a lockfile, especially for applications and deployed services. Generate and commit the lockfile, and make CI install in the ecosystem's frozen/locked mode so it fails rather than silently resolving a different dependency set. The exact command is tool-specific (for example `npm ci`, `pnpm install --frozen-lockfile`, `yarn install --immutable`, `uv sync --locked`, `cargo build --locked`); the principle matters more than the command. Library projects that deliberately publish a dependency range may omit the lockfile; state that choice and make CI test the supported range instead.
+- **Main cost:** lockfile merge conflicts and review noise; platform-specific or optional dependencies may need separate handling; dependency updates become an explicit reviewed change.
+- **Relationship to CoolFlow:** supports **Prove It Works** (Golden Rule 4) by making CI evidence reproducible and **Keep It Working** (Golden Rule 1) by limiting unreviewed dependency drift. It is a build/reproducibility practice, not a new stage or a CoolFlow-wide requirement.
+
+### 11. Post-deployment verification
 
 - **Problem:** "the deploy job succeeded" is not "the change is running". Caches, partial rollouts, the wrong artifact and environment drift all produce false success.
 - **Worth using when:** any production release, especially an automated one.
@@ -86,7 +93,7 @@ Nothing here changes the normative requirements in `methodology/` or `standards/
 
 ## Data and irreversible changes
 
-### 11. Expand–contract migrations
+### 12. Expand–contract migrations
 
 - **Problem:** a destructive schema change breaks old code during a rolling deploy, and rollback may no longer be possible.
 - **Worth using when:** changing live data with more than one application instance, or whenever a rollback must remain practical.
@@ -95,21 +102,21 @@ Nothing here changes the normative requirements in `methodology/` or `standards/
 
 ## Permissions, security and knowledge
 
-### 12. Least privilege and secret isolation
+### 13. Least privilege and secret isolation
 
 - **Problem:** long-lived production credentials in an Agent environment turn a mistake, a malicious dependency or prompt injection into a breach.
 - **Worth using when:** an Agent has tool access, or any environment contains real credentials.
 - **Main cost:** short-lived tokens, credential brokers or proxies, and per-task scopes add setup and new failure modes.
 - **Relationship to CoolFlow:** a concrete form of **Keep a Way Back** (Golden Rule 3). It limits the impact of a failure; it does not replace a human decision before an irreversible action.
 
-### 13. Sandboxed agent execution
+### 14. Sandboxed agent execution
 
 - **Problem:** model-generated commands run with the developer's full privileges. One bad command can delete files, reach internal services, or install something unwanted.
 - **Worth using when:** Agents run unattended, execute generated code, or have network access.
 - **Main cost:** isolation technology (container, microVM or OS sandbox), egress policy and secret handling; debugging is less convenient.
 - **Relationship to CoolFlow:** makes "the Agent may implement and verify routine work" safer. State the boundary explicitly; an unstated sandbox is not a control.
 
-### 14. Decision ledger
+### 15. Decision ledger
 
 - **Problem:** Agents re-ask settled questions, rejected ideas resurface, and the rationale behind a choice disappears with the session.
 - **Worth using when:** working repeatedly with Agents, or making product decisions with lasting consequences.
