@@ -31,7 +31,7 @@ Skill allocation is deliberately deferred until all stage boundaries are agreed.
 | Stage | Status |
 | --- | --- |
 | 1. Idea → Brainstorm | Agreed (2026-11-05) |
-| 2. Lightweight Strategic DDD | Not started |
+| 2. Lightweight Strategic DDD | Agreed (2026-11-05) |
 | 3. Concept Prototype → Validation | Not started |
 | 4. Roadmap | Not started |
 | 5. UI Prototype | Not started |
@@ -90,7 +90,56 @@ the boundary choices but are not normative for CoolFlow:
 
 ## 2. Lightweight Strategic DDD
 
-Status: `Not started`
+Status: `Agreed` (2026-11-05)
+
+**Scope:** initial strategic domain discovery. This stage produces a provisional domain
+model. Tactical domain design—aggregates, entities, value objects, repositories, domain
+events and transaction boundaries—is deferred to Design Spec Loop (Step 6).
+
+| ID | Activity | Answers | Core output | Boundary |
+| --- | --- | --- | --- | --- |
+| 2.1 | Define domain scope and participants | Which part of the business, which roles and which work objects are involved? | Domain scope, participants/roles, core work objects, core and supporting parts | Does not redefine the Stage 1 product problem or target users; does not design technical modules |
+| 2.2 | Establish the ubiquitous language and core concepts | What does each core term mean within this domain? | Glossary, definitions, synonyms and ambiguities, core concepts and relationships | Does not collect every UI label or code name; cross-context conflicts belong to 2.3 |
+| 2.3 | Identify bounded contexts | Which concepts share one consistent meaning, and where does the same term mean something different? | Context list, language and responsibilities per context, relationships between contexts | Not a microservice, code-module or deployment boundary; does not decide interfaces |
+| 2.4 | Define core business rules and invariants | Which conditions must always hold, and how does state change? | Invariants, business rules, state transitions, exceptions and failure conditions | Does not specify implementation algorithms or database constraints; does not replace acceptance criteria |
+| 2.5 | Validate and confirm the model through business scenarios | Can the model explain real workflows and edge cases, and what remains unresolved? | Key scenario walkthroughs, revised model, confirmed understanding, open questions | Not user acceptance or prototype testing; does not validate product assumptions; does not write a Spec |
+
+### Rationale and boundaries
+
+- 2.1 and 2.2 are separate: 2.1 establishes what is in view; 2.2 defines what the terms
+  mean. Combining them tends to mix product names, UI labels and technical identifiers
+  into the domain language.
+- 2.3 identifies **semantic** boundaries. A bounded context may later influence module
+  or service boundaries, but it does not decide deployment or interfaces here.
+- 2.4 records business rules and invariants, not implementation constraints. Database
+  constraints and code-level enforcement belong to later design and implementation.
+- 2.5 uses business narratives and paper walkthroughs to expose missing concepts and
+  rules. It is not a prototype, user test or acceptance decision.
+- The model recorded in `docs/domain.md` is provisional and evolves. Tactical design
+  and code-level model refinement happen in Steps 6 and 7; new domain insight can
+  return here through the Evolution Loop.
+- The stage is proportionate. A small or familiar domain may need only core terms, key
+  rules and one context. Do not invent multiple contexts merely to perform DDD.
+  EventStorming, Domain Storytelling and context mapping are optional methods.
+
+### Sources consulted
+
+The decomposition was checked against the following public practices. They informed
+the boundary choices but are not normative for CoolFlow:
+
+- Eric Evans, [Whirlpool Process of Model Exploration](https://www.domainlanguage.com/ddd/whirlpool/):
+  model exploration is not a development process and fits within iterative design.
+- Martin Fowler, [Ubiquitous Language](https://martinfowler.com/bliki/UbiquitousLanguage.html):
+  a shared rigorous language evolves as domain understanding grows.
+- Martin Fowler, [Bounded Context](https://martinfowler.com/bliki/BoundedContext.html):
+  large models are divided into semantic contexts; a context is not a code module.
+- DDD Crew, [DDD Starter Modelling Process](https://github.com/ddd-crew/ddd-starter-modelling-process):
+  domain discovery, decomposition, strategy and tactical design are iterative, not a
+  linear sequence.
+- Domain Storytelling, [DDD with Domain Storytelling](https://domainstorytelling.org/domain-driven-design):
+  stories support strategic design, ubiquitous language and later tactical design.
+- EventStorming, [EventStorming](https://www.eventstorming.com/): collaborative domain
+  exploration can reveal events, boundaries and open questions.
 
 ## 3. Concept Prototype → Validation
 
@@ -127,3 +176,4 @@ the eight stages, without treating it as a ninth stage or a post-release-only st
 | --- | --- |
 | 2026-11-03 | Created the document skeleton and writing conventions. |
 | 2026-11-05 | Agreed the Stage 1 activity boundaries and added supporting rationale. |
+| 2026-11-05 | Agreed the Stage 2 initial-domain-discovery boundaries; deferred tactical design to Step 6. |

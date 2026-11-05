@@ -85,7 +85,7 @@ Distinguish observed facts, user claims, decisions, unverified findings, assumpt
 | `docs/documentation.md` | Complete project-local documentation standard; independently maintained after initialization |
 | `docs/product.md` | A concise project-level Product Brief: problem, audience, vision, value, boundaries and current positioning; **not a PRD** |
 | `docs/roadmap.md` | MVP, future versions and priority; explicitly distinguishes planned from accepted |
-| `docs/domain.md` | Ubiquitous language, domain boundaries, core rules; may remain unfilled initially |
+| `docs/domain.md` | Ubiquitous language, domain boundaries, core rules; provisional and may remain unfilled initially |
 
 Create `docs/features/`, `docs/work/` and `docs/work/archive/` as part of the skeleton; use `.gitkeep` if the Git directory is otherwise empty.
 

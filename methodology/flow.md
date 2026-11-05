@@ -9,7 +9,7 @@ CoolFlow describes **one flexible Development Flow and three adaptive Loops**, n
 | Stage | Purpose | Typical result |
 | --- | --- | --- |
 | 1. Idea → Brainstorm | Clarify the problem, users and value; analyze the competitive landscape; identify an opportunity and testable product hypotheses | Evolving `product.md`; proportionate market/competitor findings and exploration notes in current work |
-| 2. Lightweight strategic DDD | Ubiquitous language, bounded contexts, core invariants | `domain.md` |
+| 2. Lightweight strategic DDD | Establish a provisional strategic domain model: ubiquitous language, semantic boundaries and core business rules; tactical design belongs to Step 6 | `domain.md` |
 | 3. Concept Prototype → Validation | Test critical experience / feasibility assumptions quickly | Interactive HTML or other prototype under `work/<objective>/prototypes/` |
 | 4. Roadmap | Define MVP/current version and later possibilities | `roadmap.md`; optional PRD for substantial product scope |
 | 5. UI Prototype | Design the current version's interactions | Prototype and notes in the relevant work directory |

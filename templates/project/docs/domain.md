@@ -1,6 +1,10 @@
 # Domain
 
-> Status: Not started
+> Status: Not started; provisional and evolving
+
+## Domain scope and participants
+
+To decide.
 
 ## Ubiquitous language
 
@@ -10,7 +14,7 @@ To decide.
 
 To decide.
 
-## Core entities and invariants
+## Core concepts, rules and invariants
 
 To decide.
 

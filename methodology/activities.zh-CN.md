@@ -24,7 +24,7 @@
 | 阶段 | 状态 |
 | --- | --- |
 | 1. Idea → Brainstorm | 已确认（2026-11-05） |
-| 2. Lightweight Strategic DDD | 尚未开始 |
+| 2. Lightweight Strategic DDD | 已确认（2026-11-05） |
 | 3. Concept Prototype → Validation | 尚未开始 |
 | 4. Roadmap | 尚未开始 |
 | 5. UI Prototype | 尚未开始 |
@@ -77,7 +77,47 @@
 
 ## 2. Lightweight Strategic DDD
 
-状态：`尚未开始`
+状态：`已确认`（2026-11-05）
+
+**范围：** 初始战略领域发现。本阶段产生一个暂定的领域模型。战术领域设计——聚合、实体、值对象、
+仓储、领域事件和事务边界——推迟到 Design Spec Loop（第 6 步）。
+
+| ID | 活动 | 回答的问题 | 核心产出 | 边界 |
+| --- | --- | --- | --- | --- |
+| 2.1 | 界定领域范围与参与者 | 这个产品涉及哪一部分业务、哪些角色和工作对象？ | 领域范围、参与者/角色、核心工作对象、核心与辅助部分 | 不重新定义第 1 阶段的产品问题或目标用户；不设计技术模块 |
+| 2.2 | 建立统一语言与核心概念 | 每个核心术语在这个领域里是什么意思？ | 术语表、定义、同义词与歧义、核心概念及关系 | 不收录所有 UI 标签或代码命名；跨上下文冲突留给 2.3 |
+| 2.3 | 划分限界上下文 | 哪些概念共享一致含义？同一个术语在哪里含义不同？ | 上下文列表、每个上下文的语言与职责、上下文之间的关系 | 不是微服务、代码模块或部署边界；不决定接口 |
+| 2.4 | 定义核心业务规则与不变量 | 哪些条件必须始终成立，状态如何变化？ | 不变量、业务规则、状态转换、例外与失败条件 | 不规定实现算法或数据库约束；不替代验收条件 |
+| 2.5 | 用业务场景检验并确认模型 | 模型能否解释真实流程和边界情况，哪些仍未解决？ | 关键场景走查、修正后的模型、已确认理解、开放问题 | 不是用户验收或原型测试；不验证产品假设；不编写 Spec |
+
+### 理由与边界
+
+- 2.1 与 2.2 分开：2.1 确定观察范围；2.2 定义术语含义。合并这两项容易把产品名称、UI 标签和
+  技术标识混入领域语言。
+- 2.3 识别的是**语义**边界。限界上下文之后可能影响模块或服务边界，但在这里不决定部署或接口。
+- 2.4 记录业务规则与不变量，而不是实现约束。数据库约束和代码级强制属于后续设计与实现。
+- 2.5 使用业务叙述和纸上走查，暴露缺失的概念与规则。它不是原型、用户测试或验收决定。
+- `docs/domain.md` 中记录的模型是暂定且持续演进的。战术设计和代码级模型细化发生在第 6、7 步；
+  新的领域理解可以通过 Evolution Loop 回到本阶段。
+- 本阶段与项目复杂度相称。小型或熟悉的领域可能只需要核心术语、关键规则和一个上下文。不要为了
+  执行 DDD 而虚构多个上下文。EventStorming、Domain Storytelling 和上下文映射都是可选方法。
+
+### 参考来源
+
+本文的拆分对照了以下公开实践。它们为边界选择提供参考，但不是 CoolFlow 的规范：
+
+- Eric Evans，[Whirlpool Process of Model Exploration](https://www.domainlanguage.com/ddd/whirlpool/)：
+  模型探索不是开发流程，应嵌入迭代式设计。
+- Martin Fowler，[Ubiquitous Language](https://martinfowler.com/bliki/UbiquitousLanguage.html)：
+  共享的严格语言随领域理解不断演进。
+- Martin Fowler，[Bounded Context](https://martinfowler.com/bliki/BoundedContext.html)：
+  大模型被划分为语义上下文；上下文不是代码模块。
+- DDD Crew，[DDD Starter Modelling Process](https://github.com/ddd-crew/ddd-starter-modelling-process)：
+  领域发现、分解、战略和战术设计是迭代过程，不是线性序列。
+- Domain Storytelling，[DDD with Domain Storytelling](https://domainstorytelling.org/domain-driven-design)：
+  故事支持战略设计、统一语言以及后续的战术设计。
+- EventStorming，[EventStorming](https://www.eventstorming.com/)：协作式领域探索可以发现事件、
+  边界和开放问题。
 
 ## 3. Concept Prototype → Validation
 
@@ -114,6 +154,7 @@ Evolution Loop 是跨阶段的。其活动边界将在八个阶段之后讨论�
 | --- | --- |
 | 2026-11-03 | 创建文档骨架与写作约定。 |
 | 2026-11-05 | 确认第 1 阶段的活动边界，并补充支撑理由。 |
+| 2026-11-05 | 确认第 2 阶段的初始领域发现边界；战术设计推迟到第 6 步。 |
 
 **翻译说明：** 本文是英文 [Stage activities and Skill boundaries](activities.md) 的中文翻译。
 英文是权威版本；如出现歧义，以英文为准。

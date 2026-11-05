@@ -13,7 +13,7 @@ CoolFlow 描述的是**一条灵活的开发流程和三个自适应循环**，�
 | 阶段 | 目的 | 典型结果 |
 | --- | --- | --- |
 | 1. Idea → Brainstorm | 明确问题、用户与价值；分析竞争格局；识别机会并形成可验证的产品假设 | 持续演进的 `product.md`；当前工作中适当规模的市场/竞品发现与探索笔记 |
-| 2. Lightweight strategic DDD | 统一语言、限界上下文、核心不变量 | `domain.md` |
+| 2. Lightweight strategic DDD | 建立暂定的战略领域模型：统一语言、语义边界和核心业务规则；战术设计属于第 6 步 | `domain.md` |
 | 3. Concept Prototype → Validation | 快速验证关键体验/可行性假设 | `work/<objective>/prototypes/` 下的交互式 HTML 或其他原型 |
 | 4. Roadmap | 定义 MVP/当前版本与后续可能性 | `roadmap.md`；范围较大的产品可选 PRD |
 | 5. UI Prototype | 设计当前版本的交互 | 相关工作目录中的原型与笔记 |
