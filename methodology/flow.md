@@ -1,5 +1,7 @@
 # CoolFlow lifecycle (recommended Flow)
 
+**English** | [简体中文](flow.zh-CN.md)
+
 The human developer's overarching priorities are described by the [Golden Rules](golden-rules.md). The rules guide decisions across every stage but do not create additional phases or mandatory artifacts.
 
 CoolFlow describes **one flexible Development Flow and three adaptive Loops**, not a rigid stage scheduler. The **Evolution Loop can be triggered from any stage**, whenever feedback, new ideas, or changing needs call for reconsidering a product decision; it may return to any relevant stage. Each stage suggests outputs and questions; the developer and Agent decide what adds value. No engine, transition state, or gate file is required.

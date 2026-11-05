@@ -30,3 +30,11 @@ This repository publishes a **reference methodology and documentation standard**
 - Update the relevant standard first, then adjust templates, Skill instructions, and internal review cases.
 - Preserve existing user files and project-local overrides in all examples.
 - Keep docs and links coherent, and report limitations and untested cases clearly.
+
+### Documentation language
+
+- Core CoolFlow documentation is maintained in English and Simplified Chinese.
+- When a document has a `.zh-CN.md` counterpart, update both versions in the same change and keep headings, tables, links and status consistent.
+- English is authoritative. If the Chinese update cannot be completed, report the pending sync instead of silently leaving it stale.
+- New durable documents in `methodology/`, `standards/`, `README.md` and `GETTING_STARTED.md` should also be created in both languages.
+- Templates, Skills and `flowreviews/` are not bilingual unless explicitly requested.

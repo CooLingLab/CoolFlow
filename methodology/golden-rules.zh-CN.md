@@ -74,7 +74,7 @@
 | 恢复能力 | Keep a Way Back | 失败后能否恢复到安全状态？ |
 | 证据与验收 | Prove It Works | 如何证明成果真正有效？ |
 
-四条原则贯穿 [Development Flow](flow.md) 和 [Design Spec、Implementation、Evolution Loops](loops.md)，但不要求人类亲自写每一行代码或管理每一次 Agent 操作。
+四条原则贯穿 [Development Flow](flow.zh-CN.md) 和 [Design Spec、Implementation、Evolution Loops](loops.zh-CN.md)，但不要求人类亲自写每一行代码或管理每一次 Agent 操作。
 
 ## 与 AGENTS.md 的分工
 

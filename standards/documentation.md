@@ -1,5 +1,7 @@
 # Documentation standard (v0.1)
 
+**English** | [简体中文](documentation.zh-CN.md)
+
 **Design rule:** durable, accepted project knowledge is separate from exploratory and in-progress work. Keep **one authoritative location per fact**; use links rather than duplicate paragraphs.
 
 ## Canonical application documentation tree

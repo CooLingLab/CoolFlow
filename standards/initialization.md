@@ -1,5 +1,7 @@
 # Project initialization contract
 
+**English** | [简体中文](initialization.zh-CN.md)
+
 **Skill invocation:** “Use coolflow-init to initialize this empty project.”
 
 This is **initialization, not product discovery or implementation**.

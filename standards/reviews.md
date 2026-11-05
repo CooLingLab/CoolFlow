@@ -1,5 +1,7 @@
 # Reviews during product development
 
+**English** | [简体中文](reviews.zh-CN.md)
+
 The **Design Review** and **Code Review** below are part of the recommended development methodology. The separate `flowreviews/scenarios/` directory contains internal Scenario Reviews of CoolFlow itself, not tests for applications built with CoolFlow. Keep these cases in the public CoolFlow source repository; do not copy them into target application repositories.
 
 ## Within the Design Spec Loop: review before coding

@@ -91,6 +91,7 @@ CoolFlow was started by Cooling, a pilot exploring AI-assisted software developm
 
 - [Getting Started](GETTING_STARTED.md) — new and existing projects.
 - [Development Flow](methodology/flow.md) · [Adaptive Loops](methodology/loops.md) — the method.
+- [Stage activities and Skill boundaries](methodology/activities.md) — stage activities and their boundaries.
 - [Documentation Standard](standards/documentation.md) · [Templates](templates/) — documentation conventions and reusable templates.
 
 ## Ecosystem & Tool Selection

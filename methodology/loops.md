@@ -1,5 +1,7 @@
 # CoolFlow Loops: three adaptive feedback cycles
 
+**English** | [简体中文](loops.zh-CN.md)
+
 CoolFlow has **one Development Flow** and **three Adaptive Loops**:
 
 - **Design Spec Loop (Step 6):** improve design quality through Spec, review, and revision.

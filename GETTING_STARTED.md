@@ -1,8 +1,10 @@
 # Getting Started with CoolFlow
 
+**English** | [简体中文](GETTING_STARTED.zh-CN.md)
+
 **CoolFlow by Cooling · An AI Software Development SOP**
 
-[Home](README.md) · [简体中文](README.zh-CN.md) · [Golden Rules](methodology/golden-rules.md)
+[Home](README.md) · [简体中文首页](README.zh-CN.md) · [Golden Rules](methodology/golden-rules.md)
 
 CoolFlow is a lightweight **development methodology and documentation standard**, not an Agent runner. Use it with your existing coding Agent. The optional coolflow-init Skill follows the open [Agent Skills specification](https://agentskills.io/specification); no particular Agent vendor or installation tool is required.
 

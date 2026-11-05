@@ -48,13 +48,13 @@ https://github.com/CooLingLab/CoolFlow/tree/main/skills/coolflow-init
 
 Skill 会先检查目标目录；如果存在其他文件或文件夹（包括隐藏文件），就会拒绝执行。通过检查后，它会创建 CoolFlow 项目文档结构、验证结果，然后停止，不会自动开始 Brainstorm 或编写应用代码。
 
-如果你的 Agent 不支持 Skill 安装，请查看 [Getting Started](GETTING_STARTED.md) 中的手动安装和备用方式。
+如果你的 Agent 不支持 Skill 安装，请查看 [Getting Started](GETTING_STARTED.zh-CN.md) 中的手动安装和备用方式。
 
 **已有项目——先检查现状再采用**
 
-不要在已有项目或非空目录中使用 `coolflow-init`。请按照[已有项目采用指南](GETTING_STARTED.md#b-existing-project--inspect-before-adopting)，先检查现状、提出选择性采用方案，并在获得确认后再修改文件。
+不要在已有项目或非空目录中使用 `coolflow-init`。请按照[已有项目采用指南](GETTING_STARTED.zh-CN.md)，先检查现状、提出选择性采用方案，并在获得确认后再修改文件。
 
-[完整使用指南（英文）](GETTING_STARTED.md) · 探索阶段可建立工作目录；确定开发目标、进入 Design Spec Loop 时再编写正式 Spec。
+[完整使用指南](GETTING_STARTED.zh-CN.md) · 探索阶段可建立工作目录；确定开发目标、进入 Design Spec Loop 时再编写正式 Spec。
 
 ## CoolFlow Skills
 
@@ -89,9 +89,10 @@ CoolFlow 由飞行员 Cooling 发起。航空 SOP、态势感知和交叉检查�
 
 ## 更多文档
 
-- [Getting Started（英文）](GETTING_STARTED.md) — 新项目和已有项目入门。
-- [开发流程](methodology/flow.md) · [反馈循环](methodology/loops.md) — 完整方法。
-- [文档规范](standards/documentation.md) · [模板](templates/) — 文档约定与可复用模板。
+- [Getting Started](GETTING_STARTED.zh-CN.md) — 新项目和已有项目入门。
+- [开发流程](methodology/flow.zh-CN.md) · [反馈循环](methodology/loops.zh-CN.md) — 完整方法。
+- [阶段活动与 Skill 边界](methodology/activities.zh-CN.md) — 各阶段可拆分的工作与边界。
+- [文档规范](standards/documentation.zh-CN.md) · [模板](templates/) — 文档约定与可复用模板。
 
 ## 生态与工具选型
 
