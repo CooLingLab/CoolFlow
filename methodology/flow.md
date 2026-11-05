@@ -23,7 +23,7 @@ The goal is not to turn every idea into a build plan immediately. First understa
 
 A useful sequence is:
 
-1. **Problem & User Discovery** — clarify who experiences the problem, in what context, how important it is, and what outcome they need. Avoid defining the solution too early.
+1. **Problem & User Discovery** — clarify who experiences the problem, in what context, how important it is, and what outcome they need. Use proportionate user research—interviews, observation or existing data—when evidence is insufficient, and distinguish observations, user claims, interpretation and assumptions. Avoid defining the solution too early.
 2. **Competitive Landscape Analysis** — research existing ways of solving the same or adjacent problem:
    - **Direct competitors:** products serving similar users with a similar core job.
    - **Indirect alternatives:** products that solve the need in a different way.

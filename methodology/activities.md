@@ -46,7 +46,7 @@ Status: `Agreed` (2026-11-05)
 
 | ID | Activity | Answers | Core output | Boundary |
 | --- | --- | --- | --- | --- |
-| 1.1 | Understand users and the problem | Who encounters what difficulty, in which situation? | Users, contexts, problems and known evidence | Does not research competitors or propose solutions |
+| 1.1 | Understand users and the problem, including proportionate user research | Who encounters what difficulty, in which situation? | Users, contexts, problems, known evidence, and research methods/sources/dates when evidence is gathered | Does not research competitors or propose solutions |
 | 1.2 | Research competitors and alternatives | How is this problem currently addressed? | Direct competitors, indirect alternatives, workarounds, sources and research dates | Does not decide what we should build, and does not treat competitor features as requirements |
 | 1.3 | Define the problem boundary | Which problem are we solving, and which are we not? | Problem statement, target-user boundary, non-goals and key constraints | Does not judge whether the opportunity is worthwhile, or design a solution |
 | 1.4 | Assess the opportunity | Which gaps in current solutions are worth considering, and on what evidence? | Opportunity hypotheses, supporting evidence, counter-evidence and unknowns | Does not commit to development or expand into features |
@@ -58,6 +58,11 @@ Status: `Agreed` (2026-11-05)
 - 1.1 and 1.2 gather different evidence: user/problem evidence versus external
   solution evidence. Keeping them separate prevents competitor features from being
   treated as user requirements.
+- 1.1 includes proportionate user research when existing evidence is insufficient—for
+  example interviews, observation or analysis of existing data. Research depth matches
+  the decision; findings distinguish observations, user claims, interpretation and
+  assumptions. User research is an activity within discovery, not a separate stage or
+  mandatory gate.
 - 1.3 frames the problem before judging opportunity. It is a proposed refinement;
   the current `flow.md` treats this framing as part of discovery and opportunity
   work rather than as a separately named step.
@@ -177,3 +182,4 @@ the eight stages, without treating it as a ninth stage or a post-release-only st
 | 2026-11-03 | Created the document skeleton and writing conventions. |
 | 2026-11-05 | Agreed the Stage 1 activity boundaries and added supporting rationale. |
 | 2026-11-05 | Agreed the Stage 2 initial-domain-discovery boundaries; deferred tactical design to Step 6. |
+| 2026-11-05 | Clarified that Stage 1 user/problem discovery includes proportionate user research. |
