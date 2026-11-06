@@ -32,7 +32,7 @@ Skill allocation is deliberately deferred until all stage boundaries are agreed.
 | --- | --- |
 | 1. Idea → Brainstorm | Agreed (2026-11-05) |
 | 2. Lightweight Strategic DDD | Agreed (2026-11-05) |
-| 3. Concept Prototype → Validation | Not started |
+| 3. Concept Prototype → Validation | Agreed (2026-11-06) |
 | 4. Roadmap | Not started |
 | 5. UI Prototype | Not started |
 | 6. Design Spec Loop | Not started |
@@ -148,7 +148,61 @@ the boundary choices but are not normative for CoolFlow:
 
 ## 3. Concept Prototype → Validation
 
-Status: `Not started`
+Status: `Agreed` (2026-11-06)
+
+**Scope:** time-boxed validation of the riskiest assumptions before committing to MVP
+scope. A prototype is one possible test vehicle, not a requirement. A thin MVP may be
+used as an experiment when it is the cheapest reliable way to observe behavior; it does
+not replace the Roadmap decision or automatically become production code.
+
+| ID | Activity | Answers | Core output | Boundary |
+| --- | --- | --- | --- | --- |
+| 3.1 | Identify and prioritize key assumptions | Which beliefs could most likely invalidate the direction, and which should be tested first? | One or two key assumptions ranked by importance and weakness of existing evidence | Does not enumerate every assumption; does not test low-risk items |
+| 3.2 | Design the minimum validation and timebox | Which method, participants, result and deadline are sufficient to decide? | Validation plan: method, participants/sample, tasks or experiment steps, success criteria and timebox | Does not build a prototype before defining the question; does not create open-ended research |
+| 3.3 | Create the minimum test vehicle | What is the cheapest artifact that can produce relevant evidence? | Clickable HTML, Figma or paper prototype, logic prototype, technical spike, survey, landing page or data-analysis material | Does not pursue production quality or build the complete product; spike code does not enter production |
+| 3.4 | Run the validation and collect evidence | What actually happened, and how strong is the evidence? | Target-user behavior, technical results, data, failure cases and evidence strength | Does not substitute internal opinions for user evidence; does not treat a working spike as a completed feature |
+| 3.5 | Interpret the result and decide the next step | Continue to MVP, adjust, return to an earlier stage, or stop? | Decision, known risks, open questions and next action | Does not treat one test as universal proof; does not extend validation indefinitely |
+
+### Rationale and boundaries
+
+- 3.1 combines identification and prioritization to avoid a separate ceremony. Select
+  one or two assumptions that are both important and weakly evidenced; do not attempt
+  to validate everything.
+- 3.2 chooses the method according to the risk. User understanding and interaction
+  risks favour concept or clickable prototypes; feasibility risks favour technical
+  spikes; demand risks may require a landing page, waitlist or real behavioral data.
+- 3.3 uses the cheapest sufficient test vehicle. AI-generated clickable HTML is a common
+  lightweight option for concept and basic-interaction validation, but it cannot prove
+  technical feasibility or commercial viability. Technical spike code is disposable.
+- 3.4 collects direct evidence rather than opinions. User-facing assumptions should be
+  tested with target users where possible; technical assumptions should be tested in a
+  representative environment. Record what was simulated and what was real.
+- 3.5 labels evidence strength and makes an explicit decision. If the test design was
+  flawed, fix the test before concluding that the product failed. If the evidence
+  invalidates product direction or scope, use the Evolution Loop.
+- A thin MVP may be used as an experiment when it is cheaper or more reliable than a
+  prototype. It remains an experiment: it does not replace the Roadmap decision and
+  does not automatically become production code.
+- When risk is low or existing evidence is sufficient, skip this stage and record why.
+  Exit when the evidence is sufficient to choose MVP scope, not when every assumption
+  is certain. Remaining uncertainty must be recorded as a known risk.
+
+### Sources consulted
+
+The decomposition was checked against the following public practices. They informed
+the boundary choices but are not normative for CoolFlow:
+
+- Teresa Torres, [Assumption Testing](https://www.producttalk.org/assumption-testing/):
+  prioritize assumptions by importance and evidence, test one assumption at a time,
+  define success before testing and track evidence.
+- Strategyzer, [Testing Business Ideas](https://www.strategyzer.com/library/testing-business-ideas-book):
+  use assumption mapping and choose experiments by cost, time and strength of evidence.
+- GV, [The Design Sprint](https://www.gv.com/sprint/): answer critical questions with a
+  realistic prototype tested with real users within a timebox.
+- Eric Ries, [The Lean Startup principles](https://theleanstartup.com/principles):
+  treat an MVP as an experiment and use validated learning rather than output volume.
+- Nielsen Norman Group, [Paper Prototyping](https://www.nngroup.com/articles/paper-prototyping/):
+  low-cost prototypes can reveal important usability problems before code is written.
 
 ## 4. Roadmap
 
@@ -183,3 +237,4 @@ the eight stages, without treating it as a ninth stage or a post-release-only st
 | 2026-11-05 | Agreed the Stage 1 activity boundaries and added supporting rationale. |
 | 2026-11-05 | Agreed the Stage 2 initial-domain-discovery boundaries; deferred tactical design to Step 6. |
 | 2026-11-05 | Clarified that Stage 1 user/problem discovery includes proportionate user research. |
+| 2026-11-06 | Agreed the Stage 3 time-boxed validation boundaries. |
