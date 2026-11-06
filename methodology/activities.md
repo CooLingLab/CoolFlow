@@ -38,7 +38,7 @@ Skill allocation is deliberately deferred until all stage boundaries are agreed.
 | 6. Design Spec Loop | Agreed (2026-11-06) |
 | 7. Implementation Loop | Agreed (2026-11-06) |
 | 8. Human Acceptance → Documentation Sync → Release | Agreed (2026-11-06) |
-| Evolution Loop (cross-stage) | Not started |
+| Evolution Loop (cross-stage) | Agreed (2026-11-06) |
 
 ## 1. Idea → Brainstorm
 
@@ -492,10 +492,53 @@ the boundary choices but are not normative for CoolFlow:
   findings and record stakeholder approval; this is a commercial guide, not a CoolFlow
   requirement.
 
-## Evolution Loop
+## Evolution Loop (cross-stage)
 
-The Evolution Loop is cross-stage. Its activity boundaries will be discussed after
-the eight stages, without treating it as a ninth stage or a post-release-only step.
+Status: `Agreed` (2026-11-06)
+
+**Scope:** reassess important product assumptions, direction, scope or decisions when new
+information warrants change. This Loop may begin at any stage and return to any relevant
+stage. It is not a ninth stage, a post-release-only activity, or a requirement to repeat
+the full lifecycle.
+
+| ID | Activity | Answers | Core output | Boundary |
+| --- | --- | --- | --- | --- |
+| E.1 | Capture and describe new input | What new feedback, idea, need or environmental change was observed? What is its source and evidence? | Input, source and context; observations distinguished from user claims, interpretation and assumptions | An input is not a decision; a single request does not automatically change the Roadmap |
+| E.2 | Reassess affected decisions | Which existing assumptions, goals, domain understanding or scope may need to change, and how significant is the impact? | Affected decisions and assumptions, evidence and impact; need for further investigation | Reassesses only relevant decisions; distinguishes product change from local quality defects |
+| E.3 | Decide the response and adapt relevant work | Should we act, investigate or validate further, observe, defer or decline? Which stage or Loop is relevant? | Human-confirmed decision, affected stages/artifacts and next action | Re-enters only relevant stages or local Loops; does not mechanically restart the lifecycle |
+
+### Rationale and boundaries
+
+- E.1 makes the source and evidence visible before acting. Inputs can include user
+  research, prototype or usability findings, technical feasibility changes, feature
+  requests, new ideas, post-release feedback, or changes in the market or environment.
+- E.2 checks whether the input challenges an existing product decision. A defect or test
+  failure within agreed requirements remains in the Implementation Loop; a flawed design
+  within agreed intent remains in the Design Spec Loop. Use Evolution when learning
+  warrants reconsidering product assumptions, direction, scope or consequential decisions.
+- E.3 can result in action, more research, a validation experiment, observation, deferral,
+  or a decision not to adopt the input. Product-critical changes remain human decisions.
+- Update only the records affected, with their correct lifecycle status. Exploration
+  findings stay in current work notes; human-confirmed durable plans update product,
+  domain or roadmap records; accepted behavior is synced after human acceptance. Do not
+  rewrite every project document for every input.
+- After adapting a decision, return to the relevant Flow stage or local quality Loop. No
+  separate Evolution artifact, status file, fixed cadence or mandatory outcome change is
+  required.
+
+### Sources consulted
+
+The boundaries were checked against these public practices. They inform the approach but
+are not normative for CoolFlow:
+
+- [The Scrum Guide](https://scrumguides.org/scrum-guide.html): empirical work uses
+  inspection and adaptation; new learning can change the Product Backlog and next plan.
+- [Principles behind the Agile Manifesto](https://agilemanifesto.org/principles.html):
+  welcome changing requirements and respond to change while delivering frequently.
+- Teresa Torres, [Product Discovery Basics](https://www.producttalk.org/2021/11/product-discovery/):
+  keep learning from customers as opportunities and solutions evolve.
+- Design Council, [Framework for Innovation](https://www.designcouncil.org.uk/our-resources/framework-for-innovation/):
+  design is non-linear; learning from testing can send work back to redefine the problem.
 
 ## Change log
 
@@ -511,3 +554,4 @@ the eight stages, without treating it as a ninth stage or a post-release-only st
 | 2026-11-06 | Agreed the Stage 6 unified-Spec boundaries, with tactical domain design as an optional checkpoint. |
 | 2026-11-06 | Agreed the Stage 7 implementation, verification, review and evidence boundaries. |
 | 2026-11-06 | Agreed the Stage 8 acceptance, documentation sync, release authorization and verification boundaries. |
+| 2026-11-06 | Agreed the cross-stage Evolution Loop activities for capturing input, reassessing affected decisions and adapting relevant work. |

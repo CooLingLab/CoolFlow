@@ -58,12 +58,13 @@ The first two Loops are primarily associated with their named stages; the third 
 
 **Goal:** reassess and, when warranted, adapt the product direction, scope, or important decisions in response to feedback, new ideas, or changing needs, **whether before, during, or after implementation and release**.
 
+- **Capture and describe new input:** record its source, context and evidence, distinguishing observed facts, user claims, interpretation and assumptions. Input may include user research, prototype findings, technical constraints, a feature request, a new idea, post-release feedback, or a market/environment change. A request is not itself a decision.
+- **Reassess affected decisions:** identify which assumptions, goals, domain understanding or scope may have changed and whether further investigation is needed. Reassess only relevant decisions; distinguish a product change from a local quality defect.
+- **Decide the response and adapt relevant work:** act, investigate or validate further, observe, defer, or decline the input; identify the relevant stage or local Loop. Update only affected records with their correct lifecycle status. Exploration findings stay in work notes, human-confirmed durable plans update the relevant project docs, and accepted behavior is synced after human acceptance.
 - The Evolution Loop can **start from any of the eight steps** and re-enter **any step that is relevant**. It does not require a prior release, a roadmap update, or a fixed sequence.
 - Examples: a concept prototype at Step 3 disproves the target user's assumption, so revisit Step 1; UI design at Step 5 reveals a domain misunderstanding, so revisit Step 2; implementation at Step 7 reveals a product-scope problem, so revisit Step 4; user feedback after Step 8 can lead to any relevant earlier step.
-- New input can include an issue, a feature request, a new idea, or a feature becoming outdated. Reassessment may lead to action, further observation, or a decision not to adopt the input.
-- Revisit only the decisions and artifacts affected by the input. Do not restart all eight stages mechanically.
-- **Distinguish local quality iteration from product evolution:** fixing tests or revising a design within agreed requirements stays in the Implementation or Design Spec Loop. Use the Evolution Loop when the learning warrants rethinking assumptions, scope, or direction.
-- Human judgment remains responsible for product-critical changes. There is no mandated endpoint; stop, continue, or pivot according to what is learned.
+- **Distinguish local quality iteration from product evolution:** fixing tests or correcting code within agreed requirements stays in the Implementation Loop; revising the solution within agreed product intent stays in the Design Spec Loop. Use the Evolution Loop when learning warrants rethinking product assumptions, direction, scope or a consequential decision.
+- Product-critical changes remain human decisions. A response may be to take no action. There is no mandated endpoint; stop, continue, defer or pivot according to what is learned. Do not restart all eight stages mechanically.
 
 ## Review terminology
 
