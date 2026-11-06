@@ -19,7 +19,7 @@ CoolFlow 描述的是**一条灵活的开发流程和三个自适应循环**，�
 | 5. UI Prototype | 设计当前版本的关键流程、视觉方向、关键界面与状态；在有用时进行用户验证 | 相关工作目录中的原型、视觉方向与笔记 |
 | 6. Design Spec Loop | 记录需求、验收条件、方案、可选战术领域设计、实施与验证策略；评审并修订 | `work/<objective>/spec.md`；可选 `design.md` |
 | 7. Implementation Loop | 小步实现、测试行为、评审变更代码与 Spec 一致性、修复并记录证据（通常由 Agent 辅助） | 经测试的代码、评审证据与已知风险；除非需要持久跟踪，否则任务保存在 Agent 会话中 |
-| 8. Human Acceptance → Documentation Sync → Release | 人类验收实际行为；同步持久文档；归档有意义的历史；发布并学习 | 视情况更新 `features/`、domain/roadmap/feature-map；`work/archive/` |
+| 8. Human Acceptance → Documentation Sync → Release | 人类验收实际行为；同步已接受事实；适用时准备、单独授权并验证发布 | 更新 `features/` 和受影响项目文档；选择性归档工作记录；实际发布状态与证据 |
 
 ## 第 1 步 — Idea → Brainstorm
 
@@ -54,8 +54,9 @@ CoolFlow 描述的是**一条灵活的开发流程和三个自适应循环**，�
 **第 6 阶段并不要求运行 EGM。** 对于复杂、风险高或不熟悉的工作，可以使用独立的设计评审 Agent；
 对于小修复，简明的 Spec/检查清单可能已经足够。
 
-**Human Acceptance 与 Release 不同。** 验收后，Documentation Sync 会更新当前项目事实，并选择性
-归档工作；它**不是**独立的顶层循环。已验收但尚未发布的行为必须被准确描述，包括相关发布状态。
+**Human Acceptance、Documentation Sync 与 Release 是不同的事情。** 验收后，Documentation Sync
+更新已接受的项目事实并选择性归档工作；它**不是**独立的顶层循环，也不必等待发布。发布需要单独的
+明确授权，其实际状态必须验证并记录。已验收但尚未发布的行为必须准确描述。
 
 对于新应用，第一个工作目标可以是 `work/001-mvp/`，**在发现阶段有需要时创建**（不是在文件夹
 初始化时创建）。发现笔记和原型可以放在其中而不需要 Spec；当选定目标进入 **Design Spec Loop

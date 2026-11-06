@@ -15,7 +15,7 @@ CoolFlow describes **one flexible Development Flow and three adaptive Loops**, n
 | 5. UI Prototype | Design the current version's key flows, visual direction, key screens and states; validate with users when useful | Prototype, visual direction and notes in the relevant work directory |
 | 6. Design Spec Loop | Capture requirements, acceptance criteria, solution, optional tactical domain design, implementation and verification strategy; review and revise | `work/<objective>/spec.md`; optional `design.md` |
 | 7. Implementation Loop | Implement small increments, test behavior, review the changed code and Spec conformance, fix and record evidence (often Agent-assisted) | Tested code, review evidence and known risks; tasks live in Agent session unless persistent tracking is needed |
-| 8. Human Acceptance → Documentation Sync → Release | Human accepts actual behavior; sync durable docs; archive meaningful history; release and learn | Updated `features/`, domain/roadmap/feature-map as relevant; `work/archive/` |
+| 8. Human Acceptance → Documentation Sync → Release | Human accepts actual behavior; sync accepted facts; prepare, separately authorize and verify release when applicable | Updated `features/` and affected project docs; selected work archive; actual release status and evidence |
 
 ## Step 1 — Idea → Brainstorm
 
@@ -38,7 +38,7 @@ Record concise findings and links in the current work's `brainstorm.md` when use
 
 **Stage 6 is not a requirement to run EGM.** For complex, risky or unfamiliar work, use an independent design-review Agent; for small fixes, a concise Spec/checklist may be adequate.
 
-**Human Acceptance is distinct from Release.** After acceptance, Documentation Sync updates the current project truth and selectively archives work; it is **not an independent top-level Loop**. Accepted but not yet shipped behavior must be described accurately, including release status when relevant.
+**Human Acceptance, Documentation Sync and Release are distinct.** After acceptance, Documentation Sync updates accepted project truth and selectively archives work; it is **not an independent top-level Loop** and does not wait for release. Release requires separate explicit authorization, and its actual status must be verified and recorded. Accepted but not yet released behavior must be described accurately.
 
 For a new app, the first work objective can be `work/001-mvp/`, **opened during discovery when useful** (not during folder initialization). Discovery notes and prototypes may live there without a Spec; write the unified `spec.md` when the selected objective reaches **Design Spec Loop (Step 6)**. The directory label does not presume MVP scope is already final.
 

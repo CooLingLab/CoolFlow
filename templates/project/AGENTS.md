@@ -11,7 +11,7 @@ Use this recommended CoolFlow lifecycle; skip, merge or revisit stages as projec
 5. UI Prototype — design the current version's key flows, visual direction, key screens and states; validate with users when useful.
 6. Design Spec Loop — write a unified, verifiable Spec covering requirements, acceptance, solution, optional tactical domain design, implementation and verification → review when useful → revise.
 7. Implementation Loop — code → test → code review → Spec conformance → fix; record evidence and unresolved risks (Agent-assisted as appropriate).
-8. Human Acceptance → Docs Sync → Release — record accepted reality and learn.
+8. Human Acceptance → Docs Sync → Release — the human accepts actual behavior; sync accepted facts; separately authorize, execute and verify any applicable release. Acceptance does not imply release.
 
 ## Three Adaptive Loops
 

@@ -30,7 +30,7 @@
 | 5. UI Prototype | 已确认（2026-11-06） |
 | 6. Design Spec Loop | 已确认（2026-11-06） |
 | 7. Implementation Loop | 已确认（2026-11-06） |
-| 8. Human Acceptance → Documentation Sync → Release | 尚未开始 |
+| 8. Human Acceptance → Documentation Sync → Release | 已确认（2026-11-06） |
 | Evolution Loop（跨阶段） | 尚未开始 |
 
 ## 1. Idea → Brainstorm
@@ -356,7 +356,52 @@
 
 ## 8. Human Acceptance → Documentation Sync → Release
 
-状态：`尚未开始`
+状态：`已确认`（2026-11-06）
+
+**范围：** 人类决定是否接受实际结果；将已接受的行为记录到持久项目文档；适用时，单独准备、授权、
+执行并验证发布。验收不代表已发布，不能根据实现完成或文档同步推断已经发布。
+
+| ID | 活动 | 回答的问题 | 核心产出 | 边界 |
+| --- | --- | --- | --- | --- |
+| 8.1 | 检查结果并做出人工验收决定 | 实际行为和证据是否符合已商定的目标与验收条件？人是否接受？ | 人类决定：接受、要求修改或返回设计讨论；已知限制 | Agent 不能代替人类接受自己的工作；验收不授权发布 |
+| 8.2 | 同步已接受事实并选择性归档工作 | 验收后哪些当前项目事实和工作记录需要更新或保留？ | 更新后的 `features/` 和受影响的项目文档；归档选定工作证据 | 只记录实际已接受的行为；文档同步无需等待发布 |
+| 8.3 | 准备发布并取得授权 | 发布什么？必要保障是否就绪？发布是否已获授权？ | 发布范围/版本、发布说明、部署/数据变更检查、监控与恢复方案、明确授权 | 就绪检查不等于执行发布；验收与发布授权是两个决定 |
+| 8.4 | 执行发布并验证运行情况 | 已授权的发布是否完成？系统是否按预期运行？ | 实际发布状态、冒烟检查/监控证据、继续/停止/回退决定 | 根据风险采用金丝雀或分阶段发布；发布后反馈进入 Evolution Loop |
+
+### 理由与边界
+
+- 8.1 是基于实际行为和相对于 Spec 的证据做出的人类决定，不是 Agent 的完成声明。在小型项目中，
+  人类请求者或产品负责人可以在检查结果后决定。复杂或业务关键的工作可以让代表性用户参与验收测试，
+  但每次变更都不要求正式 UAT 仪式。
+- 如果人类要求修改，返回第 7 步；如果需求或设计本身需要重新考虑，返回第 6 步。不要把未验收行为
+  记录到 `features/` 并当作当前事实。
+- 8.2 在验收后进行，无需等待生产发布。将已验收、已实现行为更新到 `features/`；仅在受影响时更新
+  product、domain、roadmap、architecture 和 feature-map。保留重要 Spec、决策和验证证据，不要归档所有
+  临时文件。
+- 8.3 区分发布准备就绪和获得发布许可。准备工作可以包含准确的范围/制品、发布说明、迁移与数据处理、
+  安全或运营检查、监控、恢复和回退方案。执行已授权的发布前必须获得明确的人类授权。如果发布不适用
+  或延后，准确记录该状态。
+- 8.4 只执行已授权的发布，并检查发布后的系统。根据风险采用冒烟测试、监控，以及可用时的分阶段/金丝雀
+  发布。如果检查失败，依据已准备的恢复方案停止或回退；没有证据时不要声称发布成功。记录实际版本、
+  时间、状态和未解决问题。
+- 发布后反馈是跨阶段 Evolution Loop 的输入，不是每次发布都必须执行的另一项活动。
+
+### 参考来源
+
+本文的拆分对照了以下公开实践。它们为边界选择提供参考，但不是 CoolFlow 的规范：
+
+- Scrum.org，[Definition of Done](https://www.scrum.org/resources/what-definition-done)：共享的质量标准
+  说明一个增量何时完成；CoolFlow 将此与人类验收决定及发布授权区分开。
+- Google SRE Workbook，[Canarying Releases](https://sre.google/workbook/canarying-releases/)：
+  金丝雀是小范围、限时的发布，在决定是否继续前评估结果。
+- GitHub Docs，[About releases](https://docs.github.com/en/repositories/releasing-projects-on-github/about-releases)
+  和 [Managing releases](https://docs.github.com/en/repositories/releasing-projects-on-github/managing-releases-in-a-repository)：
+  将带标签的版本连同发布说明和可选下载制品打包发布。
+- Martin Fowler，[Continuous Integration](https://martinfowler.com/articles/continuousIntegration.html)：
+  生产发布是业务决定，与代码集成相互独立。
+- TestMonitor，[The Complete Guide to User Acceptance Testing](https://www.testmonitor.com/blog/the-complete-guide-to-user-acceptance-testing-uat)：
+  验收活动会依据需求检查真实用户工作流、记录发现并记录利益相关者批准；这是商业指南，不是 CoolFlow
+  的要求。
 
 ## Evolution Loop（跨阶段）
 
@@ -376,6 +421,7 @@ Evolution Loop 是跨阶段的。其活动边界将在八个阶段之后讨论�
 | 2026-11-06 | 确认第 5 阶段 UI Prototype 边界，并将视觉方向列为独立活动。 |
 | 2026-11-06 | 确认第 6 阶段统一 Spec 边界，并将战术领域设计作为可选检查点。 |
 | 2026-11-06 | 确认第 7 阶段的实现、验证、评审和证据边界。 |
+| 2026-11-06 | 确认第 8 阶段的验收、文档同步、发布授权和验证边界。 |
 
 **翻译说明：** 本文是英文 [Stage activities and Skill boundaries](activities.md) 的中文翻译。
 英文是权威版本；如出现歧义，以英文为准。

@@ -37,7 +37,7 @@ Skill allocation is deliberately deferred until all stage boundaries are agreed.
 | 5. UI Prototype | Agreed (2026-11-06) |
 | 6. Design Spec Loop | Agreed (2026-11-06) |
 | 7. Implementation Loop | Agreed (2026-11-06) |
-| 8. Human Acceptance → Documentation Sync → Release | Not started |
+| 8. Human Acceptance → Documentation Sync → Release | Agreed (2026-11-06) |
 | Evolution Loop (cross-stage) | Not started |
 
 ## 1. Idea → Brainstorm
@@ -431,7 +431,66 @@ the boundary choices but are not normative for CoolFlow:
 
 ## 8. Human Acceptance → Documentation Sync → Release
 
-Status: `Not started`
+Status: `Agreed` (2026-11-06)
+
+**Scope:** a human decides whether to accept the actual result; accepted behavior is
+recorded in durable project documentation; a release is separately prepared, authorized,
+executed and verified when applicable. Acceptance does not imply release, and release
+is never inferred from implementation or documentation sync.
+
+| ID | Activity | Answers | Core output | Boundary |
+| --- | --- | --- | --- | --- |
+| 8.1 | Inspect the result and make the human acceptance decision | Does the actual behavior and evidence meet the agreed goals and acceptance criteria? Does the human accept it? | Human decision: accept, request changes, or revisit design; known limitations | An Agent cannot accept its own work on the human's behalf; acceptance does not authorize release |
+| 8.2 | Sync accepted facts and selectively archive work | After acceptance, which current project facts and work records need updating or preservation? | Updated `features/` and affected project docs; selected work evidence in the archive | Record only actual accepted behavior; sync does not wait for release |
+| 8.3 | Prepare the release and obtain authorization | What will be released, are the required safeguards ready, and has release been authorized? | Release scope/version, notes, deployment/data-change checks, monitoring and recovery plan, explicit authorization | Readiness checks are not release execution; acceptance and release authorization are separate |
+| 8.4 | Execute the release and verify its operation | Was the authorized release published/deployed, and is it operating as expected? | Actual release status, smoke-check/monitoring evidence, continue/stop/rollback decision | Use canary or staged rollout when risk warrants; post-release feedback enters the Evolution Loop |
+
+### Rationale and boundaries
+
+- 8.1 is a human decision based on observed behavior and evidence against the Spec, not
+  an Agent completion statement. In a small project, the human requester or product owner
+  may make the decision after inspecting the result. Complex or business-critical work may
+  involve representative users in acceptance testing, but a formal UAT ceremony is not
+  required for every change.
+- If the human requests a code change, return to Step 7. If the requirements or design
+  themselves need reconsideration, return to Step 6. Do not record unaccepted behavior in
+  `features/` as current truth.
+- 8.2 follows acceptance and does not wait for production release. Update `features/` with
+  accepted implemented behavior; update product, domain, roadmap, architecture and
+  feature-map records only when affected. Preserve important Specs, decisions and
+  verification evidence; do not archive every temporary file.
+- 8.3 distinguishes release readiness from permission to release. Preparation may include
+  the exact scope/artifact, release notes, migrations and data handling, security or
+  operational checks, monitoring, recovery and rollback. Explicit human authorization is
+  required before an authorized release is executed. If release is not applicable or is
+  deferred, record that state accurately.
+- 8.4 executes only the authorized release and checks the resulting system. Use smoke tests,
+  monitoring and a risk-proportionate staged/canary rollout where available. Record the
+  actual version, time, status and unresolved issues. If checks fail, stop or roll back
+  according to the prepared recovery plan; do not claim a successful release without
+  evidence.
+- Post-release feedback is an input to the cross-stage Evolution Loop, not another
+  mandatory activity in every release.
+
+### Sources consulted
+
+The decomposition was checked against the following public practices. They informed
+the boundary choices but are not normative for CoolFlow:
+
+- Scrum.org, [Definition of Done](https://www.scrum.org/resources/what-definition-done):
+  shared quality criteria describe when an increment is complete; CoolFlow keeps that
+  distinct from a human's acceptance decision and release authorization.
+- Google SRE Workbook, [Canarying Releases](https://sre.google/workbook/canarying-releases/):
+  a canary is a partial, time-limited rollout evaluated before deciding whether to proceed.
+- GitHub Docs, [About releases](https://docs.github.com/en/repositories/releasing-projects-on-github/about-releases)
+  and [Managing releases](https://docs.github.com/en/repositories/releasing-projects-on-github/managing-releases-in-a-repository):
+  releases package a tagged iteration with notes and optional downloadable artifacts.
+- Martin Fowler, [Continuous Integration](https://martinfowler.com/articles/continuousIntegration.html):
+  production release is a business decision, separate from code integration.
+- TestMonitor, [The Complete Guide to User Acceptance Testing](https://www.testmonitor.com/blog/the-complete-guide-to-user-acceptance-testing-uat):
+  acceptance activities compare realistic user workflows against requirements, capture
+  findings and record stakeholder approval; this is a commercial guide, not a CoolFlow
+  requirement.
 
 ## Evolution Loop
 
@@ -451,3 +510,4 @@ the eight stages, without treating it as a ninth stage or a post-release-only st
 | 2026-11-06 | Agreed the Stage 5 UI Prototype boundaries, including explicit visual direction. |
 | 2026-11-06 | Agreed the Stage 6 unified-Spec boundaries, with tactical domain design as an optional checkpoint. |
 | 2026-11-06 | Agreed the Stage 7 implementation, verification, review and evidence boundaries. |
+| 2026-11-06 | Agreed the Stage 8 acceptance, documentation sync, release authorization and verification boundaries. |

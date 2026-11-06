@@ -52,7 +52,7 @@ CoolFlow 有**一条开发流程**和**三个自适应循环（Adaptive Loops）
 
 ## 验收后步骤 — Documentation Sync 与归档（不是循环）
 
-`Human Acceptance → Update accepted/current docs → Verify consistency → Selectively archive → Release`
+`Human Acceptance → 同步已接受事实 → 验证文档一致性 → 选择性归档 →（单独授权发布）→ 适用时执行并验证发布`
 
 - `docs/features/` 描述已验收的实际行为，而不是推测性的设计。
 - 仅在受影响时更新 `product.md`、`domain.md`、`roadmap.md`、`architecture.md`、`feature-map.md`。

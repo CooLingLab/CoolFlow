@@ -44,7 +44,7 @@ The first two Loops are primarily associated with their named stages; the third 
 
 ## Post-acceptance step — Documentation Sync and archive (not a Loop)
 
-`Human Acceptance → Update accepted/current docs → Verify consistency → Selectively archive → Release`
+`Human Acceptance → Sync accepted truth → Verify doc consistency → Selectively archive → (separate release authorization) → Execute and verify release, if applicable`
 
 - `docs/features/` describes accepted actual behavior, not a speculative design.
 - Update `product.md`, `domain.md`, `roadmap.md`, `architecture.md`, `feature-map.md` only if affected.
