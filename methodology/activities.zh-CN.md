@@ -26,7 +26,7 @@
 | 1. Idea → Brainstorm | 已确认（2026-11-05） |
 | 2. Lightweight Strategic DDD | 已确认（2026-11-05） |
 | 3. Concept Prototype → Validation | 已确认（2026-11-06） |
-| 4. Roadmap | 尚未开始 |
+| 4. Roadmap | 已确认（2026-11-06） |
 | 5. UI Prototype | 尚未开始 |
 | 6. Design Spec Loop | 尚未开始 |
 | 7. Implementation Loop | 尚未开始 |
@@ -172,7 +172,46 @@
 
 ## 4. Roadmap
 
-状态：`尚未开始`
+状态：`已确认`（2026-11-06）
+
+**范围：** 产品级 Roadmap。它定义产品方向、当前版本和后续方向，不是功能级发布计划或任务清单。
+功能行为和验收条件属于 PRD 或 Spec；实现任务属于 Agent 会话，仅在必要时写入 `tasks.md`。
+
+| ID | 活动 | 回答的问题 | 核心产出 | 边界 |
+| --- | --- | --- | --- | --- |
+| 4.1 | 明确产品方向与当前版本目标 | 产品往哪走？当前版本要达成什么用户或业务结果？ | 产品方向、当前版本目标、成功指标 | 不写功能清单；不替代 `product.md` 中的产品简报 |
+| 4.2 | 确定当前版本范围 | 哪些产品能力组成最小但完整、有价值、可验证的版本？ | MVP/当前版本范围、优先级理由、非目标、依赖与风险 | 不写详细验收条件；不拆实现任务 |
+| 4.3 | 规划后续版本方向 | 之后可能做什么？置信度如何？ | 后续版本主题或方向、置信度、关键假设 | 不承诺未来功能或日期 |
+
+### 理由与边界
+
+- Roadmap 是产品级的。一个 Roadmap 版本可以包含多个工作目标；单个功能通常属于 PRD 或 Spec，
+  而不是 Roadmap。
+- 4.1 在确定范围前定义成果和成功指标。Roadmap 不是先列功能、再找理由的清单。
+- 4.2 选择最小但**完整、有价值、可验证**的产品增量，而不是功能数量最少的版本。它记录明确的
+  非目标、依赖、风险，以及安全、运营或数据迁移等必要支撑工作。
+- 4.3 使用置信度，而不是虚假的精确度。只有真实的外部约束才使用日期。Now–Next–Later 是
+  可选的置信度视图，不是强制格式。
+- 记录 `roadmap.md` 是 4.1–4.3 的共同产出，不是单独活动。人类确认当前版本范围是退出条件，
+  不是第四个步骤。
+- 产品较小或范围已经明确时，使用简短的 Roadmap 记录或单个版本即可。不要为了填满模板而虚构
+  后续版本。
+- 当产品方向、版本范围或优先级变化时更新 Roadmap。常规功能级变更写入相关 Spec，不需要重写
+  Roadmap。
+- 计划中的内容不是已实现的证明。`features/` 仍然是已验收、已实现行为的权威位置。
+
+### 参考来源
+
+本文的拆分对照了以下公开实践。它们为边界选择提供参考，但不是 CoolFlow 的规范：
+
+- ProdPad，[Now–Next–Later Roadmap](https://www.prodpad.com/blog/now-next-later-roadmap/)：
+  按置信度而不是日期组织，避免把未来条目当成承诺。
+- Teresa Torres，[Product Roadmaps](https://www.producttalk.org/product-roadmaps/)：
+  Roadmap 应反映当前认知，Now 放方案、Next 放机会、Later 放成果。
+- ProductPlan，[The Ultimate Guide to Product Roadmaps](https://www.productplan.com/learn/what-is-a-product-roadmap/)：
+  Roadmap 传达产品方向与策略，不是完成品；应包含必要的技术与运营工作。
+- Impact Mapping，[Impact Mapping](https://www.impactmapping.org/)：连接目标、参与者、影响和
+  交付物，让范围始终与成果相关。
 
 ## 5. UI Prototype
 
@@ -204,6 +243,7 @@ Evolution Loop 是跨阶段的。其活动边界将在八个阶段之后讨论�
 | 2026-11-05 | 确认第 2 阶段的初始领域发现边界；战术设计推迟到第 6 步。 |
 | 2026-11-05 | 明确第 1 阶段的用户/问题发现包含与决策相称的用户研究。 |
 | 2026-11-06 | 确认第 3 阶段的限时验证边界。 |
+| 2026-11-06 | 确认第 4 阶段的产品级 Roadmap 边界。 |
 
 **翻译说明：** 本文是英文 [Stage activities and Skill boundaries](activities.md) 的中文翻译。
 英文是权威版本；如出现歧义，以英文为准。

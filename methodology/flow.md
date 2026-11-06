@@ -11,7 +11,7 @@ CoolFlow describes **one flexible Development Flow and three adaptive Loops**, n
 | 1. Idea → Brainstorm | Clarify the problem, users and value; analyze the competitive landscape; identify an opportunity and testable product hypotheses | Evolving `product.md`; proportionate market/competitor findings and exploration notes in current work |
 | 2. Lightweight strategic DDD | Establish a provisional strategic domain model: ubiquitous language, semantic boundaries and core business rules; tactical design belongs to Step 6 | `domain.md` |
 | 3. Concept Prototype → Validation | Test the riskiest assumptions with a time-boxed prototype, technical spike or other proportionate method; not an MVP | Prototype, spike or other validation evidence under `work/<objective>/prototypes/` |
-| 4. Roadmap | Define MVP/current version and later possibilities | `roadmap.md`; optional PRD for substantial product scope |
+| 4. Roadmap | Define the product-level MVP/current version, non-goals and later direction; not a feature or task plan | `roadmap.md`; optional PRD for substantial product scope |
 | 5. UI Prototype | Design the current version's interactions | Prototype and notes in the relevant work directory |
 | 6. Design Spec Loop | Capture requirements, solution, acceptance criteria and implementation strategy; review the design and revise when useful | `work/<objective>/spec.md`; optional `design.md` |
 | 7. Implementation Loop | Implement, test, review changed code, verify Spec conformance, fix and repeat (often Agent-assisted) | Tested code and review evidence; tasks live in Agent session unless persistent tracking is needed |

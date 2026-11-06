@@ -33,7 +33,7 @@ Skill allocation is deliberately deferred until all stage boundaries are agreed.
 | 1. Idea → Brainstorm | Agreed (2026-11-05) |
 | 2. Lightweight Strategic DDD | Agreed (2026-11-05) |
 | 3. Concept Prototype → Validation | Agreed (2026-11-06) |
-| 4. Roadmap | Not started |
+| 4. Roadmap | Agreed (2026-11-06) |
 | 5. UI Prototype | Not started |
 | 6. Design Spec Loop | Not started |
 | 7. Implementation Loop | Not started |
@@ -206,7 +206,55 @@ the boundary choices but are not normative for CoolFlow:
 
 ## 4. Roadmap
 
-Status: `Not started`
+Status: `Agreed` (2026-11-06)
+
+**Scope:** product-level roadmap. It defines the product direction, the current
+version, and later direction. It is not a feature-level release plan or task list.
+Feature behavior and acceptance criteria belong in a PRD or Spec; implementation
+tasks belong to the Agent session and, only when necessary, `tasks.md`.
+
+| ID | Activity | Answers | Core output | Boundary |
+| --- | --- | --- | --- | --- |
+| 4.1 | Define product direction and the current-version goal | Where is the product going, and what user or business result should this version achieve? | Product direction, current-version goal and success measures | Does not write a feature list; does not replace the product brief in `product.md` |
+| 4.2 | Define the current-version scope | Which product capabilities form the smallest complete, valuable and verifiable version? | MVP/current-version scope, priority rationale, non-goals, dependencies and risks | Does not write detailed acceptance criteria; does not break work into implementation tasks |
+| 4.3 | Plan later versions | What may come next, and how much confidence do we have? | Later version themes or directions, confidence and key assumptions | Does not promise future features or dates |
+
+### Rationale and boundaries
+
+- Roadmap is product-level. A single roadmap version may contain several work
+  objectives; a single feature normally belongs in a PRD or Spec, not in the Roadmap.
+- 4.1 defines the outcome and success measures before scope. Roadmap is not a list of
+  features looking for a justification.
+- 4.2 selects the smallest **complete, valuable and verifiable** product increment, not
+  the smallest number of features. It records explicit non-goals, dependencies, risks
+  and necessary enabling work such as security, operations or data migration.
+- 4.3 uses confidence rather than false precision. Dates appear only when they are real
+  external constraints. Now–Next–Later is an optional confidence view, not a required
+  format.
+- Recording `roadmap.md` is a shared output of 4.1–4.3, not a separate activity. Human
+  confirmation of the current-version scope is an exit condition, not a fourth step.
+- When the product is small or the scope is already obvious, use a short Roadmap note
+  or a single version. Do not create later versions merely to fill a template.
+- Update the Roadmap when product direction, version scope or priorities change. Routine
+  feature-level changes belong in the relevant Spec and do not require a Roadmap rewrite.
+- Planned content is not proof of implementation. `features/` remains the authority for
+  accepted, implemented behavior.
+
+### Sources consulted
+
+The decomposition was checked against the following public practices. They informed
+the boundary choices but are not normative for CoolFlow:
+
+- ProdPad, [Now–Next–Later Roadmap](https://www.prodpad.com/blog/now-next-later-roadmap/):
+  organize by confidence rather than dates; avoid treating future items as commitments.
+- Teresa Torres, [Product Roadmaps](https://www.producttalk.org/product-roadmaps/):
+  the Roadmap should reflect current knowledge, with solutions now, opportunities next
+  and outcomes later.
+- ProductPlan, [The Ultimate Guide to Product Roadmaps](https://www.productplan.com/learn/what-is-a-product-roadmap/):
+  a Roadmap communicates product direction and strategy, not a finished product; include
+  necessary technical and operational work.
+- Impact Mapping, [Impact Mapping](https://www.impactmapping.org/): connect goals,
+  actors, impacts and deliverables so that scope remains tied to outcomes.
 
 ## 5. UI Prototype
 
@@ -238,3 +286,4 @@ the eight stages, without treating it as a ninth stage or a post-release-only st
 | 2026-11-05 | Agreed the Stage 2 initial-domain-discovery boundaries; deferred tactical design to Step 6. |
 | 2026-11-05 | Clarified that Stage 1 user/problem discovery includes proportionate user research. |
 | 2026-11-06 | Agreed the Stage 3 time-boxed validation boundaries. |
+| 2026-11-06 | Agreed the Stage 4 product-level Roadmap boundaries. |

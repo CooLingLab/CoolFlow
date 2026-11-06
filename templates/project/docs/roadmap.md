@@ -2,7 +2,25 @@
 
 > Status: Not started
 
-## MVP / first version
+## Product direction
+
+To decide.
+
+## Current version (MVP)
+
+### Goal and success measures
+
+To decide.
+
+### Scope
+
+To decide.
+
+### Non-goals
+
+To decide.
+
+### Dependencies and risks
 
 To decide.
 
@@ -10,7 +28,7 @@ To decide.
 
 To decide.
 
-## Priorities and decisions
+## Decisions and assumptions
 
 To decide.
 

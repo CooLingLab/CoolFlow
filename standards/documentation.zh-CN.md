@@ -104,7 +104,7 @@
 | `README.md` | 面向人类阅读的项目入口；不编造功能 |
 | `docs/documentation.md` | 完整的项目本地文档规范；初始化后独立维护 |
 | `docs/product.md` | 简明的项目级 Product Brief：问题、受众、愿景、价值、边界和当前定位；**不是 PRD** |
-| `docs/roadmap.md` | MVP、未来版本与优先级；明确区分计划与已验收 |
+| `docs/roadmap.md` | 产品级 MVP/当前版本、后续方向与优先级；明确区分计划与已验收 |
 | `docs/domain.md` | 统一语言、领域边界、核心规则；暂定，初期可以保持未填写 |
 
 在骨架中创建 `docs/features/`、`docs/work/` 和 `docs/work/archive/`；如果 Git 目录为空，使用
