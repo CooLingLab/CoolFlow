@@ -35,7 +35,7 @@ Skill allocation is deliberately deferred until all stage boundaries are agreed.
 | 3. Concept Prototype → Validation | Agreed (2026-11-06) |
 | 4. Roadmap | Agreed (2026-11-06) |
 | 5. UI Prototype | Agreed (2026-11-06) |
-| 6. Design Spec Loop | Not started |
+| 6. Design Spec Loop | Agreed (2026-11-06) |
 | 7. Implementation Loop | Not started |
 | 8. Human Acceptance → Documentation Sync → Release | Not started |
 | Evolution Loop (cross-stage) | Not started |
@@ -320,7 +320,60 @@ the boundary choices but are not normative for CoolFlow:
 
 ## 6. Design Spec Loop
 
-Status: `Not started`
+Status: `Agreed` (2026-11-06)
+
+**Scope:** create one implementable, verifiable and reviewable Spec for the selected
+increment. The Spec carries requirements, observable acceptance criteria, technical
+solution, optional tactical domain design, implementation strategy and verification.
+This stage is not a PRD, implementation, task checklist or final acceptance. Code review
+and acceptance belong to later stages.
+
+| ID | Activity | Answers | Core output | Boundary |
+| --- | --- | --- | --- | --- |
+| 6.1 | Clarify requirements and acceptance criteria | What observable behavior is required, and which rules, examples and failure cases must hold? | Goals/non-goals, user behavior, acceptance criteria, key examples and open questions | Does not prescribe the technical solution; does not mix implementation detail into acceptance |
+| 6.2 | Investigate the existing system and constraints | What existing code, data, interfaces, architecture and decisions constrain the solution? | Relevant code/data, interfaces, constraints, reusable patterns and risks | Does not rewrite the entire system; is not a review of newly written code |
+| 6.3 | Design the solution and draft the unified Spec | How will it be implemented, what alternatives and trade-offs exist, and how will it be verified? | Unified `spec.md`: technical design, optional tactical domain design, implementation strategy, verification plan, trade-offs and assumptions; optional `design.md` | Does not write implementation code; does not require a task list; does not duplicate a PRD |
+| 6.4 | Review and revise the design | Is the design complete, feasible, testable and not overengineered? | Review record, revised Spec, resolved or explicitly retained blockers | Not code review; not final acceptance |
+
+### Rationale and boundaries
+
+- 6.1 clarifies behavior with rules, concrete examples and questions. Acceptance criteria
+  should be observable and testable. Open questions remain explicit rather than being
+  silently converted into assumptions.
+- 6.2 reads the existing system for design feasibility. This is not the same as reviewing
+  code newly produced for the current task; code review belongs to the Implementation
+  Loop.
+- 6.3 designs the solution and drafts the unified Spec. It records meaningful alternatives,
+  trade-offs, failure cases, implementation strategy and verification. A separate
+  `design.md` is optional when the technical detail is too large for the Spec.
+- Tactical domain design is an optional checkpoint inside 6.3, not a separate activity.
+  Use it when the domain has non-trivial invariants, state transitions, cross-object
+  consistency or multiple bounded contexts. Record aggregates, entities and value objects,
+  where invariants are enforced, domain events, repository/service responsibilities and
+  transaction boundaries. Update `docs/domain.md` only when durable domain understanding
+  changes; record consequential architecture decisions as ADRs.
+- `tasks.md` is optional. The coding Agent normally manages tasks in its session; create a
+  persistent task file only when work must survive across sessions, agents or time.
+- 6.4 reviews the design before significant implementation. Use an independent reviewer
+  for novel, complex, risky or irreversible work; use a lightweight checklist for small
+  changes. Resolve material blockers; product-critical trade-offs remain human decisions.
+- Maintain one authoritative Spec. Optional PRD, design and task documents must be linked,
+  not duplicated. A small fix may use a concise Spec or checklist rather than every
+  section of the template.
+
+### Sources consulted
+
+The decomposition was checked against the following public practices. They informed
+the boundary choices but are not normative for CoolFlow:
+
+- GitHub, [Spec Kit](https://github.com/github/spec-kit): spec-driven development connects
+  a specification to planning, tasks and implementation while keeping review points.
+- OpenSpec, [OpenSpec](https://github.com/Fission-AI/OpenSpec): a change can carry proposal,
+  specs, design and tasks; the workflow is iterative rather than a rigid phase gate.
+- Cucumber, [Introducing Example Mapping](https://cucumber.io/blog/bdd/example-mapping-introduction/):
+  rules, examples and questions clarify acceptance criteria before development.
+- ADR GitHub organization, [Architectural Decision Records](https://adr.github.io/):
+  capture consequential decisions with their context, rationale, trade-offs and consequences.
 
 ## 7. Implementation Loop
 
@@ -346,3 +399,4 @@ the eight stages, without treating it as a ninth stage or a post-release-only st
 | 2026-11-06 | Agreed the Stage 3 time-boxed validation boundaries. |
 | 2026-11-06 | Agreed the Stage 4 product-level Roadmap boundaries. |
 | 2026-11-06 | Agreed the Stage 5 UI Prototype boundaries, including explicit visual direction. |
+| 2026-11-06 | Agreed the Stage 6 unified-Spec boundaries, with tactical domain design as an optional checkpoint. |

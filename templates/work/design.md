@@ -10,6 +10,12 @@ To decide.
 
 To decide.
 
+## Tactical domain design (optional)
+
+To decide when the domain has non-trivial invariants, state transitions or consistency
+boundaries. Record aggregates, entities and value objects, where invariants are enforced,
+domain events, repository/service responsibilities and transaction boundaries.
+
 ## Failure cases and trade-offs
 
 To decide.
