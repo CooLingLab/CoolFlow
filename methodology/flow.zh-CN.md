@@ -16,7 +16,7 @@ CoolFlow 描述的是**一条灵活的开发流程和三个自适应循环**，�
 | 2. Lightweight strategic DDD | 建立暂定的战略领域模型：统一语言、语义边界和核心业务规则；战术设计属于第 6 步 | `domain.md` |
 | 3. Concept Prototype → Validation | 用限时原型、技术 spike 或其他相称方法验证最危险的假设；不是 MVP | `work/<objective>/prototypes/` 下的原型、spike 或其他验证证据 |
 | 4. Roadmap | 定义产品级 MVP/当前版本、非目标与后续方向；不是功能或任务计划 | `roadmap.md`；范围较大的产品可选 PRD |
-| 5. UI Prototype | 设计当前版本的交互 | 相关工作目录中的原型与笔记 |
+| 5. UI Prototype | 设计当前版本的关键流程、视觉方向、关键界面与状态；在有用时进行用户验证 | 相关工作目录中的原型、视觉方向与笔记 |
 | 6. Design Spec Loop | 记录需求、方案、验收条件与实施策略；评审设计并在需要时修订 | `work/<objective>/spec.md`；可选 `design.md` |
 | 7. Implementation Loop | 实现、测试、评审变更代码、验证 Spec 一致性、修复并重复（通常由 Agent 辅助） | 经测试的代码与评审证据；除非需要持久跟踪，否则任务保存在 Agent 会话中 |
 | 8. Human Acceptance → Documentation Sync → Release | 人类验收实际行为；同步持久文档；归档有意义的历史；发布并学习 | 视情况更新 `features/`、domain/roadmap/feature-map；`work/archive/` |

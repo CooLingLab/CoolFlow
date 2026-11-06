@@ -8,7 +8,7 @@ Use this recommended CoolFlow lifecycle; skip, merge or revisit stages as projec
 2. Lightweight strategic DDD — establish an initial domain model: core concepts, semantic boundaries, language and business rules. Tactical domain design belongs to Design Spec Loop; keep `docs/domain.md` provisional and evolving.
 3. Concept Prototype → Validation — test the riskiest assumptions with a time-boxed prototype, technical spike or other proportionate method; stop when evidence is sufficient to choose MVP scope.
 4. Roadmap — define the product-level MVP/current version, non-goals and later direction; not a feature or task plan.
-5. UI Prototype — design interactions for the current version.
+5. UI Prototype — design the current version's key flows, visual direction, key screens and states; validate with users when useful.
 6. Design Spec Loop — write a unified, verifiable Spec → review when useful → revise.
 7. Implementation Loop — code → test → code review → Spec conformance → fix (Agent-assisted as appropriate).
 8. Human Acceptance → Docs Sync → Release — record accepted reality and learn.

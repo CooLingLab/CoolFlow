@@ -34,7 +34,7 @@ Skill allocation is deliberately deferred until all stage boundaries are agreed.
 | 2. Lightweight Strategic DDD | Agreed (2026-11-05) |
 | 3. Concept Prototype → Validation | Agreed (2026-11-06) |
 | 4. Roadmap | Agreed (2026-11-06) |
-| 5. UI Prototype | Not started |
+| 5. UI Prototype | Agreed (2026-11-06) |
 | 6. Design Spec Loop | Not started |
 | 7. Implementation Loop | Not started |
 | 8. Human Acceptance → Documentation Sync → Release | Not started |
@@ -258,7 +258,65 @@ the boundary choices but are not normative for CoolFlow:
 
 ## 5. UI Prototype
 
-Status: `Not started`
+Status: `Agreed` (2026-11-06)
+
+**Scope:** design the current product version's key flows, visual direction, key screens
+and states, and a clickable prototype. This stage is not a full design system,
+production UI or Spec. Visual direction is a distinct activity, not an implicit part of
+drawing screens.
+
+| ID | Activity | Answers | Core output | Boundary |
+| --- | --- | --- | --- | --- |
+| 5.1 | Define design goals and constraints | Which user tasks must this version support, and what platform, brand, technical and accessibility constraints apply? | Design goals, key tasks, platform and constraints, design principles | Does not redefine Roadmap scope; does not design technical architecture |
+| 5.2 | Design user flows and information architecture | How do users complete key tasks, and how are screens and navigation organized? | User flows, information architecture and key-screen inventory | Does not start with visual detail; does not write implementation code |
+| 5.3 | Explore visual direction | What should the product look and feel like, and which direction best fits the users and brand? | Two or three visual directions using style tiles, mood boards or representative screens; selected direction and rationale | Not a complete design system; not every final screen |
+| 5.4 | Create interfaces and an interactive prototype | How does the chosen direction apply to key screens, states and interactions? | Key screens, empty/loading/error/success states, clickable prototype and notes | Not production code; no real backend; does not replace the Spec |
+| 5.5 | Review and usability validation | Can users understand and complete key tasks, and does the visual direction support the goals? | Design review record, task-based usability findings, revised prototype and open questions | Not final acceptance; does not treat internal opinion as user evidence |
+
+### Rationale and boundaries
+
+- 5.1 consumes the current-version scope from the Roadmap. It records target users,
+  key tasks, platform, existing brand or design system, accessibility needs and material
+  technical constraints.
+- 5.2 designs flows and structure before visual detail. Wireflows or equivalent artifacts
+  can show tasks, navigation, screen changes and system feedback when static wireframes
+  are insufficient.
+- 5.3 makes visual direction explicit. Explore two or three directions when the choice
+  materially affects the product; use style tiles, mood boards or representative screens
+  to compare colour, typography, spacing, iconography, illustration and motion. Reuse an
+  existing brand or design system where one exists. A full design system is usually not a
+  good investment for a prototype.
+- 5.4 applies the selected direction to key screens and states, then connects them into a
+  clickable prototype. Simulated data and interactions must be identified as such.
+- 5.5 combines design review with task-based usability testing. Use target users where
+  possible; a small qualitative sample can reveal major issues, but it is not statistical
+  proof. If visual direction is itself a key risk, test comprehension and brand perception
+  rather than only asking whether users like it.
+- Routine changes may reuse existing patterns and skip formal visual exploration. Record
+  why. Do not create a full design system or every edge-case screen merely to fill a
+  template.
+- Outputs belong in `docs/work/<objective>/prototypes/`. Complex design decisions may be
+  recorded in optional `design.md`; no new mandatory UI document is introduced.
+
+### Sources consulted
+
+The decomposition was checked against the following public practices. They informed
+the boundary choices but are not normative for CoolFlow:
+
+- A List Apart, [Style Tiles and How They Work](https://alistapart.com/article/style-tiles-and-how-they-work/):
+  style tiles explore visual language between a mood board and a full mock-up.
+- Nielsen Norman Group, [5 Principles of Visual Design in UX](https://www.nngroup.com/articles/principles-visual-design/):
+  scale, hierarchy, balance, contrast and Gestalt affect usability, emotion and brand.
+- Nielsen Norman Group, [Design Systems 101](https://www.nngroup.com/articles/design-systems-101/):
+  design systems combine style guides, component libraries and pattern libraries; a full
+  system is usually not a short-term prototype investment.
+- Nielsen Norman Group, [Wireflows](https://www.nngroup.com/articles/wireflows/):
+  combine screen designs with task flows for dynamic interfaces.
+- Nielsen Norman Group, [Prototype Fidelity](https://www.nngroup.com/articles/ux-prototype-hi-lo-fidelity/):
+  choose prototype fidelity according to the question being tested.
+- Nielsen Norman Group, [Usability Testing 101](https://www.nngroup.com/articles/usability-testing-101/):
+  observe target users completing realistic tasks; small qualitative studies reveal major
+  problems but are not statistical proof.
 
 ## 6. Design Spec Loop
 
@@ -287,3 +345,4 @@ the eight stages, without treating it as a ninth stage or a post-release-only st
 | 2026-11-05 | Clarified that Stage 1 user/problem discovery includes proportionate user research. |
 | 2026-11-06 | Agreed the Stage 3 time-boxed validation boundaries. |
 | 2026-11-06 | Agreed the Stage 4 product-level Roadmap boundaries. |
+| 2026-11-06 | Agreed the Stage 5 UI Prototype boundaries, including explicit visual direction. |

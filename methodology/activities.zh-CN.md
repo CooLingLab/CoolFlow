@@ -27,7 +27,7 @@
 | 2. Lightweight Strategic DDD | 已确认（2026-11-05） |
 | 3. Concept Prototype → Validation | 已确认（2026-11-06） |
 | 4. Roadmap | 已确认（2026-11-06） |
-| 5. UI Prototype | 尚未开始 |
+| 5. UI Prototype | 已确认（2026-11-06） |
 | 6. Design Spec Loop | 尚未开始 |
 | 7. Implementation Loop | 尚未开始 |
 | 8. Human Acceptance → Documentation Sync → Release | 尚未开始 |
@@ -215,7 +215,52 @@
 
 ## 5. UI Prototype
 
-状态：`尚未开始`
+状态：`已确认`（2026-11-06）
+
+**范围：** 设计当前产品版本的关键流程、视觉方向、关键界面与状态，以及可点击原型。本阶段不是
+完整设计系统、生产 UI 或 Spec。视觉方向是独立活动，不是画界面时隐含的一部分。
+
+| ID | 活动 | 回答的问题 | 核心产出 | 边界 |
+| --- | --- | --- | --- | --- |
+| 5.1 | 明确设计目标与约束 | 这个版本必须支持哪些用户任务？平台、品牌、技术和无障碍约束是什么？ | 设计目标、关键任务、平台与约束、设计原则 | 不重新定义 Roadmap 范围；不设计技术架构 |
+| 5.2 | 设计用户流程与信息架构 | 用户如何完成关键任务？页面和导航如何组织？ | 用户流程、信息架构、关键页面清单 | 不先做视觉细节；不写实现代码 |
+| 5.3 | 探索视觉方向 | 产品应该看起来和感觉起来怎样？哪个方向最适合用户和品牌？ | 2–3 个使用风格板、mood board 或代表性界面的视觉方向；选定方向及理由 | 不是完整设计系统；不是每个最终页面 |
+| 5.4 | 制作界面与可交互原型 | 选定方向如何应用到关键界面、状态和交互？ | 关键界面、空/加载/错误/成功状态、可点击原型和说明 | 不是生产代码；不接真实后端；不替代 Spec |
+| 5.5 | 评审与可用性验证 | 用户能否理解并完成关键任务？视觉方向是否支持目标？ | 设计评审记录、任务测试发现、修改后的原型、开放问题 | 不是最终验收；不把内部意见当用户证据 |
+
+### 理由与边界
+
+- 5.1 使用 Roadmap 的当前版本范围，记录目标用户、关键任务、平台、现有品牌或设计系统、无障碍
+  需求和重要技术约束。
+- 5.2 先设计流程和结构，再进入视觉细节。静态线框图不足时，可以用 wireflow 或等价产物表达
+  任务、导航、页面变化和系统反馈。
+- 5.3 明确视觉方向。当选择会实质影响产品时，探索 2–3 个方向；使用风格板、mood board 或
+  代表性界面比较色彩、字体、间距、图标、插画和动效。已有品牌或设计系统时优先复用。原型阶段
+  通常不值得投入完整设计系统。
+- 5.4 将选定方向应用到关键界面和状态，再连接成可点击原型。模拟的数据和交互必须明确标注。
+- 5.5 结合设计评审和任务式可用性测试。尽量使用目标用户；小样本定性测试可以发现主要问题，但
+  不是统计证明。如果视觉方向本身就是关键风险，应测试理解和品牌感知，而不只是问用户是否喜欢。
+- 常规小改动可以复用现有模式，跳过正式视觉探索，并记录原因。不要为了填满模板而创建完整设计
+  系统或覆盖所有边界界面。
+- 产出放在 `docs/work/<objective>/prototypes/`。复杂设计决策可以记录在可选的 `design.md`；
+  不新增强制 UI 文档。
+
+### 参考来源
+
+本文的拆分对照了以下公开实践。它们为边界选择提供参考，但不是 CoolFlow 的规范：
+
+- A List Apart，[Style Tiles and How They Work](https://alistapart.com/article/style-tiles-and-how-they-work/)：
+  风格板在 mood board 和完整界面稿之间探索视觉语言。
+- Nielsen Norman Group，[5 Principles of Visual Design in UX](https://www.nngroup.com/articles/principles-visual-design/)：
+  尺度、层级、平衡、对比和格式塔原则影响可用性、情绪和品牌。
+- Nielsen Norman Group，[Design Systems 101](https://www.nngroup.com/articles/design-systems-101/)：
+  设计系统由样式指南、组件库和模式库组成；完整系统通常不是短期原型的合理投资。
+- Nielsen Norman Group，[Wireflows](https://www.nngroup.com/articles/wireflows/)：
+  将界面设计与任务流程结合，适合动态界面。
+- Nielsen Norman Group，[Prototype Fidelity](https://www.nngroup.com/articles/ux-prototype-hi-lo-fidelity/)：
+  根据要验证的问题选择原型保真度。
+- Nielsen Norman Group，[Usability Testing 101](https://www.nngroup.com/articles/usability-testing-101/)：
+  观察目标用户完成真实任务；小样本定性研究能发现主要问题，但不是统计证明。
 
 ## 6. Design Spec Loop
 
@@ -244,6 +289,7 @@ Evolution Loop 是跨阶段的。其活动边界将在八个阶段之后讨论�
 | 2026-11-05 | 明确第 1 阶段的用户/问题发现包含与决策相称的用户研究。 |
 | 2026-11-06 | 确认第 3 阶段的限时验证边界。 |
 | 2026-11-06 | 确认第 4 阶段的产品级 Roadmap 边界。 |
+| 2026-11-06 | 确认第 5 阶段 UI Prototype 边界，并将视觉方向列为独立活动。 |
 
 **翻译说明：** 本文是英文 [Stage activities and Skill boundaries](activities.md) 的中文翻译。
 英文是权威版本；如出现歧义，以英文为准。
