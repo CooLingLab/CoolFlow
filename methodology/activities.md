@@ -36,7 +36,7 @@ Skill allocation is deliberately deferred until all stage boundaries are agreed.
 | 4. Roadmap | Agreed (2026-11-06) |
 | 5. UI Prototype | Agreed (2026-11-06) |
 | 6. Design Spec Loop | Agreed (2026-11-06) |
-| 7. Implementation Loop | Not started |
+| 7. Implementation Loop | Agreed (2026-11-06) |
 | 8. Human Acceptance → Documentation Sync → Release | Not started |
 | Evolution Loop (cross-stage) | Not started |
 
@@ -377,7 +377,57 @@ the boundary choices but are not normative for CoolFlow:
 
 ## 7. Implementation Loop
 
-Status: `Not started`
+Status: `Agreed` (2026-11-06)
+
+**Scope:** implement the approved Spec in small verifiable increments; test the behavior,
+review the changed code and Spec conformance, fix defects and record evidence. This stage
+does not perform final human acceptance or release, and it does not redesign the Spec
+silently.
+
+| ID | Activity | Answers | Core output | Boundary |
+| --- | --- | --- | --- | --- |
+| 7.1 | Implement the smallest verifiable increment | How can the Spec be implemented in small steps while keeping the code runnable? | Working code changes, necessary tests and version checkpoints | Does not expand the approved Spec; does not refactor unrelated code |
+| 7.2 | Test and verify behavior | Does the code satisfy the acceptance criteria, including normal, boundary and failure paths? | Automated test results, build/lint/type-check results and necessary manual evidence | Does not treat compilation as behavior verification; does not skip failing tests |
+| 7.3 | Review the code and Spec conformance | Is the change correct, secure and maintainable, and does it match the approved Spec? | Code review findings, Spec-conformance check and identified issues | Not a repeat of design review; not final acceptance |
+| 7.4 | Fix, re-verify and record evidence | Are the issues actually resolved, and what remains unverified? | Fixed code, re-verification results, evidence and unresolved issues | Does not apply surface patches; does not silently rewrite requirements to fit the code |
+
+### Rationale and boundaries
+
+- 7.1 works in small increments that keep the system runnable and testable. Avoid
+  accumulating a large unverified change. Use version-control checkpoints when they
+  reduce risk; do not mix unrelated refactoring into the task.
+- 7.2 runs the relevant automated tests and, where available, build, lint and type checks.
+  Cover normal, boundary and failure paths. Use manual verification where automation
+  cannot establish the observable behavior.
+- 7.3 reviews the new diff, not the entire codebase. Review both code quality and Spec
+  conformance: correctness, security, readability, maintainability, regressions, tests
+  and documentation, plus the approved acceptance criteria. An independent reviewer or
+  subagent is optional when the change is large or risky.
+- 7.4 finds the root cause before fixing. If the implementation is wrong, fix it and
+  re-run the relevant checks. If the Spec is wrong, return to the Design Spec Loop instead
+  of silently changing requirements. If two fixes fail against the same check, verify the
+  underlying assumption rather than continuing to patch.
+- TDD is optional. Use Red–Green–Refactor when it suits the change; do not force it onto
+  exploratory or trivial edits. Use the project's existing test, build and CI commands.
+- Tasks normally live in the Agent session. Create `tasks.md` only when progress must
+  persist across sessions, agents or time.
+- Record direct evidence: commands, key output, test results, screenshots or logs. Keep
+  **tested**, **human accepted** and **released** distinct.
+
+### Sources consulted
+
+The decomposition was checked against the following public practices. They informed
+the boundary choices but are not normative for CoolFlow:
+
+- Google, [Code Review](https://google.github.io/eng-practices/review/): reviewers examine
+  design, functionality, complexity, tests, naming, comments, style and documentation.
+- Martin Fowler, [Test Driven Development](https://martinfowler.com/bliki/TestDrivenDevelopment.html):
+  Red–Green–Refactor is a way to build self-testing code and think about interfaces before
+  implementation.
+- Martin Fowler, [Continuous Integration](https://martinfowler.com/articles/continuousIntegration.html):
+  integrate frequently, automate the build and tests, and fix broken builds immediately.
+- CoolFlow, [Prove It Works](golden-rules.md): require direct, reproducible evidence rather
+  than an Agent's completion claim.
 
 ## 8. Human Acceptance → Documentation Sync → Release
 
@@ -400,3 +450,4 @@ the eight stages, without treating it as a ninth stage or a post-release-only st
 | 2026-11-06 | Agreed the Stage 4 product-level Roadmap boundaries. |
 | 2026-11-06 | Agreed the Stage 5 UI Prototype boundaries, including explicit visual direction. |
 | 2026-11-06 | Agreed the Stage 6 unified-Spec boundaries, with tactical domain design as an optional checkpoint. |
+| 2026-11-06 | Agreed the Stage 7 implementation, verification, review and evidence boundaries. |

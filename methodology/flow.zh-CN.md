@@ -18,7 +18,7 @@ CoolFlow 描述的是**一条灵活的开发流程和三个自适应循环**，�
 | 4. Roadmap | 定义产品级 MVP/当前版本、非目标与后续方向；不是功能或任务计划 | `roadmap.md`；范围较大的产品可选 PRD |
 | 5. UI Prototype | 设计当前版本的关键流程、视觉方向、关键界面与状态；在有用时进行用户验证 | 相关工作目录中的原型、视觉方向与笔记 |
 | 6. Design Spec Loop | 记录需求、验收条件、方案、可选战术领域设计、实施与验证策略；评审并修订 | `work/<objective>/spec.md`；可选 `design.md` |
-| 7. Implementation Loop | 实现、测试、评审变更代码、验证 Spec 一致性、修复并重复（通常由 Agent 辅助） | 经测试的代码与评审证据；除非需要持久跟踪，否则任务保存在 Agent 会话中 |
+| 7. Implementation Loop | 小步实现、测试行为、评审变更代码与 Spec 一致性、修复并记录证据（通常由 Agent 辅助） | 经测试的代码、评审证据与已知风险；除非需要持久跟踪，否则任务保存在 Agent 会话中 |
 | 8. Human Acceptance → Documentation Sync → Release | 人类验收实际行为；同步持久文档；归档有意义的历史；发布并学习 | 视情况更新 `features/`、domain/roadmap/feature-map；`work/archive/` |
 
 ## 第 1 步 — Idea → Brainstorm

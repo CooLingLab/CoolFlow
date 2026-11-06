@@ -29,7 +29,7 @@
 | 4. Roadmap | 已确认（2026-11-06） |
 | 5. UI Prototype | 已确认（2026-11-06） |
 | 6. Design Spec Loop | 已确认（2026-11-06） |
-| 7. Implementation Loop | 尚未开始 |
+| 7. Implementation Loop | 已确认（2026-11-06） |
 | 8. Human Acceptance → Documentation Sync → Release | 尚未开始 |
 | Evolution Loop（跨阶段） | 尚未开始 |
 
@@ -310,7 +310,49 @@
 
 ## 7. Implementation Loop
 
-状态：`尚未开始`
+状态：`已确认`（2026-11-06）
+
+**范围：** 按已批准的 Spec 以小步、可验证的增量实现；测试行为、评审变更代码和 Spec 一致性、
+修复缺陷并记录证据。本阶段不进行最终人类验收或发布，也不会悄悄重新设计 Spec。
+
+| ID | 活动 | 回答的问题 | 核心产出 | 边界 |
+| --- | --- | --- | --- | --- |
+| 7.1 | 实现最小可验证增量 | 如何小步实现 Spec，同时保持代码可运行？ | 可运行的代码变更、必要测试和版本检查点 | 不扩大已批准 Spec；不重构无关代码 |
+| 7.2 | 测试并验证行为 | 代码是否满足验收条件，包括正常、边界和失败路径？ | 自动化测试结果、构建/Lint/类型检查结果和必要的手工证据 | 不以编译成功代替行为验证；不跳过失败测试 |
+| 7.3 | 审查代码与 Spec 一致性 | 变更是否正确、安全、可维护，并符合已批准 Spec？ | 代码评审发现、Spec 一致性检查和问题清单 | 不是重复设计评审；不是最终验收 |
+| 7.4 | 修复、复验并记录证据 | 问题是否真正解决？还有什么未验证？ | 修复后的代码、复验结果、证据和遗留问题 | 不只做表面补丁；不悄悄改写需求来迁就代码 |
+
+### 理由与边界
+
+- 7.1 使用保持系统可运行、可测试的小增量。避免积累大量未验证变更。当版本检查点能降低风险时
+  使用它；不要把无关重构混入当前任务。
+- 7.2 运行相关自动化测试，并在可用时运行构建、Lint 和类型检查。覆盖正常、边界和失败路径。
+  自动化无法证明可观察行为时，使用手工验证。
+- 7.3 评审新的代码差异，而不是整个代码库。同时检查代码质量和 Spec 一致性：正确性、安全性、
+  可读性、可维护性、回归、测试和文档，以及已批准的验收条件。变更较大或风险较高时，可以选择
+  独立评审者或子 Agent。
+- 7.4 先找根因再修复。如果实现错误，修复并重新运行相关检查。如果 Spec 错误，返回
+  Design Spec Loop，而不是悄悄改变需求。如果同一检查连续两次修复无效，应验证底层前提，而不是
+  继续打补丁。
+- TDD 是可选的。适合时使用 Red–Green–Refactor；不要强行用于探索性或琐碎修改。使用项目现有的
+  测试、构建和 CI 命令。
+- 任务通常保存在 Agent 会话中。只有当进度必须跨会话、跨 Agent 或跨时间保留时，才创建
+  `tasks.md`。
+- 记录直接证据：命令、关键输出、测试结果、截图或日志。始终区分**已测试**、**人工验收**和
+  **已发布**。
+
+### 参考来源
+
+本文的拆分对照了以下公开实践。它们为边界选择提供参考，但不是 CoolFlow 的规范：
+
+- Google，[Code Review](https://google.github.io/eng-practices/review/)：评审者检查设计、
+  功能、复杂度、测试、命名、注释、风格和文档。
+- Martin Fowler，[Test Driven Development](https://martinfowler.com/bliki/TestDrivenDevelopment.html)：
+  Red–Green–Refactor 是构建自测试代码、在实现前思考接口的方式。
+- Martin Fowler，[Continuous Integration](https://martinfowler.com/articles/continuousIntegration.html)：
+  频繁集成、自动化构建和测试，构建失败立即修复。
+- CoolFlow，[Prove It Works](golden-rules.zh-CN.md)：要求直接、可复现的证据，而不是 Agent 的
+  完成声明。
 
 ## 8. Human Acceptance → Documentation Sync → Release
 
@@ -333,6 +375,7 @@ Evolution Loop 是跨阶段的。其活动边界将在八个阶段之后讨论�
 | 2026-11-06 | 确认第 4 阶段的产品级 Roadmap 边界。 |
 | 2026-11-06 | 确认第 5 阶段 UI Prototype 边界，并将视觉方向列为独立活动。 |
 | 2026-11-06 | 确认第 6 阶段统一 Spec 边界，并将战术领域设计作为可选检查点。 |
+| 2026-11-06 | 确认第 7 阶段的实现、验证、评审和证据边界。 |
 
 **翻译说明：** 本文是英文 [Stage activities and Skill boundaries](activities.md) 的中文翻译。
 英文是权威版本；如出现歧义，以英文为准。
