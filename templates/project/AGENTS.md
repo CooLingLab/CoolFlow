@@ -35,7 +35,7 @@ Follow `docs/documentation.md` when creating, updating or archiving project docu
 6. Record human-confirmed plans with their actual status; sync durable docs describing accepted/current behavior after human acceptance. Acceptance and production release are distinct.
 7. Manage ordinary task lists in the active Agent session.
 8. Before related work, consult relevant existing Solutions when available.
-9. If the project uses a package manager, generate and commit its lockfile; CI must install from the lockfile using the package manager's frozen/locked mode.
+9. When appropriate, especially for applications and deployed services, commit the package manager's lockfile and configure CI to install in frozen/locked mode. Libraries that intentionally publish dependency ranges may omit it; record that choice and have CI test the supported range.
 
 ## Project-specific Conventions
 
