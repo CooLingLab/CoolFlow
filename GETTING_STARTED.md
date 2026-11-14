@@ -28,7 +28,11 @@ The target project root must be either:
 - completely empty; or
 - contain exactly one root-level .git entry, which may be a directory or a regular file (Git worktree metadata).
 
-Every other entry makes the directory non-empty, including README.md, .gitignore, .DS_Store, other hidden files, directories and symlinks. The Skill must refuse to run without changing anything. Do not delete files just to make a directory eligible; choose a new empty directory instead.
+Claude Code creates its own root-level `.claude/` directory in every directory it opens. That directory is Agent metadata, not project content, and does not make the target ineligible when every entry it contains is one of:
+- `.cc-writes/`, Claude Code's atomic-write staging directory;
+- `settings.local.json`, a local permissions file.
+
+A `.claude` file or symlink, any other entry inside `.claude/` (for example `settings.json`, `commands/`, `agents/`, or `skills/`), and every other root entry make the directory non-empty—including README.md, .gitignore, .DS_Store, CLAUDE.md, .mcp.json, other hidden files, directories and symlinks. The Skill must refuse to run without changing anything. Do not delete files just to make a directory eligible; choose a new empty directory instead.
 
 #### Install the Skill — ask your Agent
 
@@ -61,12 +65,12 @@ Not every coding Agent supports Agent Skills or global installation. If yours do
 
 1. Open a **new, empty target project directory** in your coding Agent.
 2. Ask: **“Use `coolflow-init` to initialize this empty project.”**
-3. The Agent checks the target root—including hidden entries—before making any changes.
+3. The Agent checks the target root—including hidden entries—before making any changes. It ignores only Claude Code's documented `.claude/` harness metadata and leaves it untouched.
 4. If eligible, it reads the canonical CoolFlow standards and templates, creates the required project files, verifies them, reports the result, and stops. It does not automatically begin Brainstorm or write application code.
 
 If your Agent cannot install or invoke Skills, use this manual initialization fallback:
 
-> Read the CoolFlow repository at https://github.com/CooLingLab/CoolFlow. First inspect the current target project root, including hidden entries. Proceed only if it is empty or contains exactly one root-level .git directory or regular file; otherwise stop without changing anything. Read standards/initialization.md, standards/documentation.md, methodology/flow.md, methodology/loops.md, and the required templates under templates/project/. Follow the initialization contract exactly, create the required documentation structure, verify it, report the result, and stop. Do not begin Brainstorm or implementation.
+> Read the CoolFlow repository at https://github.com/CooLingLab/CoolFlow. First inspect the current target project root, including hidden entries. Proceed only if, after ignoring Claude Code's own `.claude/` harness metadata (`.cc-writes/` and/or `settings.local.json` only), it is empty or contains exactly one root-level .git directory or regular file; otherwise stop without changing anything. Read standards/initialization.md, standards/documentation.md, methodology/flow.md, methodology/loops.md, and the required templates under templates/project/. Follow the initialization contract exactly, create the required documentation structure, verify it, report the result, and stop. Do not begin Brainstorm or implementation.
 
 Expected skeleton in an **empty project**:
 

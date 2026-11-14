@@ -12,11 +12,28 @@ The coolflow-init Skill is exclusively for a new, empty target project.
 
 - The target root must contain no entries, or exactly one root-level entry named .git.
 - The .git entry may be a directory (a normal Git repository) or a regular file (a Git worktree).
-- Inspect all root entries, including hidden files. Any other file, directory, or symlink makes the target non-empty.
+- A root-level .claude/ directory created by Claude Code is ignored only under the narrow [Agent harness metadata exemption](#agent-harness-metadata-exemption) below.
+- Inspect all root entries, including hidden files. After applying the exemption, any other file, directory, or symlink makes the target non-empty.
 - If the target is non-empty, ambiguous, inaccessible, or cannot be inspected reliably, the Skill must stop **before writing anything**. It must not delete, move, rename, or overwrite files to make the directory eligible.
 - Do not mistake the Skill's own installation directory or the CoolFlow source repository for the target project.
 
 This restriction applies to coolflow-init. **Do not use the Skill for an existing project.** Follow [Existing Project Adoption in Getting Started](../GETTING_STARTED.md#b-existing-project--inspect-before-adopting) instead.
+
+### Agent harness metadata exemption
+
+Claude Code creates a root-level `.claude/` directory in every directory it opens, before the Skill can run. This is Agent metadata, not project content, so the preflight ignores it only under these constraints:
+
+- `.claude` must be a real directory, not a regular file or symlink.
+- All of its immediate entries, if any, must be from this list:
+  - `.cc-writes/`, a real directory used by Claude Code for atomic-write staging. It is normally empty; treat its contents as transient Agent state and do not inspect them.
+  - `settings.local.json`, a regular file created when the user approves local permissions.
+- An empty `.claude/` directory is exempt.
+- `.cc-writes` must be a real directory and `settings.local.json` must be a regular file; symlinks with these names are not exempt.
+- Any other entry inside `.claude/`—including `settings.json`, `commands/`, `agents/`, or `skills/`—makes the target ineligible.
+
+The exemption affects eligibility only. The Skill must not read the contents of `settings.local.json`, modify, delete, copy, or document this metadata, and must not create files inside `.claude/`. Initialization leaves it unchanged.
+
+A root-level `CLAUDE.md`, `.mcp.json`, `.gitignore`, `.DS_Store`, or any other entry remains ineligible. Other Agents' project configuration directories are not exempt; do not generalize this rule without updating this contract.
 
 ## Required outcomes
 
@@ -61,7 +78,7 @@ Copy the required files to the target paths; replace only explicitly supported p
 1. The six required documents exist, including a complete local docs/documentation.md usable without CoolFlow access.
 2. Required directories exist in Git.
 3. No unintended code, dependencies, product plans, or initial work objective was created.
-4. The Skill accepts an empty directory and a directory containing only root-level .git metadata (directory or regular file).
-5. The Skill rejects every other root entry—including hidden files—before any source lookup, network request, or write; refusal leaves the target unchanged and triggers no standards/templates path search.
+4. The Skill accepts an empty directory, a directory containing only root-level .git metadata (directory or regular file), and either case combined with only the exempt Claude Code harness metadata (an empty `.claude/` or one containing only `.cc-writes/` and/or `settings.local.json`), leaving that metadata unchanged.
+5. The Skill rejects every other root entry—including hidden files and unrecognized entries inside `.claude/`—before any source lookup, network request, or write; refusal leaves the target unchanged and triggers no standards/templates path search.
 6. Existing Project Adoption inspects first and makes no changes before the user approves a specific plan.
 7. Files and reports contain no fabricated facts.

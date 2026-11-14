@@ -1,11 +1,11 @@
 ---
 name: coolflow-init
-description: Initialize a new software project with the CoolFlow methodology and documentation structure. Use only when the user explicitly asks to initialize the current project and its root directory is empty or contains only a root .git directory or file. Do not use for existing or non-empty projects.
+description: Initialize a new software project with the CoolFlow methodology and documentation structure. Use only when the user explicitly asks to initialize the current project and its root directory is empty or contains only a root .git directory or file, optionally alongside Claude Code's own .claude harness metadata (.cc-writes/ and/or settings.local.json). Do not use for existing or non-empty projects.
 ---
 
 # CoolFlow Init
 
-Initialize the documentation skeleton for a **new, empty project**. This Skill does not conduct product discovery, create an MVP work folder, write application code, install dependencies, or change CI.
+Initialize the documentation skeleton for a **new, empty project**. Claude Code's own root-level `.claude/` harness metadata does not count as project content; the exact exemption is defined in the preflight below. This Skill does not conduct product discovery, create an MVP work folder, write application code, install dependencies, or change CI.
 
 ## Mandatory preflight: verify the target directory is empty
 
@@ -13,14 +13,22 @@ The preflight is a hard gate and must finish before any source lookup, network r
 
 1. Identify the exact target project root the user asked to initialize. Normally this is the current workspace root. Do not mistake the Skill installation directory, Agent configuration directory, or CoolFlow source repository for the target. Do not search child directories and choose one automatically.
 2. Confirm the target exists and is a directory.
-3. Enumerate **all entries at the target root, including hidden entries**. Use a filesystem listing that includes dotfiles; do not rely on a normal directory display or Git status alone.
-4. Accept only either:
-   - the directory contains no entries; or
-   - the directory contains exactly one root entry named `.git`, and that entry is a directory or a regular file (a regular `.git` file is used by Git worktrees).
-5. If any other entry exists—including `README.md`, `.gitignore`, `.DS_Store`, any other hidden file, directory, or symlink—**stop the Skill immediately**. Do not continue to the Source of truth section, inspect installation paths, search for standards/templates, make network requests, or run any further commands. Do not create, download, copy, or modify anything.
-6. If the target root is ambiguous, does not exist, is not a directory, or its entries cannot be inspected reliably, stop and ask the user to resolve the issue. Never assume it is empty.
+3. Enumerate **all entries at the target root, including hidden entries**. Use a filesystem listing that includes dotfiles; do not rely on a normal directory display or Git status alone. If a root-level `.claude` entry exists, also enumerate its immediate entries without following symlinks or reading file contents.
+4. Apply the **Claude Code harness metadata exemption**:
+   - A root-level `.claude` entry is ignored only when it is a real directory and all of its immediate entries, if any, are from this list:
+     - `.cc-writes/`, a real directory that Claude Code uses for atomic-write staging. It is normally empty; treat its contents as transient Agent state and do not inspect them.
+     - `settings.local.json`, a regular file that Claude Code creates when the user approves local permissions.
+   - An empty `.claude/` directory is exempt.
+   - Do not ignore a `.claude` file or symlink, any other entry inside `.claude/` (for example `settings.json`, `commands/`, `agents/`, or `skills/`), a `.cc-writes` that is not a real directory, or a `settings.local.json` that is not a regular file.
+5. After applying the exemption, accept only either:
+   - the remaining root contains no entries; or
+   - the remaining root contains exactly one entry named `.git`, and that entry is a directory or a regular file (a regular `.git` file is used by Git worktrees).
+6. If any other entry remains—including `README.md`, `.gitignore`, `.DS_Store`, `CLAUDE.md`, `.mcp.json`, any other hidden file, directory, or symlink—**stop the Skill immediately**. Do not continue to the Source of truth section, inspect installation paths, search for standards/templates, make network requests, or run any further commands. Do not create, download, copy, or modify anything.
+7. If the target root is ambiguous, does not exist, is not a directory, or its entries cannot be inspected reliably, stop and ask the user to resolve the issue. Never assume it is empty.
 
-When refusing, explain that coolflow-init is only for an empty project directory (optionally containing only root-level `.git` metadata), identify the entries that made it ineligible, and ask the user to open or create a separate empty directory. Do not invoke this Skill for an existing project.
+When refusing, explain that coolflow-init is only for an empty project directory (optionally containing only root-level `.git` metadata and the documented Claude Code harness entries), identify the entries that made it ineligible, and ask the user to open or create a separate empty directory. Do not invoke this Skill for an existing project. Never delete, move, rename, or modify any existing entry—including `.claude/`—to make the target eligible.
+
+**Harness metadata is not project content.** The ignored `.claude/` metadata must be preserved exactly as found: do not read the contents of `settings.local.json`, modify, delete, copy, or document it, and do not create files inside it. Do not treat it as evidence of prior project work or include it in the generated documents.
 
 **Terminal refusal rule:** Once the preflight fails, the Skill's execution is over. The refusal response is the only remaining action. In particular, do not attempt to locate or read CoolFlow standards/templates after discovering a non-empty target.
 
@@ -55,7 +63,7 @@ Read all required sources completely before writing anything. If any canonical s
 
 ## Procedure
 
-1. Complete and pass the mandatory empty-directory preflight. If it fails, stop immediately; none of the remaining steps apply.
+1. Complete and pass the mandatory target-directory preflight, including the Claude Code harness metadata exemption. If it fails, stop immediately; none of the remaining steps apply.
 2. Retrieve and read all source-of-truth documents and templates listed above from the canonical CoolFlow repository.
 3. Create the following files and directories in the target project:
    - `AGENTS.md` from `templates/project/AGENTS.md`
@@ -75,4 +83,5 @@ Read all required sources completely before writing anything. If any canonical s
 - The Skill is installed for the user's Agent; do not copy the Skill itself into the target application.
 - After initialization, the target project follows its own `docs/documentation.md`. Do not require ongoing access to CoolFlow, installation of this Skill in the target project, or tracking of upstream CoolFlow versions.
 - Existing projects are handled through **Existing Project Adoption** in Getting Started, not by this Skill. Inspect first, propose a selective adoption plan, and wait for user approval before making changes.
-- If initialization fails after some files have been created, report the exact partial result. Do not automatically delete the partial files or bypass the empty-directory preflight on a later run; ask the user how they want to recover.
+- A pre-existing `.claude/` harness directory is not part of the project's documentation tree. Leave it untouched and do not mention it in `AGENTS.md`, `README.md`, or `docs/`.
+- If initialization fails after some files have been created, report the exact partial result. Do not automatically delete the partial files or bypass the target-directory preflight on a later run; ask the user how they want to recover.

@@ -46,7 +46,7 @@ https://github.com/CooLingLab/CoolFlow/tree/main/skills/coolflow-init
 
 > 使用 `coolflow-init` 初始化这个空项目。
 
-Skill 会先检查目标目录；如果存在其他文件或文件夹（包括隐藏文件），就会拒绝执行。通过检查后，它会创建 CoolFlow 项目文档结构、验证结果，然后停止，不会自动开始 Brainstorm 或编写应用代码。
+Skill 会先检查目标目录；如果存在其他文件或文件夹（包括隐藏文件），就会拒绝执行。它会识别 Claude Code 自身的 `.claude/` harness 元数据（`.cc-writes/` 和/或 `settings.local.json`）并保持其不变。通过检查后，它会创建 CoolFlow 项目文档结构、验证结果，然后停止，不会自动开始 Brainstorm 或编写应用代码。
 
 如果你的 Agent 不支持 Skill 安装，请查看 [Getting Started](GETTING_STARTED.zh-CN.md) 中的手动安装和备用方式。
 

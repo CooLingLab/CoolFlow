@@ -46,7 +46,7 @@ After installation, open a **new, empty project directory** and ask:
 
 > Use `coolflow-init` to initialize this empty project.
 
-The Skill checks the target directory before writing and refuses any other files or folders, including hidden entries. It creates the CoolFlow project documentation, verifies the result, and stops without starting Brainstorm or writing application code.
+The Skill checks the target directory before writing and refuses any other files or folders, including hidden entries. Claude Code's own `.claude/` harness metadata (`.cc-writes/` and/or `settings.local.json`) is recognized and left untouched. It creates the CoolFlow project documentation, verifies the result, and stops without starting Brainstorm or writing application code.
 
 If your Agent cannot install Skills, see the manual installation and optional installer methods in the [Getting Started guide](GETTING_STARTED.md).
 

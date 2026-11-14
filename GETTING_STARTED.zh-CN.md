@@ -32,9 +32,16 @@ CoolFlow 是一套轻量的**开发方法论和文档规范**，不是 Agent run
 - 完全为空；或
 - 只包含一个根级 .git 条目，可以是目录或普通文件（Git worktree 元数据）。
 
-任何其他条目都会使目录变为非空，包括 README.md、.gitignore、.DS_Store、其他隐藏文件、目录和
-符号链接。Skill 必须在不修改任何内容的情况下拒绝运行。不要为了满足目录条件而删除文件；请选择
-一个新的空目录。
+Claude Code 会在它打开的每个目录中创建自己的根级 `.claude/` 目录。该目录是 Agent 元数据而非
+项目内容，只要它包含的每个条目都是以下之一，就不会使目标不合格：
+
+- `.cc-writes/`：Claude Code 的原子写入暂存目录；
+- `settings.local.json`：本地权限文件。
+
+`.claude` 文件或符号链接、`.claude/` 中的任何其他条目（例如 `settings.json`、`commands/`、
+`agents/` 或 `skills/`），以及所有其他根级条目都会使目录变为非空——包括 README.md、
+.gitignore、.DS_Store、CLAUDE.md、.mcp.json、其他隐藏文件、目录和符号链接。Skill 必须在不修改
+任何内容的情况下拒绝运行。不要为了满足目录条件而删除文件；请选择一个新的空目录。
 
 #### 安装 Skill——让你的 Agent 执行
 
@@ -72,15 +79,17 @@ Agent 应选择它支持的方法。如果无法全局安装 Skill，它应告�
 
 1. 在 Coding Agent 中打开一个**全新的空目标项目目录**。
 2. 询问：**“使用 `coolflow-init` 初始化这个空项目。”**
-3. Agent 在做任何修改前检查目标根目录——包括隐藏条目。
+3. Agent 在做任何修改前检查目标根目录——包括隐藏条目。它只忽略文档中定义的 Claude Code
+   `.claude/` harness 元数据，并保持其不变。
 4. 如果符合条件，它读取权威 CoolFlow 标准与模板，创建必需的项目文件，验证结果，报告结果并
    停止。它不会自动开始 Brainstorm 或编写应用代码。
 
 如果你的 Agent 无法安装或调用 Skill，请使用以下手动初始化备用方案：
 
 > 阅读 https://github.com/CooLingLab/CoolFlow 的 CoolFlow 仓库。先检查当前目标项目根目录，
-> 包括隐藏条目。只有当目录为空，或只包含一个根级 .git 目录/普通文件时才继续；否则停止，不修改
-> 任何内容。阅读 standards/initialization.md、standards/documentation.md、
+> 包括隐藏条目。只有在忽略 Claude Code 自身的 `.claude/` harness 元数据（仅限 `.cc-writes/`
+> 和/或 `settings.local.json`）后，目录为空或只包含一个根级 .git 目录/普通文件时才继续；
+> 否则停止，不修改任何内容。阅读 standards/initialization.md、standards/documentation.md、
 > methodology/flow.md、methodology/loops.md，以及 templates/project/ 下的必需模板。严格遵循
 > 初始化契约，创建必需的文档结构，验证结果，报告结果并停止。不要开始 Brainstorm 或实现。
 
