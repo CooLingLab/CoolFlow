@@ -58,15 +58,16 @@ Skill 会先检查目标目录；如果存在其他文件或文件夹（包括�
 
 ## CoolFlow Skills
 
-CoolFlow 提供三个可选的 Agent Skills：
+CoolFlow 提供四个可选的 Agent Skills：
 
 | Skill | 用途 | 为什么需要 | 使用时机 |
 | --- | --- | --- | --- |
 | [`coolflow-init`](skills/coolflow-init/SKILL.md) | 创建 CoolFlow 项目文档骨架 | 让每个新项目都从同一套 CoolFlow 框架开始，而不只是一次性的初始化 | 新建空项目 |
 | [`coolflow-advisor`](skills/coolflow-advisor/SKILL.md) | 针对具体任务推荐方法、Skills 和工具 | 针对当前任务给出少量、相关、可执行的选择，减少盲目试错 | 选择开发方法或工具 |
+| [`coolflow-docs-review`](skills/coolflow-docs-review/SKILL.md) | 按项目本地文档规范检查文档 | 在不强制套用 CoolFlow 默认规范的前提下，发现文档结构漂移和失效引用 | 审查或修正文档合规性 |
 | [`coolflow-skill-creator`](skills/coolflow-skill-creator/SKILL.md) | 创建、改造、测试和维护 CoolFlow 原生 Skill | 把外部方法与重复实践沉淀成自己的 Skill 资产，并经过真实使用和反复验证，越用越成熟 | 开发或审查 Skill |
 
-`coolflow-init` 是项目初始化入口，另外两个是按需使用的可选 Skill。安装方式遵循当前 Agent 的标准流程；`coolflow-init` 的示例见上文。
+`coolflow-init` 是项目初始化入口，其余三个是按需使用的可选 Skill。安装方式遵循当前 Agent 的标准流程；`coolflow-init` 的示例见上文。
 
 **CoolFlow 的成熟形态：** 每个项目都沿着同一套清晰而灵活的流程推进，每次迭代都留下可复用的文档和验证证据；你的 Skill 库则沉淀为一份真正的数字资产——一套经过自己改造、经过真实任务反复验证的个人武器库，让下一个项目更快、更稳。
 
@@ -87,16 +88,28 @@ CoolFlow 还整理了四条面向**人类开发者**的判断原则，部分灵�
 
 CoolFlow 由飞行员 Cooling 发起。航空 SOP、态势感知和交叉检查启发我把明确优先级、掌握状态、保留退路与验证结果的思想带入 AI 辅助软件开发。
 
-## 更多文档
+## 文档导览
 
-- [Getting Started](GETTING_STARTED.zh-CN.md) — 新项目和已有项目入门。
-- [开发流程](methodology/flow.zh-CN.md) · [反馈循环](methodology/loops.zh-CN.md) — 完整方法。
-- [阶段活动与 Skill 边界](methodology/activities.zh-CN.md) — 各阶段可拆分的工作与边界。
-- [文档规范](standards/documentation.zh-CN.md) · [模板](templates/) — 文档约定与可复用模板。
+CoolFlow 的每份文档都相对简短，可以独立阅读。按当前需要，从下表直接进入：
+
+| 文档 | 内容 |
+| --- | --- |
+| [Getting Started](GETTING_STARTED.zh-CN.md) | 新项目初始化、在已有项目中采用 CoolFlow，以及从想法探索到发布的第一个增量。 |
+| [开发流程](methodology/flow.zh-CN.md) | 八个阶段、每个阶段要回答的问题，以及应留下的产出。 |
+| [反馈循环](methodology/loops.zh-CN.md) | 设计、实现和演进三个反馈循环，以及各自适用的时机。 |
+| [阶段活动](methodology/activities.zh-CN.md) | 每个阶段内的具体活动，以及活动之间的边界。 |
+| [Golden Rules](methodology/golden-rules.zh-CN.md) | 四条面向人的判断原则，不采用完整流程也能使用。 |
+| [文档规范](standards/documentation.zh-CN.md) | 每类项目文档放在哪里、何时创建、如何演进。 |
+| [初始化契约](standards/initialization.zh-CN.md) | `coolflow-init` 具体会检查什么、创建什么、不会改动什么。 |
+| [评审实践](standards/reviews.zh-CN.md) | 设计评审和代码评审各自检查什么，又不替代什么。 |
+| [模板](templates/) | 项目文档骨架、工作文档模板，以及可选的 ADR / Solutions 示例。 |
+
+**仓库维护：** [AGENTS.md](AGENTS.md) 说明如何开发本仓库；[内部场景评审](flowreviews/scenarios/README.md) 记录 CoolFlow 如何验证自身的规范、模板和 Skills。它们不是应用测试，也不会被复制到目标项目。
 
 ## 生态与工具选型
 
-CoolFlow 定义开发方法和文档规范，不绑定特定 Agent 工具链。你可以通过以下资料了解现有方案，并选择最小、合适的补充工具：
+CoolFlow 定义开发方法和文档规范，不绑定特定 Agent 工具链。[生态目录](flowecosystem/README.md)可以帮助你了解现有方案，并选择最小、合适的补充工具：
 
 - [开发框架能力对比](flowecosystem/framework-comparison.md) — 比较主流 AI 开发框架的能力覆盖、工作流、项目状态管理与经验沉淀。
 - [外部方案目录](flowecosystem/catalog.md) — 广义开发框架、Skills、方法与工具研究。
+- [工程实践](flowecosystem/engineering-practices.md) — AI 辅助开发中可选的并行协作、评审、发布验证、权限与决策记录等实践。

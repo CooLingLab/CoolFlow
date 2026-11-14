@@ -58,15 +58,16 @@ Do not use `coolflow-init` for an existing or non-empty project. Follow the insp
 
 ## CoolFlow Skills
 
-CoolFlow includes three optional Agent Skills:
+CoolFlow includes four optional Agent Skills:
 
 | Skill | Purpose | Why it matters | Use when |
 | --- | --- | --- | --- |
 | [`coolflow-init`](skills/coolflow-init/SKILL.md) | Create the CoolFlow documentation skeleton | Gives every new project the same CoolFlow starting point, not a one-off setup | Starting a new, empty project |
 | [`coolflow-advisor`](skills/coolflow-advisor/SKILL.md) | Recommend methods, Skills and tools for a specific task | Keeps method and tool choices small, relevant and grounded in the current task | Choosing an approach for a development task |
+| [`coolflow-docs-review`](skills/coolflow-docs-review/SKILL.md) | Check documentation against the project's local documentation standard | Finds structural drift and broken references without imposing CoolFlow's own conventions | Auditing or repairing documentation compliance |
 | [`coolflow-skill-creator`](skills/coolflow-skill-creator/SKILL.md) | Create, adapt, test and maintain native CoolFlow Skills | Turns external ideas and repeated practice into a maintained personal Skill library—an asset that improves through real use and validation | Building or reviewing a Skill |
 
-`coolflow-init` is the project setup entry point. The other two are optional on-demand Skills. Install a Skill with your Agent's standard installation method; `coolflow-init` has an example above.
+`coolflow-init` is the project setup entry point. The others are optional on-demand Skills. Install a Skill with your Agent's standard installation method; `coolflow-init` has an example above.
 
 **What mature CoolFlow looks like:** Every project starts from the same clear, flexible flow; each iteration leaves durable documentation and evidence; and your Skill library becomes a personal arsenal of adapted, validated capabilities that make the next project faster and more reliable.
 
@@ -87,16 +88,28 @@ These are decision principles, **not mandatory commands for AI agents**. Put con
 
 CoolFlow was started by Cooling, a pilot exploring AI-assisted software development. Aviation SOPs, situational awareness and cross-checks inspired its emphasis on priorities, actual state, recoverability and verification.
 
-## More documentation
+## Documentation guide
 
-- [Getting Started](GETTING_STARTED.md) — new and existing projects.
-- [Development Flow](methodology/flow.md) · [Adaptive Loops](methodology/loops.md) — the method.
-- [Stage activities and Skill boundaries](methodology/activities.md) — stage activities and their boundaries.
-- [Documentation Standard](standards/documentation.md) · [Templates](templates/) — documentation conventions and reusable templates.
+Every CoolFlow document is short and can be read on its own. Jump to what you need now:
+
+| Document | What it covers |
+| --- | --- |
+| [Getting Started](GETTING_STARTED.md) | Initializing a new project, adopting CoolFlow in an existing one, and taking the first increment from discovery to release. |
+| [Development Flow](methodology/flow.md) | The eight stages, the question each stage answers, and the result it should leave behind. |
+| [Adaptive Loops](methodology/loops.md) | The three feedback cycles—design, implementation and evolution—and when each applies. |
+| [Stage Activities](methodology/activities.md) | The concrete activities within each stage and the boundaries between them. |
+| [Golden Rules](methodology/golden-rules.md) | Four human decision principles you can use even without the full flow. |
+| [Documentation Standard](standards/documentation.md) | Where each project document lives, when it is created, and how it evolves. |
+| [Initialization Contract](standards/initialization.md) | Exactly what `coolflow-init` checks, creates, and must leave alone. |
+| [Review Practices](standards/reviews.md) | What design review and code review check—and what they do not replace. |
+| [Templates](templates/) | The project documentation skeleton, work-document templates, and optional ADR/Solution examples. |
+
+**Repository maintenance:** [AGENTS.md](AGENTS.md) explains how to develop this repository; [internal Scenario Reviews](flowreviews/scenarios/README.md) record how CoolFlow validates its own standards, templates and Skills. They are not application tests and are never copied into target projects.
 
 ## Ecosystem & Tool Selection
 
-CoolFlow defines a development methodology and documentation standard; it does not bundle or require a particular Agent toolchain. These references help you compare external approaches and choose the smallest useful complement:
+CoolFlow defines a development methodology and documentation standard; it does not bundle or require a particular Agent toolchain. The [ecosystem catalog](flowecosystem/README.md) helps you compare external approaches and choose the smallest useful complement:
 
 - [Framework Comparison](flowecosystem/framework-comparison.md) — compare documented capabilities, workflow coverage, project state and knowledge capture across major AI development frameworks.
 - [Solution Catalog](flowecosystem/catalog.md) — broad ecosystem research by development stage.
+- [Engineering Practices](flowecosystem/engineering-practices.md) — optional practices for parallel work, review, release verification, permissions and decision records in AI-assisted development.
