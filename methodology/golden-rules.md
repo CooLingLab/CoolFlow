@@ -33,7 +33,7 @@ Know the difference between what the developer **intended**, what the Agent **at
 
 For substantial work, a short Agent end-of-task report can help: current objective/Flow or Loop, observed changes, verification evidence, known blockers, and next action. Such a report is only a **signal**, not a separate source of truth. Cross-check the relevant Spec, Git history/diff, actual tests and acceptance decision. Several work objectives may occupy different stages at the same time; do not invent a single global phase.
 
-A persistent project-status document or Dashboard can be useful later, but **neither is required by this Golden Rule**. If used, show its evidence and last verification point to avoid misleading stale status.
+A separate project-status document or Dashboard is optional and not required by this Golden Rule. When you keep progress state, prefer the short progress card at the top of each Step 1–5 document: it stays next to the work it describes, records when it was last updated, and distinguishes "no record" from "not started". Any status view must show its evidence and last verification point to avoid misleading stale status, and a progress card is never proof of acceptance.
 
 **Human checkpoint:** Do I know what has *actually happened*, what remains unverified, and what happens next?
 

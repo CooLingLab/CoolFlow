@@ -29,7 +29,7 @@ Follow `docs/documentation.md` when creating, updating or archiving project docu
 
 1. Read the files relevant to the current task; do not assume an empty template is complete.
 2. Preserve existing project content, conventions and code. No destructive replacement without permission.
-3. Do not invent requirements, user decisions or successful tests. Mark unknowns `Not started` / `To decide`.
+3. Do not invent requirements, user decisions or successful tests. Untouched core templates keep `status: not_started` and body unknowns stay `To decide`; a work card may be `in_progress` only when that work has actually begun.
 4. For substantial changes: review the current Spec draft and related context before coding, resolve important findings and confirm design readiness; review new code and Spec conformance after coding.
 5. AI may implement and verify routine work. Ask the human to decide major product trade-offs and to accept the result.
 6. Record human-confirmed plans with their actual status; sync durable docs describing accepted/current behavior after human acceptance. Acceptance and production release are distinct.

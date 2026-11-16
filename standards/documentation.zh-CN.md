@@ -28,6 +28,7 @@
     │   │   ├── design.md             # 可选：更深入的技术设计
     │   │   ├── tasks.md              # 可选：持久任务进度
     │   │   ├── brainstorm.md         # 可选：发现笔记与产品假设
+    │   │   ├── validation.md         # 可选：验证证据及其决定
     │   │   ├── competitive-landscape.md # 可选：较完整的竞品/市场研究
     │   │   └── prototypes/           # 可选：原型产物
     │   └── archive/                  # 初始化时必需目录
@@ -46,7 +47,7 @@
 |---|---|---|---|
 | `AGENTS.md`、`README.md` | 缺失时创建 | 按需维护 | 保持最新 |
 | `docs/documentation.md` | 缺失时复制完整本地规范 | 遵循并适配项目需要 | 保持项目约定最新 |
-| `docs/product.md`、`roadmap.md`、`domain.md` | 创建模板；未知事实保持 `Not started` | 决策成为持久事实时更新 | 同步已验收变更 |
+| `docs/product.md`、`roadmap.md`、`domain.md` | 创建带 `status: not_started` 的模板；正文中未知事实保持 `To decide` | 决策成为持久事实时更新，包括进展卡片 | 同步已验收变更 |
 | `docs/features/` | 创建目录 | 通常保持不变 | 添加或更新已验收功能描述 |
 | `docs/work/` | 创建目录 | 发现阶段有需要时打开目标目录；进入 Design Spec Loop 时创建其 `spec.md` | 选择性归档 |
 | `docs/work/archive/` | 创建目录 | 无需填充 | 保留有用的历史证据 |
@@ -72,6 +73,65 @@
   不同。
 - 项目可以在初始化后自定义文档名称和位置。每个事实保留一个权威位置，并保持项目本地
   `AGENTS.md` / README 导航准确。
+- 进展元信息放在各文档的头部（见下文“第 1～5 步进展元信息”）；它不需要单独的状态文件、
+  引擎或任务清单。
+
+## 第 1～5 步进展元信息
+
+第 1～5 步（Idea → Brainstorm 到 UI Prototype）产出的是持续演进的文档，而不是已验收行为，因此
+记录这些工作的文档顶部都有一张简短的**进展卡片**。人和 Agent 无需先读正文，就能判断工作进展
+到哪里。
+
+适用于 `docs/product.md`、`docs/roadmap.md`、`docs/domain.md`，以及 `docs/work/<objective>/`
+下记录第 1～5 步进展的工作文档，例如 `brainstorm.md` 或 `competitive-landscape.md`。不适用于
+`AGENTS.md`、`README.md`、`docs/documentation.md`、`docs/features/`、`docs/solutions/`、
+`docs/adr/`，也不适用于面向单个目标的 `prd.md`、`spec.md`、`design.md` 和 `tasks.md`——它们
+保留自己的文档状态，通过自身内容、代码和验收证据跟踪进展。
+
+```yaml
+---
+status: in_progress
+related_steps: [1]
+progress_updated: "2026-11-16"
+current_progress: "已初步梳理目标用户，正在讨论使用场景。"
+next_steps:
+  - "了解用户最常遇到的问题。"
+open_questions:
+  - "是否同时面向团队用户？"
+---
+```
+
+| 字段 | 必需 | 取值 |
+|---|---|---|
+| `status` | 是 | `not_started`、`in_progress`、`paused` 或 `complete`。 |
+| `related_steps` | 是 | 文档相关的流程步骤 1～5，例如 `[1]` 或 `[1, 4]`。 |
+| `progress_updated` | 否 | 上次更新进展的日期，写成带引号的 `"YYYY-MM-DD"`。 |
+| `current_progress` | 否 | 一到两句：已经完成什么、正在进行什么。 |
+| `next_steps` | 否 | 接下来打算做的简短列表。 |
+| `open_questions` | 否 | 尚未解决的问题或决定。 |
+
+规则：
+
+- 该块必须是文件的第一段内容，位于一级标题之前，并保持简短——它是一张卡片，而不是第二份
+  文档。可能被 YAML 误解析的值要加引号（`progress_updated` 日期必须加引号），`status` 这类
+  短枚举值不必加引号；多项文字使用块列表；块内不写注释。
+- `status` 描述**本文档所记录的工作**，既不表示整个项目，也不表示唯一的当前阶段。多份文档可以
+  关联同一步骤，一份文档也可以关联多个步骤而只有一个状态；`related_steps` 表示相关，不表示所列
+  每个步骤都处于该状态。
+- 文档缺失或没有该块**不能**作为 `not_started` 的证据。没有进展元信息时，应记为“未找到记录”，
+  直到有人确认。
+- 卡片是人工确认工作的**快照**，不能证明需求已验收、代码已存在或验证已完成。`complete` 表示
+  所记录的工作达到预期终点；验收和发布是另外的事。
+- 状态的权威位置只有一个。使用该块的文档不再同时保留 `> Status:` 行。
+- 可选字段只在有实际工作时填写。核心文档的新模板使用 `status: not_started` 和 `related_steps`；
+  新建的工作文档使用 `status: in_progress`，因为创建它就意味着工作已经开始。在产生真实进展
+  之前，不要向其余字段填入占位文字。
+- 文档进展发生实质变化时更新卡片。读者把 `progress_updated` 视为新鲜度的提示，而不是正文仍然
+  准确的证明。
+- 查看第 1～5 步进展时，先读卡片，需要时再打开正文。第 1～5 步概览始终列出全部五个步骤，并区分
+  `not_started` 与“未找到记录”；不能仅凭相关文档推断某一步骤的状态。
+- 核心文档的默认映射为 `product.md` → `[1]`、`domain.md` → `[2]`、`roadmap.md` → `[4]`。如果
+  项目的实际组织方式不同，可以调整映射，并把该选择记录到项目本地规范中。
 
 ## 记录 Agent Skills 产生的结果
 
@@ -152,6 +212,8 @@ CoolFlow 为这些工作产物维护起始模板：
 | `spec.md` | 默认的统一 Spec；当选定目标进入 Design Spec Loop（第 6 步）时创建，而不是仅在头脑风暴时创建。 | [Spec 模板](../templates/work/spec.md) |
 | `prd.md` | 可选：当一个目标有较大的产品需求、用户旅程或范围，值得单独的产品文档时使用。 | [PRD 模板](../templates/work/prd.md) |
 | `design.md` | 可选：当技术设计过于详细，不适合统一 Spec 时使用；从 Spec 链接过去。 | [详细设计模板](../templates/work/design.md) |
+| `brainstorm.md` | 可选：真实发现工作开始后，作为第 1 步记录问题、用户、竞品、机会和假设的默认位置。 | [发现笔记模板](../templates/work/brainstorm.md) |
+| `validation.md` | 可选：第 3 步或第 5 步产生实际验证证据和决定时使用。 | [验证记录模板](../templates/work/validation.md) |
 | `tasks.md` | 可选：只有当任务进度必须在 Agent 会话、Agent 或时间之间持久保留，且现有跟踪方式不足时使用。 | [持久任务模板](../templates/work/tasks.md) |
 
 这些模板是起点，不是检查清单。不要仅因为模板存在就创建可选产物。发现阶段按需使用笔记和原型；
@@ -180,7 +242,8 @@ CoolFlow 为这些工作产物维护起始模板：
 - 先同步已验收事实。然后将已完成的工作目录移动到 `docs/work/archive/`，选择性保留重要 Spec、
   设计/决策理由和验证证据；只有安全且适当时才清理临时草稿。
 - 保留重要选择的出处。ADR 可以被取代，但不应被抹除。
-- 永远不要假设空的模板意味着阶段已完成；`Not started` 表示尚未决定或尚未填写。
+- 永远不要假设空的模板意味着阶段已完成；`status: not_started` 和 `To decide` 表示尚未决定或
+  尚未填写。
 - 项目拥有自己的文档，可以自定义路径和约定。不强制固定上游版本，也不自动迁移。
 
 ## 可复用的项目 Solutions（可选）
@@ -249,7 +312,8 @@ ADR 记录决策的**理由**；当前系统设计属于 `architecture.md` 或�
 
 1. 阅读相关文件，默认不要读取整个文档树。
 2. 保留用户数据；未经批准，不要覆盖现有 README、AGENTS、代码或文档。
-3. 信息未知时，标记为 `Not started` / `To decide`；不要编造产品需求。
+3. 信息未知时，在进展卡片中使用 `status: not_started`，在正文中使用 `To decide`；不要编造产品
+   需求。
 4. 产品关键决策询问人类；自动化可验证的文档/实现任务。
 5. 当选定目标进入 **Design Spec Loop（第 6 步）** 时才创建统一 `spec.md`，而不是仅仅因为开始
    发现就创建；使用该 Loop 评审和修订重要设计，使用 **Implementation Loop（第 7 步）** 进行

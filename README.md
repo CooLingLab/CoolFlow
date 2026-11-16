@@ -58,13 +58,15 @@ Do not use `coolflow-init` for an existing or non-empty project. Follow the insp
 
 ## CoolFlow Skills
 
-CoolFlow includes four optional Agent Skills:
+CoolFlow includes six optional Agent Skills:
 
 | Skill | Purpose | Why it matters | Use when |
 | --- | --- | --- | --- |
 | [`coolflow-init`](skills/coolflow-init/SKILL.md) | Create the CoolFlow documentation skeleton | Gives every new project the same CoolFlow starting point, not a one-off setup | Starting a new, empty project |
 | [`coolflow-advisor`](skills/coolflow-advisor/SKILL.md) | Recommend methods, Skills and tools for a specific task | Keeps method and tool choices small, relevant and grounded in the current task | Choosing an approach for a development task |
 | [`coolflow-docs-review`](skills/coolflow-docs-review/SKILL.md) | Check documentation against the project's local documentation standard | Finds structural drift and broken references without imposing CoolFlow's own conventions | Auditing or repairing documentation compliance |
+| [`coolflow-docs-update`](skills/coolflow-docs-update/SKILL.md) | Record this session's confirmed work into the Step 1–5 documents and their progress cards | Keeps documents current without re-explaining the session, and asks only about what is genuinely undecided | Updating documents after a session's work |
+| [`coolflow-progress`](skills/coolflow-progress/SKILL.md) | Report where Step 1–5 work stands by reading progress cards | Answers "where are we?" quickly, and separates recorded progress from missing or stale records | Checking project progress or what to do next |
 | [`coolflow-skill-creator`](skills/coolflow-skill-creator/SKILL.md) | Create, adapt, test and maintain native CoolFlow Skills | Turns external ideas and repeated practice into a maintained personal Skill library—an asset that improves through real use and validation | Building or reviewing a Skill |
 
 `coolflow-init` is the project setup entry point. The others are optional on-demand Skills. Install a Skill with your Agent's standard installation method; `coolflow-init` has an example above.

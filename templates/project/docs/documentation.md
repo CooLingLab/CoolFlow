@@ -24,6 +24,7 @@ The following is the **default documentation tree for an application repository 
     │   │   ├── design.md             # Optional: deeper technical design
     │   │   ├── tasks.md              # Optional: persistent task progress
     │   │   ├── brainstorm.md         # Optional: discovery notes and product hypotheses
+    │   │   ├── validation.md         # Optional: validation evidence and its decision
     │   │   ├── competitive-landscape.md # Optional: substantial competitor / market research
     │   │   └── prototypes/           # Optional: prototype artifacts
     │   └── archive/                  # Directory required at initialization
@@ -42,7 +43,7 @@ The following is the **default documentation tree for an application repository 
 |---|---|---|---|
 | `AGENTS.md`, `README.md` | Create if missing | Maintain as needed | Keep current |
 | `docs/documentation.md` | Copy the complete local standard if missing | Follow and adapt it to project needs | Keep project conventions current |
-| `docs/product.md`, `roadmap.md`, `domain.md` | Create templates; unknown facts stay `Not started` | Update when decisions become durable | Sync accepted changes |
+| `docs/product.md`, `roadmap.md`, `domain.md` | Create templates with `status: not_started`; unknown body facts stay `To decide` | Update when decisions become durable, including the progress card | Sync accepted changes |
 | `docs/features/` | Create directory | Usually leave unchanged | Add or update accepted feature descriptions |
 | `docs/work/` | Create directory | Open an objective directory during discovery if useful; create its `spec.md` when entering Design Spec Loop | Archive selectively |
 | `docs/work/archive/` | Create directory | No need to populate | Retain useful historical evidence |
@@ -61,6 +62,47 @@ The following is the **default documentation tree for an application repository 
 - `docs/adr/` is the optional home for Architecture Decision Records: one consequential decision per file. It is not created during initialization.
 - CoolFlow's own `flowecosystem/` directory belongs to the **CoolFlow methodology repository**. It catalogs external frameworks and methods and is not copied into application repositories. An App's `docs/solutions/` is its own engineering knowledge store; the names are related but serve different purposes.
 - Projects may customize document names and locations after initialization. Preserve one authoritative location per fact and keep the project-local `AGENTS.md` / README navigation accurate.
+- Progress metadata lives in each document's frontmatter (see [Step 1–5 progress metadata](#step-15-progress-metadata)); it does not require a separate state file, engine or task list.
+
+## Step 1–5 progress metadata
+
+Steps 1–5 (Idea → Brainstorm through UI Prototype) produce evolving documents rather than accepted behavior, so each document that records this work carries a short **progress card** at the top. It lets a person or an Agent judge where the work stands before reading the body.
+
+Applies to `docs/product.md`, `docs/roadmap.md`, `docs/domain.md`, and work documents under `docs/work/<objective>/` that record Step 1–5 progress, such as `brainstorm.md` or `competitive-landscape.md`. It does not apply to `AGENTS.md`, `README.md`, `docs/documentation.md`, `docs/features/`, `docs/solutions/`, `docs/adr/`, or the objective-scoped `prd.md`, `spec.md`, `design.md` and `tasks.md`, which keep their own document status and track progress through their content, code and acceptance evidence.
+
+```yaml
+---
+status: in_progress
+related_steps: [1]
+progress_updated: "2026-11-16"
+current_progress: "Target users are roughly identified; use scenarios are under discussion."
+next_steps:
+  - "Identify the most common user problems."
+open_questions:
+  - "Whether team users are also in scope."
+---
+```
+
+| Field | Required | Value |
+|---|---|---|
+| `status` | Yes | `not_started`, `in_progress`, `paused` or `complete`. |
+| `related_steps` | Yes | Flow steps 1–5 the document relates to, for example `[1]` or `[1, 4]`. |
+| `progress_updated` | No | Quoted `"YYYY-MM-DD"` date of the last progress update. |
+| `current_progress` | No | One or two sentences: what is finished and what is under way. |
+| `next_steps` | No | Short list of the next intended actions. |
+| `open_questions` | No | Short list of unresolved questions or decisions. |
+
+Rules:
+
+- The block must be the first content in the file, before the top-level heading, and stay short — a card, not a second document. Quote values YAML could misread — `progress_updated` dates must be quoted — keep short enum values such as `status` unquoted, use block lists for multi-item text, and put no comments inside the block.
+- `status` describes **the work this document records**, not the whole project and not a unique current stage. Several documents may relate to one step, and one document may relate to several steps with a single status; `related_steps` means related, not that every listed step has that status.
+- An absent document or missing block is **not** evidence of `not_started`. Absence of progress metadata stays "no record found" until someone confirms otherwise.
+- The card is a **snapshot** of human-confirmed work, not proof that requirements are accepted, code exists or validation happened. `complete` means the recorded work reached its intended end; acceptance and release are separate.
+- Keep one authoritative location for status. A document that uses the block does not also carry a `> Status:` line.
+- Fill optional fields only from actual work. Fresh core templates carry `status: not_started` and `related_steps`; new work documents carry `status: in_progress` because their creation means the work has begun. Leave the remaining fields out until real progress exists instead of writing placeholder text into them.
+- Update the card whenever the document's progress changes materially. Readers treat `progress_updated` as a hint about recency, not as proof that the body is current.
+- To see where Step 1–5 work stands, read the cards first and open bodies only as needed. A Step 1–5 overview always lists all five steps and distinguishes `not_started` from "no record found"; it does not infer a step's status from a related document alone.
+- Default mappings for the core documents are `product.md` → `[1]`, `domain.md` → `[2]` and `roadmap.md` → `[4]`. Refine them when this project's actual organization differs, and record that choice here.
 
 ## Recording results from Agent Skills
 
@@ -114,6 +156,8 @@ A complete Spec should be comprehensible by a new Agent and provide:
 
 ### When to create each work artifact
 
+- `brainstorm.md`: the default Step 1 home once real discovery begins; record the problem, users, competitor findings, opportunity analysis and product hypotheses.
+- `validation.md`: create it when Step 3 or Step 5 produces actual validation evidence and a decision; record the assumption tested, method, result and next step.
 - `spec.md`: the default unified Spec. Create it when a selected objective enters **Design Spec Loop (Step 6)**, not just because discovery or brainstorming has started.
 - `prd.md`: optional; use only when one objective has substantial product requirements, user journeys or scope that benefit from a separate product-focused document. Link it from the Spec.
 - `design.md`: optional; use when technical design is too detailed for the unified Spec. Link it from the Spec.
@@ -126,6 +170,7 @@ Optional artifacts, created for actual need:
 - `design.md`: complex technical design too detailed for unified Spec; reference from Spec.
 - `tasks.md`: **only** when independent, persistent task progress is needed across sessions, agents, or time. Do not duplicate existing session, Issue or other task trackers.
 - `brainstorm.md`: discovery notes, competitor findings, opportunity analysis and product hypotheses.
+- `validation.md`: what was tested, what actually happened, evidence strength and the resulting decision; separate it from the hypotheses it tests.
 - `competitive-landscape.md`: optional, substantial competitor/market research that merits its own maintained record; do not create it by default.
 - `prototypes/`: candidate concepts and working prototypes, in the applicable work directory.
 - `docs/architecture.md`: current system architecture; `docs/adr/`: rationale for consequential architecture decisions. Both are optional and should be created only when complexity merits them.
@@ -137,7 +182,7 @@ Optional artifacts, created for actual need:
 - Acceptance triggers updates of relevant current docs; it does **not** imply production release.
 - First sync the accepted truth. Then move a completed work directory to `docs/work/archive/`, selectively retaining important Specs, design/decision rationale and verification evidence; prune temporary drafts only when safe and appropriate.
 - Keep the provenance of important choices. An ADR may be superseded, not erased.
-- Never assume an empty template means the stage is completed; `Not started` means not decided or not filled.
+- Never assume an empty template means the stage is completed; `status: not_started` and `To decide` mean not decided or not filled.
 - Projects own their documents and may customize paths and conventions. No forced upstream version pinning or automatic migration.
 
 ## Reusable project Solutions (optional)
@@ -192,7 +237,7 @@ An ADR records the **rationale** for a decision; the current system design belon
 
 1. Read relevant files, not the entire documentation tree by default.
 2. Preserve user data; don't overwrite existing README, AGENTS, code or docs without approval.
-3. When information is unknown, mark it as `Not started` / `To decide`; don't invent product requirements.
+3. When information is unknown, use `status: not_started` in the progress card and `To decide` in the body; don't invent product requirements.
 4. Ask a human for product-critical decisions; automate verifiable documentation/implementation tasks.
 5. Create the unified `spec.md` when the chosen objective enters **Design Spec Loop (Step 6)**, not solely because discovery started; use that Loop to review and revise material designs and **Implementation Loop (Step 7)** for tests, code review and Spec conformance. The **Evolution Loop** may be triggered at **any step** by feedback, new ideas, or changing needs, returning to any relevant step when product assumptions, scope or direction need reconsideration; routine quality fixes remain in their local Loops. After acceptance, sync durable docs as a **step**, not a separate Loop. Release and post-release feedback are possible events, not prerequisites for Evolution.
 6. When relevant, consult matching verified Solutions before work; capture only non-obvious, durable and material findings. Record an ADR only for a consequential architecture or technical decision, not every feature or fix.

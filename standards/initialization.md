@@ -49,7 +49,7 @@ A root-level `CLAUDE.md`, `.mcp.json`, `.gitignore`, `.DS_Store`, or any other e
 - Do **not** create docs/solutions/ or docs/adr/ during initialization; both are optional and should appear only when a verified reusable finding or consequential decision warrants them.
 - Fill **AGENTS.md** with the concise eight-stage Flow, three Loops and agent behavior rules; refer to docs/documentation.md for documentation rules.
 - Copy the complete templates/project/docs/documentation.md to docs/documentation.md. It is the project's local standard after initialization and can evolve independently without accessing CoolFlow.
-- Fill other docs with **templates**, not fabricated product facts. If user provides actual facts, fill only facts they authorized; otherwise keep Not started or To decide.
+- Fill other docs with **templates**, not fabricated product facts. The templates already carry a Step 1–5 progress card with `status: not_started` and `related_steps`; do not add progress or next steps the user has not supplied. If user provides actual facts, fill only facts they authorized; otherwise keep body placeholders `To decide`.
 - Do **not** create docs/work/001-mvp/, spec.md, PRD, prototype, task file, app code, dependencies, CI, or architecture decisions.
 - Run a consistency check on paths and required headings. Report created files, any verification limitations, and the next optional action. Stop without starting Brainstorm.
 

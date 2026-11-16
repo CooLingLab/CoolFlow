@@ -64,8 +64,9 @@ Agent 的项目配置目录不在豁免范围内；未经更新本契约，不�
   docs/documentation.md。
 - 将完整的 templates/project/docs/documentation.md 复制到 docs/documentation.md。初始化后它
   是项目的本地标准，可以独立演进，无需访问 CoolFlow。
-- 用**模板**填写其他文档，而不是编造产品事实。如果用户提供实际事实，只填写其授权的部分；否则
-  保持 Not started 或 To decide。
+- 用**模板**填写其他文档，而不是编造产品事实。模板已带 `status: not_started` 和 `related_steps`
+  的第 1～5 步进展卡片；不要添加用户未提供的进展或下一步。如果用户提供实际事实，只填写其授权
+  的部分；否则正文占位保持 `To decide`。
 - **不要**创建 docs/work/001-mvp/、spec.md、PRD、原型、任务文件、应用代码、依赖项、CI 或架构
   决策。
 - 对路径和必需标题运行一致性检查。报告创建的文件、任何验证限制以及下一个可选操作。停止，不

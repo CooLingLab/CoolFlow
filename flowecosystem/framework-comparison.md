@@ -50,11 +50,11 @@ GitHub stars are approximate snapshots retrieved on 2026-11-01. They indicate co
 | Explicit human acceptance checkpoint | ● | ◐ | ◐ | ◐ | ◐ | ● | ● | ◐ |
 | Post-acceptance documentation / release workflow | ● | ◐ | ◐ | ● | ◐ | ◐ | ◐ | ◐ |
 | Reusable project-learning capture | ◐* | ● | ◐ | ● | ◐ | ◐ | ◐ | ● |
-| Project-state awareness (position, progress, next action) | —* | ◐ | ◐ | ◐ | — | — | ◐ | ● |
-| Session handoff / resume context | — | ● | ◐ | ● | ● | — | ◐ | ● |
+| Project-state awareness (position, progress, next action) | ◐* | ◐ | ◐ | ◐ | — | — | ◐ | ● |
+| Session handoff / resume context | —* | ● | ◐ | ● | ● | — | ◐ | ● |
 | Explicit cross-stage evolution / learn-and-adjust loop | ● | ◐ | ◐ | ◐ | ◐ | ◐ | ● | ◐ |
 
-* **CoolFlow's `—*` is deliberate.** “Know the Actual State” is a human-facing Golden Rule, not an Agent-readable project-state mechanism. CoolFlow v0.1 does not prescribe a STATE.md, status schema, automatic retrieval protocol or session-handoff format. Cross-stage knowledge capture is also not yet a normative feature.
+* **CoolFlow's state support is document-local and opt-in.** Step 1–5 documents carry a short progress card in their frontmatter, and two optional Skills read and update it: one reports where work stands, the other records a session's confirmed results. CoolFlow still does not prescribe a single global `STATE.md`, a status engine, an automatic retrieval protocol or a session-handoff format, and a card remains a snapshot rather than approval evidence. Cross-stage knowledge capture is not yet a normative feature.
 
 ### What the comparison reveals
 
@@ -74,7 +74,7 @@ GitHub stars are approximate snapshots retrieved on 2026-11-01. They indicate co
 - **Compound Engineering — partial/scoped state and explicit handoff.** Plans and work-unit state support execution continuity, while `ce-handoff` provides a dedicated create/resume workflow. It does not prescribe one universal project-wide status digest. See [ce-handoff](https://github.com/EveryInc/compound-engineering-plugin/blob/main/docs/guides/ce-handoff.md).
 - **PStack — explicit session handoff, not project-wide state.** Its “Pause safely” playbook writes a resume note containing intent, progress, verified work, current state, next steps and key files. See [pause-safely](https://github.com/cursor/plugins/blob/main/harness/pstack/claude-code/skills/poteto-mode/playbooks/pause-safely.md).
 - **BMAD and Superpowers — artifact-led continuity.** Their plans and workflow-specific resume guidance help continue work, but the reviewed sources do not establish a single canonical project-state digest with the same explicit read/update/validate contract as GSD.
-- **CoolFlow — principle only.** The Golden Rule asks the human to know the actual state; v0.1 intentionally does not define an Agent state file or state engine.
+- **CoolFlow — document-local progress cards.** Step 1–5 documents carry an opt-in progress card, and two optional Skills read or update it, so a step's progress is recoverable without a global state engine. CoolFlow still does not define a STATE.md equivalent, a status engine or an automatic retrieval protocol.
 
 GitHub Spec Kit and OpenSpec are primarily specification/change-management systems. Their per-change artifacts and lifecycle statuses should not be confused with a project-wide view of current position and next action.
 

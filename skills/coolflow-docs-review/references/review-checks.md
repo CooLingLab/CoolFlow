@@ -47,6 +47,22 @@ Typical severity: `warning` for missing required content, `info` for a possible 
 
 Typical severity: `error` for fabricated facts or accepted/planned confusion, `warning` for ambiguous status.
 
+### Progress metadata (only when the local standard defines it)
+
+Apply these only if the project's local standard prescribes Step 1–5 progress metadata. If it does not, mark this dimension **not specified** and do not require cards.
+
+- Does each in-scope document that should carry a progress card actually have one, before its top-level heading?
+- Are the local standard's required fields present, with values from its allowed set? Flag unknown `status` values and out-of-range step numbers.
+- Does a document carry both a progress card and a legacy `> Status:` line? That is a duplicate authority: report it, do not choose which wins.
+- Does the card claim more than the body or the evidence supports — for example `complete` while the body lists unresolved questions, or `current_progress` describing work no artifact shows?
+- Do `next_steps` and `open_questions` contradict the body, or repeat resolved items?
+- Is `progress_updated` later than the document's actual last substantive change, suggesting it was refreshed without being updated?
+- Are optional fields left out rather than filled with placeholder text?
+
+Do not treat a missing card as `not_started`, and do not infer a step's status from a related document. Do not edit cards during a review: status changes are on the never-fix list.
+
+Typical severity: `error` for an invalid required field or a card contradicting the body, `warning` for a missing or duplicated status, `info` for stale optional fields.
+
 ## 4. Single authoritative location
 
 - Is the same fact stated substantively in more than one document? Identify the canonical owner and report the duplication; replacing copies with links requires human confirmation.

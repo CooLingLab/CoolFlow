@@ -53,7 +53,7 @@ Use the applicable checks from [review-checks.md](references/review-checks.md):
 
 1. Placement and lifecycle.
 2. Structure and purpose.
-3. Truth and status.
+3. Truth and status, including progress metadata only when the local standard prescribes it.
 4. Single authoritative location and duplication.
 5. Links and navigation.
 6. Naming, format and safety.

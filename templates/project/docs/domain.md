@@ -1,6 +1,11 @@
+---
+status: not_started
+related_steps: [2]
+---
+
 # Domain
 
-> Status: Not started; provisional and evolving
+> Provisional and evolving.
 
 ## Domain scope and participants
 
