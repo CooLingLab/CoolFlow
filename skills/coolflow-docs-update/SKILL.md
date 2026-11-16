@@ -63,7 +63,7 @@ related_steps: [1]
 
 For a validation record use `related_steps: [3]` and the sections `Assumptions under test`, `Method and timebox`, `Result and evidence`, `Decision and next step`; set `related_steps: [5]` instead when a UI or usability validation produced the evidence. Keep hypotheses in `brainstorm.md` and prototype artifacts in `prototypes/`; this record holds only what was tested, what happened and what was decided.
 
-Write only the sections the session actually supplies and leave the rest as `To decide`. Do not create a document merely because a template exists, and do not create `spec.md`, a PRD, prototypes or an objective that the work does not support.
+Write only the sections this session actually supplies. A new work document starts with real content, not a filled-in skeleton: omit sections that have nothing to record rather than writing `To decide` into them, and keep the card's optional fields out until real progress exists. Copy a full template only when the user asks for an empty starting structure.
 
 ## Updating the progress card
 
@@ -74,7 +74,7 @@ Apply the local standard's fields. In the default CoolFlow format:
 - `progress_updated`: set to today's date in quotes.
 - `current_progress`: one or two sentences on what is finished and what is under way, drawn from this session.
 - `next_steps`: only concrete next actions the human or the work actually established.
-- `open_questions`: unresolved items from this session, preferably phrased as questions.
+- `open_questions`: unresolved items that belong to **this** document's own scope, preferably phrased as questions. The authoritative list stays in the document that owns the question — usually the work record — so do not copy every open question into every related card. A core document's card lists only questions that block that document's own content.
 
 Do not carry stale text forward into `next_steps` or `open_questions`; remove items this session resolved. Keep one authoritative status location: if the document has a frontmatter card, do not also write a `> Status:` line.
 
@@ -84,9 +84,10 @@ Do not carry stale text forward into `next_steps` or `open_questions`; remove it
 2. Draft a short internal list: each item of content, its destination, and whether it is a confirmed decision, an observation with evidence, or an open question.
 3. Write the confirmed items. Create a missing document only under the conditions above; otherwise extend the existing authoritative document.
 4. Update each touched document's progress card, including `progress_updated`.
-5. Ask about the smallest set of unresolved points. Prefer one grouped question over a long interrogation. If the user declines to answer, leave the item in `open_questions` and say so.
-6. Verify: re-read the changed files, confirm the frontmatter still parses as intended, confirm no `> Status:` duplicate, and confirm no content was lost from sections you appended to.
-7. Report the files actually changed, the fields updated, the questions left open, and anything the session could not record.
+5. When you replace a section's content, remove the template's guidance sentence for that section if it is still present after real content, and drop empty sections instead of leaving `To decide` under them.
+6. Ask about the smallest set of unresolved points. Prefer one grouped question over a long interrogation. If the user declines to answer, leave the item in `open_questions` and say so.
+7. Verify: re-read the changed files, confirm the frontmatter still parses as intended, confirm no `> Status:` duplicate, and confirm no content was lost from sections you appended to.
+8. Report the files actually changed, the fields updated, the questions left open, and anything the session could not record.
 
 ## Boundaries
 
