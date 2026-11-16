@@ -22,11 +22,33 @@ Inspect `git diff` and the untracked files for exactly these paths and no unrela
 
 ## What cannot be verified by this case
 
-- Behavioral use: the update and progress Skills now exist but have not been executed, so "update the card during a session", "summarize Step 1–5", and "distinguish `not_started` from no record" remain **NOT VERIFIED**. Static agreement between a Skill's instructions and the Standard is not evidence that an Agent follows them.
 - Rendered GitHub anchors: the anchor was checked against the slug rule, not against a rendered page.
 - The initialization path: `coolflow-init` fetches templates from GitHub `main`, so it cannot exercise these local edits until they are pushed.
-- General YAML parsing: PyYAML is unavailable in the environment; the block was checked with a strict line-based parser only.
+- Skill triggering: both new Skills were executed by reading `SKILL.md` directly, because they are not installed as invocable Skills. Whether an ordinary request activates them correctly is not tested. The full Skill also uses `date +%F`-style values; a real session must confirm the date comes from the environment rather than a stale example.
+
+## Execution record
+
+Run date: 2026-11-16. Two throwaway projects were initialized by copying `templates/project/` and committing the result; a separate Agent followed `skills/coolflow-docs-update/SKILL.md` and `skills/coolflow-progress/SKILL.md` without seeing the expected outcome.
+
+**Update run (after the placeholder fix).** Input: confirmed audience, problem and boundaries; a preliminary competitor comparison with no links; two unresolved questions; nothing about UI, prototypes, validation, requirements or roadmap.
+
+- PASS — created `docs/work/001-mvp/brainstorm.md` and edited `docs/product.md` only. No `spec.md`, `prd.md`, `validation.md`, `prototypes/` or second objective directory.
+- PASS — confirmed facts went to `product.md`; exploration and the unsourced comparison stayed in `brainstorm.md`, with the comparison labeled preliminary.
+- PASS — the new work document contains only the sections with content; it has no `To decide` and no empty heading.
+- PASS — the replaced `Current position and evidence` section no longer ends with the template's guidance sentence.
+- PASS — only the work record's card carries `open_questions`; `product.md`'s card omits them.
+- PASS — cards parse with a real YAML parser (`progress_updated` is a string); `related_steps` is `[1]`; no `> Status:` line; the relative link resolves.
+- PASS — nothing was committed and untouched documents were unchanged.
+
+**Progress run.** Input: the same project plus a baseline commit.
+
+- PASS — zero file changes; `git status` clean and HEAD unchanged.
+- PASS — read only the progress cards; no document body was opened.
+- PASS — all five steps listed, with `not_started` for Steps 2 and 4 and "no record found" for Steps 3 and 5.
+- PASS — no step-level status was invented from `related_steps`, no percentage, no invented next action; the report noted that `complete` would not mean accepted and that other sessions and branches are invisible.
+
+**Earlier failing run, kept for history.** The first run left `To decide` under an empty section in a new work document, left a template guidance sentence after real content, and duplicated the same open questions into both cards. Those failures produced the `fix(coolflow-docs-update)` commit; the rerun above is the evidence that the fix works. One occurrence of one scenario is not proof of general reliability.
 
 ## Review instructions
 
-Use the Standard text, the templates, and `git diff` as evidence. Report PASS / FAIL / NOT VERIFIED per criterion with concrete file and line evidence. Do not accept a narrative claim in place of the actual files. Do not mark behavioral criteria as PASS.
+Use the Standard text, the templates, `git diff`, and the execution record above as evidence. Report PASS / FAIL / NOT VERIFIED per criterion with concrete file and line evidence. Do not accept a narrative claim in place of the actual files. Do not mark behavioral criteria as PASS without an execution record.
