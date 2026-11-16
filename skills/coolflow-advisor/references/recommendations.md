@@ -1,6 +1,8 @@
 # CoolFlow Advisor — 精选推荐库（会话对齐版 V1）
 
-**版本：2026-11-01。** 本版从现有候选库重新筛选，**仅保留本次对话中已研究、核查或明确讨论的具体场景和工具**。不采用后来扩充出的未经对齐条目。
+**版本：2026-11-16。** 本版从现有候选库重新筛选，**仅保留已研究、核查或明确讨论的具体场景和工具**。不采用后来扩充出的未经对齐条目。
+
+**编号对齐：**各阶段文件的小节编号即 [Stage activities](../../../methodology/activities.md) 的活动号（`activities.md` @ `8eff742`，2026-11-06），标题沿用活动名。一个活动可有多个推荐；没有已核查候选的活动在该文件中明确标注“无已核查工具”。`activities.md` 的活动拆分变化时，本库须重新核验编号，不能沿用旧编号。
 
 ## 使用规则
 
@@ -15,18 +17,18 @@
 
 ## 八阶段目录
 
-| 阶段 | 参考文件 | 具体场景数 |
-| --- | --- | ---: |
-| 1. Idea → Brainstorm | [01-idea-brainstorm.md](01-idea-brainstorm.md) | 5 |
-| 2. Lightweight Strategic DDD | [02-strategic-ddd.md](02-strategic-ddd.md) | 3 |
-| 3. Concept Prototype → Validation | [03-concept-prototype.md](03-concept-prototype.md) | 4 |
-| 4. Roadmap | [04-roadmap.md](04-roadmap.md) | 3 |
-| 5. UI Prototype | [05-ui-prototype.md](05-ui-prototype.md) | 2 |
-| 6. Design Spec Loop | [06-design-spec.md](06-design-spec.md) | 4 |
-| 7. Implementation Loop | [07-implementation.md](07-implementation.md) | 6 |
-| 8. Human Acceptance → Documentation Sync → Release | [08-acceptance-release.md](08-acceptance-release.md) | 5 |
+| 阶段 | 参考文件 | 活动数 | 场景数 | 工具位置 |
+| --- | --- | ---: | ---: | ---: |
+| 1. Idea → Brainstorm | [01-idea-brainstorm.md](01-idea-brainstorm.md) | 6 | 5 | 7 |
+| 2. Lightweight Strategic DDD | [02-strategic-ddd.md](02-strategic-ddd.md) | 5 | 3 | 4 |
+| 3. Concept Prototype → Validation | [03-concept-prototype.md](03-concept-prototype.md) | 5 | 4 | 4 |
+| 4. Roadmap | [04-roadmap.md](04-roadmap.md) | 3 | 3 | 4 |
+| 5. UI Prototype | [05-ui-prototype.md](05-ui-prototype.md) | 5 | 2 | 4 |
+| 6. Design Spec Loop | [06-design-spec.md](06-design-spec.md) | 4 | 4 | 8 |
+| 7. Implementation Loop | [07-implementation.md](07-implementation.md) | 4 | 6 | 10 |
+| 8. Human Acceptance → Documentation Sync → Release | [08-acceptance-release.md](08-acceptance-release.md) | 4 | 5 | 6 |
 
-**总计：32 个细分场景，47 个工具位置（含跨场景重复）。其中 46 个位置已完成源码与依赖核查、1 个位置保留为未核查候选。**同一 Skill 在不同场景可能重复出现，这些不是独立工具数量。**
+**总计：36 个活动（其中 15 个当前无可用的已核查工具），32 个细分场景，47 个工具位置（含跨场景重复）。其中 46 个位置已完成源码与依赖核查、1 个位置保留为未核查候选。**同一 Skill 在不同场景可能重复出现，这些不是独立工具数量。没有已核查候选的活动不等于不能做——直接用 Agent 按活动定义完成即可。**
 
 ## 核查与证据说明
 

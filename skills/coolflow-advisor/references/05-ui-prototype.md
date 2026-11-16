@@ -4,9 +4,21 @@
 
 **目标：**为选定版本探索视觉方向和高保真交互，不预设平台或框架。
 
+> 编号对齐：本节编号即 `activities.md` 的活动号（`8eff742`，2026-11-06）。一个活动可有多个推荐；没有已核查候选的活动明确标注。
+
 **收录依据：**仅保留本对话已讨论的具体工具；每个任务最多两个选择。核查通过=阅读官方源码及关联依赖、确定 CoolFlow 适配方案，不等于已安装或做过受控对照测试。运行时仍需校验环境及权限。
 
-## 5.1 视觉方向探索
+## 5.1 Define design goals and constraints
+
+**无已核查工具。** 本活动可由 Agent 直接按 `activities.md` 的产出定义完成；若未来有候选，须先复核查验后才能进入默认推荐。
+
+## 5.2 Design user flows and information architecture
+
+**无已核查工具。** 本活动可由 Agent 直接按 `activities.md` 的产出定义完成；若未来有候选，须先复核查验后才能进入默认推荐。
+
+## 5.3 Explore visual direction
+
+对应场景：视觉方向探索。
 
 **何时使用：**探索清晰、有辨识度的设计方向，兼顾设计系统知识。
 
@@ -14,7 +26,9 @@
 
 - **备选：[ui-ux-pro-max](https://github.com/nextlevelbuilder/ui-ux-pro-max-skill/blob/main/.claude/skills/ui-ux-pro-max/SKILL.md)**（具体 Skill；A / L2）。**核查通过（源码与依赖检查，未实机验证）** **能力：**检索风格、配色、字体、UX 规则和设计系统建议。**依赖/限制：**需同目录查询脚本及数据、Python 3；单复制 SKILL.md 不完整。**CoolFlow 适配：**安装整个 Skill 资源目录，不把框架示例变为 CoolFlow 默认技术栈。**核查依据：**[上游文件](https://github.com/nextlevelbuilder/ui-ux-pro-max-skill/blob/main/.claude/skills/ui-ux-pro-max/SKILL.md)，Git blob `41f8e2fd7f8c568228d0b55186ebe3f7b4007377`（2026-11-01）。
 
-## 5.2 生成多个 UI 版本比较
+## 5.4 Create interfaces and an interactive prototype
+
+对应场景：生成多个 UI 版本比较。
 
 **何时使用：**快速生成可切换的多个交互和视觉版本。
 
@@ -22,3 +36,6 @@
 
 - **备选：[design-shotgun](https://github.com/garrytan/gstack/blob/main/design-shotgun/SKILL.md)**（具体 Skill；B / L3）。**核查通过（源码与依赖检查，未实机验证）** **能力：**批量生成多种界面设计并在比较界面评审。**依赖/限制：**依赖 gstack 共享脚本、会话文件和运行环境。**CoolFlow 适配：**仅环境满足时原版运行；否则改用轻量 `prototype` UI 分支。**核查依据：**[上游文件](https://github.com/garrytan/gstack/blob/main/design-shotgun/SKILL.md)，Git blob `59f595100fbfe12788b70eeffbf346400b200c3c`（2026-11-01）。
 
+## 5.5 Review and usability validation
+
+**无已核查工具。** 本活动可由 Agent 直接按 `activities.md` 的产出定义完成；若未来有候选，须先复核查验后才能进入默认推荐。
