@@ -54,7 +54,7 @@ GitHub stars are approximate snapshots retrieved on 2026-11-01. They indicate co
 | Session handoff / resume context | —* | ● | ◐ | ● | ● | — | ◐ | ● |
 | Explicit cross-stage evolution / learn-and-adjust loop | ● | ◐ | ◐ | ◐ | ◐ | ◐ | ● | ◐ |
 
-* **CoolFlow's state support is document-local and opt-in.** Step 1–5 documents carry a short progress card in their frontmatter, and two optional Skills read and update it: one reports where work stands, the other records a session's confirmed results. CoolFlow still does not prescribe a single global `STATE.md`, a status engine, an automatic retrieval protocol or a session-handoff format, and a card remains a snapshot rather than approval evidence. Cross-stage knowledge capture is not yet a normative feature.
+* **CoolFlow's state support is document-local and opt-in.** Step 1–5 documents carry a short progress card in their frontmatter. The optional Advisor reads project evidence, including these cards, to report progress or suggest priorities; the separate documentation-update Skill records a session's confirmed results. CoolFlow still does not prescribe a single global `STATE.md`, a status engine, an automatic retrieval protocol or a session-handoff format, and a card remains a snapshot rather than approval evidence. Cross-stage knowledge capture is not yet a normative feature.
 
 ### What the comparison reveals
 

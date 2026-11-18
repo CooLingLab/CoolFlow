@@ -1,6 +1,6 @@
 # Stage 4 — Roadmap
 
-[精选推荐索引](recommendations.md) · [CoolFlow 文档规范](../../../standards/documentation.md)
+[精选推荐索引](recommendations.md) · [CoolFlow 文档规范](https://github.com/CooLingLab/CoolFlow/blob/main/standards/documentation.md)
 
 **目标：**确定 MVP/当前版本与后续版本的取舍，不把 Roadmap 混同实施任务表。
 

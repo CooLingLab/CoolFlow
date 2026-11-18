@@ -1,6 +1,6 @@
 # Stage 2 — Lightweight Strategic DDD
 
-[精选推荐索引](recommendations.md) · [CoolFlow 文档规范](../../../standards/documentation.md)
+[精选推荐索引](recommendations.md) · [CoolFlow 文档规范](https://github.com/CooLingLab/CoolFlow/blob/main/standards/documentation.md)
 
 **目标：**统一领域语言、业务规则和边界；避免过度 DDD。
 

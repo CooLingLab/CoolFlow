@@ -1,10 +1,10 @@
 # Stage 1 — Idea → Brainstorm
 
-[精选推荐索引](recommendations.md) · [CoolFlow 文档规范](../../../standards/documentation.md) · [活动拆解](../../../methodology/activities.md)
+[精选推荐索引](recommendations.md) · [CoolFlow 文档规范](https://github.com/CooLingLab/CoolFlow/blob/main/standards/documentation.md) · [活动拆解](https://github.com/CooLingLab/CoolFlow/blob/8eff74297a0b00876174b5882bfb052142372280/methodology/activities.md)
 
 **目标：**明确问题、用户、替代方案与产品假设；不提前创建正式 Spec。
 
-**编号对齐：**本文件的小节编号即 [Stage 1 activities](../../../methodology/activities.md#1-idea--brainstorm) 的活动号（`activities.md` @ `8eff742`，2026-11-06）。标题沿用活动名；一个活动可以有多个推荐，编号后加后缀区分。
+**编号对齐：**本文件的小节编号即 [Stage 1 activities](https://github.com/CooLingLab/CoolFlow/blob/8eff74297a0b00876174b5882bfb052142372280/methodology/activities.md#1-idea--brainstorm) 的活动号（`activities.md` @ `8eff742`，2026-11-06）。标题沿用活动名；一个活动可以有多个推荐，编号后加后缀区分。
 
 **收录依据：**仅保留已讨论且核查通过的具体工具；每个活动最多两个选择。核查通过=阅读官方源码及关联依赖、确定 CoolFlow 适配方案，不等于已安装或做过受控对照测试。运行时仍需校验环境及权限。标为“无已核查工具”的活动不是缺陷，只是当前库中没有符合门槛的候选；不要为凑数补充未核查条目。
 

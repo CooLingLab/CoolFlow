@@ -1,6 +1,6 @@
 # Stage 6 — Design Spec Loop
 
-[精选推荐索引](recommendations.md) · [CoolFlow 文档规范](../../../standards/documentation.md)
+[精选推荐索引](recommendations.md) · [CoolFlow 文档规范](https://github.com/CooLingLab/CoolFlow/blob/main/standards/documentation.md)
 
 **目标：**形成统一 Spec、必要架构决策与实施计划，按重要性评审。
 

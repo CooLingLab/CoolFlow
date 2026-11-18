@@ -1,6 +1,6 @@
 # Stage 7 — Implementation Loop
 
-[精选推荐索引](recommendations.md) · [CoolFlow 文档规范](../../../standards/documentation.md)
+[精选推荐索引](recommendations.md) · [CoolFlow 文档规范](https://github.com/CooLingLab/CoolFlow/blob/main/standards/documentation.md)
 
 **目标：**Coding → Testing → Review → Spec Conformance → Fix；以证据验证实现。
 

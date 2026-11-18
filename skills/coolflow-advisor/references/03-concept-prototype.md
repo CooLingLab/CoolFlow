@@ -1,6 +1,6 @@
 # Stage 3 — Concept Prototype → Validation
 
-[精选推荐索引](recommendations.md) · [CoolFlow 文档规范](../../../standards/documentation.md)
+[精选推荐索引](recommendations.md) · [CoolFlow 文档规范](https://github.com/CooLingLab/CoolFlow/blob/main/standards/documentation.md)
 
 **目标：**用可丢弃原型或低成本实验回答最关键的产品问题。
 

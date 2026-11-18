@@ -1,6 +1,6 @@
 # Stage 5 — UI Prototype
 
-[精选推荐索引](recommendations.md) · [CoolFlow 文档规范](../../../standards/documentation.md)
+[精选推荐索引](recommendations.md) · [CoolFlow 文档规范](https://github.com/CooLingLab/CoolFlow/blob/main/standards/documentation.md)
 
 **目标：**为选定版本探索视觉方向和高保真交互，不预设平台或框架。
 

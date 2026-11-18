@@ -1,6 +1,6 @@
 # Stage 8 — Human Acceptance → Documentation Sync → Release
 
-[精选推荐索引](recommendations.md) · [CoolFlow 文档规范](../../../standards/documentation.md)
+[精选推荐索引](recommendations.md) · [CoolFlow 文档规范](https://github.com/CooLingLab/CoolFlow/blob/main/standards/documentation.md)
 
 **目标：**人工接受实际行为、同步已验收事实；交付/发布需单独授权。
 
