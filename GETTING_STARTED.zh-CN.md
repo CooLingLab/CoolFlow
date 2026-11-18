@@ -30,10 +30,10 @@ flowchart TD
     Ready{"已选定要交付的增量吗？"}
     Explore["讨论、研究或做原型"]
     Save["记录发现、决定和下一步"]
-    Spec["编写并评审统一的 Spec"]
-    Build["实现、评审与验证"]
-    Accept{"人类是否验收？"}
-    Sync["同步已验收行为的文档"]
+    Spec["第 6 步 · Design Spec Loop<br/>编写并评审统一的 Spec"]
+    Build["第 7 步 · Implementation Loop<br/>实现、评审与验证"]
+    Accept{"第 8 步 · 人类是否验收？"}
+    Sync["第 8 步 · 同步已验收行为的文档"]
 
     Open -->|全新的空项目| Init
     Open -->|已有项目，准备采用 CoolFlow| Assess
@@ -51,15 +51,19 @@ flowchart TD
     Save -->|现在继续或下次接续| Ready
     Ready -->|已选定| Spec
     Spec --> Build
+    Build -->|发现设计缺口| Spec
     Build --> Accept
-    Accept -->|实现需要修改| Build
+    Accept -->|需要调整实现| Build
+    Accept -->|需要调整设计| Spec
     Accept -->|已验收| Sync
 ```
 
+按目标选用第 1～5 步中相关的工作。已有明确的交付增量时，可以直接进入第 6 步。
+完整步骤见 [CoolFlow 生命周期](methodology/flow.zh-CN.md)。
+
 任何时候有实质进展都可以保存，下次从项目记录接续。例如，可以对 Agent 说「把这次确认的决定、
-还待验证的问题和下一步记下来。」如果反馈要求调整设计，先回到 Spec。在任何阶段，反馈、新证据或需求变化
-都可能促使你重新评估方向，通过 [Evolution Loop](methodology/loops.zh-CN.md) 回到相关步骤。发布按需进行，
-需要单独授权。
+还待验证的问题和下一步记下来。」在任何阶段，反馈、新证据或需求变化都可能促使你重新评估方向，
+通过 [Evolution Loop](methodology/loops.zh-CN.md) 回到相关步骤。发布按需进行，需要单独授权。
 
 ## 前提条件
 

@@ -26,10 +26,10 @@ flowchart TD
     Ready{"Selected an increment to deliver?"}
     Explore["Discuss, research, or prototype"]
     Save["Record findings, decisions, and next steps"]
-    Spec["Write and review a unified Spec"]
-    Build["Implement, review, and verify"]
-    Accept{"Does the human accept the result?"}
-    Sync["Sync documentation for accepted behavior"]
+    Spec["Step 6 · Design Spec Loop<br/>Write and review a unified Spec"]
+    Build["Step 7 · Implementation Loop<br/>Implement, review, and verify"]
+    Accept{"Step 8 · Does the human accept the result?"}
+    Sync["Step 8 · Sync documentation for accepted behavior"]
 
     Open -->|New, empty project| Init
     Open -->|Existing project, adopting CoolFlow| Assess
@@ -47,14 +47,18 @@ flowchart TD
     Save -->|Continue now or in a later session| Ready
     Ready -->|Yes| Spec
     Spec --> Build
+    Build -->|Design gap found| Spec
     Build --> Accept
     Accept -->|Implementation needs changes| Build
+    Accept -->|Design needs changes| Spec
     Accept -->|Accepted| Sync
 ```
 
+Choose the work from Steps 1–5 that helps with your goal. If you already know what increment to deliver, you can go directly to Step 6. See the [CoolFlow lifecycle](methodology/flow.md) for the full step list.
+
 Save meaningful progress at any point so a later session can resume from the project records.
 For example, ask your Agent to “Record the decisions we confirmed, what still needs evidence, and the next step.”
-If feedback calls for a design change, revisit the Spec. At any stage, feedback, new evidence, or changing needs can prompt you to reassess the direction and return to any relevant step through the [Evolution Loop](methodology/loops.md). Release only when appropriate and separately authorized.
+At any stage, feedback, new evidence, or changing needs can prompt you to reassess the direction and return to any relevant step through the [Evolution Loop](methodology/loops.md). Release only when appropriate and separately authorized.
 
 ## Prerequisites
 
