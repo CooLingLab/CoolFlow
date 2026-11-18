@@ -186,6 +186,7 @@ A complete Spec should be comprehensible by a new Agent and provide:
 - Context, goal and non-goals.
 - User requirements and concrete acceptance criteria.
 - Design/architecture decisions and major alternative trade-offs.
+- Repository layout: where source code, tests and build/run commands live, kept outside `docs/`.
 - Implementation strategy, dependencies and meaningful validation method.
 - Open questions / assumptions clearly distinguished from decisions.
 
@@ -207,7 +208,7 @@ Optional artifacts, created for actual need:
 - `brainstorm.md`: discovery notes, competitor findings, opportunity analysis and product hypotheses.
 - `validation.md`: what was tested, what actually happened, evidence strength and the resulting decision; separate it from the hypotheses it tests.
 - `competitive-landscape.md`: optional, substantial competitor/market research that merits its own maintained record; do not create it by default.
-- `prototypes/`: candidate concepts and working prototypes, in the applicable work directory.
+- `prototypes/`: candidate concepts and working prototypes used as validation evidence. Prototype code is disposable: production code must not import from it, and its build or dependency setup must not become the application's. When a prototype's direction is accepted, implement it in the source tree recorded in the Spec during Step 7; do not grow the prototype in place. Record the findings and link the prototype as evidence.
 - `docs/architecture.md`: current system architecture; `docs/adr/`: rationale for consequential architecture decisions. Both are optional and should be created only when complexity merits them.
 - `docs/feature-map.md`: actual navigation paths, actions, stable test identifiers and verification procedures for operating the shipped/accepted UI, when useful. It is **not** a duplicate of `features/`.
 

@@ -1,4 +1,4 @@
-<!-- Offline snapshot of standards/documentation.md | Standard version: v0.1 | Source Git blob: 550484c7efe7413c494aa96ef2e0915f8328c6d6 | Relative links are relative to standards/ in the source repository; their targets are not bundled. -->
+<!-- Offline snapshot of standards/documentation.md | Standard version: v0.1 | Source Git blob: 96762347d8b50adb45ed98a2aa2cf0e5718729d7 | Relative links are relative to standards/ in the source repository; their targets are not bundled. -->
 
 # Documentation standard (v0.1)
 
@@ -190,6 +190,7 @@ A complete Spec should be comprehensible by a new Agent and provide:
 - Context, goal and non-goals.
 - User requirements and concrete acceptance criteria.
 - Design/architecture decisions and major alternative trade-offs.
+- Repository layout: where source code, tests and build/run commands live, kept outside `docs/`.
 - Implementation strategy, dependencies and meaningful validation method.
 - Open questions / assumptions clearly distinguished from decisions.
 
@@ -214,7 +215,7 @@ Optional artifacts, created for actual need:
 - `tasks.md`: **only** when independent, persistent task progress is needed across sessions, agents, or time. Do not duplicate existing session, Issue or other task trackers.
 - `brainstorm.md`: discovery notes, competitor findings, opportunity analysis and product hypotheses.
 - `competitive-landscape.md`: optional, substantial competitor/market research that merits its own maintained record; do not create it by default.
-- `prototypes/`: candidate concepts and working prototypes, in the applicable work directory.
+- `prototypes/`: candidate concepts and working prototypes used as validation evidence. Prototype code is disposable: production code must not import from it, and its build or dependency setup must not become the application's. When a prototype's direction is accepted, implement it in the source tree recorded in the Spec during Step 7; do not grow the prototype in place. Record the findings and link the prototype as evidence.
 - `docs/architecture.md`: current system architecture; `docs/adr/`: rationale for consequential architecture decisions. Both are optional and should be created only when complexity merits them.
 - `docs/feature-map.md`: actual navigation paths, actions, stable test identifiers and verification procedures for operating the shipped/accepted UI, when useful. It is **not** a duplicate of `features/`.
 
