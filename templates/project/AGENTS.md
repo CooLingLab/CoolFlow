@@ -23,5 +23,6 @@ Follow `docs/documentation.md` when creating, updating or archiving project docu
 ## Project-specific Conventions
 
 - Product / stack: To decide.
+- Source code layout: To decide.
 - Build and test commands: To decide.
 - Other project constraints: To decide.

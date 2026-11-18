@@ -6,6 +6,8 @@
 
 The following is the **default documentation tree for an application repository initialized with CoolFlow**. It describes the recommended homes and lifecycle of project documents; it is not a requirement to create every optional file.
 
+**Scope:** This tree describes documentation only. Application source code, tests, build configuration, dependencies and CI belong to the repository's source tree, following the chosen stack and project conventions (for example `src/` and `tests/`, or `apps/` and `packages/`). Do not place production code under `docs/`.
+
 ```text
 <app-repository>/
 ├── AGENTS.md                         # Required at initialization

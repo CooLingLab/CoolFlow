@@ -1,4 +1,4 @@
-<!-- Offline snapshot of standards/documentation.md | Standard version: v0.1 | Source Git blob: 6ded1daa67e34c9dc4880a760a0103921ee50226 | Relative links are relative to standards/ in the source repository; their targets are not bundled. -->
+<!-- Offline snapshot of standards/documentation.md | Standard version: v0.1 | Source Git blob: 550484c7efe7413c494aa96ef2e0915f8328c6d6 | Relative links are relative to standards/ in the source repository; their targets are not bundled. -->
 
 # Documentation standard (v0.1)
 
@@ -9,6 +9,8 @@
 ## Canonical application documentation tree
 
 The following is the **default documentation tree for an application repository initialized with CoolFlow**. It describes the recommended homes and lifecycle of project documents; it is not a requirement to create every optional file.
+
+**Scope:** This tree describes documentation only. Application source code, tests, build configuration, dependencies and CI belong to the repository's source tree, following the chosen stack and project conventions (for example `src/` and `tests/`, or `apps/` and `packages/`). Do not place production code under `docs/`.
 
 ```text
 <app-repository>/
