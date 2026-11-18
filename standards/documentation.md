@@ -119,8 +119,23 @@ Rules:
 - Fill optional fields only from actual work. Fresh core templates carry `status: not_started` and `related_steps`; new work documents carry `status: in_progress` because their creation means the work has begun. Leave the remaining fields out until real progress exists instead of writing placeholder text into them.
 - A work document is created from real content: include only the sections the work actually covers and omit the rest, rather than copying unfilled template headings or leaving `To decide` under them. Copying a full template is appropriate only when an explicit empty starting structure is wanted.
 - Update the card whenever the document's progress changes materially. Readers treat `progress_updated` as a hint about recency, not as proof that the body is current.
-- To see where Step 1–5 work stands, read the cards first and open bodies only as needed. A Step 1–5 overview always lists all five steps and distinguishes `not_started` from "no record found"; it does not infer a step's status from a related document alone.
+- To see where Step 1–5 work stands, read the cards first and open bodies only as needed. A requested Step 1–5 overview lists all five steps and distinguishes `not_started` from "no record found"; it does not infer a step's status from a related document alone. A general project overview is not limited to these cards: it may use relevant Specs, code and acceptance evidence to cover the applicable lifecycle without forcing a complete eight-step report.
 - Default mappings for the core documents are `product.md` → `[1]`, `domain.md` → `[2]` and `roadmap.md` → `[4]`. Refine them when the project's actual organization differs, and record that choice in the project-local standard.
+
+## Delivery progress (Steps 6–8)
+
+Record delivery progress for a specific work objective in a `Delivery progress` section of its existing unified Spec, or in an existing authoritative acceptance or delivery record when local conventions assign it there. Consult and update one authoritative record for each fact. Use links for evidence maintained elsewhere. Keep the Spec's document status separate from delivery progress. Step 1–5 progress cards retain their existing scope.
+
+| Field | Values | Evidence |
+| --- | --- | --- |
+| Implementation | `not_started`, `in_progress`, `implemented` | Observed changes and their scope or revision. `implemented` requires evidence that the agreed behavior is implemented. |
+| Verification | `not_verified`, `partially_verified`, `verified` | Actual checks, results, and gaps for the relevant revision or scope. Use `partially_verified` when only part of the required verification is supported. |
+| Acceptance | `pending`, `accepted`, `changes_requested` | Record an explicit human decision for the applicable scope. Use `pending` when awaiting a decision is established. |
+| Release | `not_released`, `released` | Record explicit release authorization separately from the outcome. Use `released` when actual release evidence identifies what was released and where. Record available post-release checks. |
+
+Record only supported fields and note material unknowns. Use `not_started`, `not_verified`, and `not_released` only when evidence establishes those states for the stated scope. Authorization, acceptance, and release are separate facts. After a material change, keep earlier verification, acceptance and release evidence scoped to the version it describes. Record the current gaps and seek fresh evidence or a human decision when needed.
+
+During authorized work, record meaningful implementation and verification results when they are available, and record explicit human decisions when given. After acceptance, sync affected durable documents per the usual Documentation Sync rules. Release execution requires separate authorization. If an authoritative objective record is missing or ambiguous, report what remains unrecorded and resolve the destination before writing. No separate state file or retrospective migration is required.
 
 ## Recording results from Agent Skills
 

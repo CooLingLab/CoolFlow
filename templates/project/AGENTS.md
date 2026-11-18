@@ -15,7 +15,7 @@ Follow `docs/documentation.md` when creating, updating or archiving project docu
 3. Do not invent requirements, user decisions or successful tests. Untouched core templates keep `status: not_started` and body unknowns stay `To decide`; a work card may be `in_progress` only when that work has actually begun.
 4. For substantial changes: review the current Spec draft and related context before coding, resolve important findings and confirm design readiness; run relevant tests, review new code and verify Spec conformance after coding.
 5. AI may implement and verify routine work. Ask the human to decide major product trade-offs and to accept the result.
-6. Record human-confirmed plans with their actual status; sync durable docs describing accepted/current behavior after human acceptance. Obtain separate authorization for any release and verify its outcome.
+6. Record human-confirmed plans with their actual status. During authorized work, record meaningful delivery progress at checkpoints under the local documentation standard. Sync durable docs after human acceptance. Obtain separate authorization for any release and verify its outcome.
 7. Manage ordinary task lists in the active Agent session.
 8. Before related work, consult relevant existing Solutions when available.
 9. When appropriate, especially for applications and deployed services, commit the package manager's lockfile and configure CI to install in frozen/locked mode. Libraries that intentionally publish dependency ranges may omit it; record that choice and have CI test the supported range.

@@ -157,9 +157,15 @@ The independent reviewer inspected the follow-up scenario and record, the curren
 
 The reviewer also requested clarification of the hidden-file check. The two scans did include hidden files, but none were found; the preservation paragraph above now states that explicitly. These record-only clarifications were not a new behavioral test.
 
+## Later scope clarification
+
+The project progress overview is not limited to Step 1–5. The Advisor entry now directs a general status report to use relevant design, implementation, acceptance and release evidence, while progress cards retain their existing Step 1–5 scope. A specifically requested Step 1–5 overview retains its five-step format.
+
+This clarification was made after the behavioral runs above. It has not been behavior-tested; the new whole-project overview case in the scenario remains unexecuted.
+
 ## Follow-up fixture hashes
 
-These 11 SHA-256 hashes were identical before and after the method and overview runs. Paths are relative to the temporary fixture root.
+These 11 SHA-256 hashes were identical before and after the method and overview runs. Paths are relative to the temporary fixture root. The specific request asked for a Step 1–5 overview; it does not establish behavior for a general whole-project overview that includes design, implementation, acceptance and release.
 
 ```text
 fa49d7723310ad5b497e53b571fde9e88d29cd5040b780b19405ec64137ab1eb  method/README.md

@@ -63,6 +63,10 @@ Do not treat a missing card as `not_started`, and do not infer a step's status f
 
 Typical severity: `error` for an invalid required field or a card contradicting the body, `warning` for a missing or duplicated status, `info` for stale optional fields.
 
+### Delivery progress (when the local standard defines it)
+
+Check that each field is supported for the stated objective and revision. Distinguish Spec document status, implementation, verification gaps, explicit human acceptance, release authorization and actual release evidence. Report unsupported or stale claims, and duplicate records for the same fact. Leave delivery status corrections to the record owner.
+
 ## 4. Single authoritative location
 
 - Is the same fact stated substantively in more than one document? Identify the canonical owner and report the duplication; replacing copies with links requires human confirmation.
