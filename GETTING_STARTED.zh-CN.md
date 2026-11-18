@@ -14,13 +14,15 @@ CoolFlow 是一套轻量的**开发方法论和文档规范**，不是 Agent run
 
 ## 一图看懂怎么用 CoolFlow
 
-下图以一个目标为例，展示如何开工和接续。已有项目首次采用 CoolFlow 时，先检查现状并确认采用范围。
-Advisor 和 Skill Creator 都可按需使用，具体走哪些步骤取决于当前目标。
+下图以一个目标为例，展示如何开工和接续。已有项目首次采用 CoolFlow 时，先
+[检查现状并确认采用范围](GETTING_STARTED.zh-CN.md#b-已有项目先检查现状再采用)。图中的 CoolFlow Skills 均可按需使用，
+具体走哪些步骤取决于当前目标。
 
 ```mermaid
 flowchart TD
     Open([打开目标项目])
     Init["用 coolflow-init 创建文档骨架"]
+    Assess["用 coolflow-docs-review<br/>对照 CoolFlow 检查现有文档"]
     Goal{"知道这次要推进什么吗？"}
     Advisor["问 CoolFlow Advisor 下一步做什么、怎么做"]
     Work["选定目标，和 Agent 开工<br/>直接对话或使用合适的 Skill"]
@@ -34,8 +36,10 @@ flowchart TD
     Sync["同步已验收行为的文档"]
 
     Open -->|全新的空项目| Init
-    Open -->|已有项目| Goal
+    Open -->|已有项目，准备采用 CoolFlow| Assess
+    Open -->|已有项目，已按 CoolFlow 工作| Goal
     Init -->|准备好开始时| Goal
+    Assess -->|你决定采用什么| Goal
     Goal -->|明确| Work
     Goal -->|不确定| Advisor
     Advisor -->|你选定下一步| Work
@@ -163,7 +167,9 @@ Agent 应选择它支持的方法。如果无法全局安装 Skill，它应告�
 
 **不要在已有或非空项目中运行 coolflow-init。** Skill 会在那里拒绝运行。
 
-相反，请让 Coding Agent 检查现有项目，并提出选择性采用计划：
+想看看现有文档与 CoolFlow 的差距，可以请 Coding Agent 对这个项目运行 [`coolflow-docs-review`](https://github.com/CooLingLab/CoolFlow/tree/main/skills/coolflow-docs-review)。它会以只读方式报告哪些安排符合 CoolFlow 规范、有哪些差异，以及最小、实用的改进建议。项目有本地文档规则时也会一并参照。安装方式与 `coolflow-init` 相同。
+
+需要选择性采用计划时，请 Coding Agent 检查现有项目并提出计划：
 
 > 阅读 https://github.com/CooLingLab/CoolFlow 的 CoolFlow 指南，并检查我的现有仓库，包括
 > AGENTS.md、代码、架构和相关文档。总结实际项目约定，说明 CoolFlow 的哪些部分有助于

@@ -204,6 +204,36 @@ e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855  docs/work/arch
 ```
 </details>
 
+## 2026-11-18 — CoolFlow-baseline redesign
+
+- Base commit: `e002bc0`. Host: Claude Code on macOS.
+- Change: `coolflow-docs-review` now compares documentation against the bundled CoolFlow standard snapshot (`references/documentation-standard.md`, source Git blob `6ded1daa67e34c9dc4880a760a0103921ee50226`) while reading local rules (`AGENTS.md`, `README.md`, and any referenced local standard) to map equivalent paths/roles and check adopted project rules.
+- Combined fixture run (Scenario cases 1, 3, and 4 — bare `check` request, custom `notes/` tree, no `docs/documentation.md`):
+  - Fixture: `/tmp/claude-501/coolflow-docs-review-fixture.fivmjP` (5 Markdown files + empty `docs/features/` and `docs/work/`).
+  - Request: `"Review this project's documentation against CoolFlow and tell me whether its documentation structure conforms."` (with explicit read-only executor constraint).
+  - Observed result: did **not** stop for missing `docs/documentation.md` (reported local rules beyond `AGENTS.md` as `Unverified` / `info`); reported snapshot version `v0.1` and Git blob `6ded1daa67e34c9dc4880a760a0103921ee50226`; credited `notes/accepted/`, `notes/planned/roadmap.md`, and `notes/domain.md` as equivalent roles; did **not** flag initialization-only skeleton gaps or optional artifacts as defects; flagged planned status inside `notes/accepted/login.md` (`Adopted-rule violation`, `error`, `Needs decision`) and broken `../domains.md` link (`error`, left unfixed in `check` mode); framed roadmap MVP scope and README navigation as `CoolFlow difference (adoption opportunity)` (`info`).
+  - All 5 fixture files kept identical SHA-256 hashes before and after the run.
+- Post-run self-review tightening:
+  - Split `Mechanical defect` out from `Adopted-rule violation` in `references/review-checks.md` and expanded `SKILL.md` safety and result-recording clauses.
+  - Corrected `README.zh-CN.md` (`已验收项目` → `已有项目`), softened offline wording in `SKILL.md` (`suffices offline` → `designed not to require network access`), aligned the action enum between `SKILL.md` and `review-checks.md` (`fix-safe` / `fixed` / `needs decision` / `report only`), aligned `templates/project/docs/documentation.md` and `GETTING_STARTED*.md`, and added the standard version and the relative-link scope to the snapshot header (`SKILL.md` SHA-256 `642fd5283506598ec5c3302a059034d3271c2b458b1835655c3cdaee5267e074`, `review-checks.md` SHA-256 `6428ecf8af56b1ac0e5efb362c15062ab8b5fc8c1e4a8426851a1c5f19906208`, `documentation-standard.md` SHA-256 `43dce87184904132b5c51846f0166be809991b367fbc10a0c665b172e5856ff6`). These post-run tightenings received static checks, not a second behavioral run.
+- Independent review (2026-11-18, after the redesign):
+  - A first reviewer was stopped after 25 minutes without returning a report; its only recorded observation (missing version identifier in the snapshot header) was fixed.
+  - A bilingual-parity reviewer returned findings that were fixed: a missing B-section anchor in `GETTING_STARTED.zh-CN.md`, "identify matches" mistranslated as `给出已有安排`, "adoption decisions" narrowed to `采用范围` in the Chinese standard and diagram edge, a heading noun difference, and an unrelated pre-existing `unverified` omission at `standards/documentation.zh-CN.md:187`. It verified identical Mermaid node IDs, order, 18 edges and solid/dotted types across both languages.
+  - A safety-boundary and adoption-path review was launched but did **not** return before this commit; those dimensions remain **NOT VERIFIED** by independent review.
+- Not re-run after the 2026-11-18 redesign: authorized `fix-safe` (case 6), governance broken-link refusal (case 5), missing `references/documentation-standard.md` stop (case 7), offline network-disabled behavioral test, unrestricted-host read-only enforcement, and automatic Skill discovery.
+
+<details>
+<summary>2026-11-18 combined fixture — before and after SHA-256</summary>
+
+```text
+280e7ebca0618a286a72245f99e5a3d1e2908f20f3c786380d9d213737eeaa74  ./AGENTS.md
+7dbbad8bd74219d9d53a408624211e00ef7ae38016ccbb30274d840ea9cc16ad  ./README.md
+b287298fa94b67b21571e4a370aac989fbfe0ec3c7791099d7b70eaa8d52caeb  ./notes/accepted/login.md
+501fd3e68191c16cfd8bf27048b41f3574a6f46f368f7789f9cfe763137e7826  ./notes/domain.md
+8e2a81db1dcf510af8e90074b439ee985fa6af272323e3abc9ab0b3bb7550bee  ./notes/planned/roadmap.md
+```
+</details>
+
 ## Status
 
-Draft, not accepted. The Skill is not installed, committed or released. Human acceptance is still required before promotion.
+Candidate updated in source checkout; human acceptance is required before promoting or installing the revised Skill.

@@ -1,138 +1,116 @@
 # Documentation review checks
 
-These are generic review prompts. The project's local documentation standard decides which checks apply and what counts as a violation. A check not covered locally is **not specified**, not a violation.
+Use this checklist with the bundled [CoolFlow documentation standard](documentation-standard.md) and the project's local rules. The standard is the comparison baseline for CoolFlow conformance. Local rules explain the project's actual document roles, paths, metadata, and conventions; credit arrangements the standard allows.
 
-Use the local standard's own terms and examples. The notes below describe the canonical CoolFlow tree only as an illustration; a project may customize names and locations.
+Each finding states its category:
+
+- **Adopted-rule violation:** a rule the project has adopted is violated.
+- **Mechanical defect:** an objectively broken local link or anchor (or mechanical formatting required by an applicable project rule), independent of whether a local standard exists.
+- **CoolFlow difference:** the project differs from the baseline where the standard leaves room or the project has not adopted the related convention. For a project considering adoption, this is an opportunity, not a defect.
+- **Unverified:** the evidence needed to decide is missing. Say what would resolve it.
+
+Do not enforce initialization-only requirements on a project that was not initialized with CoolFlow. Do not require optional artifacts or unused lifecycle stages. Do not treat a missing optional document as a defect.
 
 ## 1. Placement and lifecycle
 
-- Is the document in a location the local standard defines for its type?
-- Are the documents the local standard requires at initialization present? Missing required documents are findings; do not create them during a review.
-- Is a feature record describing only behavior that is actually implemented and accepted? Planned, proposed or future behavior belongs in the roadmap or an open work record.
-- Was a work objective's `spec.md` created only when the objective entered Design Spec Loop? Discovery notes may exist without a Spec.
-- Are optional records such as solutions, ADRs, architecture and feature maps created only for a real need? Is each fact in its narrowest durable home?
-- After acceptance, were accepted facts synced before work was archived? Does the archive retain useful Specs, decision rationale and verification evidence?
-- Is this document a second authority for a fact owned elsewhere?
-
-Typical severity: `error` for a clear lifecycle violation, `warning` for a likely one, `info` when the local standard is silent.
+- Are documents mapped to the roles they actually serve? Equivalent names and paths count. Do not require the canonical tree.
+- Is each accepted-behavior record describing implemented, accepted behavior? Planned or proposed behavior belongs in a roadmap or an open work record.
+- Is discovery kept separate from a selected objective's Spec? A work objective may hold notes or prototypes without a Spec.
+- Are optional records such as Solutions, ADRs, architecture, and feature maps present only for a real need?
+- After acceptance, were accepted facts recorded before work was archived? Does the archive retain useful Specs, decision rationale, and verification evidence where the project archives?
+- Is any document a second authority for a fact owned elsewhere?
 
 ## 2. Structure and purpose
 
-Use the local standard's purpose statements, not a preferred template. For the canonical CoolFlow tree, check:
+Judge purpose using the standard's role descriptions, not a preferred heading list. For roles the project has, check that the content matches the role:
 
-- `product.md`: problem, audience, vision, value, boundaries and current positioning; it is a Product Brief, not a PRD.
-- `roadmap.md`: MVP/current version, later direction and priority; planned and accepted scope are explicit.
-- `domain.md`: ubiquitous language, domain boundaries and core rules; provisional content is allowed.
-- `features/`: accepted behavior, constraints and verification; link supporting evidence.
-- `work/<objective>/spec.md`: context, goal and non-goals; user requirements and acceptance criteria; design decisions and trade-offs; implementation strategy, dependencies and validation; open questions and assumptions distinguished from decisions.
-- `solutions/`: one focused, verified, reusable finding with evidence; not raw logs, unverified guesses or obvious code behavior.
-- `adr/`: context, decision drivers, options, decision and consequences; one consequential decision per file; superseded records are retained.
-- `architecture.md`: current system architecture, not decision rationale.
-- `feature-map.md`: actual navigation, actions, stable test identifiers and verification steps; not a duplicate of `features/`.
-- `README.md` and `AGENTS.md`: accurate navigation; `AGENTS.md` states stable working rules and points to the local documentation standard. Where the local standard defines a context preference and Flow reference, verify that the project instructions make them discoverable.
-
-Do not require every optional artifact. Do not enforce headings or sections the local standard does not require.
-
-Typical severity: `warning` for missing required content, `info` for a possible improvement.
+- Product brief: problem, audience, vision, value, boundaries, and current positioning. It is not a PRD.
+- Roadmap: current/MVP scope, later direction, and priority, with planned versus accepted scope explicit.
+- Domain: ubiquitous language, boundaries, and core rules. Provisional content is allowed.
+- Features/accepted behavior: behavior, constraints, and verification, with links to evidence.
+- Objective Spec: context, goal and non-goals; acceptance criteria; design decisions and trade-offs; implementation and validation approach; open questions distinguished from decisions.
+- Solutions: one focused, verified, reusable finding with evidence.
+- ADRs: context, drivers, options, decision, and consequences; one consequential decision per file.
+- Architecture: current system architecture, not decision rationale.
+- Navigation in README/AGENTS: accurate entry points and links to the project's documentation rules.
 
 ## 3. Truth and status
 
-- Are observed facts, user claims, decisions, unverified findings, assumptions and open questions distinguishable?
-- Is planned behavior labeled as planned or proposed, not described as accepted or current?
+- Are observed facts, user claims, decisions, unverified findings, assumptions, and open questions distinguishable?
+- Is planned behavior labeled as planned or proposed rather than accepted or current?
 - Is accepted behavior recorded in the appropriate current document, not only in a work record?
-- Are `Not started` and `To decide` treated as unknown, not as completed?
-- Are test results, acceptance and release status accurate and evidenced?
-- Does the document invent product requirements, user decisions, dates, owners or metrics?
-- Is detailed unaccepted behavior kept in a work record or Spec rather than promoted to product, roadmap or domain documents?
+- Are `not_started` and `To decide` treated as unknown rather than completed?
+- Are implementation, verification, human acceptance, release authorization, and release evidence reported separately and supported by evidence?
+- Does a document invent requirements, decisions, dates, owners, or metrics?
 
-Typical severity: `error` for fabricated facts or accepted/planned confusion, `warning` for ambiguous status.
+### Progress metadata
 
-### Progress metadata (only when the local standard defines it)
+When the project uses Step 1–5 progress metadata (CoolFlow's default or a local variant), check that required fields are valid, that cards do not duplicate a legacy status line, and that card claims match the body and evidence. When the project does not use this metadata, mark the dimension **not applicable**; do not require cards.
 
-Apply these only if the project's local standard prescribes Step 1–5 progress metadata. If it does not, mark this dimension **not specified** and do not require cards.
+### Delivery progress
 
-- Does each in-scope document that should carry a progress card actually have one, before its top-level heading?
-- Are the local standard's required fields present, with values from its allowed set? Flag unknown `status` values and out-of-range step numbers.
-- Does a document carry both a progress card and a legacy `> Status:` line? That is a duplicate authority: report it, do not choose which wins.
-- Does the card claim more than the body or the evidence supports — for example `complete` while the body lists unresolved questions, or `current_progress` describing work no artifact shows?
-- Do `next_steps` and `open_questions` contradict the body, or repeat resolved items?
-- Is `progress_updated` later than the document's actual last substantive change, suggesting it was refreshed without being updated?
-- Are optional fields left out rather than filled with placeholder text?
-
-Do not treat a missing card as `not_started`, and do not infer a step's status from a related document. Do not edit cards during a review: status changes are on the never-fix list.
-
-Typical severity: `error` for an invalid required field or a card contradicting the body, `warning` for a missing or duplicated status, `info` for stale optional fields.
-
-### Delivery progress (when the local standard defines it)
-
-Check that each field is supported for the stated objective and revision. Distinguish Spec document status, implementation, verification gaps, explicit human acceptance, release authorization and actual release evidence. Report unsupported or stale claims, and duplicate records for the same fact. Leave delivery status corrections to the record owner.
+Where the project records delivery progress, check that each claim is supported for the stated objective and revision, and that no second record owns the same fact. Leave status corrections to the record owner.
 
 ## 4. Single authoritative location
 
-- Is the same fact stated substantively in more than one document? Identify the canonical owner and report the duplication; replacing copies with links requires human confirmation.
+- Is the same fact stated substantively in more than one document? Name the likely owner and report the duplication; replacing copies with links needs confirmation.
 - Are summaries clearly summaries that link to the authority?
-- Is a new document justified, or should an existing document be updated instead?
-- Are there near-duplicate solution records or ADRs that should be merged or superseded? Report the overlap; do not merge or rewrite history automatically.
+- Is a new document justified, or should an existing document be updated?
+- Are near-duplicate Solutions or ADRs reported for consolidation or supersession rather than merged automatically?
 - Is history preserved, for example an ADR marked superseded rather than silently rewritten?
-
-Typical severity: `warning` for duplicate authority, `info` for a summary that could link instead of repeat.
 
 ## 5. Links and navigation
 
 - Do relative links resolve to existing files?
 - Do anchors match actual headings?
-- Do README, AGENTS and navigation documents point to the current paths?
+- Do README, AGENTS, and navigation documents point to current paths?
 - Are external links syntactically valid? Do not fetch them by default; state that they were not verified.
-- Are links used instead of duplicate paragraphs?
 
-Typical severity: `error` for a broken internal link, `warning` for stale navigation, `info` for an unverified external link.
+## 6. Naming, format, and safety
 
-## 6. Naming, format and safety
-
-- Do filenames follow the local convention? For ADRs, sequential descriptive names; for solutions, one focused finding per file.
+- Do filenames and language follow the applicable local convention? Do not enforce a filename convention the project has not adopted.
 - Is the heading hierarchy coherent, without skipped levels?
-- Is the document language consistent with the local convention?
-- Are secrets, credentials, tokens or private keys present? Report the location and type only; never copy the secret into the report.
-- Is sensitive personal data handled according to project rules? If the local standard is silent, report only clear exposure.
+- Are secrets, credentials, tokens, or private keys present? Report the location and type only; never copy a secret into the report.
+- Is sensitive personal data handled according to project rules? If no rule applies, report only clear exposure.
 
-Typical severity: `error` for exposed secrets, `warning` for convention violations, `info` for formatting.
+## 7. Cross-document consistency
 
-## 7. Cross-document consistency (optional deep pass)
+Run this deep pass only for a requested full review, an adoption assessment that needs it, or scoped documents that directly contradict each other:
 
-Run this only when the user asks for a full or corpus review, or when the scoped documents directly contradict each other:
-
-- Product, roadmap, domain and feature documents contradict each other.
-- Roadmap planned scope conflicts with accepted feature behavior.
-- `AGENTS.md` or README navigation points to paths or documents that no longer exist.
+- Product, roadmap, domain, and feature records contradict each other.
+- Roadmap scope conflicts with accepted behavior.
+- Navigation points to paths or documents that no longer exist.
 - The same term is used with different meanings across documents.
 
-Report contradictions; do not auto-reconcile them. The canonical owner decides.
+Report contradictions; do not auto-reconcile them.
 
 ## Severity and fixability
 
 | Severity | Use when | Examples |
 |---|---|---|
-| `error` | An explicit local rule is violated, an internal reference is mechanically broken, accepted and planned behavior are confused, a fact is fabricated, or a secret is exposed. | `features/` says "planned for next release"; a relative link points to a missing file. |
-| `warning` | A likely violation, contradiction, duplicate authority or missing required content. | Two documents own the same fact; a work Spec lacks acceptance criteria. |
-| `info` | Ambiguity, a possible improvement, or a rule the local standard does not specify. | A summary could link to the canonical document instead of repeating it. |
+| `error` | An adopted rule is violated, an internal reference is mechanically broken, accepted and planned behavior are confused, a fact is fabricated, or a secret is exposed. | `features/` says "planned for next release"; a relative link points to a missing file. |
+| `warning` | A likely violation, contradiction, duplicate authority, or missing required content. | Two documents own the same fact; a Spec lacks acceptance criteria. |
+| `info` | A meaningful difference from CoolFlow, ambiguity, or a possible improvement. | A summary could link to the canonical document; a document type could later be split by role. |
 
-| Fixability | Meaning |
+| Action | Meaning |
 |---|---|
-| Safe | An unambiguous mechanical fix that does not change meaning, status, ownership or placement. |
-| Needs decision | Content, status, placement, deletion, merge, archive or a governance document. Leave it unchanged and report it. |
-| Report only | Verification is unavailable, ownership is ambiguous, or rules conflict. |
+| `fix-safe` | Unambiguous mechanical defect outside governance documents, left unapplied in `check` mode and eligible for an explicitly authorized `fix-safe` run. |
+| `fixed` | Unambiguous mechanical defect fixed during an explicitly authorized `fix-safe` run. |
+| `needs decision` | Content, status, placement, deletion, merge, archive, or a governance document. Leave unchanged and report it. |
+| `report only` | Verification unavailable, ownership ambiguous, or rules conflict. |
 
 ## Safe-fix examples
 
-- Fix a relative link to an existing local file when there is only one plausible target and the link is not inside a governance document.
+- Fix a relative link to an existing local file when there is only one evident target and the link is not inside a governance document.
 - Fix an anchor after a heading rename when the target heading is unambiguous and the link is not inside a governance document.
-- Remove trailing whitespace or duplicate blank lines when the local standard requires it.
+- Remove trailing whitespace or duplicate blank lines when an applicable project rule requires it.
 
 ## Do-not-fix examples
 
-- Change `Planned` to `Accepted` in a roadmap or feature document.
-- Move a file from `docs/work/` to `docs/work/archive/`.
-- Merge two similar paragraphs or delete a "duplicate" without confirming the canonical owner.
-- Fill `Not started` or `To decide` with a plausible value.
-- Rewrite a Spec to add acceptance criteria that the user has not confirmed.
-- Edit the local documentation standard (including `docs/documentation.md`) or `AGENTS.md` to make the project match the review.
+- Change `planned` to `accepted` in a roadmap or feature record.
+- Move a file into an archive directory.
+- Merge or delete a "duplicate" without confirming the canonical owner.
+- Fill `not_started` or `To decide` with a plausible value.
+- Add acceptance criteria a human has not confirmed.
+- Edit `AGENTS.md`, `docs/documentation.md`, or another governance document to make the project match the review.
+- Apply adoption changes before the user approves a plan.

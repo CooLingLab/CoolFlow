@@ -266,6 +266,10 @@ An ADR records the **rationale** for a decision; the current system design belon
 - Optional `solutions/`: *what verified engineering experience should change future work*.
 - Optional `adr/`: *why a consequential architecture or technical decision was made*.
 
+## Reviewing against CoolFlow
+
+CoolFlow conformance reviews compare this project's documents with the current CoolFlow documentation standard or an identified snapshot of it. Credit equivalent paths and arrangements this standard permits. Initialization-only requirements apply unless this project deliberately customized them. Treat differences that stem from local conventions as project choices, and report them separately from violations of this project's own rules.
+
 ## AI rules
 
 1. Read relevant files, not the entire documentation tree by default.

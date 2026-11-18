@@ -12,12 +12,13 @@ CoolFlow is a lightweight **development methodology and documentation standard**
 
 ## Using CoolFlow at a glance
 
-This example shows how to start or resume work on one goal. If an existing project is adopting CoolFlow, [inspect it and agree on what to adopt](#b-existing-project--inspect-before-adopting) first. Advisor and Skill Creator are optional. Use the steps that help with the goal at hand.
+This example shows how to start or resume work on one goal. If an existing project is adopting CoolFlow, [inspect it and agree on what to adopt](#b-existing-project--inspect-before-adopting) first. The CoolFlow Skills in the diagram are optional; use the steps that help with the goal at hand.
 
 ```mermaid
 flowchart TD
     Open([Open the target project])
     Init["Use coolflow-init to create the documentation skeleton"]
+    Assess["Check the docs against CoolFlow<br/>with coolflow-docs-review"]
     Goal{"Know what you want to work on?"}
     Advisor["Ask CoolFlow Advisor what to do next and how"]
     Work["Choose a goal and start with your Agent<br/>Work directly or use a suitable Skill"]
@@ -31,8 +32,10 @@ flowchart TD
     Sync["Sync documentation for accepted behavior"]
 
     Open -->|New, empty project| Init
-    Open -->|Existing project| Goal
+    Open -->|Existing project, adopting CoolFlow| Assess
+    Open -->|Existing project, already using CoolFlow| Goal
     Init -->|When ready to start| Goal
+    Assess -->|Decide what to adopt| Goal
     Goal -->|Yes| Work
     Goal -->|Unsure| Advisor
     Advisor -->|You choose the next step| Work
@@ -138,7 +141,9 @@ After initialization, the project follows its own docs/documentation.md; future 
 
 **Do not run coolflow-init in an existing or non-empty project.** The Skill will refuse to run there.
 
-Instead, ask your coding Agent to inspect the existing project and propose a selective adoption plan:
+To see how the current documentation compares with CoolFlow, ask your coding Agent to run [`coolflow-docs-review`](https://github.com/CooLingLab/CoolFlow/tree/main/skills/coolflow-docs-review) on the project. It reports matches with the CoolFlow standard, differences, and the smallest practical improvements as a read-only assessment. The review also uses the project's local documentation rules when they exist. Install the Skill the same way as `coolflow-init`.
+
+For a selective adoption plan, ask your coding Agent to inspect the existing project and propose one:
 
 > Read the CoolFlow guide at https://github.com/CooLingLab/CoolFlow and inspect my existing repository, including its AGENTS.md, code, architecture and relevant documentation. Summarize the actual project conventions and explain which parts of CoolFlow would help with **[specific fix, feature or development need]**. Propose the smallest useful adoption plan. Preserve all existing files, instructions, code and uncommitted changes. **Do not modify anything until I approve the plan.**
 

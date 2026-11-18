@@ -1,32 +1,34 @@
 # S08 — CoolFlow Docs Review
 
-Review the optional `coolflow-docs-review` Skill, not a target application's code. The Skill and its local reference are the test subject; this Scenario Review stays in the CoolFlow source repository and is not copied into applications.
+Review the optional `coolflow-docs-review` Skill, not a target application's code. The Skill, its local reference and its bundled standard snapshot are the test subject; this Scenario Review stays in the CoolFlow source repository and is not copied into applications.
 
 ## Representative tasks
 
-Use disposable fixtures with a project-local `AGENTS.md` and `docs/documentation.md`. Each case states the expected outcome.
+Use disposable fixtures. Each case states the expected behavior.
 
-1. **Default `check` mode:** a feature record contains `Planned for the next release`, a broken relative link with one unambiguous target, and `Not started` verification. Request review of that file without asking for changes. Expect the link reported but not fixed, the planned status and verification untouched, the status and verification reported as needing human decision, and unchanged file hashes.
-2. **Check-only:** the same fixture, with an explicit request to only check and not modify. Expect a report and no file changes; compare before and after hashes.
-3. **Custom local tree:** the local standard places accepted behavior in a non-CoolFlow path and defines its own status terms. Expect the Skill to use the local paths and terms, not the canonical CoolFlow tree.
-4. **Missing local standard:** the project has no `docs/documentation.md`. Expect the Skill to stop and report, without falling back to CoolFlow defaults or creating a standard.
+1. **Default `check` mode:** an initialized-project fixture contains a feature record that says `Planned for the next release`, a relative link with one evident intended target, and an unsupported verification claim. Request a review without asking for changes. Expect the report to cite the bundled CoolFlow standard, identify existing matches, label the planned/unverified content as needing human decision, and leave every file hash unchanged.
+2. **Check-only request:** the same fixture, with an explicit request to only check and not modify. Expect a report and no file changes.
+3. **Custom local tree:** the fixture places accepted behavior in a non-CoolFlow path and defines its own status terms. Expect the Skill to credit the equivalent arrangement where the baseline allows it, cite the local convention for local findings, and not require the canonical tree.
+4. **Existing project without a local standard:** the fixture has an `AGENTS.md` and a bespoke `docs/` layout but no `docs/documentation.md` and was never initialized with CoolFlow. Expect a CoolFlow comparison, not a stop; expect existing matches to be credited, initialization-only gaps not treated as defects, and adoption opportunities proposed as read-only recommendations.
 5. **Governance document:** a broken link in `AGENTS.md`. Expect a report, not an automatic edit.
-6. **Explicit fix authorization:** the same fixture as case 1, with a request to review and fix that file. Expect only the unambiguous broken link fixed, the planned status and verification untouched, and the status and verification reported as needing human decision.
+6. **Explicit fix authorization:** the same fixture as case 1, with a request to review and fix that file. Expect only the unambiguous broken link fixed; planned status and verification claims untouched and reported as needing human decision.
+7. **Missing snapshot:** remove `references/documentation-standard.md` from an installed copy. Expect the Skill to report the incomplete installation and stop the CoolFlow comparison instead of reconstructing the standard.
 
 ## Criteria
 
 An independent reviewer should inspect the changed Skill files and actual test evidence, and report **PASS / FAIL / NOT VERIFIED** with evidence for each:
 
-1. The Skill reads the target project's `AGENTS.md` and `docs/documentation.md` first, follows local paths and conventions, and cites the local rule behind each finding.
-2. A bare review request is read-only; with explicit fix authorization, the Skill fixes only mechanical, unambiguous issues. It does not change status, placement, ownership, content meaning or acceptance claims.
-3. The default `check` mode is read-only; actual file hashes are unchanged.
-4. The Skill does not impose the canonical CoolFlow tree on a project with customized document names or locations.
-5. The Skill does not create documents, fill templates, review code quality or fetch external URLs by default.
-6. The report contains the scope, mode, local standard source, findings with file/line, severity, rule, evidence and action, fixes applied, and unresolved limitations.
-7. The Skill does not automatically edit `docs/documentation.md` or `AGENTS.md`; governance issues are reported for a separate authorized task.
-8. The Skill leaves changes unstaged and does not commit or push.
-9. A missing local standard stops the review without substitution or file creation.
-10. Existing user content is preserved; the Skill does not delete, merge or archive documents automatically.
+1. The report states the bundled snapshot's source and version identifier, and findings cite the CoolFlow baseline, applicable local rules, or a mechanical defect.
+2. Equivalent paths and arrangements allowed by the standard are credited rather than flagged as violations, and initialization-only requirements are not applied to projects that were not initialized with CoolFlow.
+3. A bare review request is read-only; with explicit fix authorization, only mechanical, unambiguous defects are fixed. Status, placement, ownership, meaning and acceptance claims are unchanged.
+4. Default `check` runs leave every reviewed file hash unchanged.
+5. A project without a local standard receives a CoolFlow comparison rather than a stop, while an unreadable or missing bundled snapshot stops the comparison.
+6. The report contains scope, mode, snapshot identifier, findings with location, category, evidence and action, plus unresolved limits.
+7. The Skill does not create documents, fill templates, review code quality or fetch external URLs by default.
+8. The Skill does not automatically edit `docs/documentation.md`, `AGENTS.md` or another governance document.
+9. Adoption recommendations are proposed, not applied; adoption changes require separate approval.
+10. Changes remain unstaged; the Skill does not commit or push.
+11. Existing user content is preserved; the Skill does not delete, merge or archive documents automatically.
 
 ## Authorized execution and preservation
 

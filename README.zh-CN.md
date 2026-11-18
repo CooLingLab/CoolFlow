@@ -64,7 +64,7 @@ CoolFlow 提供五个可选的 Agent Skills：
 | --- | --- | --- | --- |
 | [`coolflow-init`](skills/coolflow-init/SKILL.md) | 创建 CoolFlow 项目文档骨架 | 让每个新项目都从同一套 CoolFlow 框架开始，而不只是一次性的初始化 | 新建空项目 |
 | [`coolflow-advisor`](skills/coolflow-advisor/SKILL.md) | 分析项目进展、建议下一步，并推荐方法或工具 | 根据现有证据判断项目优先级和合适的工程方法 | 查看项目进展、决定下一步或选择开发方法 |
-| [`coolflow-docs-review`](skills/coolflow-docs-review/SKILL.md) | 按项目本地文档规范检查文档 | 在不强制套用 CoolFlow 默认规范的前提下，发现文档结构漂移和失效引用 | 审查或修正文档合规性 |
+| [`coolflow-docs-review`](skills/coolflow-docs-review/SKILL.md) | 按 CoolFlow 文档规范评估项目文档，也可用于评估已有项目的采用方案 | 依据随附的规范快照指出哪些现有安排符合规范，并给出实用的改进建议，新老项目都能参照 | 检查文档结构或合规性，或在采用 CoolFlow 前先看看现有文档 |
 | [`coolflow-docs-update`](skills/coolflow-docs-update/SKILL.md) | 将已确认的工作写入进展卡片或现有工作目标的交付记录 | 无需重述上下文即可让文档保持最新，只对真正未定的事项提问 | 会话工作告一段落后更新文档 |
 | [`coolflow-skill-creator`](skills/coolflow-skill-creator/SKILL.md) | 创建、改造、测试和维护 CoolFlow 原生 Skill | 把外部方法与重复实践沉淀成自己的 Skill 资产，并经过真实使用和反复验证，越用越成熟 | 开发或审查 Skill |
 

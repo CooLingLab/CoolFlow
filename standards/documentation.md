@@ -271,6 +271,12 @@ An ADR records the **rationale** for a decision; the current system design belon
 - Optional `solutions/`: *what verified engineering experience should change future work*.
 - Optional `adr/`: *why a consequential architecture or technical decision was made*.
 
+## Reviewing against CoolFlow
+
+A CoolFlow conformance review uses this standard, or an identified offline snapshot of it, as its comparison baseline. Read project-local rules to understand the actual document roles, paths, and conventions. Equivalent arrangements allowed by this standard satisfy the baseline. Report differences from the baseline separately from violations of rules the project has adopted. Initialization-only requirements apply to projects initialized with CoolFlow. For an existing project considering adoption, recommend only the changes that would help its current work and leave adoption decisions to the user.
+
+A distributed snapshot is a copy of this standard. When changing this standard, refresh the snapshot in the same change. Identify the reviewed snapshot in the report.
+
 ## AI rules
 
 1. Read relevant files, not the entire documentation tree by default.
