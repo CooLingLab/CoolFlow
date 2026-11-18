@@ -14,6 +14,8 @@ To decide after product and technical stack are chosen.
 
 - [Agent instructions](AGENTS.md)
 - [Documentation standard](docs/documentation.md)
+- [Development Flow and Loops](docs/development-flow.md)
+- [CoolFlow context preference](docs/documentation.md#coolflow-context-preference)
 - [Product Brief](docs/product.md)
 - [Roadmap](docs/roadmap.md)
 - [Domain](docs/domain.md)

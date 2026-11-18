@@ -29,7 +29,7 @@ Use the local standard's purpose statements, not a preferred template. For the c
 - `adr/`: context, decision drivers, options, decision and consequences; one consequential decision per file; superseded records are retained.
 - `architecture.md`: current system architecture, not decision rationale.
 - `feature-map.md`: actual navigation, actions, stable test identifiers and verification steps; not a duplicate of `features/`.
-- `README.md` and `AGENTS.md`: accurate navigation; `AGENTS.md` contains a self-contained lifecycle and working boundaries and references the local documentation standard.
+- `README.md` and `AGENTS.md`: accurate navigation; `AGENTS.md` states stable working rules and points to the local documentation standard. Where the local standard defines a context preference and Flow reference, verify that the project instructions make them discoverable.
 
 Do not require every optional artifact. Do not enforce headings or sections the local standard does not require.
 

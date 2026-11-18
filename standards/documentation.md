@@ -14,6 +14,8 @@ The following is the **default documentation tree for an application repository 
 ├── README.md                         # Required at initialization
 └── docs/
     ├── documentation.md              # Required at initialization; local documentation standard
+    ├── coolflow.yml                  # Required at initialization; context preference
+    ├── development-flow.md           # Required at initialization; on-demand reference
     ├── product.md                    # Required at initialization
     ├── roadmap.md                    # Required at initialization
     ├── domain.md                     # Required at initialization
@@ -45,6 +47,7 @@ The following is the **default documentation tree for an application repository 
 |---|---|---|---|
 | `AGENTS.md`, `README.md` | Create if missing | Maintain as needed | Keep current |
 | `docs/documentation.md` | Copy the complete local standard if missing | Follow and adapt it to project needs | Keep project conventions current |
+| `docs/coolflow.yml`, `docs/development-flow.md` | Copy default preference and offline reference | Update preference as needed | Keep reference discoverable |
 | `docs/product.md`, `roadmap.md`, `domain.md` | Create templates with `status: not_started`; unknown body facts stay `To decide` | Update when decisions become durable, including the progress card | Sync accepted changes |
 | `docs/features/` | Create directory | Usually leave unchanged | Add or update accepted feature descriptions |
 | `docs/work/` | Create directory | Open an objective directory during discovery if useful; create its `spec.md` when entering Design Spec Loop | Archive selectively |
@@ -65,6 +68,18 @@ The following is the **default documentation tree for an application repository 
 - CoolFlow's own `flowecosystem/` directory belongs to the **CoolFlow methodology repository**. It catalogs external frameworks and methods and is not copied into application repositories. An App's `docs/solutions/` is its own engineering knowledge store; the names are related but serve different purposes.
 - Projects may customize document names and locations after initialization. Preserve one authoritative location per fact and keep the project-local `AGENTS.md` / README navigation accurate.
 - Progress metadata lives in each document's frontmatter (see [Step 1–5 progress metadata](#step-15-progress-metadata)); it does not require a separate state file, engine or task list.
+
+## CoolFlow context preference
+
+`docs/coolflow.yml` stores the project-wide preference `context_mode`. New projects start in `auto`. Switch modes by editing this value. Work progress remains in its existing records.
+
+| Request | `auto` | `manual` |
+| --- | --- | --- |
+| Plan a new project or reassess product direction | Read `docs/development-flow.md` and limit any further record reads to the requested direction. | Use the supplied context. Read the Flow reference only on explicit request. |
+| Resume work without a named objective | Look for relevant active work in project records, including progress cards and Specs. Use a unique match or ask when there is no clear match. | Ask the user which objective to resume before searching work records, even if the project has only one active objective. |
+| Named objective, Spec or concrete maintenance request | Read the task-relevant project files directly. | Read the task-relevant project files directly. |
+
+Resolve the mode before searching for work records on an unnamed resume request. An absent file means `manual`. If the file is present but unreadable, malformed, or lacks a valid `context_mode` value (`auto` or `manual`), use `manual` and report the issue when consulting it. Apply project working rules in either mode. Honor explicit requests to review the methodology or report project progress. For an unnamed resume request, asking for the next step follows the resume row above.
 
 ## Step 1–5 progress metadata
 
@@ -123,9 +138,11 @@ Distinguish observed facts, user claims, decisions, unverified findings, assumpt
 
 | Path | Purpose |
 | --- | --- |
-| `AGENTS.md` | Self-contained concise lifecycle and working boundaries; reference the local documentation standard |
+| `AGENTS.md` | Stable working rules and links to the local documentation standard and context preference |
 | `README.md` | Human-readable project entry; no invented features |
 | `docs/documentation.md` | Complete project-local documentation standard; independently maintained after initialization |
+| `docs/coolflow.yml` | Project context preference |
+| `docs/development-flow.md` | Offline reference for the eight stages and three Loops |
 | `docs/product.md` | A concise project-level Product Brief: problem, audience, vision, value, boundaries and current positioning; **not a PRD** |
 | `docs/roadmap.md` | Product-level MVP/current version, later direction and priority; explicitly distinguishes planned from accepted |
 | `docs/domain.md` | Ubiquitous language, domain boundaries, core rules; provisional and may remain unfilled initially |

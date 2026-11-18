@@ -29,8 +29,8 @@ For every refusal case, inspect the execution trace as well as the final target 
 ## Expected after an accepted preflight
 
 - Retrieve the complete standards and templates from the canonical CoolFlow GitHub repository; do not infer a local source path from the Skill installation directory.
-- All six core documents are generated, plus the three Git placeholders, including the complete local docs/documentation.md.
-- AGENTS.md contains Flow, Loops and behavior boundaries, and refers to the local documentation standard.
+- All seven required documents and the three Git placeholders are generated. `docs/coolflow.yml` contains `context_mode: auto`.
+- `AGENTS.md` contains stable working boundaries and points to the local context preference and documentation standard. `docs/development-flow.md` contains the eight stages and three Loops and is usable offline.
 - product.md, roadmap.md and domain.md retain explicit undecided placeholders unless the user supplied facts.
 - No work/001-mvp/, Spec, PRD, design, tasks, code, dependencies or CI is generated.
 - The pre-existing `.claude/` harness metadata is unchanged, contains no new files, and is not mentioned in the generated documentation.

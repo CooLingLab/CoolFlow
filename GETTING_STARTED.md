@@ -78,6 +78,8 @@ Expected skeleton in an **empty project**:
     README.md
     docs/
       documentation.md  # complete project-local documentation standard
+      coolflow.yml      # project context preference, defaults to auto
+      development-flow.md  # offline Flow and Loops reference
       product.md        # concise project-level Product Brief, not a PRD
       roadmap.md
       domain.md
@@ -87,7 +89,7 @@ Expected skeleton in an **empty project**:
 
 Empty directories use .gitkeep for Git tracking. The Skill itself is **not copied** into the target application.
 
-After initialization, the project follows its own docs/documentation.md; future documentation work does not require access to CoolFlow. Projects may adapt that local standard independently.
+After initialization, the project follows its own docs/documentation.md; future documentation work does not require access to CoolFlow. Projects may adapt that local standard independently. Edit `context_mode` in `docs/coolflow.yml` to switch between `auto` and `manual`. The project instructions route planning and resume requests without a named objective through this preference. See [how the modes work](standards/documentation.md#coolflow-context-preference).
 
 ### B. Existing project — inspect before adopting
 

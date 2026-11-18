@@ -55,6 +55,8 @@ After the preflight passes, retrieve the following files directly from the canon
 - https://raw.githubusercontent.com/CooLingLab/CoolFlow/main/templates/project/AGENTS.md
 - https://raw.githubusercontent.com/CooLingLab/CoolFlow/main/templates/project/README.md
 - https://raw.githubusercontent.com/CooLingLab/CoolFlow/main/templates/project/docs/documentation.md
+- https://raw.githubusercontent.com/CooLingLab/CoolFlow/main/templates/project/docs/coolflow.yml
+- https://raw.githubusercontent.com/CooLingLab/CoolFlow/main/templates/project/docs/development-flow.md
 - https://raw.githubusercontent.com/CooLingLab/CoolFlow/main/templates/project/docs/product.md
 - https://raw.githubusercontent.com/CooLingLab/CoolFlow/main/templates/project/docs/roadmap.md
 - https://raw.githubusercontent.com/CooLingLab/CoolFlow/main/templates/project/docs/domain.md
@@ -69,12 +71,14 @@ Read all required sources completely before writing anything. If any canonical s
    - `AGENTS.md` from `templates/project/AGENTS.md`
    - `README.md` from `templates/project/README.md`
    - `docs/documentation.md` from the **complete** `templates/project/docs/documentation.md`
+   - `docs/coolflow.yml` from its project template with `context_mode: auto`
+   - `docs/development-flow.md` from its project template as a local reference
    - `docs/product.md`, `docs/roadmap.md`, and `docs/domain.md` from their matching project templates
    - `docs/features/.gitkeep`, `docs/work/.gitkeep`, and `docs/work/archive/.gitkeep` to preserve the required empty directories in Git
 4. Do not create `docs/solutions/` or `docs/adr/` during initialization. They are optional and should appear only when a verified reusable finding or consequential decision warrants them.
 5. Do not invent product facts. Copy the templates as-is: progress cards keep `status: not_started` and `related_steps` without invented progress, and body unknowns keep `To decide`, unless the user explicitly supplied the relevant facts.
 6. Do not create `docs/work/001-mvp/`, a Spec, PRD, design, tasks file, prototype, app code, dependencies, CI configuration, or architecture decisions.
-7. Verify the created paths, required headings, links, and document completeness against the standards. Do not claim success without checking the actual filesystem or repository changes.
+7. Verify the created paths, required headings, links, default `context_mode: auto`, and document completeness against the standards. Do not claim success without checking the actual filesystem or repository changes.
 8. Report what was created and any verification limitations. State that the project is initialized and can begin **Step 1 — Idea → Brainstorm** when the user is ready. **Stop here**; do not automatically begin Brainstorm or any implementation.
 
 ## Important boundaries
