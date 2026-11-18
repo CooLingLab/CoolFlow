@@ -153,7 +153,8 @@ Status: `Agreed` (2026-11-06)
 **Scope:** time-boxed validation of the riskiest assumptions before committing to MVP
 scope. A prototype is one possible test vehicle, not a requirement. A thin MVP may be
 used as an experiment when it is the cheapest reliable way to observe behavior; it does
-not replace the Roadmap decision or automatically become production code.
+not replace the Roadmap decision or automatically become production code. Prototype and
+spike code is disposable evidence and is not extended into the application in place.
 
 | ID | Activity | Answers | Core output | Boundary |
 | --- | --- | --- | --- | --- |
@@ -173,7 +174,9 @@ not replace the Roadmap decision or automatically become production code.
   spikes; demand risks may require a landing page, waitlist or real behavioral data.
 - 3.3 uses the cheapest sufficient test vehicle. AI-generated clickable HTML is a common
   lightweight option for concept and basic-interaction validation, but it cannot prove
-  technical feasibility or commercial viability. Technical spike code is disposable.
+  technical feasibility or commercial viability. Technical spike code is disposable: an
+  accepted direction is implemented in the source tree recorded in the Spec, not grown
+  from the prototype in place.
 - 3.4 collects direct evidence rather than opinions. User-facing assumptions should be
   tested with target users where possible; technical assumptions should be tested in a
   representative environment. Record what was simulated and what was real.
@@ -270,7 +273,7 @@ drawing screens.
 | 5.1 | Define design goals and constraints | Which user tasks must this version support, and what platform, brand, technical and accessibility constraints apply? | Design goals, key tasks, platform and constraints, design principles | Does not redefine Roadmap scope; does not design technical architecture |
 | 5.2 | Design user flows and information architecture | How do users complete key tasks, and how are screens and navigation organized? | User flows, information architecture and key-screen inventory | Does not start with visual detail; does not write implementation code |
 | 5.3 | Explore visual direction | What should the product look and feel like, and which direction best fits the users and brand? | Two or three visual directions using style tiles, mood boards or representative screens; selected direction and rationale | Not a complete design system; not every final screen |
-| 5.4 | Create interfaces and an interactive prototype | How does the chosen direction apply to key screens, states and interactions? | Key screens, empty/loading/error/success states, clickable prototype and notes | Not production code; no real backend; does not replace the Spec |
+| 5.4 | Create interfaces and an interactive prototype | How does the chosen direction apply to key screens, states and interactions? | Key screens, empty/loading/error/success states, clickable prototype and notes | Not production code; no real backend; does not replace the Spec; not extended in place into the application |
 | 5.5 | Review and usability validation | Can users understand and complete key tasks, and does the visual direction support the goals? | Design review record, task-based usability findings, revised prototype and open questions | Not final acceptance; does not treat internal opinion as user evidence |
 
 ### Rationale and boundaries
@@ -297,6 +300,8 @@ drawing screens.
   template.
 - Outputs belong in `docs/work/<objective>/prototypes/`. Complex design decisions may be
   recorded in optional `design.md`; no new mandatory UI document is introduced.
+- Prototypes remain disposable evidence: an accepted direction is implemented in the
+  source tree recorded in the Spec, not promoted by growing the prototype in place.
 
 ### Sources consulted
 
