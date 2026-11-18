@@ -65,7 +65,7 @@ CoolFlow 提供五个可选的 Agent Skills：
 | [`coolflow-init`](skills/coolflow-init/SKILL.md) | 创建 CoolFlow 项目文档骨架 | 让每个新项目都从同一套 CoolFlow 框架开始，而不只是一次性的初始化 | 新建空项目 |
 | [`coolflow-advisor`](skills/coolflow-advisor/SKILL.md) | 分析项目进展、建议下一步，并推荐方法或工具 | 根据现有证据判断项目优先级和合适的工程方法 | 查看项目进展、决定下一步或选择开发方法 |
 | [`coolflow-docs-review`](skills/coolflow-docs-review/SKILL.md) | 按项目本地文档规范检查文档 | 在不强制套用 CoolFlow 默认规范的前提下，发现文档结构漂移和失效引用 | 审查或修正文档合规性 |
-| [`coolflow-docs-update`](skills/coolflow-docs-update/SKILL.md) | 把本次会话已确认的工作写入第 1～5 步文档及其进展卡片 | 无需重述上下文即可让文档保持最新，只对真正未定的事项提问 | 会话工作告一段落后更新文档 |
+| [`coolflow-docs-update`](skills/coolflow-docs-update/SKILL.md) | 将已确认的工作写入进展卡片或现有工作目标的交付记录 | 无需重述上下文即可让文档保持最新，只对真正未定的事项提问 | 会话工作告一段落后更新文档 |
 | [`coolflow-skill-creator`](skills/coolflow-skill-creator/SKILL.md) | 创建、改造、测试和维护 CoolFlow 原生 Skill | 把外部方法与重复实践沉淀成自己的 Skill 资产，并经过真实使用和反复验证，越用越成熟 | 开发或审查 Skill |
 
 `coolflow-init` 是项目初始化入口，其余四个是按需使用的可选 Skill。安装方式遵循当前 Agent 的标准流程；`coolflow-init` 的示例见上文。

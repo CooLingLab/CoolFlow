@@ -53,6 +53,8 @@ Agent 的项目配置目录不在豁免范围内；未经更新本契约，不�
   - AGENTS.md
   - README.md
   - docs/documentation.md
+  - docs/coolflow.yml
+  - docs/development-flow.md
   - docs/product.md（项目级 Product Brief，**不是 PRD**）
   - docs/roadmap.md
   - docs/domain.md
@@ -60,8 +62,8 @@ Agent 的项目配置目录不在豁免范围内；未经更新本契约，不�
   目录而存在。
 - 初始化期间**不要**创建 docs/solutions/ 或 docs/adr/；两者都是可选的，只有当已验证的可复用
   发现或重要决策需要时才出现。
-- 在 **AGENTS.md** 中填写简明的八阶段流程、三个 Loop 和 Agent 行为规则；文档规则引用
-  docs/documentation.md。
+- **AGENTS.md** 保留稳定的工作规则，并指向本地文档规范和[上下文偏好](documentation.zh-CN.md#coolflow-上下文偏好)。
+- 复制默认 `context_mode: auto` 的 `docs/coolflow.yml`，以及可离线按需查阅八阶段和三个 Loop 的本地参考 `docs/development-flow.md`。
 - 将完整的 templates/project/docs/documentation.md 复制到 docs/documentation.md。初始化后它
   是项目的本地标准，可以独立演进，无需访问 CoolFlow。
 - 用**模板**填写其他文档，而不是编造产品事实。模板已带 `status: not_started` 和 `related_steps`
@@ -99,7 +101,7 @@ Agent 的项目配置目录不在豁免范围内；未经更新本契约，不�
 
 ## 验收检查
 
-1. 六个必需文档存在，包括一份完整、无需访问 CoolFlow 即可使用的本地 docs/documentation.md。
+1. 七个必需文档和 `docs/coolflow.yml` 均存在。配置默认为 `auto`，本地文档规范和流程参考均可离线使用。
 2. 必需目录在 Git 中存在。
 3. 没有创建意外的代码、依赖项、产品计划或初始工作目标。
 4. Skill 接受空目录、仅包含根级 .git 元数据（目录或普通文件）的目录，以及上述任一情况加上

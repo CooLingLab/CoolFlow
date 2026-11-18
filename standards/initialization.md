@@ -42,12 +42,15 @@ A root-level `CLAUDE.md`, `.mcp.json`, `.gitignore`, `.DS_Store`, or any other e
   - AGENTS.md
   - README.md
   - docs/documentation.md
+  - docs/coolflow.yml
+  - docs/development-flow.md
   - docs/product.md (the project-level Product Brief, **not a PRD**)
   - docs/roadmap.md
   - docs/domain.md
 - Ensure docs/features/, docs/work/, and docs/work/archive/ exist using .gitkeep for Git-only empty directories.
 - Do **not** create docs/solutions/ or docs/adr/ during initialization; both are optional and should appear only when a verified reusable finding or consequential decision warrants them.
-- Fill **AGENTS.md** with the concise eight-stage Flow, three Loops and agent behavior rules; refer to docs/documentation.md for documentation rules.
+- Keep **AGENTS.md** focused on stable working rules and point it to the local documentation standard and [context preference](documentation.md#coolflow-context-preference).
+- Copy `docs/coolflow.yml` with `context_mode: auto` and `docs/development-flow.md` as the local, on-demand reference for the eight stages and three Loops. The reference must work offline.
 - Copy the complete templates/project/docs/documentation.md to docs/documentation.md. It is the project's local standard after initialization and can evolve independently without accessing CoolFlow.
 - Fill other docs with **templates**, not fabricated product facts. The templates already carry a Step 1–5 progress card with `status: not_started` and `related_steps`; do not add progress or next steps the user has not supplied. If user provides actual facts, fill only facts they authorized; otherwise keep body placeholders `To decide`.
 - Do **not** create docs/work/001-mvp/, spec.md, PRD, prototype, task file, app code, dependencies, CI, or architecture decisions.
@@ -75,7 +78,7 @@ Copy the required files to the target paths; replace only explicitly supported p
 
 ## Acceptance checks
 
-1. The six required documents exist, including a complete local docs/documentation.md usable without CoolFlow access.
+1. The seven required documents and `docs/coolflow.yml` exist. The configuration defaults to `auto`, and the documentation standard and Flow reference are usable offline.
 2. Required directories exist in Git.
 3. No unintended code, dependencies, product plans, or initial work objective was created.
 4. The Skill accepts an empty directory, a directory containing only root-level .git metadata (directory or regular file), and either case combined with only the exempt Claude Code harness metadata (an empty `.claude/` or one containing only `.cc-writes/` and/or `settings.local.json`), leaving that metadata unchanged.

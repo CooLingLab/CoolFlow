@@ -10,6 +10,49 @@ CoolFlow is a lightweight **development methodology and documentation standard**
 
 > **v0.1 draft:** The instructions below describe the intended workflow. End-to-end scenario execution and real project validation are **not yet completed**.
 
+## Using CoolFlow at a glance
+
+This example shows how to start or resume work on one goal. If an existing project is adopting CoolFlow, [inspect it and agree on what to adopt](#b-existing-project--inspect-before-adopting) first. Advisor and Skill Creator are optional. Use the steps that help with the goal at hand.
+
+```mermaid
+flowchart TD
+    Open([Open the target project])
+    Init["Use coolflow-init to create the documentation skeleton"]
+    Goal{"Know what you want to work on?"}
+    Advisor["Ask CoolFlow Advisor what to do next and how"]
+    Work["Choose a goal and start with your Agent<br/>Work directly or use a suitable Skill"]
+    Skill["Use coolflow-skill-creator to create or adapt a reusable Skill"]
+    Ready{"Selected an increment to deliver?"}
+    Explore["Discuss, research, or prototype"]
+    Save["Record findings, decisions, and next steps"]
+    Spec["Write and review a unified Spec"]
+    Build["Implement, review, and verify"]
+    Accept{"Does the human accept the result?"}
+    Sync["Sync documentation for accepted behavior"]
+
+    Open -->|New, empty project| Init
+    Open -->|Existing project| Goal
+    Init -->|When ready to start| Goal
+    Goal -->|Yes| Work
+    Goal -->|Unsure| Advisor
+    Advisor -->|You choose the next step| Work
+    Work -.->|Recurring need without a suitable Skill| Skill
+    Skill -.->|Return to the task| Work
+    Work --> Ready
+    Ready -->|Still exploring| Explore
+    Explore --> Save
+    Save -->|Continue now or in a later session| Ready
+    Ready -->|Yes| Spec
+    Spec --> Build
+    Build --> Accept
+    Accept -->|Implementation needs changes| Build
+    Accept -->|Accepted| Sync
+```
+
+Save meaningful progress at any point so a later session can resume from the project records.
+For example, ask your Agent to “Record the decisions we confirmed, what still needs evidence, and the next step.”
+If feedback calls for a design change, revisit the Spec. At any stage, feedback, new evidence, or changing needs can prompt you to reassess the direction and return to any relevant step through the [Evolution Loop](methodology/loops.md). Release only when appropriate and separately authorized.
+
 ## Prerequisites
 
 You need a **target application repository** that your coding Agent can inspect. This is separate from the CoolFlow reference repository.
@@ -78,6 +121,8 @@ Expected skeleton in an **empty project**:
     README.md
     docs/
       documentation.md  # complete project-local documentation standard
+      coolflow.yml      # project context preference, defaults to auto
+      development-flow.md  # offline Flow and Loops reference
       product.md        # concise project-level Product Brief, not a PRD
       roadmap.md
       domain.md
@@ -87,7 +132,7 @@ Expected skeleton in an **empty project**:
 
 Empty directories use .gitkeep for Git tracking. The Skill itself is **not copied** into the target application.
 
-After initialization, the project follows its own docs/documentation.md; future documentation work does not require access to CoolFlow. Projects may adapt that local standard independently.
+After initialization, the project follows its own docs/documentation.md; future documentation work does not require access to CoolFlow. Projects may adapt that local standard independently. Edit `context_mode` in `docs/coolflow.yml` to switch between `auto` and `manual`. The project instructions route planning and resume requests without a named objective through this preference. See [how the modes work](standards/documentation.md#coolflow-context-preference).
 
 ### B. Existing project — inspect before adopting
 

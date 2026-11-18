@@ -1,25 +1,8 @@
 # Project Agent Instructions
 
-## Development Flow
+## Project Context
 
-Use this recommended CoolFlow lifecycle; skip, merge or revisit stages as project complexity requires:
-
-1. Idea → Brainstorm — clarify problem, users and value; use proportionate user research when evidence is insufficient; analyze relevant competitors, alternatives and workarounds; identify an opportunity and product hypothesis.
-2. Lightweight strategic DDD — establish an initial domain model: core concepts, semantic boundaries, language and business rules. Tactical domain design belongs to Design Spec Loop; keep `docs/domain.md` provisional and evolving.
-3. Concept Prototype → Validation — test the riskiest assumptions with a time-boxed prototype, technical spike or other proportionate method; stop when evidence is sufficient to choose MVP scope.
-4. Roadmap — define the product-level MVP/current version, non-goals and later direction; not a feature or task plan.
-5. UI Prototype — design the current version's key flows, visual direction, key screens and states; validate with users when useful.
-6. Design Spec Loop — write a unified, verifiable Spec covering requirements, acceptance, solution, optional tactical domain design, implementation and verification → review when useful → revise.
-7. Implementation Loop — code → test → code review → Spec conformance → fix; record evidence and unresolved risks (Agent-assisted as appropriate).
-8. Human Acceptance → Docs Sync → Release — the human accepts actual behavior; sync accepted facts; separately authorize, execute and verify any applicable release. Acceptance does not imply release.
-
-## Three Adaptive Loops
-
-- **Design Spec Loop (Step 6):** Draft → Review → Refine. Develop a unified Spec until it is ready for implementation.
-- **Implementation Loop (Step 7):** Build → Test → Review → Fix. Check the implementation against the Spec and acceptance criteria until it is ready for human acceptance; return to Design Spec Loop if the design itself is wrong.
-- **Evolution Loop (cross-stage):** Capture new input → Reassess affected decisions → Decide and adapt relevant work. It can start at **any step** and return to **any relevant step**; a prior release or Roadmap revision is **not** required. Distinguish product evolution from local quality fixes, update only affected records, and keep human judgment on product-critical changes.
-
-**Documentation Sync is not a Loop:** after human acceptance, update accepted/current docs, verify consistency and selectively archive work. Acceptance and release may occur at different times.
+For project planning, changes in product direction, or requests to resume work without a named objective, first check `docs/coolflow.yml` and [CoolFlow context preference](docs/documentation.md#coolflow-context-preference). Resolve the mode before searching work records. Missing configuration defaults to `manual`. For a named objective, Spec, or concrete maintenance task, skip the mode check and read the relevant files directly. For explicit requests to review the methodology or report project progress, use [Development Flow](docs/development-flow.md) or the relevant project records.
 
 ## Documentation
 
@@ -30,9 +13,9 @@ Follow `docs/documentation.md` when creating, updating or archiving project docu
 1. Read the files relevant to the current task; do not assume an empty template is complete.
 2. Preserve existing project content, conventions and code. No destructive replacement without permission.
 3. Do not invent requirements, user decisions or successful tests. Untouched core templates keep `status: not_started` and body unknowns stay `To decide`; a work card may be `in_progress` only when that work has actually begun.
-4. For substantial changes: review the current Spec draft and related context before coding, resolve important findings and confirm design readiness; review new code and Spec conformance after coding.
+4. For substantial changes: review the current Spec draft and related context before coding, resolve important findings and confirm design readiness; run relevant tests, review new code and verify Spec conformance after coding.
 5. AI may implement and verify routine work. Ask the human to decide major product trade-offs and to accept the result.
-6. Record human-confirmed plans with their actual status; sync durable docs describing accepted/current behavior after human acceptance. Acceptance and production release are distinct.
+6. Record human-confirmed plans with their actual status. During authorized work, record meaningful delivery progress at checkpoints under the local documentation standard. Sync durable docs after human acceptance. Obtain separate authorization for any release and verify its outcome.
 7. Manage ordinary task lists in the active Agent session.
 8. Before related work, consult relevant existing Solutions when available.
 9. When appropriate, especially for applications and deployed services, commit the package manager's lockfile and configure CI to install in frozen/locked mode. Libraries that intentionally publish dependency ranges may omit it; record that choice and have CI test the supported range.

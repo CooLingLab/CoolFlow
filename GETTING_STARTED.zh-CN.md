@@ -12,6 +12,51 @@ CoolFlow 是一套轻量的**开发方法论和文档规范**，不是 Agent run
 
 > **v0.1 草稿：** 以下说明描述预期工作流。端到端场景执行和真实项目验证**尚未完成**。
 
+## 一图看懂怎么用 CoolFlow
+
+下图以一个目标为例，展示如何开工和接续。已有项目首次采用 CoolFlow 时，先检查现状并确认采用范围。
+Advisor 和 Skill Creator 都可按需使用，具体走哪些步骤取决于当前目标。
+
+```mermaid
+flowchart TD
+    Open([打开目标项目])
+    Init["用 coolflow-init 创建文档骨架"]
+    Goal{"知道这次要推进什么吗？"}
+    Advisor["问 CoolFlow Advisor 下一步做什么、怎么做"]
+    Work["选定目标，和 Agent 开工<br/>直接对话或使用合适的 Skill"]
+    Skill["用 coolflow-skill-creator 创建或改造可复用的 Skill"]
+    Ready{"已选定要交付的增量吗？"}
+    Explore["讨论、研究或做原型"]
+    Save["记录发现、决定和下一步"]
+    Spec["编写并评审统一的 Spec"]
+    Build["实现、评审与验证"]
+    Accept{"人类是否验收？"}
+    Sync["同步已验收行为的文档"]
+
+    Open -->|全新的空项目| Init
+    Open -->|已有项目| Goal
+    Init -->|准备好开始时| Goal
+    Goal -->|明确| Work
+    Goal -->|不确定| Advisor
+    Advisor -->|你选定下一步| Work
+    Work -.->|有重复需求且缺少合适的 Skill| Skill
+    Skill -.->|回到原任务| Work
+    Work --> Ready
+    Ready -->|仍在探索| Explore
+    Explore --> Save
+    Save -->|现在继续或下次接续| Ready
+    Ready -->|已选定| Spec
+    Spec --> Build
+    Build --> Accept
+    Accept -->|实现需要修改| Build
+    Accept -->|已验收| Sync
+```
+
+任何时候有实质进展都可以保存，下次从项目记录接续。例如，可以对 Agent 说「把这次确认的决定、
+还待验证的问题和下一步记下来。」如果反馈要求调整设计，先回到 Spec。在任何阶段，反馈、新证据或需求变化
+都可能促使你重新评估方向，通过 [Evolution Loop](methodology/loops.zh-CN.md) 回到相关步骤。发布按需进行，
+需要单独授权。
+
 ## 前提条件
 
 你需要一个 Coding Agent 可以检查的**目标应用仓库**。它与 CoolFlow 参考仓库是分开的。
@@ -99,6 +144,8 @@ Agent 应选择它支持的方法。如果无法全局安装 Skill，它应告�
     README.md
     docs/
       documentation.md  # 完整的项目本地文档规范
+      coolflow.yml      # 项目上下文偏好，默认为 auto
+      development-flow.md  # Flow 和 Loop 的离线参考
       product.md        # 简明项目级 Product Brief，不是 PRD
       roadmap.md
       domain.md
@@ -109,7 +156,8 @@ Agent 应选择它支持的方法。如果无法全局安装 Skill，它应告�
 空目录使用 .gitkeep 以便 Git 跟踪。Skill 本身**不会复制**到目标应用。
 
 初始化后，项目遵循自己的 docs/documentation.md；后续文档工作不需要访问 CoolFlow。项目可以独立
-调整该本地标准。
+调整该本地标准。修改 `docs/coolflow.yml` 的 `context_mode` 即可在 `auto` 和 `manual` 间切换。
+项目指引会在规划或未指定目标的接续请求中读取这项偏好。参见[模式说明](standards/documentation.zh-CN.md#coolflow-上下文偏好)。
 
 ### B. 已有项目——先检查现状再采用
 

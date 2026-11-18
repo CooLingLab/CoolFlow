@@ -29,7 +29,7 @@ Use the local standard's purpose statements, not a preferred template. For the c
 - `adr/`: context, decision drivers, options, decision and consequences; one consequential decision per file; superseded records are retained.
 - `architecture.md`: current system architecture, not decision rationale.
 - `feature-map.md`: actual navigation, actions, stable test identifiers and verification steps; not a duplicate of `features/`.
-- `README.md` and `AGENTS.md`: accurate navigation; `AGENTS.md` contains a self-contained lifecycle and working boundaries and references the local documentation standard.
+- `README.md` and `AGENTS.md`: accurate navigation; `AGENTS.md` states stable working rules and points to the local documentation standard. Where the local standard defines a context preference and Flow reference, verify that the project instructions make them discoverable.
 
 Do not require every optional artifact. Do not enforce headings or sections the local standard does not require.
 
@@ -62,6 +62,10 @@ Apply these only if the project's local standard prescribes Step 1–5 progress 
 Do not treat a missing card as `not_started`, and do not infer a step's status from a related document. Do not edit cards during a review: status changes are on the never-fix list.
 
 Typical severity: `error` for an invalid required field or a card contradicting the body, `warning` for a missing or duplicated status, `info` for stale optional fields.
+
+### Delivery progress (when the local standard defines it)
+
+Check that each field is supported for the stated objective and revision. Distinguish Spec document status, implementation, verification gaps, explicit human acceptance, release authorization and actual release evidence. Report unsupported or stale claims, and duplicate records for the same fact. Leave delivery status corrections to the record owner.
 
 ## 4. Single authoritative location
 

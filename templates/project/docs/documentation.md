@@ -12,6 +12,8 @@ The following is the **default documentation tree for an application repository 
 ├── README.md                         # Required at initialization
 └── docs/
     ├── documentation.md              # Required at initialization; local documentation standard
+    ├── coolflow.yml                  # Required at initialization; context preference
+    ├── development-flow.md           # Required at initialization; on-demand reference
     ├── product.md                    # Required at initialization
     ├── roadmap.md                    # Required at initialization
     ├── domain.md                     # Required at initialization
@@ -43,6 +45,7 @@ The following is the **default documentation tree for an application repository 
 |---|---|---|---|
 | `AGENTS.md`, `README.md` | Create if missing | Maintain as needed | Keep current |
 | `docs/documentation.md` | Copy the complete local standard if missing | Follow and adapt it to project needs | Keep project conventions current |
+| `docs/coolflow.yml`, `docs/development-flow.md` | Copy default preference and offline reference | Update preference as needed | Keep reference discoverable |
 | `docs/product.md`, `roadmap.md`, `domain.md` | Create templates with `status: not_started`; unknown body facts stay `To decide` | Update when decisions become durable, including the progress card | Sync accepted changes |
 | `docs/features/` | Create directory | Usually leave unchanged | Add or update accepted feature descriptions |
 | `docs/work/` | Create directory | Open an objective directory during discovery if useful; create its `spec.md` when entering Design Spec Loop | Archive selectively |
@@ -63,6 +66,18 @@ The following is the **default documentation tree for an application repository 
 - CoolFlow's own `flowecosystem/` directory belongs to the **CoolFlow methodology repository**. It catalogs external frameworks and methods and is not copied into application repositories. An App's `docs/solutions/` is its own engineering knowledge store; the names are related but serve different purposes.
 - Projects may customize document names and locations after initialization. Preserve one authoritative location per fact and keep the project-local `AGENTS.md` / README navigation accurate.
 - Progress metadata lives in each document's frontmatter (see [Step 1–5 progress metadata](#step-15-progress-metadata)); it does not require a separate state file, engine or task list.
+
+## CoolFlow context preference
+
+`docs/coolflow.yml` stores the project-wide preference `context_mode`. New projects start in `auto`. Switch modes by editing this value. Work progress remains in its existing records.
+
+| Request | `auto` | `manual` |
+| --- | --- | --- |
+| Plan a new project or reassess product direction | Read `docs/development-flow.md` and limit any further record reads to the requested direction. | Use the supplied context. Read the Flow reference only on explicit request. |
+| Resume work without a named objective | Look for relevant active work in project records, including progress cards and Specs. Use a unique match or ask when there is no clear match. | Ask the user which objective to resume before searching work records, even if the project has only one active objective. |
+| Named objective, Spec or concrete maintenance request | Read the task-relevant project files directly. | Read the task-relevant project files directly. |
+
+Resolve the mode before searching for work records on an unnamed resume request. An absent file means `manual`. If the file is present but unreadable, malformed, or lacks a valid `context_mode` value (`auto` or `manual`), use `manual` and report the issue when consulting it. Apply project working rules in either mode. Honor explicit requests to review the methodology or report project progress. For an unnamed resume request, asking for the next step follows the resume row above.
 
 ## Step 1–5 progress metadata
 
@@ -102,8 +117,23 @@ Rules:
 - Fill optional fields only from actual work. Fresh core templates carry `status: not_started` and `related_steps`; new work documents carry `status: in_progress` because their creation means the work has begun. Leave the remaining fields out until real progress exists instead of writing placeholder text into them.
 - A work document is created from real content: include only the sections the work actually covers and omit the rest, rather than copying unfilled template headings or leaving `To decide` under them. Copying a full template is appropriate only when an explicit empty starting structure is wanted.
 - Update the card whenever the document's progress changes materially. Readers treat `progress_updated` as a hint about recency, not as proof that the body is current.
-- To see where Step 1–5 work stands, read the cards first and open bodies only as needed. A Step 1–5 overview always lists all five steps and distinguishes `not_started` from "no record found"; it does not infer a step's status from a related document alone.
+- To see where Step 1–5 work stands, read the cards first and open bodies only as needed. A requested Step 1–5 overview lists all five steps and distinguishes `not_started` from "no record found"; it does not infer a step's status from a related document alone. A general project overview is not limited to these cards: it may use relevant Specs, code and acceptance evidence to cover the applicable lifecycle without forcing a complete eight-step report.
 - Default mappings for the core documents are `product.md` → `[1]`, `domain.md` → `[2]` and `roadmap.md` → `[4]`. Refine them when this project's actual organization differs, and record that choice here.
+
+## Delivery progress (Steps 6–8)
+
+Record delivery progress for a specific work objective in a `Delivery progress` section of its existing unified Spec, or in an existing authoritative acceptance or delivery record when local conventions assign it there. Consult and update one authoritative record for each fact. Use links for evidence maintained elsewhere. Keep the Spec's document status separate from delivery progress. Step 1–5 progress cards retain their existing scope.
+
+| Field | Values | Evidence |
+| --- | --- | --- |
+| Implementation | `not_started`, `in_progress`, `implemented` | Observed changes and their scope or revision. `implemented` requires evidence that the agreed behavior is implemented. |
+| Verification | `not_verified`, `partially_verified`, `verified` | Actual checks, results, and gaps for the relevant revision or scope. Use `partially_verified` when only part of the required verification is supported. |
+| Acceptance | `pending`, `accepted`, `changes_requested` | Record an explicit human decision for the applicable scope. Use `pending` when awaiting a decision is established. |
+| Release | `not_released`, `released` | Record explicit release authorization separately from the outcome. Use `released` when actual release evidence identifies what was released and where. Record available post-release checks. |
+
+Record only supported fields and note material unknowns. Use `not_started`, `not_verified`, and `not_released` only when evidence establishes those states for the stated scope. Authorization, acceptance, and release are separate facts. After a material change, keep earlier verification, acceptance and release evidence scoped to the version it describes. Record the current gaps and seek fresh evidence or a human decision when needed.
+
+During authorized work, record meaningful implementation and verification results when they are available, and record explicit human decisions when given. After acceptance, sync affected durable documents per the usual Documentation Sync rules. Release execution requires separate authorization. If an authoritative objective record is missing or ambiguous, report what remains unrecorded and resolve the destination before writing. No separate state file or retrospective migration is required.
 
 ## Recording results from Agent Skills
 
@@ -121,9 +151,11 @@ Distinguish observed facts, user claims, decisions, unverified findings, assumpt
 
 | Path | Purpose |
 | --- | --- |
-| `AGENTS.md` | Self-contained concise lifecycle and working boundaries; reference the local documentation standard |
+| `AGENTS.md` | Stable working rules and links to the local documentation standard and context preference |
 | `README.md` | Human-readable project entry; no invented features |
 | `docs/documentation.md` | Complete project-local documentation standard; independently maintained after initialization |
+| `docs/coolflow.yml` | Project context preference |
+| `docs/development-flow.md` | Offline reference for the eight stages and three Loops |
 | `docs/product.md` | A concise project-level Product Brief: problem, audience, vision, value, boundaries and current positioning; **not a PRD** |
 | `docs/roadmap.md` | Product-level MVP/current version, later direction and priority; explicitly distinguishes planned from accepted |
 | `docs/domain.md` | Ubiquitous language, domain boundaries, core rules; provisional and may remain unfilled initially |
