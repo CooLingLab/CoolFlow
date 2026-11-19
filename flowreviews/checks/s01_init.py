@@ -64,7 +64,7 @@ CASES = {
 }
 
 NETWORK = re.compile(r"\b(curl|wget|git\s+clone|gh\s+api)\b|https?://", re.I)
-WRITE_COMMAND = re.compile(r"(?:^|[;&|(]\s*)(?:sudo\s+)?(?:mkdir|touch|cp|mv|rm|tee|install|ln|git\s+(?:init|add|commit))\b|(?:^|[^0-9&>])>{1,2}\s*[^&\s]")
+WRITE_COMMAND = re.compile(r"(?:^|[;&|(]\s*)(?:sudo\s+)?(?:mkdir|touch|cp|mv|rm|tee|install|ln|git\s+(?:init|add|commit))\b|(?:^|[^&>=-])\d*>{1,2}\s*(?!/dev/null\b)[^&\s]")
 SOURCE_LOOKUP = re.compile(r"(^|[/\s'\"])(standards|templates|methodology)(/|\b)")
 WRITE_TOOLS = {"Write", "Edit", "MultiEdit", "NotebookEdit"}
 ACTION_TOOLS = WRITE_TOOLS | {"Bash", "Read", "Glob", "Grep", "LS", "WebFetch", "WebSearch", "Agent", "Task"}

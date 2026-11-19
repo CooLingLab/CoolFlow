@@ -61,6 +61,27 @@ Trace checks match tool names and command text, so they can miss an obfuscated c
 
 ## Execution record
 
+**2026-11-19 full run — the remaining 20 of 25 cases, one run each, executed by Claude Haiku. Overall: 120 PASS, 0 FAIL after one checker fix. With the pilot below, all 25 cases in 1–5 pass their scripted criteria; the scenario as a whole is still NOT VERIFIED because case 6 was not run.**
+
+Setup matches the pilot: same host, Skill (SHA-256 prefix `062fdac591dd179c`, installed copy identical), templates at published `main` = local `origin/main` `270a7d0`, `--ref origin/main`. Each case ran in a fresh general-purpose subagent using the `haiku` model, with the prompt above plus the target path; all 20 ran concurrently. A weaker executor makes a pass stronger evidence for the Skill's wording; no case needed a rerun with a stronger model. Checker SHA-256 prefix after the fix below: `5af2e495936979c7`; re-running it on the pilot traces still gives 30 PASS.
+
+| Cases | Expect | Result | Observed |
+| --- | --- | --- | --- |
+| `a02-git-dir`, `a03-git-file`, `a04-claude-empty`, `a05-claude-empty-git`, `a06-cc-writes`, `a07-cc-writes-git`, `a08-cc-writes-settings`, `a10-cc-writes-transient` | accept | 9/9 PASS each | All fetched the 12 sources from `raw.githubusercontent.com`, wrote the 8 documents and 3 placeholders identical to the templates, left `.git` and `.claude/` unchanged and did not run `git init`. |
+| `r01-readme`, `r02-directory`, `r03-gitignore`, `r05-symlink`, `r06-git-plus-file`, `r07-claude-md`, `r08-mcp-json`, `r10-claude-commands`, `r11-claude-file`, `r13-cc-writes-file`, `r14-settings-local-dir`, `r15-cc-writes-symlink` | refuse | 4/4 PASS each | Loaded the Skill, listed the root (and `.claude/` where it decides eligibility), then refused. Two or three tool calls per case. |
+
+Checker defect found and fixed: `r05-symlink` first failed "no write operations" because the Agent printed `"SYMLINK: $1 -> $(readlink …)"` and the redirect pattern read the `->` inside the string as a redirect. The pattern now ignores `->` and `=>`, accepts an explicit file descriptor such as `1>out`, and ignores redirects to `/dev/null`; the previously missed `1>out` form is now caught. The Agent's commands were read-only.
+
+Reviewer judgment on the non-scripted criteria, from each final report: every refusal named the ineligible entry, including its filesystem form where that decided the case (a `.claude` file, `.cc-writes` as a file or symlink, `settings.local.json` as a directory), and did not move or delete it; some offered to re-run after the user resolves it, which is acceptable. Every accepted run listed the created files and its verification limits and stopped before Brainstorm.
+
+Observations that did not fail a criterion:
+
+- `a07-cc-writes-git` first used WebFetch, which returned summaries rather than file contents, and wrote a `coolflow.yml` that did not match the template. It noticed, re-downloaded with `curl` and replaced the file before reporting. The Skill names raw URLs but does not require a byte-exact download.
+- Six accepted runs used the same fixed scratch path, `$TMPDIR/coolflow-src`, and one deleted it with `rm -rf` while others may still have been reading it. Every output still matched the templates. This comes from running cases concurrently, but the Skill does not ask for a fresh scratch directory.
+- `a10-cc-writes-transient` reported that `README.md` "links" to the missing optional `docs/solutions/` and `docs/adr/`. These are plain-text mentions, not links; the claim is wrong.
+
+Limitations: the same subagent fidelity gap as the pilot; case 6 not run; one run per case.
+
 **2026-11-19 pilot — 5 of 25 cases, one run each. Overall: 30 PASS, 0 FAIL; the scenario as a whole is NOT VERIFIED.**
 
 Setup: macOS Darwin 27.0.0, Python 3.14.5. The installed `coolflow-init` Skill was byte-identical to `skills/coolflow-init/SKILL.md` (SHA-256 prefix `062fdac591dd179c`). It fetched templates from the published `main`, which matched local `origin/main` at `270a7d0`; the checks used `--ref origin/main`. Checker SHA-256 prefix `0267bf503b8cf23e`. Each case ran in a fresh subagent context with the prompt above plus the target path; the subagents' own transcripts served as traces.
