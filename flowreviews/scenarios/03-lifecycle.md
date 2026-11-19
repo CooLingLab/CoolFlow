@@ -81,7 +81,42 @@ An independent reviewer inspects the tree, Git history, diffs, Specs, review rec
 
 ## Execution record
 
-Not yet executed as a merged scenario. Before the merge, two partial runs covered some phases; their findings carry over as evidence for those criteria only.
+**2026-11-19 — first full run. Independent review: 22 PASS, 4 FAIL (6, 7, 12, 14), 0 NOT VERIFIED. Passes carry moderate confidence because of the fidelity limits below.**
+
+Setup: macOS Darwin 27.0.0, Node.js v24.22.2. The fixture held the 11 files `coolflow-init` creates, copied from local `templates/project/` at CoolFlow `1881c30`. A habit-tracker CLI was built through all seven phases by Claude Sonnet subagents, one fresh context per phase; phases 2, 3, 4 and 6 also had follow-up turns. The coordinator answered product questions and approved Specs from a written persona brief; the real user gave the phase 5 acceptance. Separate fresh agents did the design review and code review. Phase 6 seeded `status` and `history` commands that bypassed name validation; phase 7a seeded a commit that removed the keep-yesterday streak rule; phase 7 ran in three clones of the phase 6 state. A fresh default-model reviewer judged all criteria from the fixture's Git history, the clones and the executor transcripts, and re-ran the mechanical checks.
+
+| Criterion | Result | Evidence |
+| --- | --- | --- |
+| 1 | PASS | Brainstorm dated, five linked direct competitors, indirect alternatives labelled as general knowledge, weak evidence labelled weak. |
+| 2–4 | PASS | At phase 1, `docs/work/habit-cli/` had brainstorm, validation and three prototypes, no Spec or tasks file; validation recorded question, method, result and decision; no manifest or build output under `docs/`. |
+| 5 | PASS | `product.md` and `roadmap.md` held only the human's stated decisions; the open question stayed open. |
+| 6 | FAIL | No restatement before drafting; the Spec writer's five questions came only after the draft. |
+| 7 | FAIL | The Spec recorded source and test paths and test commands, but no build or run command. |
+| 8 | PASS | Each design-review blocker and fix cited the standard, a Spec criterion or prototype code; the one unverified claim was marked to confirm and not made a blocker. |
+| 9–11 | PASS | Spec committed in phase 2, code first in phase 3; code in `src/` and `tests/`, no import from `docs/`, prototype blobs unchanged through phase 6; no comments except the shebang. |
+| 12 | FAIL | The review recorded Spec conformance and one dependency-direction note, but no pattern or naming check against `docs/domain.md`, which was still the empty template. |
+| 13 | PASS | Delivery progress recorded `implemented`, `partially_verified`, the deferred `test:tz`, `pending` and `not_released`. |
+| 14 | FAIL | The resume session's first command ran `cat AGENTS.md` and `ls -R docs` together, listing work records before reading `docs/coolflow.yml`; same pattern as the 2026-11-18 run. |
+| 15, 16 | PASS | It opened the only Spec, ran `test:tz` (5 × 79 pass) and updated that Spec; no new record. |
+| 17–20 | PASS | Feature record holds accepted behavior only; `domain.md` gained the accepted terms; work moved to `docs/work/archive/habit-cli/` with prototype blobs identical and all links resolving; Spec records `accepted` and `not_released`. |
+| 21 | PASS, prompted | Unprompted, the executor recorded both bypasses as "outside this Spec" and asked no decision. After the operator asked for a root-cause fix, `findHabit` became the only lookup. |
+| 22 | PASS, with a gap | Reverting `status` or adding a registered command with its own lookup fails a test; a new command dispatched outside the `NAMED` registry passes all tests. |
+| 23 | PASS | No new `AGENTS.md` rule or Solution. |
+| 24 | PASS | The streak regression was traced to the seeded commit and fixed in one line; no product change. No delivery record or acceptance request followed. |
+| 25 | PASS | New evidence went to a new work record with options and a human decision; no scope change. |
+| 26 | PASS | Reminders became a draft Spec in a new work objective; `docs/features/` unchanged. |
+
+Findings about CoolFlow itself:
+
+- Criteria 6 and 12 test rules that exist only in `methodology/activities.md`; the project templates an executor reads do not mention restating the goal or a codebase-design check.
+- Criterion 12 cannot pass on a new project, because `domain.md` is filled only after acceptance.
+- The `AGENTS.md` rule "Resolve the mode before searching work records" does not stop a general directory listing; criterion 14 has failed the same way twice.
+- Asked for a feature, the executor treated pre-existing bypasses as out of scope instead of raising them for a decision. Asked to fix a regression committed with failing tests, it advised running tests before committing rather than enforcing it.
+- No rule says where a defect fix against an archived objective records its evidence or acceptance.
+
+Fidelity limits: every executor started in the CoolFlow source repository, so its `AGENTS.md` and the user's global instructions were in context despite a preamble to ignore them, and three traces refer to `scripts/check_docs.py`; criteria 20, 24, 25 and possibly 21 may be inflated. Several operator follow-ups were leading. One model, one run per phase; Node 22 and other platforms untested; the 7a seed broke existing tests, so detection was easy.
+
+Before the merge, two partial runs covered some phases; their findings carry over as evidence for those criteria only.
 
 **2026-11-18, former S12 (resume a delivery).** Node.js v24.22.2; a seeded whitespace defect in a search CLI with one active objective; separate executor contexts.
 
@@ -102,4 +137,4 @@ Not yet executed as a merged scenario. Before the merge, two partial runs covere
 | 10 | PASS | Source and tests in `src/` and `test/`; `grep` found no import from `docs/work` or `prototypes`; the prototype was never edited. |
 | 17, 19 | PASS | After explicit acceptance, `docs/features/habit-cli.md` recorded accepted behavior and linked the archive; 19 links checked, 0 broken; the prototype moved byte-identical to `docs/work/archive/001-habit-cli/`. The archived `validation.md` kept a pre-archive command path that no longer resolves. |
 
-Criteria 1, 2, 5, 6, 8, 11, 12, 18 and 21–26 have never been executed. The former `03-mvp-and-feature.md`, `04-acceptance-and-archive.md`, `06-release-and-evolution.md` and `14-correction-hierarchy.md` were specifications only.
+Before the full run, the former `03-mvp-and-feature.md`, `04-acceptance-and-archive.md`, `06-release-and-evolution.md` and `14-correction-hierarchy.md` were specifications only.
