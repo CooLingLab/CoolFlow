@@ -1,4 +1,6 @@
-# S08 — CoolFlow Docs Review
+# S06 — CoolFlow Docs Review
+
+Covers: `skills/coolflow-docs-review/`, including its standard snapshot.
 
 Review the optional `coolflow-docs-review` Skill, not a target application's code. The Skill, its local reference and its bundled standard snapshot are the test subject; this Scenario Review stays in the CoolFlow source repository and is not copied into applications.
 

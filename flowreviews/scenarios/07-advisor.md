@@ -1,4 +1,6 @@
-# S09 — Project Advisor
+# S07 — Project Advisor
+
+Covers: `skills/coolflow-advisor/`.
 
 Evaluate the optional `coolflow-advisor` Skill as a read-only, project-wide advisor. This internal CoolFlow scenario is not copied into target projects. Use disposable fixtures and a fresh Agent context per run. The ordinary case is run once with the previous Advisor and Progress Skills and once with the revised Advisor; the two additional cases run once each with the revised Advisor.
 
@@ -36,4 +38,4 @@ An independent reviewer inspects the current Skill, applicable standard, changed
 
 ## Execution record
 
-See [the validation record](09-advisor-results.md) for the actual outputs, Skill hash, fixture file checks, review evidence and untested limitations. Do not infer automatic host discovery or general reliability from direct instruction-following tests.
+See [the validation record](07-advisor-results.md) for the actual outputs, Skill hash, fixture file checks, review evidence and untested limitations. Do not infer automatic host discovery or general reliability from direct instruction-following tests.

@@ -1,6 +1,6 @@
-# S07 — Skill Creator validation record
+# S08 — Skill Creator validation record
 
-This is an internal, point-in-time review record, not proof of universal compatibility. See [the scenario](07-skill-creator.md) and its linked reusable prompts for the expected behavior.
+This is an internal, point-in-time review record, not proof of universal compatibility. See [the scenario](08-skill-creator.md) and its linked reusable prompts for the expected behavior.
 
 ## Setup
 
@@ -24,7 +24,7 @@ The grader evaluated response text, not actual tool behavior or whether the cand
 
 ## Initial independent review and revision
 
-An independent reviewer inspected the source files and recorded S07 criteria 1, 2, 5 and 7 as static passes; criterion 3 as a static failure; and criteria 4, 6 and 8 as not verified with the evidence then available. The actionable failure was an ambiguity between “test without rewriting” and “stop at advice.” The reviewer also requested explicit existing-target collision handling and noted the absence of trace, automatic-discovery and repository-license evidence.
+An independent reviewer inspected the source files and recorded S08 criteria 1, 2, 5 and 7 as static passes; criterion 3 as a static failure; and criteria 4, 6 and 8 as not verified with the evidence then available. The actionable failure was an ambiguity between “test without rewriting” and “stop at advice.” The reviewer also requested explicit existing-target collision handling and noted the absence of trace, automatic-discovery and repository-license evidence.
 
 The first revision distinguishes authorized test execution from plan-only requests, adds target-collision and symlink checks, and distinguishes a self-contained design from verified independent execution. In an isolated-copy draft exercise, the response nevertheless included “无需 CoolFlow 源码或网络即可使用” inside the candidate while elsewhere admitting offline use was untested. The second revision explicitly requires the candidate itself, as well as the report, to distinguish design intent from tested runtime behavior.
 
@@ -38,7 +38,7 @@ Static checks parsed the Skill metadata and four test cases, verified local Mark
 - With the final entry and the preceding validation reference, the collision exercise reported the existing target and asked whether to update or rename. Independent hashes of the sample Skill and override matched their original values, and the target contained no additional files. Symlink behavior and actions outside the observed target remain **NOT VERIFIED**.
 - The plan-only exercise was repeated after the validation-reference clarification. Its response provided a plan; an independent filesystem check found the sample and override hashes unchanged and no result artifact. Without a retained trace, absence of test execution remains **NOT VERIFIED**.
 
-The independent reviewer confirmed that the earlier S07 criterion 3 **static** failure was resolved, including the distinction between authorized sandbox output and protected files. The earlier static review found criteria 1, 2, 5 and 7 consistent with the source files. Full behavioral verification for criteria 3, 6 and 8 remains **NOT VERIFIED** without adequate traces; criterion 4 remains **NOT VERIFIED** for complete upstream dependencies and CoolFlow's own distribution rights, even though the upstream MIT text was independently compared. Automatic discovery, strict offline isolation, symlink handling and cross-host behavior also remain **NOT VERIFIED** at acceptance.
+The independent reviewer confirmed that the earlier S08 criterion 3 **static** failure was resolved, including the distinction between authorized sandbox output and protected files. The earlier static review found criteria 1, 2, 5 and 7 consistent with the source files. Full behavioral verification for criteria 3, 6 and 8 remains **NOT VERIFIED** without adequate traces; criterion 4 remains **NOT VERIFIED** for complete upstream dependencies and CoolFlow's own distribution rights, even though the upstream MIT text was independently compared. Automatic discovery, strict offline isolation, symlink handling and cross-host behavior also remain **NOT VERIFIED** at acceptance.
 
 The Skill was **human-accepted on 2026-11-02** for use as an optional CoolFlow Meta Skill. Acceptance means the user reviewed the design, the available evidence and the remaining limitations, and chose to adopt it. It does not mean the unverified items below have passed, nor does it authorize installing, publishing, distributing or releasing the Skill.
 

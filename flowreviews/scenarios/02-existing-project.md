@@ -1,5 +1,7 @@
 # S02 — Existing project adoption (not CoolFlow Init)
 
+Covers: the Existing Project Adoption section of `GETTING_STARTED.md`, `standards/initialization.md`, the preflight in `skills/coolflow-init/`.
+
 Prompt: “Inspect my existing project and propose how to adopt CoolFlow for [specific feature or fix].”
 
 Environment: temporary repo with preexisting README, AGENTS.md, source code, docs/product.md, docs/documentation.md, and uncommitted changes.

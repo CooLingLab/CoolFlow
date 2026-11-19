@@ -1,4 +1,6 @@
-# S07 — CoolFlow Skill Creator
+# S08 — CoolFlow Skill Creator
+
+Covers: `skills/coolflow-skill-creator/`, including `evals/`.
 
 Review CoolFlow's own optional `coolflow-skill-creator`, not a target application's code. The Skill and its local references are the test subject; this Scenario Review stays in the CoolFlow source repository and is not copied into applications.
 

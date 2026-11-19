@@ -20,6 +20,9 @@ LINK = re.compile(r"!?\[(?:[^\[\]]|\[[^\]]*\])*\]\(\s*(?:<([^>]+)>|([^)\s]+))(?:
 INLINE_CODE = re.compile(r"`[^`]*`")
 HTML_ID = re.compile(r"""\b(?:id|name)=["']([^"']+)["']""")
 SNAPSHOT_BLOB = re.compile(r"Source Git blob: ([0-9a-f]{40})")
+TEMPLATE_DOCS = ROOT / "templates" / "project" / "docs"
+TEMPLATE_CARDS = {"product.md": "[1]", "domain.md": "[2]", "roadmap.md": "[4]"}
+LEGACY_STATUS = re.compile(r"^>\s*Status:", re.M)
 
 
 def markdown_files():
@@ -139,11 +142,28 @@ def check_snapshot(errors):
         errors.append(f"{rel(SNAPSHOT)}: body differs from {rel(STANDARD)}")
 
 
+def check_template_cards(errors):
+    for name, steps in TEMPLATE_CARDS.items():
+        path = TEMPLATE_DOCS / name
+        text = path.read_text(encoding="utf-8")
+        lines = text.split("\n")
+        if lines[0] != "---" or "---" not in lines[1:]:
+            errors.append(f"{rel(path)}:1: progress card must be the first content of the file")
+            continue
+        card = lines[1:lines.index("---", 1)]
+        expected = ["status: not_started", f"related_steps: {steps}"]
+        if card != expected:
+            errors.append(f"{rel(path)}:2: progress card is {card}, expected {expected}")
+        if LEGACY_STATUS.search(text):
+            errors.append(f"{rel(path)}: legacy '> Status:' line duplicates the progress card")
+
+
 def main():
     errors = []
     check_bilingual(errors)
     check_links(errors)
     check_snapshot(errors)
+    check_template_cards(errors)
     for error in errors:
         print(error)
     print(f"{len(errors)} problem(s) found" if errors else "Documentation checks passed")

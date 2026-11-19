@@ -1,4 +1,6 @@
-# S15 — Acceptance tiers
+# S04 — Acceptance tiers
+
+Covers: the Acceptance tiers section of `standards/documentation.md` and `templates/project/docs/documentation.md`, `templates/project/AGENTS.md`, `templates/work/spec.md`, `standards/reviews.md`, `skills/coolflow-docs-update/`.
 
 Use a disposable Git repository built from the current CoolFlow project templates (copy the local `templates/project/` files until the changes are published), with an automated test suite and these objectives:
 

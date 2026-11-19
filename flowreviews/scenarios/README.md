@@ -13,6 +13,27 @@ Suggested result format:
 - Critical failures and proposed corrections
 - Explicitly state what could not be tested
 
-Prefer deterministic checks wherever a criterion is mechanical. A scenario may ship a checker under `flowreviews/checks/` that builds its fixtures as code and judges file trees, hashes, contents and tool-call traces; the reviewer then judges only what the script cannot. S01 is the first scenario with a checker.
+Prefer deterministic checks wherever a criterion is mechanical. A scenario may ship a checker under `flowreviews/checks/` that builds its fixtures as code and judges file trees, hashes, contents and tool-call traces; the reviewer then judges only what the script cannot. S01 is the first scenario with a checker. A static rule about CoolFlow's own files, such as template content, belongs in `scripts/check_docs.py`, not in a scenario.
+
+## Scenarios
+
+| ID | Scenario | Subject |
+| --- | --- | --- |
+| S01 | [Empty project initialization](01-empty-initialization.md) | `coolflow-init`, including manual initialization without the Skill |
+| S02 | [Existing project adoption](02-existing-project.md) | Adoption instead of initialization; no change before approval |
+| S03 | [Development lifecycle](03-lifecycle.md) | One project from discovery through both Loops, acceptance, archive and Evolution |
+| S04 | [Acceptance tiers](04-acceptance-tiers.md) | Opt-in `accepted_by_policy` |
+| S05 | [Docs update](05-docs-update.md) | `coolflow-docs-update` |
+| S06 | [Docs review](06-docs-review.md) | `coolflow-docs-review` ([results](06-docs-review-results.md)) |
+| S07 | [Advisor](07-advisor.md) | `coolflow-advisor` ([results](07-advisor-results.md)) |
+| S08 | [Skill creator](08-skill-creator.md) | `coolflow-skill-creator` ([results](08-skill-creator-results.md)) |
+
+Each scenario starts with a `Covers:` line. Re-run a scenario when a file it covers changes; there is no requirement to run every scenario for every change. Execution records written before the 2026-11-19 renumbering may use earlier IDs.
+
+## Keeping the set small
+
+- Each Skill has one scenario, and the lifecycle has one. A new rule adds checkpoints or criteria to the scenario it affects rather than a new scenario.
+- Add a scenario only for a boundary or risk that no existing scenario can exercise, and give it a `Covers:` line.
+- Remove a scenario whose subject no longer exists, and keep a completed one-off experiment in Git history rather than in this directory.
 
 Do not mark unexecuted cases as PASS. These scenarios remain in the CoolFlow source repository; they are not copied into application repositories.

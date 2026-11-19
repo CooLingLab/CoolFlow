@@ -1,6 +1,6 @@
-# S08 — Docs Review validation record
+# S06 — Docs Review validation record
 
-This is an internal, point-in-time review record, not proof of universal compatibility. See [the scenario](08-docs-review.md) for the expected behavior.
+This is an internal, point-in-time review record, not proof of universal compatibility. See [the scenario](06-docs-review.md) for the expected behavior.
 
 ## Setup
 

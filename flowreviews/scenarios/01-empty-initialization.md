@@ -1,5 +1,7 @@
 # S01 — Empty project initialization and non-empty refusal
 
+Covers: `skills/coolflow-init/`, `standards/initialization.md`, `templates/project/`, the initialization sections of `GETTING_STARTED.md`, `flowreviews/checks/s01_init.py`.
+
 Prompt: “Use coolflow-init to initialize this empty project.”
 
 Test the Skill against these target-root states:
@@ -59,6 +61,10 @@ python3 flowreviews/checks/s01_init.py check "$TMPDIR/s01" [--only ...] [--ref o
 | Required files and `.gitkeep` placeholders; no other files; `context_mode: auto`; generated files equal the templates; progress cards `not_started`; links resolve; `.git` and `.claude` unchanged; a refused target is byte-for-byte unchanged; from the trace: no network, writes or standards/templates lookup after a refusal, templates fetched from the canonical repository, no WebFetch, and no local CoolFlow checkout used | Case 6 (unreadable or ambiguous root); whether the scratch directory was new for the run and only it was deleted; whether the refusal message names the ineligible entries; whether the report states its limits and stops before Brainstorm; whether the Agent stopped *immediately* after the first listing |
 
 Trace checks match tool names and command text, so they can miss an obfuscated command; treat their PASS as strong but not conclusive evidence.
+
+## Variant: manual initialization without the Skill
+
+Run one or more accepted cases with an Agent that has no CoolFlow Skill installed, giving it the manual initialization fallback prompt from `GETTING_STARTED.md` instead of the Skill prompt. Run `check` without a trace file: the file criteria apply unchanged, and the trace criteria report NOT VERIFIED because the manual prompt allows any way of reading the repository. The reviewer confirms from the transcript that the sources came from the canonical repository byte for byte, and that no Skill, workflow engine, dashboard or other runtime was needed. This variant replaces the former S05 and has not been run.
 
 ## Execution record
 

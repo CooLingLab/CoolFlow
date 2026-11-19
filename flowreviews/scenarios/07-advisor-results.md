@@ -1,6 +1,6 @@
-# S09 — Project Advisor validation record
+# S07 — Project Advisor validation record
 
-This is a point-in-time record for [the scenario](09-advisor.md), not a claim of general reliability.
+This is a point-in-time record for [the scenario](07-advisor.md), not a claim of general reliability.
 
 ## Setup
 

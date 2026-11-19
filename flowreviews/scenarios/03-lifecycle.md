@@ -102,4 +102,4 @@ Not yet executed as a merged scenario. Before the merge, two partial runs covere
 | 10 | PASS | Source and tests in `src/` and `test/`; `grep` found no import from `docs/work` or `prototypes`; the prototype was never edited. |
 | 17, 19 | PASS | After explicit acceptance, `docs/features/habit-cli.md` recorded accepted behavior and linked the archive; 19 links checked, 0 broken; the prototype moved byte-identical to `docs/work/archive/001-habit-cli/`. The archived `validation.md` kept a pre-archive command path that no longer resolves. |
 
-Criteria 1, 2, 5, 6, 8, 11, 12, 18 and 21–26 have never been executed. Former S03 (work objective lifecycle), S04 (acceptance and archive), S06 (Evolution) and S14 (correction hierarchy) were specifications only.
+Criteria 1, 2, 5, 6, 8, 11, 12, 18 and 21–26 have never been executed. The former `03-mvp-and-feature.md`, `04-acceptance-and-archive.md`, `06-release-and-evolution.md` and `14-correction-hierarchy.md` were specifications only.
