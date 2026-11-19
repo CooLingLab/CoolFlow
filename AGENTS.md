@@ -25,6 +25,7 @@ This repository publishes a **reference methodology and documentation standard**
 - During development, maintain internal cases under `flowreviews/scenarios/`; use an **independent reviewer Agent** with explicit evidence to check outcomes.
 - Keep internal Scenario Review files in the CoolFlow source repository; do not copy them into target application repositories.
 - Never claim a test or Agent review passed unless it has actually run and evidence exists.
+- Run `python3 scripts/check_docs.py` before committing documentation changes; CI runs it on every push. It checks bilingual pairs and heading structure, relative links and anchors, and that the docs-review snapshot matches `standards/documentation.md`. When a recurring maintenance mistake can be checked mechanically, extend this script instead of adding another rule here.
 
 ## Working on this repository
 - Update the relevant standard first, then adjust templates, Skill instructions, and internal review cases.
