@@ -53,7 +53,7 @@ Before a significant change, understand its scope and preserve a practical route
 
 Never treat an Agent's self-report, the presence of generated files, or a successful compilation as sufficient proof that the desired outcome has been achieved.
 
-Require **appropriate direct evidence** for the claim being made: exercised user-visible paths, relevant automated tests, logs, screenshots or simulator/device behavior, observable side effects, and comparison with acceptance criteria. When useful, retain commands, inputs and results so that a different reviewer can reproduce the verification. Distinguish **not tested**, **test passed**, **human accepted**, and **released**.
+Require **appropriate direct evidence** for the claim being made: exercised user-visible paths, relevant automated tests, logs, screenshots or simulator/device behavior, observable side effects, and comparison with acceptance criteria. When useful, retain commands, inputs and results so that a different reviewer can reproduce the verification. Distinguish **not tested**, **test passed**, **human accepted**, and **released**. A change accepted under a declared policy (`accepted_by_policy`) is not human accepted.
 
 This echoes PStack's [Prove It Works](https://github.com/cursor/plugins/tree/main/pstack/skills/principle-prove-it-works) principle; CoolFlow uses it as a human acceptance standard across its Flow and Loops, not as a required external dependency.
 

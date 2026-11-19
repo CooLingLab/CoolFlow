@@ -50,14 +50,16 @@ CoolFlow 有**一条开发流程**和**三个自适应循环（Adaptive Loops）
   悄悄改写需求。
 - 在已批准的行为和约束内自主工作。当继续推进将改变产品意图、实质性扩大范围，或承诺一个重要的
   未决取舍时，暂停等待人类判断；呈现证据和需要做的决定，而不是悄悄决定。
-- 重复直到证据支持人类验收，或报告尚未解决的阻塞项。
+- 重复直到证据支持人类验收（`low` 级改动则为 `accepted_by_policy`），或报告尚未解决的阻塞项。
 
-**退出条件：** 经过测试和评审的实现已准备好进入人类验收决定。
+**退出条件：** 经过测试和评审的实现已准备好进入人类验收决定；`low` 级改动则按项目的验收分级进入 `accepted_by_policy`。
 
 ## 验收后步骤 — Documentation Sync 与归档（不是循环）
 
 `Human Acceptance → 同步已接受事实 → 验证文档一致性 → 选择性归档 →（单独授权发布）→ 适用时执行并验证发布`
 
+- 项目可以把 `low` 级改动的验收委托给证据；参见[验收分级](../standards/documentation.zh-CN.md#验收分级)。
+  这类改动记录为 `accepted_by_policy`，而不是 `accepted`。
 - `docs/features/` 描述已验收的实际行为，而不是推测性的设计。
 - 仅在受影响时更新 `product.md`、`domain.md`、`roadmap.md`、`architecture.md`、`feature-map.md`。
 - 保留重要的历史 Spec、决策和验证证据；在适当时删除冗余的临时草稿。

@@ -471,7 +471,7 @@ is never inferred from implementation or documentation sync.
 
 | ID | Activity | Answers | Core output | Boundary |
 | --- | --- | --- | --- | --- |
-| 8.1 | Inspect the result and make the human acceptance decision | Does the actual behavior and evidence meet the agreed goals and acceptance criteria? Does the human accept it? | Human decision: accept, request changes, or revisit design; known limitations | An Agent cannot accept its own work on the human's behalf; acceptance does not authorize release |
+| 8.1 | Inspect the result and make the human acceptance decision | Does the actual behavior and evidence meet the agreed goals and acceptance criteria? Does the human accept it? | Human decision: accept, request changes, or revisit design; known limitations | An Agent cannot accept its own work on the human's behalf; a `low`-tier change may complete as `accepted_by_policy` only under a policy the human declared; acceptance does not authorize release |
 | 8.2 | Sync accepted facts and selectively archive work | After acceptance, which current project facts and work records need updating or preservation? | Updated `features/` and affected project docs; selected work evidence in the archive | Record only actual accepted behavior; sync does not wait for release |
 | 8.3 | Prepare the release and obtain authorization | What will be released, are the required safeguards ready, and has release been authorized? | Release scope/version, notes, deployment/data-change checks, monitoring and recovery plan, explicit authorization | Readiness checks are not release execution; acceptance and release authorization are separate |
 | 8.4 | Execute the release and verify its operation | Was the authorized release published/deployed, and is it operating as expected? | Actual release status, smoke-check/monitoring evidence, continue/stop/rollback decision | Use canary or staged rollout when risk warrants; post-release feedback enters the Evolution Loop |
@@ -483,6 +483,11 @@ is never inferred from implementation or documentation sync.
   may make the decision after inspecting the result. Complex or business-critical work may
   involve representative users in acceptance testing, but a formal UAT ceremony is not
   required for every change.
+- A project can delegate acceptance of `low`-tier changes to evidence by declaring
+  sensitive paths; see [acceptance tiers](../standards/documentation.md#acceptance-tiers).
+  The human sets the policy, the Agent applies it, and the result is recorded as
+  `accepted_by_policy`, never as `accepted`. Without a declared policy, every change needs
+  a human decision.
 - If the human requests a code change, return to Step 7. If the requirements or design
   themselves need reconsideration, return to Step 6. Do not record unaccepted behavior in
   `features/` as current truth.
@@ -591,3 +596,4 @@ are not normative for CoolFlow:
 | 2026-11-06 | Agreed the Stage 8 acceptance, documentation sync, release authorization and verification boundaries. |
 | 2026-11-06 | Agreed the cross-stage Evolution Loop activities for capturing input, reassessing affected decisions and adapting relevant work. |
 | 2026-11-19 | Added goal restatement and evidence-backed design review to Stage 6, codebase design review and the correction hierarchy to Stage 7, and codebase design surveys as an Evolution input. |
+| 2026-11-19 | Added opt-in acceptance tiers to Stage 8: `low`-tier changes may complete as `accepted_by_policy` once the human declares sensitive paths. |

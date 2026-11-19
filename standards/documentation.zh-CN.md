@@ -20,7 +20,7 @@
 ├── README.md                         # 初始化时必需
 └── docs/
     ├── documentation.md              # 初始化时必需；本地文档规范
-    ├── coolflow.yml                  # 初始化时必需；上下文偏好
+    ├── coolflow.yml                  # 初始化时必需；上下文偏好和可选的验收规则
     ├── development-flow.md           # 初始化时必需；按需查阅的参考
     ├── product.md                    # 初始化时必需
     ├── roadmap.md                    # 初始化时必需
@@ -53,7 +53,7 @@
 |---|---|---|---|
 | `AGENTS.md`、`README.md` | 缺失时创建 | 按需维护 | 保持最新 |
 | `docs/documentation.md` | 缺失时复制完整本地规范 | 遵循并适配项目需要 | 保持项目约定最新 |
-| `docs/coolflow.yml`、`docs/development-flow.md` | 复制默认偏好和离线参考 | 按需更新偏好 | 保持参考可找到 |
+| `docs/coolflow.yml`、`docs/development-flow.md` | 复制默认偏好和离线参考 | 按需更新偏好；只有人类可以编辑 `acceptance` 节 | 保持参考可找到 |
 | `docs/product.md`、`roadmap.md`、`domain.md` | 创建带 `status: not_started` 的模板；正文中未知事实保持 `To decide` | 决策成为持久事实时更新，包括进展卡片 | 同步已验收变更 |
 | `docs/features/` | 创建目录 | 通常保持不变 | 添加或更新已验收功能描述 |
 | `docs/work/` | 创建目录 | 发现阶段有需要时打开目标目录；进入 Design Spec Loop 时创建其 `spec.md` | 选择性归档 |
@@ -85,7 +85,7 @@
 
 ## CoolFlow 上下文偏好
 
-`docs/coolflow.yml` 的 `context_mode` 保存项目级偏好。新项目默认为 `auto`，修改该值即可切换模式。工作进展仍保存在原有记录中。
+`docs/coolflow.yml` 的 `context_mode` 保存项目级偏好。新项目默认为 `auto`，修改该值即可切换模式。工作进展仍保存在原有记录中。同一文件还可以包含可选的 `acceptance` 节，见[验收分级](#验收分级)。
 
 | 请求 | `auto` | `manual` |
 | --- | --- | --- |
@@ -163,12 +163,59 @@ open_questions:
 | --- | --- | --- |
 | Implementation（实现） | `not_started`、`in_progress`、`implemented` | 实际观察到的变更及其范围或版本。使用 `implemented` 需要有证据表明约定的行为已实现。 |
 | Verification（验证） | `not_verified`、`partially_verified`、`verified` | 对应版本或范围的实际检查、结果和缺口。所需验证仅完成一部分时用 `partially_verified`。 |
-| Acceptance（验收） | `pending`、`accepted`、`changes_requested` | 记录适用范围的明确人工决定。已确定正在等待决定时用 `pending`。 |
+| Acceptance（验收） | `pending`、`accepted`、`accepted_by_policy`、`changes_requested` | 记录适用范围的明确人工决定；按项目[验收分级](#验收分级)完成的 `low` 改动记录 `accepted_by_policy`。已确定正在等待决定时用 `pending`。 |
 | Release（发布） | `not_released`、`released` | 分别记录明确发布授权和实际结果。有证据说明发布了什么、发布到哪里时用 `released`，并记录已有的发布后检查。 |
 
 仅记录有依据的字段，并说明重要未知项。只有证据能确定指定范围的对应状态时，才使用 `not_started`、`not_verified` 或 `not_released`。授权、验收和发布是独立的事实。发生实质变更后，保留此前验证、验收和发布证据的适用版本，记录当前缺口，并在需要时获取新证据或人工决定。
 
 在授权工作中，有了实质的实现与验证结果就记录，并在人工明确作出决定时记下决定。验收后，按文档同步规则更新受影响的长期文档。执行发布需要单独授权。若目标的权威记录缺失或不明确，说明尚未记录的内容，并在写入前确定落点。无需单独的状态文件或追溯迁移。
+
+## 验收分级
+
+默认情况下，每个工作目标都需要人工验收。项目可以在 `docs/coolflow.yml` 中声明 `acceptance.sensitive_paths`，把**低级别**改动的验收委托给证据：
+
+```yaml
+acceptance:
+  sensitive_paths:
+    - migrations/
+    - src/auth/
+```
+
+**声明。** 该值必须是字符串列表，可以为空（`sensitive_paths: []`）；声明它就是人类的明确委托。如果文件缺失或无法解析、该键不存在，或值不是字符串列表，任何改动都不能定为 `low`；读取到无效值时应报告。条目包含 `*`、`?` 或 `[`，以 `/` 或 `./` 开头，或包含 `..` 时，声明同样无效。没有有效声明时，不要求定级，每个改动都需要人工验收。
+
+**匹配。** 每个条目是相对仓库根目录的路径，匹配该文件或其下的任何内容；不支持 glob，并区分大小写。只要任何新增、修改、重命名、移动或删除的文件，其旧路径或新路径匹配某个条目，就算触及敏感路径。
+
+**规则归人类所有。** 规则包括 `docs/coolflow.yml` 的 `acceptance` 节、本地文档标准的本节，以及 `AGENTS.md` 中的验收规则。Agent 不得新建、修改或删除其中任何部分，即使被要求也不行；它可以提出修改建议，由人类执行。唯一的例外是初始化，或经人类批准的采用或升级：此时可以从 CoolFlow 模板原样复制规则文本；`acceptance` 节本身始终由人类填写。
+
+| 级别 | 适用条件 | 验收 |
+| --- | --- | --- |
+| `high` | 满足**任一**：修改持久数据或数据模式（schema）；涉及认证、授权、密钥、隐私或支付；有不可逆的外部副作用，例如发送消息、扣款或对外发布；修改 CI、发布或部署配置，或削弱某项检查；触及已声明的敏感路径。 | 人工验收，并具备恢复或缓解方案。 |
+| `standard` | 既不是 `high` 也不是 `low`。典型情况：用户可见的行为发生变化，包括界面、API 约定、CLI 输出和提示信息；已验收的行为或验收条件发生变化；依赖发生变化。 | 人工验收。 |
+| `low` | 满足下列**全部**条件。 | 无需人工检查；记录 `accepted_by_policy`。 |
+
+只有同时满足以下全部条件，改动才是 `low`：
+
+1. 存在有效声明，且不满足任何 `high` 条件。
+2. 改动不触及 `docs/coolflow.yml`、本地文档标准，或任何层级的 Agent 指令文件，例如 `AGENTS.md`、`CLAUDE.md` 或 `.cursor/rules/`。
+3. 用户可见的行为没有变化，`docs/features/` 或更早 Spec 中已验收的行为和验收条件没有被新增或修改。
+4. 依赖清单和 lockfile 没有变化。
+5. 现有测试、快照、fixture、测试辅助代码和测试配置没有被修改、重命名、移动、删除、跳过或排除；只新增测试。
+6. 完整测试套件，以及 `AGENTS.md` 列出或 CI 强制执行的必需检查，在最终修订上一次运行全部通过；证据要标明是哪一次运行，例如本地命令输出或 CI 运行链接。
+7. 有证据表明测试覆盖了改动的代码：提供该次运行的改动行覆盖率，或列出覆盖每个改动单元的测试，并附上它们在该次运行中的实际输出。
+
+定级规则：
+
+- 只有计划级别出现在早于任何实现改动的已提交修订中，目标才可能是 `low`。设计评审检查计划级别。
+- Agent 可以提高已记录的级别，但不能降低；只有人类可以降低。拿不准时选更高级别。
+- 记录 `accepted_by_policy` 前，必须对照最终 diff（而不是计划）逐条检查全部条件。最终 diff 指从开始实现前的修订到待验收修订的累计 diff，包括未提交的改动。这项检查由独立评审者执行，可以是全新上下文的 Agent 或人类；仅有实现 Agent 的自评不够。任何一条不满足，级别就上升。
+- 在 `Delivery progress` 中记录最终级别、界定最终 diff 的两个修订、评审者和证据；Spec 中的 `Acceptance tier` 行记录计划级别。
+
+定级之后：
+
+- `accepted_by_policy` 不是人类决定，必须与 `accepted` 区分。任务结束报告中要列出所有以 `accepted_by_policy` 完成的目标。人类之后可以检查，并记录 `accepted` 或 `changes_requested`。
+- `low` 改动没有用户可见的行为变化，因此很少影响 `docs/features/`。其他受影响的记录（例如架构）照常同步，工作照常归档，与人工验收后相同。
+- 发布仍需单独的明确授权。
+- 发现定级错误时，向人类提出如何通过[纠正层级](#纠正层级)收紧规则，例如增加敏感路径，或增加一项按已声明路径检查 diff 的 CI。只有人类可以修改规则；增加这类 CI 检查本身属于 `high` 改动。
 
 ## 记录 Agent Skills 产生的结果
 
@@ -200,7 +247,7 @@ open_questions:
 | `AGENTS.md` | 稳定的工作规则，并指向本地文档规范和上下文偏好 |
 | `README.md` | 面向人类阅读的项目入口；不编造功能 |
 | `docs/documentation.md` | 完整的项目本地文档规范；初始化后独立维护 |
-| `docs/coolflow.yml` | 项目上下文偏好 |
+| `docs/coolflow.yml` | 项目上下文偏好，以及可选的、归人类所有的验收规则 |
 | `docs/development-flow.md` | 八阶段和三个 Loop 的离线参考 |
 | `docs/product.md` | 简明的项目级 Product Brief：问题、受众、愿景、价值、边界和当前定位；**不是 PRD** |
 | `docs/roadmap.md` | 产品级 MVP/当前版本、后续方向与优先级；明确区分计划与已验收 |

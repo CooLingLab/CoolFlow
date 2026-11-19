@@ -60,7 +60,7 @@
 
 应提供适合任务的**直接、可复查的证据**：真实操作的用户流程、相关测试、日志、截图、模拟器或真机运行结果、外部可观察的副作用，以及与验收标准的对照。在有必要时，保存命令、输入和测试结果，便于他人重复验证。
 
-始终明确区分**未测试、测试通过、人工验收和正式发布**。
+始终明确区分**未测试、测试通过、人工验收和正式发布**。按已声明规则接受的改动（`accepted_by_policy`）不算人工验收。
 
 本条还借鉴了 PStack 的 [Prove It Works](https://github.com/cursor/plugins/tree/main/pstack/skills/principle-prove-it-works)。CoolFlow 将其作为贯穿 Flow 和 Loops 的人工验收原则，不要求安装 PStack。
 

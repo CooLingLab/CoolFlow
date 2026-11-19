@@ -49,7 +49,7 @@ When the project uses Step 1–5 progress metadata (CoolFlow's default or a loca
 
 ### Delivery progress
 
-Where the project records delivery progress, check that each claim is supported for the stated objective and revision, and that no second record owns the same fact. Leave status corrections to the record owner.
+Where the project records delivery progress, check that each claim is supported for the stated objective and revision, and that no second record owns the same fact. Leave status corrections to the record owner. For `accepted_by_policy`, check that the project declares a valid acceptance policy, that the planned tier appears in a revision committed before any implementation change, that `Delivery progress` evidences every `low` condition against the final diff, and that it is never reported as human `accepted`.
 
 ## 4. Single authoritative location
 

@@ -128,7 +128,7 @@ Expected skeleton in an **empty project**:
     README.md
     docs/
       documentation.md  # complete project-local documentation standard
-      coolflow.yml      # project context preference, defaults to auto
+      coolflow.yml      # project context preference (defaults to auto) and optional acceptance policy
       development-flow.md  # offline Flow and Loops reference
       product.md        # concise project-level Product Brief, not a PRD
       roadmap.md
@@ -139,7 +139,7 @@ Expected skeleton in an **empty project**:
 
 Empty directories use .gitkeep for Git tracking. The Skill itself is **not copied** into the target application.
 
-After initialization, the project follows its own docs/documentation.md; future documentation work does not require access to CoolFlow. Projects may adapt that local standard independently. Edit `context_mode` in `docs/coolflow.yml` to switch between `auto` and `manual`. The project instructions route planning and resume requests without a named objective through this preference. See [how the modes work](standards/documentation.md#coolflow-context-preference).
+After initialization, the project follows its own docs/documentation.md; future documentation work does not require access to CoolFlow. Projects may adapt that local standard independently. Edit `context_mode` in `docs/coolflow.yml` to switch between `auto` and `manual`. The project instructions route planning and resume requests without a named objective through this preference. See [how the modes work](standards/documentation.md#coolflow-context-preference). To let low-risk changes complete on evidence instead of your inspection, declare `acceptance.sensitive_paths` in the same file; see [acceptance tiers](standards/documentation.md#acceptance-tiers).
 
 ### B. Existing project — inspect before adopting
 

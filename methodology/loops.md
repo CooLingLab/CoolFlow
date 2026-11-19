@@ -39,14 +39,15 @@ The first two Loops are primarily associated with their named stages; the third 
 - When code and Spec diverge, identify whether the implementation is wrong or the requirement needs human reconsideration.
 - If the Spec is incomplete or flawed, **return to the Design Spec Loop**. Never silently rewrite requirements to rationalize broken code.
 - Work autonomously within the approved behavior and constraints. Pause for human judgment when proceeding would change product intent, materially expand scope, or commit to a significant unresolved trade-off; present the evidence and decision needed rather than silently deciding.
-- Repeat until evidence supports human acceptance, or report unresolved blockers.
+- Repeat until evidence supports human acceptance, or `accepted_by_policy` for a `low`-tier change, or report unresolved blockers.
 
-**Exit:** tested, reviewed implementation is ready for a human acceptance decision.
+**Exit:** tested, reviewed implementation is ready for a human acceptance decision, or, for a `low`-tier change, for `accepted_by_policy` under the project's acceptance tiers.
 
 ## Post-acceptance step — Documentation Sync and archive (not a Loop)
 
 `Human Acceptance → Sync accepted truth → Verify doc consistency → Selectively archive → (separate release authorization) → Execute and verify release, if applicable`
 
+- A project may delegate acceptance of `low`-tier changes to evidence; see [acceptance tiers](../standards/documentation.md#acceptance-tiers). Such changes are recorded as `accepted_by_policy`, not `accepted`.
 - `docs/features/` describes accepted actual behavior, not a speculative design.
 - Update `product.md`, `domain.md`, `roadmap.md`, `architecture.md`, `feature-map.md` only if affected.
 - Preserve important past Specs, decisions, and verification evidence; remove redundant temporary drafts when appropriate.

@@ -152,7 +152,7 @@ Agent 应选择它支持的方法。如果无法全局安装 Skill，它应告�
     README.md
     docs/
       documentation.md  # 完整的项目本地文档规范
-      coolflow.yml      # 项目上下文偏好，默认为 auto
+      coolflow.yml      # 项目上下文偏好（默认为 auto）和可选的验收规则
       development-flow.md  # Flow 和 Loop 的离线参考
       product.md        # 简明项目级 Product Brief，不是 PRD
       roadmap.md
@@ -166,6 +166,8 @@ Agent 应选择它支持的方法。如果无法全局安装 Skill，它应告�
 初始化后，项目遵循自己的 docs/documentation.md；后续文档工作不需要访问 CoolFlow。项目可以独立
 调整该本地标准。修改 `docs/coolflow.yml` 的 `context_mode` 即可在 `auto` 和 `manual` 间切换。
 项目指引会在规划或未指定目标的接续请求中读取这项偏好。参见[模式说明](standards/documentation.zh-CN.md#coolflow-上下文偏好)。
+如果希望低风险改动凭证据完成、无需你逐项检查，在同一文件中声明 `acceptance.sensitive_paths`；参见
+[验收分级](standards/documentation.zh-CN.md#验收分级)。
 
 ### B. 已有项目——先检查现状再采用
 

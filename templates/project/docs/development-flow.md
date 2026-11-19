@@ -11,7 +11,7 @@ Use this reference when planning or reconsidering product direction. Scale the w
 | 5. UI Prototype | Explore key flows, visual direction, screens, and states. Validate with users when useful. |
 | 6. Design Spec Loop | Write a unified Spec covering requirements, acceptance criteria, solution, optional tactical domain design, implementation, and verification. |
 | 7. Implementation Loop | Implement and verify the agreed behavior. Record evidence and unresolved risks. |
-| 8. Human Acceptance → Documentation Sync → Release | Obtain human acceptance, sync accepted facts, and obtain separate authorization for any applicable release before executing and verifying it. |
+| 8. Human Acceptance → Documentation Sync → Release | Obtain human acceptance (or, for `low`-tier changes, apply the local acceptance tiers), sync accepted facts, and obtain separate authorization for any applicable release before executing and verifying it. |
 
 ## Three Adaptive Loops
 

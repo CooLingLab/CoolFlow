@@ -1,4 +1,4 @@
-<!-- Offline snapshot of standards/documentation.md | Standard version: v0.1 | Source Git blob: 801193f10de2f9257fe7816321f559d79d1fdbf3 | Relative links are relative to standards/ in the source repository; their targets are not bundled. -->
+<!-- Offline snapshot of standards/documentation.md | Standard version: v0.1 | Source Git blob: 6243375031fadbbb0372c61cea38918cda73a462 | Relative links are relative to standards/ in the source repository; their targets are not bundled. -->
 
 # Documentation standard (v0.1)
 
@@ -18,7 +18,7 @@ The following is the **default documentation tree for an application repository 
 ├── README.md                         # Required at initialization
 └── docs/
     ├── documentation.md              # Required at initialization; local documentation standard
-    ├── coolflow.yml                  # Required at initialization; context preference
+    ├── coolflow.yml                  # Required at initialization; context preference and optional acceptance policy
     ├── development-flow.md           # Required at initialization; on-demand reference
     ├── product.md                    # Required at initialization
     ├── roadmap.md                    # Required at initialization
@@ -51,7 +51,7 @@ The following is the **default documentation tree for an application repository 
 |---|---|---|---|
 | `AGENTS.md`, `README.md` | Create if missing | Maintain as needed | Keep current |
 | `docs/documentation.md` | Copy the complete local standard if missing | Follow and adapt it to project needs | Keep project conventions current |
-| `docs/coolflow.yml`, `docs/development-flow.md` | Copy default preference and offline reference | Update preference as needed | Keep reference discoverable |
+| `docs/coolflow.yml`, `docs/development-flow.md` | Copy default preference and offline reference | Update preference as needed; only the human edits the `acceptance` section | Keep reference discoverable |
 | `docs/product.md`, `roadmap.md`, `domain.md` | Create templates with `status: not_started`; unknown body facts stay `To decide` | Update when decisions become durable, including the progress card | Sync accepted changes |
 | `docs/features/` | Create directory | Usually leave unchanged | Add or update accepted feature descriptions |
 | `docs/work/` | Create directory | Open an objective directory during discovery if useful; create its `spec.md` when entering Design Spec Loop | Archive selectively |
@@ -75,7 +75,7 @@ The following is the **default documentation tree for an application repository 
 
 ## CoolFlow context preference
 
-`docs/coolflow.yml` stores the project-wide preference `context_mode`. New projects start in `auto`. Switch modes by editing this value. Work progress remains in its existing records.
+`docs/coolflow.yml` stores the project-wide preference `context_mode`. New projects start in `auto`. Switch modes by editing this value. Work progress remains in its existing records. The same file may hold the optional `acceptance` section described under [Acceptance tiers](#acceptance-tiers).
 
 | Request | `auto` | `manual` |
 | --- | --- | --- |
@@ -134,12 +134,59 @@ Record delivery progress for a specific work objective in a `Delivery progress` 
 | --- | --- | --- |
 | Implementation | `not_started`, `in_progress`, `implemented` | Observed changes and their scope or revision. `implemented` requires evidence that the agreed behavior is implemented. |
 | Verification | `not_verified`, `partially_verified`, `verified` | Actual checks, results, and gaps for the relevant revision or scope. Use `partially_verified` when only part of the required verification is supported. |
-| Acceptance | `pending`, `accepted`, `changes_requested` | Record an explicit human decision for the applicable scope. Use `pending` when awaiting a decision is established. |
+| Acceptance | `pending`, `accepted`, `accepted_by_policy`, `changes_requested` | Record an explicit human decision for the applicable scope, or `accepted_by_policy` for a `low` change under the project's [acceptance tiers](#acceptance-tiers). Use `pending` when awaiting a decision is established. |
 | Release | `not_released`, `released` | Record explicit release authorization separately from the outcome. Use `released` when actual release evidence identifies what was released and where. Record available post-release checks. |
 
 Record only supported fields and note material unknowns. Use `not_started`, `not_verified`, and `not_released` only when evidence establishes those states for the stated scope. Authorization, acceptance, and release are separate facts. After a material change, keep earlier verification, acceptance and release evidence scoped to the version it describes. Record the current gaps and seek fresh evidence or a human decision when needed.
 
 During authorized work, record meaningful implementation and verification results when they are available, and record explicit human decisions when given. After acceptance, sync affected durable documents per the usual Documentation Sync rules. Release execution requires separate authorization. If an authoritative objective record is missing or ambiguous, report what remains unrecorded and resolve the destination before writing. No separate state file or retrospective migration is required.
+
+## Acceptance tiers
+
+Human acceptance is the default for every work objective. A project may delegate acceptance of **low-tier** changes to evidence by declaring `acceptance.sensitive_paths` in `docs/coolflow.yml`:
+
+```yaml
+acceptance:
+  sensitive_paths:
+    - migrations/
+    - src/auth/
+```
+
+**Declaration.** The value must be a list of strings and may be empty (`sensitive_paths: []`); declaring it is the human's explicit delegation. If the file is missing or cannot be parsed, the key is absent, or the value is not a list of strings, no change can be `low`; report an invalid value when consulting it. An entry that contains `*`, `?` or `[`, starts with `/` or `./`, or contains `..` also makes the declaration invalid. Without a valid declaration, tiers are not required and every change needs human acceptance.
+
+**Matching.** Each entry is a path relative to the repository root and matches that file or anything below it; globs are not supported, and matching is case-sensitive. A change touches a sensitive path when the old or new path of any added, changed, renamed, moved or deleted file matches an entry.
+
+**The policy is human-owned.** The policy is the `acceptance` section of `docs/coolflow.yml`, this section of the local documentation standard and the acceptance rule in `AGENTS.md`. An Agent must not create, edit or remove any part of it, even when asked; it may propose a change for the human to make. The only exception is initialization, or an adoption or upgrade the human approved, which may copy the policy text verbatim from the CoolFlow templates; the `acceptance` section itself is always written by the human.
+
+| Tier | Applies when | Acceptance |
+| --- | --- | --- |
+| `high` | **Any** of: changes persistent data or a schema; touches authentication, authorization, secrets, privacy or payments; has an irreversible external effect such as sending messages, charging money or publishing; changes CI, release or deployment configuration, or weakens a check; touches a declared sensitive path. | Human acceptance, with a recovery or mitigation plan. |
+| `standard` | Neither `high` nor `low`. Typical cases: user-visible behavior changes, including UI, API contracts, CLI output and messages; previously accepted behavior or acceptance criteria change; dependencies change. | Human acceptance. |
+| `low` | **All** of the conditions below. | No human inspection is required; record `accepted_by_policy`. |
+
+A change is `low` only when all of the following hold:
+
+1. A valid declaration exists, and no `high` condition applies.
+2. The change does not touch `docs/coolflow.yml`, the local documentation standard or any Agent instruction file at any depth, such as `AGENTS.md`, `CLAUDE.md` or `.cursor/rules/`.
+3. No user-visible behavior changes, and no accepted behavior or acceptance criterion in `docs/features/` or an earlier Spec is added or changed.
+4. No dependency manifest or lockfile changes.
+5. Existing tests, snapshots, fixtures, test helpers and test configuration are not modified, renamed, moved, deleted, skipped or excluded; only new tests are added.
+6. The full test suite and the required checks listed in `AGENTS.md` or enforced by CI pass in a single run on the final revision; the evidence identifies that run, such as the local command output or the CI run link.
+7. Evidence shows the tests exercise the changed code: changed-line coverage from that run, or the tests that exercise each changed unit together with their actual output from that run.
+
+Classification rules:
+
+- Only an objective whose planned tier appears in a revision committed before any implementation change can be `low`. Design review checks the planned tier.
+- An Agent may raise a recorded tier but never lower it; only the human can. When unsure, choose the higher tier.
+- Before recording `accepted_by_policy`, check every condition against the final diff, not the plan: the cumulative diff, including uncommitted changes, from the revision before implementation started to the revision proposed for acceptance. An independent reviewer, either a fresh-context Agent or the human, performs this check; the implementing Agent's self-assessment alone is not enough. If any condition fails, the tier rises.
+- Record the final tier, both revisions bounding the final diff, the reviewer and the evidence in `Delivery progress`; the Spec's `Acceptance tier` line holds the planned tier.
+
+After classification:
+
+- `accepted_by_policy` is not a human decision; keep it distinct from `accepted`. List every objective completed as `accepted_by_policy` in the end-of-task report. The human may later inspect it and record `accepted` or `changes_requested`.
+- A `low` change has no user-visible behavior change, so it rarely affects `docs/features/`. Sync other affected records, such as architecture, and archive work as after human acceptance.
+- Release still requires separate explicit authorization.
+- When a misclassification is found, propose to the human how to tighten the policy through the [correction hierarchy](#correction-hierarchy), for example a new sensitive path or a CI check of the diff against the declared paths. Only the human changes the policy; adding such a CI check is itself a `high` change.
 
 ## Recording results from Agent Skills
 
@@ -160,7 +207,7 @@ Distinguish observed facts, user claims, decisions, unverified findings, assumpt
 | `AGENTS.md` | Stable working rules and links to the local documentation standard and context preference |
 | `README.md` | Human-readable project entry; no invented features |
 | `docs/documentation.md` | Complete project-local documentation standard; independently maintained after initialization |
-| `docs/coolflow.yml` | Project context preference |
+| `docs/coolflow.yml` | Project context preference and optional, human-owned acceptance policy |
 | `docs/development-flow.md` | Offline reference for the eight stages and three Loops |
 | `docs/product.md` | A concise project-level Product Brief: problem, audience, vision, value, boundaries and current positioning; **not a PRD** |
 | `docs/roadmap.md` | Product-level MVP/current version, later direction and priority; explicitly distinguishes planned from accepted |
