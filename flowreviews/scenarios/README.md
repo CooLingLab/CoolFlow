@@ -13,4 +13,6 @@ Suggested result format:
 - Critical failures and proposed corrections
 - Explicitly state what could not be tested
 
+Prefer deterministic checks wherever a criterion is mechanical. A scenario may ship a checker under `flowreviews/checks/` that builds its fixtures as code and judges file trees, hashes, contents and tool-call traces; the reviewer then judges only what the script cannot. S01 is the first scenario with a checker.
+
 Do not mark unexecuted cases as PASS. These scenarios remain in the CoolFlow source repository; they are not copied into application repositories.
