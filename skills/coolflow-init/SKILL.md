@@ -61,12 +61,14 @@ After the preflight passes, retrieve the following files directly from the canon
 - https://raw.githubusercontent.com/CooLingLab/CoolFlow/main/templates/project/docs/roadmap.md
 - https://raw.githubusercontent.com/CooLingLab/CoolFlow/main/templates/project/docs/domain.md
 
-Read all required sources completely before writing anything. If any canonical source cannot be accessed or read completely, stop before writing and tell the user what is unavailable. Do not silently guess, clone the repository into the target directory, or copy internal `flowreviews/` materials into the application.
+Download each file byte for byte with a raw HTTP client such as `curl -fsSL`. Do not use a fetch tool that summarizes, converts or truncates content; its output is not the file. Save the downloads in a new scratch directory outside the target, created for this run (for example with `mktemp -d`); never reuse a fixed or pre-existing directory. Create the target files by copying the downloads, not by retyping them. When finished, delete only the scratch directory this run created.
+
+Read all required sources completely before writing anything. If any canonical source cannot be downloaded exactly or read completely, stop before writing and tell the user what is unavailable. Do not silently guess, clone the repository into the target directory, or copy internal `flowreviews/` materials into the application.
 
 ## Procedure
 
 1. Complete and pass the mandatory target-directory preflight, including the Claude Code harness metadata exemption. If it fails, stop immediately; none of the remaining steps apply.
-2. Retrieve and read all source-of-truth documents and templates listed above from the canonical CoolFlow repository.
+2. Download and read all source-of-truth documents and templates listed above from the canonical CoolFlow repository, as described above.
 3. Create the following files and directories in the target project:
    - `AGENTS.md` from `templates/project/AGENTS.md`
    - `README.md` from `templates/project/README.md`
@@ -78,7 +80,7 @@ Read all required sources completely before writing anything. If any canonical s
 4. Do not create `docs/solutions/` or `docs/adr/` during initialization. They are optional and should appear only when a verified reusable finding or consequential decision warrants them.
 5. Do not invent product facts. Copy the templates as-is: progress cards keep `status: not_started` and `related_steps` without invented progress, and body unknowns keep `To decide`, unless the user explicitly supplied the relevant facts.
 6. Do not create `docs/work/001-mvp/`, a Spec, PRD, design, tasks file, prototype, app code, dependencies, CI configuration, or architecture decisions.
-7. Verify the created paths, required headings, links, default `context_mode: auto`, and document completeness against the standards. Do not claim success without checking the actual filesystem or repository changes.
+7. Verify the created paths, required headings, links, default `context_mode: auto`, and document completeness against the standards. Compare each file created from a template with its download; they must be identical apart from explicitly supported placeholders. Do not claim success without checking the actual filesystem or repository changes.
 8. Report what was created and any verification limitations. State that the project is initialized and can begin **Step 1 — Idea → Brainstorm** when the user is ready. **Stop here**; do not automatically begin Brainstorm or any implementation.
 
 ## Important boundaries

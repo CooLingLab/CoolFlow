@@ -72,6 +72,7 @@ Canonical templates live in `templates/project/` in the CoolFlow source reposito
 - Do not infer a CoolFlow repository root from the Skill installation path, Agent configuration directory, or target project directory.
 - Do not expect `standards/` or `templates/` to exist beside the installed Skill or inside the Agent configuration directory.
 - Do not create local copies of CoolFlow's `standards/` or `templates/` in the target application. Copy only the required project files listed in this contract.
+- Retrieve each source byte for byte. A tool that summarizes, converts or truncates content does not retrieve it.
 - If the canonical source files cannot be retrieved completely, stop before writing and report the unavailable source.
 
 Copy the required files to the target paths; replace only explicitly supported placeholders. The documentation template implements [the source standard](documentation.md) without links to CoolFlow-only files; keep both aligned when changing the standard.

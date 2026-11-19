@@ -203,8 +203,10 @@ def check_accept_trace(calls, root):
     fetched = [i for n, i in calls if n == "WebFetch" or (n == "Bash" and NETWORK.search(i))]
     foreign = [i for i in fetched if "https://" in i and SOURCE_PREFIX not in i]
     local = [i for n, i in calls if str(REPO).lower() in i.lower() and str(root).lower() not in i.lower()]
+    summarized = [i for n, i in calls if n == "WebFetch"]
     return [
         ("trace: templates fetched from canonical GitHub", bool(fetched) and not foreign, foreign[:2] or ([] if fetched else ["no fetch observed"])),
+        ("trace: sources downloaded raw, not through a summarizing fetch tool", not summarized, summarized[:2]),
         ("trace: no local CoolFlow checkout used as source", not local, local[:2]),
     ]
 

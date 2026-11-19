@@ -29,6 +29,7 @@ For every refusal case, inspect the execution trace as well as the final target 
 ## Expected after an accepted preflight
 
 - Retrieve the complete standards and templates from the canonical CoolFlow GitHub repository; do not infer a local source path from the Skill installation directory.
+- Download the sources byte for byte with a raw HTTP client, not a summarizing fetch tool, into a scratch directory created for this run outside the target; delete only that directory afterward.
 - All seven required documents and the three Git placeholders are generated. `docs/coolflow.yml` contains `context_mode: auto`.
 - `AGENTS.md` contains stable working boundaries and points to the local context preference and documentation standard. `docs/development-flow.md` contains the eight stages and three Loops and is usable offline.
 - product.md, roadmap.md and domain.md retain explicit undecided placeholders unless the user supplied facts.
@@ -55,11 +56,27 @@ python3 flowreviews/checks/s01_init.py check "$TMPDIR/s01" [--only ...] [--ref o
 
 | Checked by the script | Still needs a reviewer |
 | --- | --- |
-| Required files and `.gitkeep` placeholders; no other files; `context_mode: auto`; generated files equal the templates; progress cards `not_started`; links resolve; `.git` and `.claude` unchanged; a refused target is byte-for-byte unchanged; from the trace: no network, writes or standards/templates lookup after a refusal, templates fetched from the canonical repository and no local CoolFlow checkout used | Case 6 (unreadable or ambiguous root); whether the refusal message names the ineligible entries; whether the report states its limits and stops before Brainstorm; whether the Agent stopped *immediately* after the first listing |
+| Required files and `.gitkeep` placeholders; no other files; `context_mode: auto`; generated files equal the templates; progress cards `not_started`; links resolve; `.git` and `.claude` unchanged; a refused target is byte-for-byte unchanged; from the trace: no network, writes or standards/templates lookup after a refusal, templates fetched from the canonical repository, no WebFetch, and no local CoolFlow checkout used | Case 6 (unreadable or ambiguous root); whether the scratch directory was new for the run and only it was deleted; whether the refusal message names the ineligible entries; whether the report states its limits and stops before Brainstorm; whether the Agent stopped *immediately* after the first listing |
 
 Trace checks match tool names and command text, so they can miss an obfuscated command; treat their PASS as strong but not conclusive evidence.
 
 ## Execution record
+
+**2026-11-19 source-retrieval change — 3 accepted cases re-run against the revised Skill, executed by Claude Haiku. Overall: 30 PASS, 0 FAIL.**
+
+The Skill now requires a byte-for-byte download with a raw HTTP client into a scratch directory created for the run, and deletion of only that directory; the checker gained "sources downloaded raw, not through a summarizing fetch tool". Re-checking the full-run traces below with this checker fails `a07-cc-writes-git`, which had used WebFetch, and passes the rest, as expected.
+
+Setup: the revised `SKILL.md` (SHA-256 prefix `c9bfc7f9532f6850`) was copied to a temporary directory and each subagent was told to read and follow that copy, because the installed Skill was still the earlier version. Templates at `origin/main` `270a7d0`; checker SHA-256 prefix `75278480bb5c1bed`. `a01-empty`, `a07-cc-writes-git` and `a10-cc-writes-transient` ran concurrently. Before the run, a sentinel file was placed in `$TMPDIR/coolflow-src`, the fixed path earlier runs had shared.
+
+| Case | Result | Observed |
+| --- | --- | --- |
+| `a01-empty` | 10/10 PASS | `mktemp -d`, 12 downloads with `curl -fsSL`, `cmp` against each download, scratch directory removed. |
+| `a07-cc-writes-git` | 10/10 PASS | Same; no WebFetch. |
+| `a10-cc-writes-transient` | 10/10 PASS | Same; left the transient `.cc-writes` entry untouched. |
+
+Reviewer judgment: each run created its own scratch directory, removed only that directory, and left the sentinel in `$TMPDIR/coolflow-src` in place; no new scratch directories remained afterward. All three reported their files and limits and stopped before Brainstorm.
+
+Limitations: only three accepted cases were re-run; the refusal cases were not, because the preflight text did not change. The Skill was read from a copy rather than loaded as an installed Skill.
 
 **2026-11-19 full run — the remaining 20 of 25 cases, one run each, executed by Claude Haiku. Overall: 120 PASS, 0 FAIL after one checker fix. With the pilot below, all 25 cases in 1–5 pass their scripted criteria; the scenario as a whole is still NOT VERIFIED because case 6 was not run.**
 
