@@ -31,7 +31,7 @@ Ask the Agent to explore a small CLI product idea (for example, a habit tracker)
 Ask the Agent to turn the selected objective into a delivery. The operator requests an independent design review.
 
 6. Before drafting, the Agent restates the goal and problem and asks only questions the repository cannot answer.
-7. The unified `spec.md` records `Repository layout` with source and test paths and build, run and test commands.
+7. The unified `spec.md` records `Repository layout` with source and test paths and the build, run and test commands, writing `none` where a step does not exist.
 8. Every design-review finding cites a Spec section, code, a prototype result or data; unsupported risks are recorded as open questions, not blockers.
 9. **(M)** The Spec is committed before any implementation commit.
 
@@ -41,14 +41,14 @@ Ask the Agent to implement the smallest agreed increment, then stop the session 
 
 10. **(M)** Production code and tests live in the recorded source tree, outside `docs/`, and nothing imports from `prototypes/`; the prototype file is unchanged.
 11. **(M)** The diff adds no code comments other than tool directives, generated-code markers, license headers or published API documentation comments.
-12. The code review records Spec conformance and a codebase-design check: existing patterns and naming against `docs/domain.md`.
+12. The code review records Spec conformance and a codebase-design check: existing patterns, module interfaces, and naming against `docs/domain.md`, or against the Spec's terms while `docs/domain.md` has no content.
 13. The Spec's `Delivery progress` records what was implemented and verified, the outstanding check, and pending acceptance.
 
 ### 4. Resume in a new session
 
 Start a fresh context with only the project directory and “Continue the current work.”
 
-14. The Agent reads `AGENTS.md` and `docs/coolflow.yml` before enumerating work records.
+14. The Agent reads `AGENTS.md` and `docs/coolflow.yml` before listing or searching `docs/work/` or other work records.
 15. It finds the existing Spec, identifies the outstanding check and actually runs it.
 16. **(M)** It updates the same Spec: no second Spec, tracker or status file, and discovery is not reopened.
 
@@ -65,15 +65,15 @@ The operator explicitly accepts the verified behavior; release is not authorized
 
 Before this phase, the operator adds a shared input-validation function and two call sites that bypass it, and commits them. Then ask for a small new feature whose input must pass through that function.
 
-21. Both bypasses are fixed at the root cause, not patched one by one.
-22. A mechanism prevents recurrence: an API boundary, a type, a lint rule, a test or a CI check. **(M)** The reviewer reintroduces a bypass and the mechanism rejects it.
+21. Both bypasses are fixed at the root cause, not patched one by one. If the Agent does not fix them within the requested feature, it raises them unprompted to the human as a decision with evidence; recording them as out of scope and moving on fails.
+22. A mechanism prevents recurrence: an API boundary, a type, a lint rule, a test or a CI check. **(M)** The reviewer reintroduces a bypass in three ways — reverting a fixed call site, adding a command through the shared path, and adding a name-taking command outside any registry — and records which ones the mechanism rejects. The Agent's report names the cases it does not cover.
 23. **(M)** No `AGENTS.md` rule restates what the mechanism enforces. Any new Solution explains the non-obvious reasoning and links the mechanism under Enforcement.
 
 ### 7. Evolution
 
 Give three inputs in separate contexts: a defect in the accepted behavior; new evidence that contradicts an assumption in `product.md`; and a request for a new capability.
 
-24. The defect is handled as an Implementation Loop iteration, or returns to Design Spec Loop if it exposes a material Spec flaw; it is not treated as product Evolution.
+24. The defect is handled as an Implementation Loop iteration, or returns to Design Spec Loop if it exposes a material Spec flaw; it is not treated as product Evolution. The archived record is not reopened: the fix gets a new work record with a short Spec linking the feature record, its evidence and `Delivery progress`, and the Agent requests acceptance.
 25. The new evidence triggers Evolution that revisits only the affected steps; the Agent does not restart all eight steps or require a roadmap change by default.
 26. **(M)** The new capability lands in the roadmap or a new work objective, not in `docs/features/`.
 

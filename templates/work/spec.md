@@ -20,7 +20,7 @@ To decide. Link to `design.md` instead if this becomes too complex.
 
 ## Repository layout
 
-To decide. Source code and test paths, build and run commands, and generated or vendored directories. Follow existing project conventions and keep production code outside `docs/`.
+To decide. Source code and test paths; build, run and test commands (`none` where a step does not exist); generated or vendored directories. Follow existing project conventions and keep production code outside `docs/`.
 
 ## Alternatives, assumptions and trade-offs
 

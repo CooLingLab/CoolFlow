@@ -36,7 +36,7 @@ Follow the local standard's table when it exists. Otherwise use these defaults:
 
 Spec authoring and changes to requirements, design or acceptance criteria are outside this Skill. Delivery updates belong in the existing objective record described below.
 
-Objective directories: create `docs/work/<objective>/` only when real work for that objective exists, and reuse an existing directory for the same objective. Use a short kebab-case name that describes the objective; an initial product journey may use `001-mvp`. Do not open a second directory for a subtopic of the same objective.
+Objective directories: create `docs/work/<objective>/` only when real work for that objective exists, and reuse an existing directory for the same objective. Use a short kebab-case name that describes the objective; an initial product journey may use `001-mvp`. Do not open a second directory for a subtopic of the same objective. A fix to behavior whose objective is already archived is new work: open a new directory and leave the archived record unchanged.
 
 ## Creating a missing document
 

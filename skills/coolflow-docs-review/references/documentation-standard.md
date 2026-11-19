@@ -1,4 +1,4 @@
-<!-- Offline snapshot of standards/documentation.md | Standard version: v0.1 | Source Git blob: 6243375031fadbbb0372c61cea38918cda73a462 | Relative links are relative to standards/ in the source repository; their targets are not bundled. -->
+<!-- Offline snapshot of standards/documentation.md | Standard version: v0.1 | Source Git blob: 6fc083988ff1b799717da1c0c52fcd6c2e61b133 | Relative links are relative to standards/ in the source repository; their targets are not bundled. -->
 
 # Documentation standard (v0.1)
 
@@ -83,7 +83,7 @@ The following is the **default documentation tree for an application repository 
 | Resume work without a named objective | Look for relevant active work in project records, including progress cards and Specs. Use a unique match or ask when there is no clear match. | Ask the user which objective to resume before searching work records, even if the project has only one active objective. |
 | Named objective, Spec or concrete maintenance request | Read the task-relevant project files directly. | Read the task-relevant project files directly. |
 
-Resolve the mode before searching for work records on an unnamed resume request. An absent file means `manual`. If the file is present but unreadable, malformed, or lacks a valid `context_mode` value (`auto` or `manual`), use `manual` and report the issue when consulting it. Apply project working rules in either mode. Honor explicit requests to review the methodology or report project progress. For an unnamed resume request, asking for the next step follows the resume row above.
+Resolve the mode before listing or searching `docs/work/` or other work records on an unnamed resume request. An absent file means `manual`. If the file is present but unreadable, malformed, or lacks a valid `context_mode` value (`auto` or `manual`), use `manual` and report the issue when consulting it. Apply project working rules in either mode. Honor explicit requests to review the methodology or report project progress. For an unnamed resume request, asking for the next step follows the resume row above.
 
 ## Step 1–5 progress metadata
 
@@ -140,6 +140,8 @@ Record delivery progress for a specific work objective in a `Delivery progress` 
 Record only supported fields and note material unknowns. Use `not_started`, `not_verified`, and `not_released` only when evidence establishes those states for the stated scope. Authorization, acceptance, and release are separate facts. After a material change, keep earlier verification, acceptance and release evidence scoped to the version it describes. Record the current gaps and seek fresh evidence or a human decision when needed.
 
 During authorized work, record meaningful implementation and verification results when they are available, and record explicit human decisions when given. After acceptance, sync affected durable documents per the usual Documentation Sync rules. Release execution requires separate authorization. If an authoritative objective record is missing or ambiguous, report what remains unrecorded and resolve the destination before writing. No separate state file or retrospective migration is required.
+
+A fix to behavior whose objective is already archived is new work. Do not reopen the archived record. Open a work record for the fix with a short Spec: the defect, the expected behavior with a link to the feature record, acceptance criteria and `Delivery progress`. The fix needs acceptance like any other change. Update the feature record only if accepted behavior changes.
 
 ## Acceptance tiers
 
@@ -237,7 +239,7 @@ A complete Spec should be comprehensible by a new Agent and provide:
 - Context, goal and non-goals.
 - User requirements and concrete acceptance criteria.
 - Design/architecture decisions and major alternative trade-offs.
-- Repository layout: where source code, tests and build/run commands live, kept outside `docs/`.
+- Repository layout: source and test paths, kept outside `docs/`, and the build, run and test commands, with `none` where a step does not exist.
 - Implementation strategy, dependencies and meaningful validation method.
 - Open questions / assumptions clearly distinguished from decisions.
 
@@ -309,6 +311,8 @@ When a defect or a repeated correction could recur, place the fix at the stronge
 1. **Make it impossible:** change the architecture, API or data structures so the wrong code cannot be written.
 2. **Make it fail:** add a type, lint rule, test or CI check that rejects it.
 3. **Write it down:** record a Solution or an `AGENTS.md` rule only for what still requires judgment.
+
+A defect found outside the current task's scope is still reported. Present it to the human as a decision, with its evidence: fix it now, open a separate objective, or accept it. Do not defer it silently.
 
 Human review is the last line of defense, not the mechanism. A one-off mistake does not need a new rule. Do not restate an enforced constraint as prose; write a Solution only when its reasoning is non-obvious, and state there what now enforces it, or why nothing can.
 

@@ -423,7 +423,7 @@ silently.
   read, so ask whether the change follows existing patterns or introduces one that later
   work will copy; whether it keeps substantial behavior behind a small interface rather
   than scattering shallow helpers; and whether names match the ubiquitous language in
-  `docs/domain.md`.
+  `docs/domain.md`, or the Spec's terms while `docs/domain.md` has no content yet.
 - 7.4 finds the root cause before fixing. If the implementation is wrong, fix it and
   re-run the relevant checks. If the Spec is wrong, return to the Design Spec Loop instead
   of silently changing requirements. If two fixes fail against the same check, verify the
@@ -433,6 +433,9 @@ silently.
   make it impossible through architecture, an API or data structures; otherwise make it
   fail through a type, lint rule, test or CI check; write a Solution or `AGENTS.md` rule
   only for what still requires judgment.
+- A defect found outside the change's scope, including one a reviewer reports, goes to the
+  human as a decision with its evidence: fix it now, open a separate objective, or accept
+  it. Recording it as out of scope is not enough.
 - TDD is optional. Use Red–Green–Refactor when it suits the change; do not force it onto
   exploratory or trivial edits. Use the project's existing test, build and CI commands.
 - Tasks normally live in the Agent session. Create `tasks.md` only when progress must
@@ -597,3 +600,4 @@ are not normative for CoolFlow:
 | 2026-11-06 | Agreed the cross-stage Evolution Loop activities for capturing input, reassessing affected decisions and adapting relevant work. |
 | 2026-11-19 | Added goal restatement and evidence-backed design review to Stage 6, codebase design review and the correction hierarchy to Stage 7, and codebase design surveys as an Evolution input. |
 | 2026-11-19 | Added opt-in acceptance tiers to Stage 8: `low`-tier changes may complete as `accepted_by_policy` once the human declares sensitive paths. |
+| 2026-11-19 | Stage 7: out-of-scope defects go to the human as a decision; naming checks fall back to the Spec's terms while `docs/domain.md` is empty. |

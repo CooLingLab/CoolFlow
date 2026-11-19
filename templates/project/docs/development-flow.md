@@ -15,8 +15,8 @@ Use this reference when planning or reconsidering product direction. Scale the w
 
 ## Three Adaptive Loops
 
-- **Design Spec Loop (Step 6).** Draft → Review → Refine. Resolve important design issues before substantial implementation.
-- **Implementation Loop (Step 7).** Build → Test → Review → Fix. Check code and Spec conformance. Return to the Design Spec Loop when the design needs revision.
+- **Design Spec Loop (Step 6).** Restate the goal → Draft → Review → Refine. Back review findings with evidence and resolve important design issues before substantial implementation.
+- **Implementation Loop (Step 7).** Build → Test → Review → Fix. Check Spec conformance and the change's effect on codebase design. Report defects found outside the task's scope for a human decision. Return to the Design Spec Loop when the design needs revision.
 - **Evolution Loop (cross-stage).** Capture new input → Reassess affected decisions → Adapt. Start at any stage and return to any relevant stage. New evidence can change product assumptions without a prior release or Roadmap update. Keep routine design and code corrections in their local loops, and ask the human to decide major product changes.
 
 Documentation Sync is a post-acceptance step. See the [local documentation standard](documentation.md) for how to record and archive work.

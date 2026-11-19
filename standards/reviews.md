@@ -21,10 +21,11 @@ Resolve and verify material blockers, then confirm the design is ready to implem
 
 - Run relevant tests and check obvious regressions.
 - Review the **new code diff** for correctness, security, readability and maintainability.
-- Check the diff's effect on codebase design: whether it follows existing patterns or introduces one later Agents will copy, whether module interfaces stay small relative to the behavior they hide, and whether names match the ubiquitous language in `docs/domain.md`.
+- Check the diff's effect on codebase design: whether it follows existing patterns or introduces one later Agents will copy, whether module interfaces stay small relative to the behavior they hide, and whether names match the ubiquitous language in `docs/domain.md`, or the Spec's terms while `docs/domain.md` has no content yet.
 - Compare code behavior against Spec and acceptance criteria.
 - Before recording `accepted_by_policy`, check every `low` condition against the final diff; see [acceptance tiers](documentation.md#acceptance-tiers).
 - Resolve discrepancies by changing code or explicitly revisiting requirements with a human.
+- Report defects found outside the change's scope to the human as a decision, with evidence: fix now, open a separate objective, or accept. Do not record them as out of scope and move on.
 - Seek human acceptance of the actual result, unless the change qualifies for `accepted_by_policy`; sync durable docs afterward.
 
 **After acceptance** (human or `accepted_by_policy`), synchronize durable feature/domain/roadmap documentation and archive relevant work records. This is a step, not a separate Knowledge Loop. **At any Development Flow step**, feedback, new ideas, or changing needs that warrant reconsidering product direction, assumptions or scope can activate the cross-stage Evolution Loop, returning to any relevant step. Ordinary design and code corrections remain in their local quality Loops; post-release feedback is only one possible Evolution trigger.
