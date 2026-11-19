@@ -19,6 +19,8 @@ Follow `docs/documentation.md` when creating, updating or archiving project docu
 7. Manage ordinary task lists in the active Agent session.
 8. Before related work, consult relevant existing Solutions when available.
 9. When appropriate, especially for applications and deployed services, commit the package manager's lockfile and configure CI to install in frozen/locked mode. Libraries that intentionally publish dependency ranges may omit it; record that choice and have CI test the supported range.
+10. When a correction could recur, enforce it at the strongest practical layer: architecture or API first, then types, lint rules, tests or CI checks. Add a rule here or a Solution only for what still requires judgment.
+11. Do not add code comments. Express intent through names, types and tests; keep rationale in tests, ADRs, Solutions or commit messages. Exceptions: tool directives, generated-code markers, license headers and documentation comments from which a published API reference is generated. Do not remove existing comments wholesale; record any project convention that requires comments under Project-specific Conventions.
 
 ## Project-specific Conventions
 

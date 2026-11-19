@@ -36,7 +36,7 @@ To decide.
 
 ## Review and approvals
 
-To decide. Record independent design review findings and important human decisions when applicable.
+To decide. Record independent design review findings with their evidence, and important human decisions when applicable. Findings without evidence stay open questions, not blockers.
 
 ## Delivery progress
 

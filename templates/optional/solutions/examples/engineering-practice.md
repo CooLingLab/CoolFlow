@@ -38,6 +38,10 @@ Enumerate every operation that can overwrite, remove, rename or move the protect
 
 The invariant is enforced at the point where the resource is actually modified, rather than relying on every caller to remember a separate check.
 
+## Enforcement
+
+Only the shared boundary module may call the low-level move and delete functions; a lint import rule rejects direct calls from elsewhere. Tests exercise each mutating path against a protected file.
+
 ## When to apply
 
 Use this approach when multiple functions or workflows can mutate the same user-owned resource.

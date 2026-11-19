@@ -240,17 +240,28 @@ A Solution may capture a verified root cause and fix, a technical constraint, a 
 
 Do not store raw brainstorming, every debugging transcript, unverified guesses or information already obvious from code and tests. Capture only after the finding is verified, while its reasoning and evidence are available. Before related work, consult only the Solutions relevant to the task. Revisit records when code, dependencies or external conditions make them stale.
 
-Keep knowledge in its narrowest durable home:
+Keep knowledge in its narrowest durable home, and prefer enforcement over prose (see the [correction hierarchy](#correction-hierarchy)):
+- Architecture, APIs, types, lint rules, tests and assertions: anything that can be enforced mechanically. Agents imitate the code they read, so a constraint expressed in code shapes future work more reliably than a written rule.
 - `docs/work/archive/`: historical evidence of what happened in a completed work item.
 - `docs/solutions/`: reusable engineering findings extracted from experience.
 - `docs/adr/`: why a consequential architecture or technical decision was made.
-- Tests, types and assertions: behavior that can be enforced mechanically.
-- Code comments: local rationale needed beside one code path.
 - `AGENTS.md`: only stable, high-priority instructions that future Agents must consistently follow.
+
+Code comments are not a knowledge home. Agents copy comments and use them to justify workarounds, so a comment tends to spread a hack rather than explain it. Express intent through names, types and tests; keep rationale in a test, ADR, Solution or commit message. Do not add comments, except tool directives, generated-code markers, license headers and documentation comments from which a published API reference is generated. This governs new code: do not remove existing comments wholesale, and a recorded project convention that requires comments takes precedence.
 
 Do not turn experience capture into a mandatory ceremony after every feature or bug fix. The Evolution Loop can produce useful experience at any stage; Solutions are a storage option, not an extra development stage.
 
 These Solutions are **project-local**. If a finding is independently validated across multiple projects, it may be promoted to the developer's shared knowledge base. Only broadly validated development principles belong in CoolFlow's own `methodology/` or `standards/`.
+
+## Correction hierarchy
+
+When a defect or a repeated correction could recur, place the fix at the strongest layer that can hold it:
+
+1. **Make it impossible:** change the architecture, API or data structures so the wrong code cannot be written.
+2. **Make it fail:** add a type, lint rule, test or CI check that rejects it.
+3. **Write it down:** record a Solution or an `AGENTS.md` rule only for what still requires judgment.
+
+Human review is the last line of defense, not the mechanism. A one-off mistake does not need a new rule. Do not restate an enforced constraint as prose; write a Solution only when its reasoning is non-obvious, and state there what now enforces it, or why nothing can.
 
 ## Architecture Decision Records (ADR, optional)
 
@@ -288,4 +299,5 @@ A distributed snapshot is a copy of this standard. When changing this standard, 
 4. Ask a human for product-critical decisions; automate verifiable documentation/implementation tasks.
 5. Create the unified `spec.md` when the chosen objective enters **Design Spec Loop (Step 6)**, not solely because discovery started; use that Loop to review and revise material designs and **Implementation Loop (Step 7)** for tests, code review and Spec conformance. The **Evolution Loop** may be triggered at **any step** by feedback, new ideas, or changing needs, returning to any relevant step when product assumptions, scope or direction need reconsideration; routine quality fixes remain in their local Loops. After acceptance, sync durable docs as a **step**, not a separate Loop. Release and post-release feedback are possible events, not prerequisites for Evolution.
 6. When relevant, consult matching verified Solutions before work; capture only non-obvious, durable and material findings. Record an ADR only for a consequential architecture or technical decision, not every feature or fix.
-7. Keep structure lightweight; never add files solely to satisfy a checklist.
+7. When a correction could recur, apply the correction hierarchy: enforce it through architecture, an API, a type, a lint rule, a test or a CI check before writing a Solution or `AGENTS.md` rule. Do not add code comments beyond the exceptions listed under knowledge homes above.
+8. Keep structure lightweight; never add files solely to satisfy a checklist.

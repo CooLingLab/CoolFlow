@@ -29,7 +29,7 @@ Judge purpose using the standard's role descriptions, not a preferred heading li
 - Domain: ubiquitous language, boundaries, and core rules. Provisional content is allowed.
 - Features/accepted behavior: behavior, constraints, and verification, with links to evidence.
 - Objective Spec: context, goal and non-goals; acceptance criteria; design decisions and trade-offs; implementation and validation approach; open questions distinguished from decisions.
-- Solutions: one focused, verified, reusable finding with evidence.
+- Solutions: one focused, verified, reusable finding with evidence, stating what now enforces it or why nothing can.
 - ADRs: context, drivers, options, decision, and consequences; one consequential decision per file.
 - Architecture: current system architecture, not decision rationale.
 - Navigation in README/AGENTS: accurate entry points and links to the project's documentation rules.

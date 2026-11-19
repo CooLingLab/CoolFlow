@@ -39,6 +39,10 @@ Give each logical create operation a stable idempotency key. Reuse that key for 
 
 The server can identify repeated delivery of one logical operation and avoid applying the side effect twice.
 
+## Enforcement
+
+The create endpoint rejects a request without an idempotency key, so a new client cannot omit it. A regression test replays a dropped-response retry and asserts that only one resource exists.
+
 ## When to apply
 
 Use this pattern when a request may be retried after an uncertain outcome and duplicate side effects would be harmful.

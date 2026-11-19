@@ -18,7 +18,7 @@ The first two Loops are primarily associated with their named stages; the third 
 
 - When a selected objective enters this Loop, draft its unified `spec.md`; earlier discovery may have used the work directory without a Spec. The Spec carries context, goals/non-goals, behavior and acceptance criteria, technical decisions, trade-offs, implementation strategy, and verification. Optional PRD or detailed design can be linked without duplicating content.
 - Independent review is preferably fresh-context. The reviewer reads the **current Spec draft**, linked references and relevant **existing code**, rather than inheriting the drafter's assumptions.
-- Seek missing cases, risky assumptions, overengineering, incompatibilities, feasibility issues, and unclear implementation steps.
+- Seek missing cases, risky assumptions, overengineering, incompatibilities, feasibility issues, and unclear implementation steps. Back each finding with evidence from the Spec, code, a prototype or data; an unsupported hypothetical risk is an open question, not a blocker.
 - Refine the Spec and verify that important blockers are resolved. The human decides product-critical trade-offs.
 - EGM Goldfish is a **recommended optional** review method, not a dependency.
 - Reading existing code to check design feasibility **is not the same as reviewing code newly produced for this task**.
@@ -33,7 +33,8 @@ The first two Loops are primarily associated with their named stages; the third 
 **Goal:** implement the approved behavior and obtain evidence that it works.
 
 - The coding Agent normally manages its own tasks in-session; CoolFlow does not require a persistent task file.
-- Run relevant tests and review the changed code for correctness, security, maintainability and regressions.
+- Run relevant tests and review the changed code for correctness, security, maintainability and regressions, including whether it introduces a pattern that later Agents will copy.
+- When a fixed defect could recur, enforce the fix at the strongest practical layer (architecture or API, then types, lint, tests or CI checks) before writing a rule; see the [correction hierarchy](../standards/documentation.md#correction-hierarchy).
 - Check implementation against the **approved Spec and acceptance criteria**, not just the test suite.
 - When code and Spec diverge, identify whether the implementation is wrong or the requirement needs human reconsideration.
 - If the Spec is incomplete or flawed, **return to the Design Spec Loop**. Never silently rewrite requirements to rationalize broken code.

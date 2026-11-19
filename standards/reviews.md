@@ -12,7 +12,7 @@ Consider independent EGM-style Goldfish Review when a feature is novel, complex,
 - Check assumptions against existing code and constraints.
 - Flag overengineering, alternative approaches and unclear trade-offs.
 - Verify the implementation plan is detailed enough to guide a coding Agent.
-- Report actionable issues and supporting evidence.
+- Report actionable issues, each with supporting evidence from the Spec, code, a prototype or data. Treat a hypothetical risk without evidence as an open question, not a blocker.
 
 Resolve and verify material blockers, then confirm the design is ready to implement before writing significant code. Small changes can use lightweight checks. The review of **existing code** for design feasibility is *not* a review of new implementation.
 
@@ -20,6 +20,7 @@ Resolve and verify material blockers, then confirm the design is ready to implem
 
 - Run relevant tests and check obvious regressions.
 - Review the **new code diff** for correctness, security, readability and maintainability.
+- Check the diff's effect on codebase design: whether it follows existing patterns or introduces one later Agents will copy, whether module interfaces stay small relative to the behavior they hide, and whether names match the ubiquitous language in `docs/domain.md`.
 - Compare code behavior against Spec and acceptance criteria.
 - Resolve discrepancies by changing code or explicitly revisiting requirements with a human.
 - Seek human acceptance of the actual result; sync durable docs afterward.

@@ -12,7 +12,7 @@ A separate Solution is worthwhile when the finding is:
 2. **Durable:** it is likely to remain useful beyond the exact change that revealed it.
 3. **Material:** forgetting it could cause a repeated failure, meaningful risk or substantial rediscovery.
 
-If the code, test, type, assertion or a short code comment already makes the knowledge obvious, do not create a separate document.
+If the code, a test, a type, an assertion or a lint rule already makes the knowledge obvious, do not create a separate document. Prefer adding such a check over writing a Solution whenever the check can hold the knowledge. When a check enforces a finding but the reasoning behind it is non-obvious, a Solution may explain why and link the check under Enforcement.
 
 ## What belongs here?
 
@@ -25,8 +25,8 @@ If the code, test, type, assertion or a short code comment already makes the kno
 
 - Change-specific history and raw implementation evidence: the work item, commit or docs/work/archive/.
 - A consequential project architecture choice and why it was made: docs/adr/.
-- Machine-enforceable behavior: tests, types, assertions or CI checks.
-- A local explanation needed beside one code path: a code comment.
+- Machine-enforceable behavior: architecture or API constraints, types, lint rules, tests, assertions or CI checks.
+- Rationale for one code path: a test name, the commit message or, if consequential, an ADR. Do not use code comments.
 - Stable instructions that every Agent must follow: the project AGENTS.md, but only after the rule is sufficiently important and general.
 
 ## Capture and retrieval

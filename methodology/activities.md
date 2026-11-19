@@ -345,6 +345,11 @@ and acceptance belong to later stages.
 - 6.1 clarifies behavior with rules, concrete examples and questions. Acceptance criteria
   should be observable and testable. Open questions remain explicit rather than being
   silently converted into assumptions.
+- Before drafting a Spec for substantial or ambiguous work, restate the goal and the
+  problem in your own words and confirm them with the human. Then resolve open decisions
+  one question at a time until the decision tree is settled. Answer from code, documents
+  or earlier decisions where possible; ask the human only what those sources cannot
+  answer. For a small, clear change, state the goal in the Spec and proceed.
 - 6.2 reads the existing system for design feasibility. This is not the same as reviewing
   code newly produced for the current task; code review belongs to the Implementation
   Loop.
@@ -362,6 +367,10 @@ and acceptance belong to later stages.
 - 6.4 reviews the design before significant implementation. Use an independent reviewer
   for novel, complex, risky or irreversible work; use a lightweight checklist for small
   changes. Resolve material blockers; product-critical trade-offs remain human decisions.
+- Each 6.4 finding cites its evidence: a Spec section, existing code, a prototype result or
+  data. A hypothetical risk without evidence is an open question, not a blocker. When a
+  design choice is genuinely uncertain, a small prototype or a comparison of competing
+  designs usually settles it faster than further review of prose.
 - Maintain one authoritative Spec. Optional PRD, design and task documents must be linked,
   not duplicated. A small fix may use a concise Spec or checklist rather than every
   section of the template.
@@ -379,6 +388,8 @@ the boundary choices but are not normative for CoolFlow:
   rules, examples and questions clarify acceptance criteria before development.
 - ADR GitHub organization, [Architectural Decision Records](https://adr.github.io/):
   capture consequential decisions with their context, rationale, trade-offs and consequences.
+- Matt Pocock, [grill-me](https://github.com/mattpocock/skills/tree/main/skills/productivity/grill-me):
+  interview one question at a time until every branch of the design tree is resolved.
 
 ## 7. Implementation Loop
 
@@ -394,7 +405,7 @@ silently.
 | 7.1 | Implement the smallest verifiable increment | How can the Spec be implemented in small steps while keeping the code runnable? | Working code changes, necessary tests and version checkpoints | Does not expand the approved Spec; does not refactor unrelated code |
 | 7.2 | Test and verify behavior | Does the code satisfy the acceptance criteria, including normal, boundary and failure paths? | Automated test results, build/lint/type-check results and necessary manual evidence | Does not treat compilation as behavior verification; does not skip failing tests |
 | 7.3 | Review the code and Spec conformance | Is the change correct, secure and maintainable, and does it match the approved Spec? | Code review findings, Spec-conformance check and identified issues | Not a repeat of design review; not final acceptance |
-| 7.4 | Fix, re-verify and record evidence | Are the issues actually resolved, and what remains unverified? | Fixed code, re-verification results, evidence and unresolved issues | Does not apply surface patches; does not silently rewrite requirements to fit the code |
+| 7.4 | Fix, re-verify and record evidence | Are the issues actually resolved, and what remains unverified? | Fixed code, re-verification results, evidence, enforced checks where practical and unresolved issues | Does not apply surface patches; does not silently rewrite requirements to fit the code |
 
 ### Rationale and boundaries
 
@@ -408,10 +419,20 @@ silently.
   conformance: correctness, security, readability, maintainability, regressions, tests
   and documentation, plus the approved acceptance criteria. An independent reviewer or
   subagent is optional when the change is large or risky.
+- 7.3 also checks the change's effect on codebase design. Agents imitate the code they
+  read, so ask whether the change follows existing patterns or introduces one that later
+  work will copy; whether it keeps substantial behavior behind a small interface rather
+  than scattering shallow helpers; and whether names match the ubiquitous language in
+  `docs/domain.md`.
 - 7.4 finds the root cause before fixing. If the implementation is wrong, fix it and
   re-run the relevant checks. If the Spec is wrong, return to the Design Spec Loop instead
   of silently changing requirements. If two fixes fail against the same check, verify the
   underlying assumption rather than continuing to patch.
+- After fixing a root cause, ask whether the same class of defect can recur. If it can,
+  apply the [correction hierarchy](../standards/documentation.md#correction-hierarchy):
+  make it impossible through architecture, an API or data structures; otherwise make it
+  fail through a type, lint rule, test or CI check; write a Solution or `AGENTS.md` rule
+  only for what still requires judgment.
 - TDD is optional. Use Red–Green–Refactor when it suits the change; do not force it onto
   exploratory or trivial edits. Use the project's existing test, build and CI commands.
 - Tasks normally live in the Agent session. Create `tasks.md` only when progress must
@@ -433,6 +454,11 @@ the boundary choices but are not normative for CoolFlow:
   integrate frequently, automate the build and tests, and fix broken builds immediately.
 - CoolFlow, [Prove It Works](golden-rules.md): require direct, reproducible evidence rather
   than an Agent's completion claim.
+- Matt Pocock, [codebase-design](https://github.com/mattpocock/skills/blob/main/skills/engineering/codebase-design/SKILL.md):
+  deep modules keep substantial behavior behind a small interface at a clean seam.
+- Lauren Tan, [PStack](https://github.com/cursor/plugins/tree/main/pstack): Agents imitate
+  existing code, so push each recurring correction into architecture or a deterministic
+  check rather than another written rule.
 
 ## 8. Human Acceptance → Documentation Sync → Release
 
@@ -517,6 +543,10 @@ the full lifecycle.
 - E.1 makes the source and evidence visible before acting. Inputs can include user
   research, prototype or usability findings, technical feasibility changes, feature
   requests, new ideas, post-release feedback, or changes in the market or environment.
+- An optional, occasional codebase design survey (for example, of module depth,
+  duplication or drifting patterns) can also produce input. Its findings usually become a
+  new small objective; treat a finding as Evolution input only when it challenges a
+  consequential technical decision.
 - E.2 checks whether the input challenges an existing product decision. A defect or test
   failure within agreed requirements remains in the Implementation Loop; a flawed design
   within agreed intent remains in the Design Spec Loop. Use Evolution when learning
@@ -560,3 +590,4 @@ are not normative for CoolFlow:
 | 2026-11-06 | Agreed the Stage 7 implementation, verification, review and evidence boundaries. |
 | 2026-11-06 | Agreed the Stage 8 acceptance, documentation sync, release authorization and verification boundaries. |
 | 2026-11-06 | Agreed the cross-stage Evolution Loop activities for capturing input, reassessing affected decisions and adapting relevant work. |
+| 2026-11-19 | Added goal restatement and evidence-backed design review to Stage 6, codebase design review and the correction hierarchy to Stage 7, and codebase design surveys as an Evolution input. |

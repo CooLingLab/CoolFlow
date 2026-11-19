@@ -32,6 +32,10 @@ What fix or practice worked? State the action a future developer or Agent should
 
 Explain the underlying reason, constraint or mechanism that makes the guidance effective.
 
+## Enforcement
+
+What now prevents a recurrence: an architecture or API constraint, a type, a lint rule, a test or a CI check? Link it. If nothing enforces it, explain why it still requires judgment.
+
 ## When to apply
 
 Describe the conditions under which this Solution is useful.
