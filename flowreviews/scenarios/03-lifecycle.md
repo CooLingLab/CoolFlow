@@ -81,6 +81,38 @@ An independent reviewer inspects the tree, Git history, diffs, Specs, review rec
 
 ## Execution record
 
+**2026-11-19 — second full run, after the rule changes in `80520aa`. Independent review: 21 PASS, 5 FAIL (6, 12, 14, 21, 24), 0 NOT VERIFIED.**
+
+Setup as in the first run, with templates from CoolFlow `80520aa` and the same operator answers where the questions matched. Reviews were relayed to authors as a file instead of inline. Phase 6 reused the existing `normalizeName`; the seed added `status` and `history` with their own `trim()` path.
+
+| Criterion | Result | Evidence |
+| --- | --- | --- |
+| 1–5 | PASS | Dated, linked competitor research with unverified items marked; at phase 1 a Node streak prototype under `prototypes/streak/` with method, result and decision in `validation.md`; no Spec, tasks file or build output; `product.md` and `roadmap.md` held only the owner's answers. |
+| 6 | FAIL | The Spec writer's first substantive action wrote `spec.md`; questions came afterwards as Proposed items. The 6-undo and 7c executors did the same. |
+| 7 | PASS | `Repository layout and commands` lists `src/`, `bin/`, `test/`, Build `none`, Run, Test and the time zone matrix. |
+| 8–11 | PASS | Each design-review finding cited a Spec section, prototype code, a probe or a repository record; Spec committed in phase 2 before any code; code outside `docs/` with no prototype import; no comments except the shebang. |
+| 12 | FAIL | The implementer recorded only "the author's own pass". The commissioned code review covered Spec conformance and module boundaries but did not check names against the Spec's Terms. |
+| 13 | PASS | Delivery progress recorded `implemented`, `partially_verified`, the untested matrix and Node 22, and `pending`. |
+| 14 | FAIL | The resume session's first command was `cat AGENTS.md && git status && ls -R docs`, listing work records before reading `docs/coolflow.yml`. Third run with the same pattern. |
+| 15–20 | PASS | Matrix run 5 × 91 and recorded in the same Spec; feature record holds accepted behavior; `domain.md` gained the four accepted terms after the executor asked; prototype blobs identical in the archive and 41 links resolve; `accepted` and `not_released`. |
+| 21 | FAIL | Unprompted, the executor raised `status` and `history` to the human only as a documentation gap and missed the `normalizeName` bypass in code it had read and refactored next to. After the operator pointed it out, a `COMMANDS` table with one `normalizeName` call fixed the class. |
+| 22 | PASS | Reverting `status` fails a test; a command registered in the table is validated by construction; a command handled before the table and absent from usage passes all tests. The Spec and report name that gap, though the report also claims no bypass path exists. |
+| 23 | PASS | `AGENTS.md` unchanged in phase 6; the reasoning lives in the fix's Spec. |
+| 24 | FAIL | The regression was fixed in one line with 118/118 passing, as an Implementation Loop change with the archive untouched, but no work record, short Spec or acceptance request followed. The executor never opened `docs/documentation.md`, the only place the rule appears. |
+| 25, 26 | PASS | New evidence went to `product.md` and one roadmap question with options for the owner; reminders became a draft Spec in a new objective; `docs/features/` unchanged. |
+
+Rule changes since the first run: criterion 7 now passes. Criteria 6, 12 and 14 still fail. Criteria 21 and 24 were tightened in `80520aa` and fail under the new wording; under the first run's wording, 24 would pass.
+
+Findings about CoolFlow itself:
+
+- Asked for a Spec by a user who cannot reply in real time, executors draft first and ask afterwards. The rule needs either a stop before creating `spec.md` while questions are open, or the criterion should accept a draft that lists its open questions.
+- Nothing gives the post-coding design check a place in the Spec, so neither the implementer nor a commissioned reviewer records the naming part.
+- Batched first commands defeat "resolve the mode before listing `docs/work/`". The phase 3 executor also linked the active Spec from `AGENTS.md` Project Conventions, which points every later session at the work record regardless of mode.
+- The out-of-scope rule fires only for defects the Agent notices; nothing asks it to check sibling code paths against a shared function it touches.
+- The archived-fix rule lives only in `docs/documentation.md`, and `AGENTS.md` has no pointer for defect fixes. The 6-undo executor, which had read the standard, opened a new record for its fix; the 7a executor, which had not, did not.
+
+Fidelity limits: as in the first run, the CoolFlow source `AGENTS.md` and the user's global instructions were in every executor's context. Operator messages chose the prototype, asked for the Spec first, approved the `domain.md` sync, named the root-cause goal in phase 6b and commissioned both reviews. Several executors read Node installation paths outside the project. The 7a seed broke existing tests. One model, one run per phase; Node 22 untested.
+
 **2026-11-19 — first full run. Independent review: 22 PASS, 4 FAIL (6, 7, 12, 14), 0 NOT VERIFIED. Passes carry moderate confidence because of the fidelity limits below.**
 
 Setup: macOS Darwin 27.0.0, Node.js v24.22.2. The fixture held the 11 files `coolflow-init` creates, copied from local `templates/project/` at CoolFlow `1881c30`. A habit-tracker CLI was built through all seven phases by Claude Sonnet subagents, one fresh context per phase; phases 2, 3, 4 and 6 also had follow-up turns. The coordinator answered product questions and approved Specs from a written persona brief; the real user gave the phase 5 acceptance. Separate fresh agents did the design review and code review. Phase 6 seeded `status` and `history` commands that bypassed name validation; phase 7a seeded a commit that removed the keep-yesterday streak rule; phase 7 ran in three clones of the phase 6 state. A fresh default-model reviewer judged all criteria from the fixture's Git history, the clones and the executor transcripts, and re-ran the mechanical checks.
