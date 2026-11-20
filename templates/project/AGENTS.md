@@ -2,7 +2,7 @@
 
 ## Project Context
 
-For project planning, changes in product direction, or requests to resume work without a named objective, first check `docs/coolflow.yml` and [CoolFlow context preference](docs/documentation.md#coolflow-context-preference). Resolve the mode before opening a work record or choosing one to resume. Missing configuration defaults to `manual`. For a named objective, Spec, or concrete maintenance task, skip the mode check and read the relevant files directly. For explicit requests to review the methodology or report project progress, use [Development Flow](docs/development-flow.md) or the relevant project records.
+For project planning, changes in product direction, or requests to resume work without a named objective, first check `docs/coolflow.yml` and [CoolFlow context preference](docs/documentation.md#coolflow-context-preference). Resolve the mode before opening a work record or choosing one to resume. Missing configuration defaults to `manual`. In `manual` mode, ask the user which objective to resume before opening any work record, even when only one is active; in `auto` mode, resume the unique active objective or ask when there is no clear match. For a named objective, Spec, or concrete maintenance task, skip the mode check and read the relevant files directly. For explicit requests to review the methodology or report project progress, use [Development Flow](docs/development-flow.md) or the relevant project records.
 
 ## Documentation
 

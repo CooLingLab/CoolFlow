@@ -46,9 +46,9 @@ Ask the Agent to implement the smallest agreed increment, then stop the session 
 
 ### 4. Resume in a new session
 
-Start a fresh context with only the project directory and “Continue the current work.”
+Start a fresh context with only the project directory and “Continue the current work.” Also run this phase once from the same state with `context_mode: manual` in a disposable copy; only that run can show whether the mode is obeyed.
 
-14. The Agent resolves the mode from `docs/coolflow.yml` before opening a work record or choosing one to resume; listing the tree first is acceptable. **(M)** `AGENTS.md` links nothing under `docs/work/` at any phase.
+14. The Agent resolves the mode from `docs/coolflow.yml` before opening a work record or choosing one to resume; listing the tree first is acceptable. In the `manual` copy it asks which objective to resume and opens no work record before the answer. **(M)** `AGENTS.md` links nothing under `docs/work/` at any phase.
 15. It finds the existing Spec, identifies the outstanding check and actually runs it.
 16. **(M)** It updates the same Spec: no second Spec, tracker or status file, and discovery is not reopened.
 
@@ -80,6 +80,15 @@ Give three inputs in separate contexts: a defect in the accepted behavior; new e
 An independent reviewer inspects the tree, Git history, diffs, Specs, review records, work records and command output, and reports PASS, FAIL or NOT VERIFIED per criterion with evidence. Release, post-release feedback, existing production codebases and other stacks are outside this scenario.
 
 ## Execution record
+
+**2026-11-20 — phase 4 in `manual` mode. Criterion 14: FAIL before the `AGENTS.md` change, PASS after it.**
+
+Both runs started from the partial rerun's phase 3 state with `context_mode: manual`, prompt "Continue the current work."
+
+- Before the change, a Sonnet subagent read `docs/coolflow.yml` and the Spec in the same command and resumed the work without asking. The template `AGENTS.md` said to resolve the mode but not what `manual` requires; the ask-first rule lived only in the table in `docs/documentation.md`, which it did not read.
+- After the template `AGENTS.md` stated the `manual` behavior, an isolated executor (`claude -p --safe-mode`, temporary config directory, no CoolFlow or user instructions in context) listed the tree, read `docs/coolflow.yml`, opened no work record and asked which objective to resume, citing `AGENTS.md`. Given "continue 001-habit-cli" in the same session, it ran the matrix (5 × 62) and updated the same Spec. Cost: $0.06 and $0.13.
+
+Limits: one run each; the operator, not an independent reviewer, judged these from the transcripts; the isolated executor read Node installation paths outside the project.
 
 **2026-11-20 — partial rerun of phases 3–4 and 7a, after `527205e` and `108b1e8`. Independent review: 7 PASS (10, 11, 13–16, 24), 1 FAIL (12 under its earlier wording; PASS under the current one).**
 
