@@ -76,7 +76,7 @@ These rules guide **human judgment** at every point in the [Development Flow](fl
 
 - **Golden Rules:** short, durable principles for the **human developer**.
 - **Flow and Loops:** the recommended process for developing and reviewing software.
-- **AGENTS.md:** explicit instructions and constraints for **AI Agents**, including approval boundaries, code changes, validation and reporting.
+- **AGENTS.md:** explicit instructions and constraints for **AI Agents**, including approval boundaries, code changes, validation and reporting. Keep it short: a constraint that architecture, a type, a lint rule, a test or a CI check can hold belongs there, not in prose (see the [constraint hierarchy](../standards/documentation.md#constraint-hierarchy)).
 - **Skills and tools:** optional mechanisms for executing or automating repeatable work.
 
 Keep this separation: do not mechanically turn Golden Rules into additional mandatory documents, status files, Skills, or per-turn Agent output. Concrete Agent instructions can be specified separately when the developer chooses to adopt them.

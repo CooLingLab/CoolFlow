@@ -35,7 +35,7 @@ CoolFlow 有**一条开发流程**和**三个自适应循环（Adaptive Loops）
 
 ## 2. Implementation Loop — 代码质量
 
-`Build → Test → Review → Fix ↻`
+`Test → Build → Review → Fix ↻`
 
 **目标：** 实现已批准的行为，并取得其确实可用的证据。
 
@@ -44,7 +44,7 @@ CoolFlow 有**一条开发流程**和**三个自适应循环（Adaptive Loops）
 - 运行相关测试，并评审变更代码的正确性、安全性、可维护性和回归风险，包括它是否引入了后续
   Agent 会照抄的模式。
 - 当已修复的缺陷可能再次出现时，先在最强的可行层级强制执行修复（先架构或 API，再类型、Lint、
-  测试或 CI 检查），再考虑写规则；参见[纠正层级](../standards/documentation.zh-CN.md#纠正层级)。
+  测试或 CI 检查），再考虑写规则；参见[约束层级](../standards/documentation.zh-CN.md#约束层级)。
 - 对照**已批准的 Spec 和验收条件**检查实现，而不仅仅是测试套件。
 - 当代码与 Spec 出现分歧时，判断是实现错误，还是需求需要人类重新考虑。
 - 如果 Spec 不完整或有缺陷，**返回 Design Spec Loop**。绝不要为了让有问题的代码显得合理而

@@ -28,14 +28,14 @@ The first two Loops are primarily associated with their named stages; the third 
 
 ## 2. Implementation Loop — code quality
 
-`Build → Test → Review → Fix ↻`
+`Test → Build → Review → Fix ↻`
 
 **Goal:** implement the approved behavior and obtain evidence that it works.
 
 - The coding Agent normally manages its own tasks in-session; CoolFlow does not require a persistent task file.
 - Start from the Spec's verification plan: write the tests for the acceptance criteria before the implementation and see them fail, then build until they pass. Before feature code, the project needs one command that runs every automated check: the tests and the stack's usual static check (a type checker, or a linter where there is none), and CI that runs it once the repository has a hosted remote; leaving any of these out is the human's decision. Exploratory, visual and trivial edits may verify afterward.
 - Run relevant tests and review the changed code for correctness, security, maintainability and regressions, including whether it introduces a pattern that later Agents will copy.
-- When a fixed defect could recur, enforce the fix at the strongest practical layer (architecture or API, then types, lint, tests or CI checks) before writing a rule; see the [correction hierarchy](../standards/documentation.md#correction-hierarchy).
+- When a fixed defect could recur, enforce the fix at the strongest practical layer (architecture or API, then types, lint, tests or CI checks) before writing a rule; see the [constraint hierarchy](../standards/documentation.md#constraint-hierarchy).
 - Check implementation against the **approved Spec and acceptance criteria**, not just the test suite.
 - When code and Spec diverge, identify whether the implementation is wrong or the requirement needs human reconsideration.
 - If the Spec is incomplete or flawed, **return to the Design Spec Loop**. Never silently rewrite requirements to rationalize broken code.

@@ -195,7 +195,7 @@ After classification:
 - The check cannot see user-visible behavior that no existing test covers. The listed objectives are where the human looks for such changes.
 - A `low` change has no user-visible behavior change, so it rarely affects `docs/features/`. Sync other affected records, such as architecture, and archive work as after human acceptance.
 - Release still requires separate explicit authorization.
-- When a misclassification is found, propose to the human how to tighten the policy through the [correction hierarchy](#correction-hierarchy), for example a new sensitive path or a stricter check. Only the human changes the policy; changing CI to run the check is itself a `high` change.
+- When a misclassification is found, propose to the human how to tighten the policy through the [constraint hierarchy](#constraint-hierarchy), for example a new sensitive path or a stricter check. Only the human changes the policy; changing CI to run the check is itself a `high` change.
 
 ## Recording results from Agent Skills
 
@@ -297,7 +297,7 @@ A Solution may capture a verified root cause and fix, a technical constraint, a 
 
 Do not store raw brainstorming, every debugging transcript, unverified guesses or information already obvious from code and tests. Capture only after the finding is verified, while its reasoning and evidence are available. Before related work, consult only the Solutions relevant to the task. Revisit records when code, dependencies or external conditions make them stale.
 
-Keep knowledge in its narrowest durable home, and prefer enforcement over prose (see the [correction hierarchy](#correction-hierarchy)):
+Keep knowledge in its narrowest durable home, and prefer enforcement over prose (see the [constraint hierarchy](#constraint-hierarchy)):
 - Architecture, APIs, types, lint rules, tests and assertions: anything that can be enforced mechanically. Agents imitate the code they read, so a constraint expressed in code shapes future work more reliably than a written rule.
 - `docs/work/archive/`: historical evidence of what happened in a completed work item.
 - `docs/solutions/`: reusable engineering findings extracted from experience.
@@ -310,13 +310,15 @@ Do not turn experience capture into a mandatory ceremony after every feature or 
 
 These Solutions are **project-local**. If a finding is independently validated across multiple projects, it may be promoted to the developer's shared knowledge base. Only broadly validated development principles belong in CoolFlow's own `methodology/` or `standards/`.
 
-## Correction hierarchy
+## Constraint hierarchy
 
-When a defect or a repeated correction could recur, place the fix at the strongest layer that can hold it:
+Place every constraint at the strongest layer that can hold it, whether it comes from a design decision, an acceptance criterion, a project convention or a defect that could recur:
 
-1. **Make it impossible:** change the architecture, API or data structures so the wrong code cannot be written.
+1. **Make it impossible:** shape the architecture, API or data structures so the wrong code cannot be written.
 2. **Make it fail:** add a type, lint rule, test or CI check that rejects it.
 3. **Write it down:** record a Solution or an `AGENTS.md` rule only for what still requires judgment.
+
+Apply it when designing, not only after a defect: the Spec's verification plan names the check behind each acceptance criterion and the design constraints that types, lint rules or tests enforce, and the project's check command exists before feature code.
 
 A defect found outside the current task's scope is still reported. Present it to the human as a decision, with its evidence: fix it now, open a separate objective, or accept it. Do not defer it silently.
 
@@ -356,5 +358,5 @@ CoolFlow conformance reviews compare this project's documents with the current C
 4. Ask a human for product-critical decisions; automate verifiable documentation/implementation tasks.
 5. Create the unified `spec.md` when the chosen objective enters **Design Spec Loop (Step 6)**, not solely because discovery started; use that Loop to review and revise material designs and **Implementation Loop (Step 7)** for tests, code review and Spec conformance. The **Evolution Loop** may be triggered at **any step** by feedback, new ideas, or changing needs, returning to any relevant step when product assumptions, scope or direction need reconsideration; routine quality fixes remain in their local Loops. After acceptance, sync durable docs as a **step**, not a separate Loop. Release and post-release feedback are possible events, not prerequisites for Evolution.
 6. When relevant, consult matching verified Solutions before work; capture only non-obvious, durable and material findings. Record an ADR only for a consequential architecture or technical decision, not every feature or fix.
-7. When a correction could recur, apply the correction hierarchy: enforce it through architecture, an API, a type, a lint rule, a test or a CI check before writing a Solution or `AGENTS.md` rule. Do not add code comments beyond the exceptions listed under knowledge homes above.
+7. Apply the constraint hierarchy to every constraint and to every correction that could recur: enforce it through architecture, an API, a type, a lint rule, a test or a CI check before writing a Solution or `AGENTS.md` rule. Do not add code comments beyond the exceptions listed under knowledge homes above.
 8. Keep structure lightweight; never add files solely to satisfy a checklist.

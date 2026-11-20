@@ -435,7 +435,7 @@ silently.
   of silently changing requirements. If two fixes fail against the same check, verify the
   underlying assumption rather than continuing to patch.
 - After fixing a root cause, ask whether the same class of defect can recur. If it can,
-  apply the [correction hierarchy](../standards/documentation.md#correction-hierarchy):
+  apply the [constraint hierarchy](../standards/documentation.md#constraint-hierarchy):
   make it impossible through architecture, an API or data structures; otherwise make it
   fail through a type, lint rule, test or CI check; write a Solution or `AGENTS.md` rule
   only for what still requires judgment.
