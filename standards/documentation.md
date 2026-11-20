@@ -156,7 +156,7 @@ acceptance:
 
 **Matching.** Each entry is a path relative to the repository root and matches that file or anything below it; globs are not supported, and matching is case-sensitive. A change touches a sensitive path when the old or new path of any added, changed, renamed, moved or deleted file matches an entry.
 
-**The policy is human-owned.** The policy is the `acceptance` section of `docs/coolflow.yml`, this section of the local documentation standard and the acceptance rule in `AGENTS.md`. An Agent must not create, edit or remove any part of it, even when asked; it may propose a change for the human to make. The only exception is initialization, or an adoption or upgrade the human approved, which may copy the policy text verbatim from the CoolFlow templates; the `acceptance` section itself is always written by the human.
+**The policy is human-owned.** The policy is the `acceptance` section of `docs/coolflow.yml`, this section of the local documentation standard and the acceptance rule in `AGENTS.md`. An Agent must not create, edit or remove any part of it, even when asked or given explicit approval; it may propose a change, and the human makes it. The only exception is initialization, or an adoption or upgrade the human approved, which may copy the policy text verbatim from the CoolFlow templates; the `acceptance` section itself is always written by the human.
 
 | Tier | Applies when | Acceptance |
 | --- | --- | --- |
@@ -176,7 +176,7 @@ A change is `low` only when all of the following hold:
 
 Classification rules:
 
-- Only an objective whose planned tier appears in a revision committed before any implementation change can be `low`. Design review checks the planned tier.
+- Only an objective whose planned tier appears in a revision committed before any implementation change can be `low`. Design review checks the planned tier. A task that would otherwise have no Spec records the planned tier in a short Spec at `docs/work/<objective>/spec.md`: the goal, the planned tier and the facts behind it, committed before the implementation.
 - An Agent may raise a recorded tier but never lower it; only the human can. When unsure, choose the higher tier.
 - Before recording `accepted_by_policy`, check every condition against the final diff, not the plan: the cumulative diff, including uncommitted changes, from the revision before implementation started to the revision proposed for acceptance. An independent reviewer, either a fresh-context Agent or the human, performs this check; the implementing Agent's self-assessment alone is not enough. If any condition fails, the tier rises.
 - Record the final tier, both revisions bounding the final diff, the reviewer and the evidence in `Delivery progress`; the Spec's `Acceptance tier` line holds the planned tier.
@@ -238,6 +238,7 @@ A complete Spec should be comprehensible by a new Agent and provide:
 - User requirements and concrete acceptance criteria.
 - Design/architecture decisions and major alternative trade-offs.
 - Repository layout: source and test paths, kept outside `docs/`, and the build, run and test commands, with `none` where a step does not exist.
+- Planned acceptance tier with its supporting facts, when the project declares an acceptance policy.
 - Review records: design review findings with their evidence, and after coding, the code review's findings on Spec conformance and codebase design (existing patterns, module interfaces, names against `docs/domain.md` or, until it has content, the Spec's terms) with their evidence, or a note that there were none.
 - Implementation strategy, dependencies and meaningful validation method.
 - Open questions / assumptions clearly distinguished from decisions.
