@@ -40,13 +40,11 @@ To decide. Record independent design review findings with their evidence, and im
 
 After coding, record the code review's findings on Spec conformance and codebase design (existing patterns, module interfaces, names against `docs/domain.md` or this Spec's terms) with their evidence, or note that there were none.
 
-Acceptance tier (planned, before implementation): To decide (`high`, `standard` or `low`, with the supporting facts; only when the project declares an acceptance policy).
-
 ## Delivery progress
 
 <!-- Optional until there is evidence. Record each supported field and its scope or revision.
 - Implementation: <not_started | in_progress | implemented> — observed changes and scope
 - Verification: <not_verified | partially_verified | verified> — checks, results and gaps
-- Acceptance: <pending | accepted | accepted_by_policy | changes_requested> — explicit human decision and scope, or the final tier and the final-diff evidence for every low condition behind accepted_by_policy
+- Acceptance: <pending | accepted | accepted_by_policy | changes_requested> — explicit human decision and scope, or, for accepted_by_policy, the declared check's command, base and head revisions, exit status and output summary
 - Release: <not_released | released> — authorization, actual outcome and available post-release checks
 Use an existing authoritative acceptance or delivery record if project conventions place this information there. -->

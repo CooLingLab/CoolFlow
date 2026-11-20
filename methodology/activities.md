@@ -486,9 +486,9 @@ is never inferred from implementation or documentation sync.
   may make the decision after inspecting the result. Complex or business-critical work may
   involve representative users in acceptance testing, but a formal UAT ceremony is not
   required for every change.
-- A project can delegate acceptance of `low`-tier changes to evidence by declaring
-  sensitive paths; see [acceptance tiers](../standards/documentation.md#acceptance-tiers).
-  The human sets the policy, the Agent applies it, and the result is recorded as
+- A project can delegate acceptance of `low`-tier changes to a check it owns by declaring
+  it in `docs/coolflow.yml`; see [acceptance tiers](../standards/documentation.md#acceptance-tiers).
+  The human sets the policy and writes the check, the Agent runs it, and the result is recorded as
   `accepted_by_policy`, never as `accepted`. Without a declared policy, every change needs
   a human decision.
 - If the human requests a code change, return to Step 7. If the requirements or design
@@ -601,3 +601,4 @@ are not normative for CoolFlow:
 | 2026-11-19 | Added goal restatement and evidence-backed design review to Stage 6, codebase design review and the correction hierarchy to Stage 7, and codebase design surveys as an Evolution input. |
 | 2026-11-19 | Added opt-in acceptance tiers to Stage 8: `low`-tier changes may complete as `accepted_by_policy` once the human declares sensitive paths. |
 | 2026-11-19 | Stage 7: out-of-scope defects go to the human as a decision; naming checks fall back to the Spec's terms while `docs/domain.md` is empty. |
+| 2026-11-20 | Stage 8: `low`-tier changes complete as `accepted_by_policy` when a check the project declares and owns passes, instead of a planned tier and an independent review. |

@@ -84,7 +84,7 @@ For Steps 6–8, follow the local standard. The default CoolFlow destination is 
 
 - **Implementation** (`not_started`, `in_progress`, `implemented`): use observable changes and their scope or revision. Set `implemented` when the agreed behavior is supported by evidence.
 - **Verification** (`not_verified`, `partially_verified`, `verified`): record actual checks, results and gaps. Use `partially_verified` when part of the required verification remains open.
-- **Acceptance** (`pending`, `accepted`, `accepted_by_policy`, `changes_requested`): record the human’s explicit decision and scope. Record `accepted_by_policy` only for a `low`-tier change that meets every condition of the local acceptance tiers, with the supporting facts; never record it as `accepted`. Use `pending` when a decision is known to be outstanding. After acceptance, sync affected durable documents within the authorized scope and under the local Documentation Sync rules.
+- **Acceptance** (`pending`, `accepted`, `accepted_by_policy`, `changes_requested`): record the human’s explicit decision and scope. Record `accepted_by_policy` only for a `low`-tier change whose declared check passed under the local acceptance tiers, with the command, revisions and result; never record it as `accepted`. Use `pending` when a decision is known to be outstanding. After acceptance, sync affected durable documents within the authorized scope and under the local Documentation Sync rules.
 - **Release** (`not_released`, `released`): record explicit authorization and actual outcome separately. Use `released` only with evidence of what shipped and where. Include available post-release checks. Do not initiate a release.
 
 Omit unknown fields and report material evidence gaps. Use a negative status only when it is established for the stated scope. Keep earlier verification, acceptance and release evidence scoped to its prior version when later changes invalidate its applicability. Use evidence from the current task or linked records and explicit human decisions already given. Update at a meaningful checkpoint or before finishing authorized work. A separate recap from the user is only needed for missing information.
@@ -102,7 +102,7 @@ Omit unknown fields and report material evidence gaps. Use a negative status onl
 
 ## Boundaries
 
-- Record acceptance only from an explicit human decision, or `accepted_by_policy` only when every local `low` condition is already evidenced against the final diff; never decide the tier yourself. Record release only from evidence of its actual outcome. Never grant acceptance, authorize release or infer production readiness.
+- Record acceptance only from an explicit human decision, or `accepted_by_policy` only when a passing run of the project's declared check on the final diff is already evidenced; never decide the tier yourself. Record release only from evidence of its actual outcome. Never grant acceptance, authorize release or infer production readiness.
 - Do not edit `AGENTS.md` or the local documentation standard unless the user separately asks; if the standard itself is unclear or contradictory, report it.
 - Do not stage, commit, push or archive work unless the user explicitly asks.
 - Do not summarize the chat into a document. Record decisions, evidence and open questions.

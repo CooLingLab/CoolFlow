@@ -50,4 +50,4 @@ Terms that change meaning across layers:
 
 ## Open questions
 
-- Where the `low` acceptance check is implemented: by the project Agent's own judgment, by a reviewer Agent, or by a check command the target project declares and owns.
+None recorded. The `low` acceptance check is a command the target project declares and owns (`acceptance.low_check`); CoolFlow defines what it should cover.

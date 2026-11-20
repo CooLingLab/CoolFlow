@@ -143,20 +143,24 @@ A fix to behavior whose objective is already archived is new work. Do not reopen
 
 ## Acceptance tiers
 
-Human acceptance is the default for every work objective. A project may delegate acceptance of **low-tier** changes to evidence by declaring `acceptance.sensitive_paths` in `docs/coolflow.yml`:
+Human acceptance is the default for every work objective. A project may delegate acceptance of **low-tier** changes to a check it owns by declaring `acceptance.low_check` in `docs/coolflow.yml`:
 
 ```yaml
 acceptance:
+  low_check: scripts/acceptance-check.sh
   sensitive_paths:
     - migrations/
     - src/auth/
+    - scripts/acceptance-check.sh
 ```
 
-**Declaration.** The value must be a list of strings and may be empty (`sensitive_paths: []`); declaring it is the human's explicit delegation. If the file is missing or cannot be parsed, the key is absent, or the value is not a list of strings, no change can be `low`; report an invalid value when consulting it. An entry that contains `*`, `?` or `[`, starts with `/` or `./`, or contains `..` also makes the declaration invalid. Without a valid declaration, tiers are not required and every change needs human acceptance.
+**Declaration.** `low_check` is a command, run from the repository root, that the project owner writes and maintains; declaring it is the human's explicit delegation. `sensitive_paths` is optional: a list of strings, possibly empty, of paths whose changes are always `high`. If the file is missing or cannot be parsed, `low_check` is absent or not a non-empty string, or `sensitive_paths` is present but not a list of strings, no change can be `low`; report an invalid value when consulting it. An entry that contains `*`, `?` or `[`, starts with `/` or `./`, or contains `..` also makes the declaration invalid. Without a valid declaration, every change needs human acceptance.
 
-**Matching.** Each entry is a path relative to the repository root and matches that file or anything below it; globs are not supported, and matching is case-sensitive. A change touches a sensitive path when the old or new path of any added, changed, renamed, moved or deleted file matches an entry.
+**Matching.** Each `sensitive_paths` entry is a path relative to the repository root and matches that file or anything below it; globs are not supported, and matching is case-sensitive. A change touches a sensitive path when the old or new path of any added, changed, renamed, moved or deleted file matches an entry.
 
-**The policy is human-owned.** The policy is the `acceptance` section of `docs/coolflow.yml`, this section of the local documentation standard and the acceptance rule in `AGENTS.md`. An Agent must not create, edit or remove any part of it, even when asked or given explicit approval; it may propose a change, and the human makes it. The only exception is initialization, or an adoption or upgrade the human approved, which may copy the policy text verbatim from the CoolFlow templates; the `acceptance` section itself is always written by the human.
+**The check.** CoolFlow defines what a `low` change is; the project implements the check with its own tools, and the project owner who declares it vouches that it covers the conditions below. The check takes one argument, the base revision: the commit before the objective's first change. It judges the committed diff from that base to `HEAD`, so commit the change and leave no uncommitted changes before running it. Exit status `0` means the change passes; any other status, or a command that cannot run, means it does not. The project may run the same command in CI so the result does not depend on the Agent.
+
+**The policy is human-owned.** The policy is the `acceptance` section of `docs/coolflow.yml`, the check it names, this section of the local documentation standard and the acceptance rule in `AGENTS.md`. An Agent must not create, edit or remove any part of it, even when asked or given explicit approval; it may propose a change, and the human makes it. The only exception is initialization, or an adoption or upgrade the human approved, which may copy the policy text verbatim from the CoolFlow templates; the `acceptance` section and the check are always written by the human. Listing the check's files under `sensitive_paths` makes any change to them `high`.
 
 | Tier | Applies when | Acceptance |
 | --- | --- | --- |
@@ -167,26 +171,32 @@ acceptance:
 A change is `low` only when all of the following hold:
 
 1. A valid declaration exists, and no `high` condition applies.
-2. The change does not touch `docs/coolflow.yml`, the local documentation standard or any Agent instruction file at any depth, such as `AGENTS.md`, `CLAUDE.md` or `.cursor/rules/`.
-3. No user-visible behavior changes, and no accepted behavior or acceptance criterion in `docs/features/` or an earlier Spec is added or changed.
-4. No dependency manifest or lockfile changes.
-5. Existing tests, snapshots, fixtures, test helpers and test configuration are not modified, renamed, moved, deleted, skipped or excluded; only new tests are added.
-6. The full test suite and the required checks listed in `AGENTS.md` or enforced by CI pass in a single run on the final revision; the evidence identifies that run, such as the local command output or the CI run link.
-7. Evidence shows the tests exercise the changed code: changed-line coverage from that run, or the tests that exercise each changed unit together with their actual output from that run.
+2. No user-visible behavior changes, and no accepted behavior or acceptance criterion in `docs/features/` or an earlier Spec is added or changed.
+3. The declared check passes on the final diff.
+
+The Agent judges conditions 1 and 2 from the facts of the change; the check decides condition 3. A check should fail unless at least the following hold for the diff:
+
+- No old or new path matches a declared sensitive path.
+- `docs/coolflow.yml`, the local documentation standard and Agent instruction files at any depth, such as `AGENTS.md`, `CLAUDE.md` or `.cursor/rules/`, are unchanged.
+- No dependency manifest or lockfile changes.
+- Existing tests, snapshots, fixtures, test helpers and test configuration are not modified, renamed, moved, deleted, skipped or excluded; only new tests are added.
+- The full test suite and the required checks listed in `AGENTS.md` or enforced by CI pass on the final revision.
+
+Changed-line coverage of the new code is a useful addition where the project's tools provide it.
 
 Classification rules:
 
-- Only an objective whose planned tier appears in a revision committed before any implementation change can be `low`. Design review checks the planned tier. A task that would otherwise have no Spec records the planned tier in a short Spec at `docs/work/<objective>/spec.md`: the goal, the planned tier and the facts behind it, committed before the implementation.
-- An Agent may raise a recorded tier but never lower it; only the human can. When unsure, choose the higher tier.
-- Before recording `accepted_by_policy`, check every condition against the final diff, not the plan: the cumulative diff, including uncommitted changes, from the revision before implementation started to the revision proposed for acceptance. An independent reviewer, either a fresh-context Agent or the human, performs this check; the implementing Agent's self-assessment alone is not enough. If any condition fails, the tier rises.
-- Record the final tier, both revisions bounding the final diff, the reviewer and the evidence in `Delivery progress`; the Spec's `Acceptance tier` line holds the planned tier.
+- Classify from the facts of the change. When unsure, choose the higher tier. An Agent may raise a tier but never lower one that a human or an earlier record set; only the human can.
+- Run the check once the change is finished and committed, with the commit before the objective's first change as the base. A failing check makes the change at least `standard`. The Agent may fix the change and run the check again, but must not change the check, its declaration or the base to make it pass.
+- Record the command, both revisions, the exit status and a summary of the output in the objective's `Delivery progress`, or in the end-of-task report when the task has no work record.
 
 After classification:
 
-- `accepted_by_policy` is not a human decision; keep it distinct from `accepted`. List every objective completed as `accepted_by_policy` in the end-of-task report. The human may later inspect it and record `accepted` or `changes_requested`.
+- `accepted_by_policy` is not a human decision; keep it distinct from `accepted`. List every objective completed as `accepted_by_policy` in the end-of-task report, with the revisions the check judged. The human may later inspect it and record `accepted` or `changes_requested`.
+- The check cannot see user-visible behavior that no existing test covers. The listed objectives are where the human looks for such changes.
 - A `low` change has no user-visible behavior change, so it rarely affects `docs/features/`. Sync other affected records, such as architecture, and archive work as after human acceptance.
 - Release still requires separate explicit authorization.
-- When a misclassification is found, propose to the human how to tighten the policy through the [correction hierarchy](#correction-hierarchy), for example a new sensitive path or a CI check of the diff against the declared paths. Only the human changes the policy; adding such a CI check is itself a `high` change.
+- When a misclassification is found, propose to the human how to tighten the policy through the [correction hierarchy](#correction-hierarchy), for example a new sensitive path or a stricter check. Only the human changes the policy; changing CI to run the check is itself a `high` change.
 
 ## Recording results from Agent Skills
 
@@ -238,7 +248,6 @@ A complete Spec should be comprehensible by a new Agent and provide:
 - User requirements and concrete acceptance criteria.
 - Design/architecture decisions and major alternative trade-offs.
 - Repository layout: source and test paths, kept outside `docs/`, and the build, run and test commands, with `none` where a step does not exist.
-- Planned acceptance tier with its supporting facts, when the project declares an acceptance policy.
 - Review records: design review findings with their evidence, and after coding, the code review's findings on Spec conformance and codebase design (existing patterns, module interfaces, names against `docs/domain.md` or, until it has content, the Spec's terms) with their evidence, or a note that there were none.
 - Implementation strategy, dependencies and meaningful validation method.
 - Open questions / assumptions clearly distinguished from decisions.
