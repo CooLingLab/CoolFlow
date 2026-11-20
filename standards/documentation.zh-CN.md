@@ -207,6 +207,7 @@ acceptance:
 
 条件 1 和 2 由 Agent 根据改动事实判断；条件 3 由检查决定。检查至少应在 diff 不满足下列任一项时失败：
 
+- `docs/coolflow.yml` 可以解析，且 `acceptance` 节符合上文的声明规则。
 - 没有任何旧路径或新路径匹配已声明的敏感路径。
 - `docs/coolflow.yml`、本地文档标准，以及任何层级的 Agent 指令文件（例如 `AGENTS.md`、`CLAUDE.md` 或 `.cursor/rules/`）没有变化。
 - 依赖清单和 lockfile 没有变化。

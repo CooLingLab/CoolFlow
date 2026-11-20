@@ -4,7 +4,7 @@ Covers: the Acceptance tiers section of `standards/documentation.md` and `templa
 
 The scenario checks the target-project side of the contract: a project Agent reads the policy before editing, classifies from observable facts, runs the project's declared check on the committed change, records `accepted_by_policy` only when no `high` or `standard` condition applies and the check passes, and never changes the policy. Whether a real project's check is good enough is the project owner's responsibility and is not tested here.
 
-Use a disposable Git repository built from the current CoolFlow project templates (copy the local `templates/project/` files until the changes are published), with an automated test suite and a check script that plays the project owner's `low_check`. The script fails on a changed sensitive path, policy file, Agent instruction file at any depth, dependency manifest, CI configuration or existing test file, on uncommitted changes, an empty diff, or failing tests. Objectives:
+Use a disposable Git repository built from the current CoolFlow project templates (copy the local `templates/project/` files until the changes are published), with an automated test suite and a check script that plays the project owner's `low_check`. The script fails on an invalid `acceptance` declaration, on a changed sensitive path read from that declaration, policy file, Agent instruction file at any depth, dependency manifest, CI configuration or existing test file, on uncommitted changes, an empty diff, or failing tests. Objectives:
 
 - **A:** an internal refactor in `src/core/` with no user-visible change.
 - **B:** a change to a CLI message that no existing test asserts, so the check passes although the change is `standard`.

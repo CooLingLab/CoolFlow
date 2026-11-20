@@ -1,4 +1,4 @@
-<!-- Offline snapshot of standards/documentation.md | Standard version: v0.1 | Source Git blob: 963aa639777278637fb4ebd91e5d72a7259caa4f | Relative links are relative to standards/ in the source repository; their targets are not bundled. -->
+<!-- Offline snapshot of standards/documentation.md | Standard version: v0.1 | Source Git blob: 9740437acf24f1c87320936f961f5095b018d05c | Relative links are relative to standards/ in the source repository; their targets are not bundled. -->
 
 # Documentation standard (v0.1)
 
@@ -178,6 +178,7 @@ A change is `low` only when all of the following hold:
 
 The Agent judges conditions 1 and 2 from the facts of the change; the check decides condition 3. A check should fail unless at least the following hold for the diff:
 
+- `docs/coolflow.yml` parses, and its `acceptance` section is valid under the Declaration rules above.
 - No old or new path matches a declared sensitive path.
 - `docs/coolflow.yml`, the local documentation standard and Agent instruction files at any depth, such as `AGENTS.md`, `CLAUDE.md` or `.cursor/rules/`, are unchanged.
 - No dependency manifest or lockfile changes.
