@@ -76,10 +76,10 @@ The following is the **default documentation tree for an application repository 
 | Request | `auto` | `manual` |
 | --- | --- | --- |
 | Plan a new project or reassess product direction | Read `docs/development-flow.md` and limit any further record reads to the requested direction. | Use the supplied context. Read the Flow reference only on explicit request. |
-| Resume work without a named objective | Look for relevant active work in project records, including progress cards and Specs. Use a unique match or ask when there is no clear match. | Ask the user which objective to resume before searching work records, even if the project has only one active objective. |
+| Resume work without a named objective | Look for relevant active work in project records, including progress cards and Specs. Use a unique match or ask when there is no clear match. | Ask the user which objective to resume before opening or searching work records, even if the project has only one active objective. |
 | Named objective, Spec or concrete maintenance request | Read the task-relevant project files directly. | Read the task-relevant project files directly. |
 
-Resolve the mode before listing or searching `docs/work/` or other work records on an unnamed resume request. An absent file means `manual`. If the file is present but unreadable, malformed, or lacks a valid `context_mode` value (`auto` or `manual`), use `manual` and report the issue when consulting it. Apply project working rules in either mode. Honor explicit requests to review the methodology or report project progress. For an unnamed resume request, asking for the next step follows the resume row above.
+On an unnamed resume request, resolve the mode before opening a work record or choosing one to resume; listing a directory does not choose work. An absent file means `manual`. If the file is present but unreadable, malformed, or lacks a valid `context_mode` value (`auto` or `manual`), use `manual` and report the issue when consulting it. Apply project working rules in either mode. Honor explicit requests to review the methodology or report project progress. For an unnamed resume request, asking for the next step follows the resume row above.
 
 ## Step 1–5 progress metadata
 
@@ -236,6 +236,7 @@ A complete Spec should be comprehensible by a new Agent and provide:
 - User requirements and concrete acceptance criteria.
 - Design/architecture decisions and major alternative trade-offs.
 - Repository layout: source and test paths, kept outside `docs/`, and the build, run and test commands, with `none` where a step does not exist.
+- Review records: design review findings with their evidence, and after coding, the code review of Spec conformance and codebase design: existing patterns followed, module interfaces, and names checked against `docs/domain.md` or, until it has content, the Spec's terms.
 - Implementation strategy, dependencies and meaningful validation method.
 - Open questions / assumptions clearly distinguished from decisions.
 
@@ -289,7 +290,7 @@ Keep knowledge in its narrowest durable home, and prefer enforcement over prose 
 - `docs/work/archive/`: historical evidence of what happened in a completed work item.
 - `docs/solutions/`: reusable engineering findings extracted from experience.
 - `docs/adr/`: why a consequential architecture or technical decision was made.
-- `AGENTS.md`: only stable, high-priority instructions that future Agents must consistently follow.
+- `AGENTS.md`: only stable, high-priority instructions that future Agents must consistently follow. Link durable documents from it, not records under `docs/work/`: every session reads `AGENTS.md`, so such a link sends each one to that work regardless of the context mode.
 
 Code comments are not a knowledge home. Agents copy comments and use them to justify workarounds, so a comment tends to spread a hack rather than explain it. Express intent through names, types and tests; keep rationale in a test, ADR, Solution or commit message. Do not add comments, except tool directives, generated-code markers, license headers and documentation comments from which a published API reference is generated. This governs new code: do not remove existing comments wholesale, and a recorded project convention that requires comments takes precedence.
 

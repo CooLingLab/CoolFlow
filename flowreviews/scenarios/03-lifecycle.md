@@ -48,7 +48,7 @@ Ask the Agent to implement the smallest agreed increment, then stop the session 
 
 Start a fresh context with only the project directory and “Continue the current work.”
 
-14. The Agent reads `AGENTS.md` and `docs/coolflow.yml` before listing or searching `docs/work/` or other work records.
+14. The Agent resolves the mode from `docs/coolflow.yml` before opening a work record or choosing one to resume; listing the tree first is acceptable. **(M)** `AGENTS.md` links nothing under `docs/work/` at any phase.
 15. It finds the existing Spec, identifies the outstanding check and actually runs it.
 16. **(M)** It updates the same Spec: no second Spec, tracker or status file, and discovery is not reopened.
 
