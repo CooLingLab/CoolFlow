@@ -355,7 +355,9 @@ and acceptance belong to later stages.
   Loop.
 - 6.3 designs the solution and drafts the unified Spec. It records meaningful alternatives,
   trade-offs, failure cases, implementation strategy and verification. A separate
-  `design.md` is optional when the technical detail is too large for the Spec.
+  `design.md` is optional when the technical detail is too large for the Spec. Its
+  verification plan names, for each acceptance criterion, the check that will prove it;
+  a criterion that no check could prove is not yet observable.
 - Tactical domain design is an optional checkpoint inside 6.3, not a separate activity.
   Use it when the domain has non-trivial invariants, state transitions, cross-object
   consistency or multiple bounded contexts. Record aggregates, entities and value objects,
@@ -411,7 +413,11 @@ silently.
 
 - 7.1 works in small increments that keep the system runnable and testable. Avoid
   accumulating a large unverified change. Use version-control checkpoints when they
-  reduce risk; do not mix unrelated refactoring into the task.
+  reduce risk; do not mix unrelated refactoring into the task. Before any feature code,
+  the first increment gives the project one command that runs every automated check:
+  the tests and the stack's usual static check (a type checker, or a linter where there
+  is none), and CI that runs it once the repository has a hosted remote. Leaving any of
+  these out is the human's decision, recorded in the Spec.
 - 7.2 runs the relevant automated tests and, where available, build, lint and type checks.
   Cover normal, boundary and failure paths. Use manual verification where automation
   cannot establish the observable behavior.
@@ -436,8 +442,11 @@ silently.
 - A defect found outside the change's scope, including one a reviewer reports, goes to the
   human as a decision with its evidence: fix it now, open a separate objective, or accept
   it. Recording it as out of scope is not enough.
-- TDD is optional. Use Red–Green–Refactor when it suits the change; do not force it onto
-  exploratory or trivial edits. Use the project's existing test, build and CI commands.
+- Write the tests for the acceptance criteria from the Spec before the implementation and
+  see them fail, then implement until they pass. Tests written from the Spec stay
+  independent of the code; tests written after it tend to restate what was built.
+  Unit-level Red–Green–Refactor remains optional, and exploratory, visual and trivial
+  edits may verify afterward. Use the project's existing test, build and CI commands.
 - Tasks normally live in the Agent session. Create `tasks.md` only when progress must
   persist across sessions, agents or time.
 - Record direct evidence: commands, key output, test results, screenshots or logs. Keep
@@ -601,4 +610,5 @@ are not normative for CoolFlow:
 | 2026-11-19 | Added goal restatement and evidence-backed design review to Stage 6, codebase design review and the correction hierarchy to Stage 7, and codebase design surveys as an Evolution input. |
 | 2026-11-19 | Added opt-in acceptance tiers to Stage 8: `low`-tier changes may complete as `accepted_by_policy` once the human declares sensitive paths. |
 | 2026-11-19 | Stage 7: out-of-scope defects go to the human as a decision; naming checks fall back to the Spec's terms while `docs/domain.md` is empty. |
+| 2026-11-20 | Stages 6–7: the verification plan names the check proving each acceptance criterion; tests for the acceptance criteria come before the implementation; before feature code, a project gets one command running its tests and static check, and CI once it has a hosted remote; omissions are the human's decision. |
 | 2026-11-20 | Stage 8: `low`-tier changes complete as `accepted_by_policy` when a check the project declares and owns passes, instead of a planned tier and an independent review. |

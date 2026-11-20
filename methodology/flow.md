@@ -14,7 +14,7 @@ CoolFlow describes **one flexible Development Flow and three adaptive Loops**, n
 | 4. Roadmap | Define the product-level MVP/current version, non-goals and later direction; not a feature or task plan | `roadmap.md`; optional PRD for substantial product scope |
 | 5. UI Prototype | Design the current version's key flows, visual direction, key screens and states; validate with users when useful | Prototype, visual direction and notes in the relevant work directory |
 | 6. Design Spec Loop | Capture requirements, acceptance criteria, solution, optional tactical domain design, implementation and verification strategy; review and revise | `work/<objective>/spec.md`; optional `design.md` |
-| 7. Implementation Loop | Implement small increments, test behavior, review the changed code and Spec conformance, fix and record evidence (often Agent-assisted) | Tested code, review evidence and known risks; tasks live in Agent session unless persistent tracking is needed |
+| 7. Implementation Loop | Write tests from the acceptance criteria first, implement small increments until they pass, review the changed code and Spec conformance, fix and record evidence (often Agent-assisted) | Tested code, review evidence and known risks; tasks live in Agent session unless persistent tracking is needed |
 | 8. Human Acceptance → Documentation Sync → Release | Human accepts actual behavior, or a declared policy accepts a `low`-tier change; sync accepted facts; prepare, separately authorize and verify release when applicable | Updated `features/` and affected project docs; selected work archive; actual release status and evidence |
 
 ## Step 1 — Idea → Brainstorm

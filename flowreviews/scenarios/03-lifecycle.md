@@ -14,7 +14,7 @@ Covers: `standards/documentation.md`, `standards/reviews.md`, `methodology/flow.
 
 ## Phases and criteria
 
-Criteria marked **(M)** are mechanical: a script or a single command over the tree, diff or Git history can decide them. The rest need an independent reviewer.
+Criteria 27 and 28 were added after criterion 26 and keep the numbers of earlier records. Criteria marked **(M)** are mechanical: a script or a single command over the tree, diff or Git history can decide them. The rest need an independent reviewer.
 
 ### 1. Discovery
 
@@ -34,6 +34,7 @@ Ask the Agent to turn the selected objective into a delivery. The operator reque
 7. The unified `spec.md` records `Repository layout` with source and test paths and the build, run and test commands, writing `none` where a step does not exist.
 8. Every design-review finding cites a Spec section, code, a prototype result or data; unsupported risks are recorded as open questions, not blockers.
 9. **(M)** The Spec is committed before any implementation commit.
+27. The Spec's verification plan names a check for each acceptance criterion: an automated test, a type or lint constraint, or a named manual check. Because the fixture starts with no test runner or static check, the plan sets up one command that runs the tests and the stack's usual static check as the first increment, or records the human's decision to leave part of it out; the Agent does not exempt itself. The fixture has no hosted remote, so CI is not required. The design review checks the mapping and the setup.
 
 ### 3. Implementation Loop, first session
 
@@ -43,6 +44,7 @@ Ask the Agent to implement the smallest agreed increment, then stop the session 
 11. **(M)** The diff adds no code comments other than tool directives, generated-code markers, license headers or published API documentation comments.
 12. The scenario reviewer judges the codebase design directly: the new code follows existing patterns, keeps module interfaces small, and uses names that match `docs/domain.md` or, while it has no content, the Spec's terms. The Spec records the code review's findings with evidence, or that there were none; a list of checks without findings is not required.
 13. The Spec's `Delivery progress` records what was implemented and verified, the outstanding check, and pending acceptance.
+28. The single check command, with the tests and the static check the Spec agreed, exists before any feature code and is recorded under Build and test commands in `AGENTS.md` by the end of the session. **(M, from the trace)** For each acceptance criterion with an automated check, the test is written and run failing before the production code that makes it pass. The code review confirms that each criterion's check exists and passes.
 
 ### 4. Resume in a new session
 
@@ -80,6 +82,38 @@ Give three inputs in separate contexts: a defect in the accepted behavior; new e
 An independent reviewer inspects the tree, Git history, diffs, Specs, review records, work records and command output, and reports PASS, FAIL or NOT VERIFIED per criterion with evidence. Release, post-release feedback, existing production codebases and other stacks are outside this scenario.
 
 ## Execution record
+
+**2026-11-20 — partial rerun of phases 2–3, after rewording the setup rule. Independent review: 8 PASS (7–11, 13, 27, codebase part of 12), criterion 28 split (command before feature code PASS, test-first partly observed, code review NOT VERIFIED), 1 FAIL (6).**
+
+The setup rule now reads: before feature code, one command runs every automated check (the tests and the stack's usual static check), CI runs it once the repository has a hosted remote, and leaving any of these out is the human's decision. Same fixture state, prompts, brief and isolation as the run below; the fixture has no remote. Executor cost $1.94.
+
+| Criterion | Result | Evidence |
+| --- | --- | --- |
+| 6 | FAIL | The author wrote the Spec without restating the goal; its questions were all ones the repository could not answer. Same failure as the second full run. |
+| 7–11, 13 | PASS | Layout with install, run, single check and build `none`; evidence-backed review; Spec committed before any code; code outside `docs/`; no comments; `Delivery progress` records the deferred matrix. |
+| 12 | PASS (design) | Pure streak, habits and cli modules, I/O only through an injected file system, names from the Spec's terms; the code review itself was deferred. |
+| 27 | PASS | Every criterion maps to a named check. The author asked the human to choose TypeScript with `tsc --noEmit` as the static check, set up `npm run check` as the first step, and recorded CI as deferred until a remote exists; the reviewer confirmed mapping and setup. |
+| 28 | Split | `package.json` with `check` = `tsc --noEmit && node --test` and `tsconfig.json` came before any `src/` file. All test files were written first, but only one was run failing (load-time) before the code. The command was recorded in `AGENTS.md` at the end of the session, which the approved Spec announced; the criterion originally demanded it before feature code and was relaxed to the end of the session, matching the rule. |
+
+Compared with the run below, the Agent no longer exempted itself: the static check became a human decision and the check command preceded the code. Running only one failing test before the code differs from the run below, where all were run; with one sample each it is treated as executor variation, not a rule gap.
+
+**2026-11-20 — partial rerun of phases 2–3, test-first rules. Independent review: 8 PASS (7–13), 1 FAIL (27), criterion 28 split (test-first PASS, setup FAIL, code review NOT VERIFIED), 1 NOT VERIFIED (6).**
+
+Rules: uncommitted changes after `a304e16` that map each acceptance criterion to a check in the Spec, write the criteria's tests before the implementation, and set up missing automated tests, lint, type check or CI first. Fixture: run 2's `app/` at phase-1, with later refs pruned and the three project files upgraded to the current templates. Isolated one-session-per-role `claude -p --safe-mode` Sonnet executors: Spec author (four turns), a fresh design reviewer, a fresh implementer. The operator answered from the same brief and relayed the review verbatim. Executor cost $2.16.
+
+| Criterion | Result | Evidence |
+| --- | --- | --- |
+| 7–11, 13 | PASS | Layout table with build `none`, run and test commands; every review finding cites evidence; Spec committed with no `src/`, `test/` or `bin/`; code outside `docs/`; no comments; `Delivery progress` records the deferred matrix and pending acceptance. |
+| 12 | PASS | Pure date, name, streak and command modules, injected `fs` in the store, `bin/habit.js` the only file touching `process`; the Spec honestly records the code review as not yet done. |
+| 27 | FAIL | The verification plan maps every criterion to a named test or "not automated", and the review tightened it. But the Spec declared lint, type check and CI "not part of this MVP", and the reviewer accepted that, citing rule 4. |
+| 28 | Split | All test files were written and `npm test` run failing before any `src/` or `bin/` file; 113/113 after implementation. No lint, type check or CI exists. The code review was deferred. |
+
+Findings about CoolFlow itself:
+
+- "If the project has no automated tests, lint, type check or CI yet, set them up first" reads as "at least one of them"; both author and reviewer read it that way, and leaving the rest out became the Agent's own call.
+- The stronger wording in `standards/reviews.md` and `templates/work/spec.md` never reaches a project; its Agents see only `AGENTS.md` and `docs/development-flow.md`.
+- The first failing run failed mostly on missing modules rather than assertions; this is the normal first red and is not treated as a defect.
+- The Spec reviewer independently proposed a test that keeps core modules free of I/O, and the implementer added it.
 
 **2026-11-20 — phase 4 in `manual` mode. Criterion 14: FAIL before the `AGENTS.md` change, PASS after it.**
 

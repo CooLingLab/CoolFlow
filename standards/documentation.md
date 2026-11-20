@@ -250,7 +250,8 @@ A complete Spec should be comprehensible by a new Agent and provide:
 - Design/architecture decisions and major alternative trade-offs.
 - Repository layout: source and test paths, kept outside `docs/`, and the build, run and test commands, with `none` where a step does not exist.
 - Review records: design review findings with their evidence, and after coding, the code review's findings on Spec conformance and codebase design (existing patterns, module interfaces, names against `docs/domain.md` or, until it has content, the Spec's terms) with their evidence, or a note that there were none.
-- Implementation strategy, dependencies and meaningful validation method.
+- Implementation strategy and dependencies.
+- Verification plan: for each acceptance criterion, the check that will prove it (an automated test, a type or lint constraint, or a named manual check), and the design constraints that types, lint rules or tests enforce instead of review.
 - Open questions / assumptions clearly distinguished from decisions.
 
 ### When to use the work templates

@@ -12,6 +12,7 @@ Consider independent EGM-style Goldfish Review when a feature is novel, complex,
 - Check assumptions against existing code and constraints.
 - Flag overengineering, alternative approaches and unclear trade-offs.
 - Verify the implementation plan is detailed enough to guide a coding Agent.
+- Check that the verification plan names a check for each acceptance criterion and that the project can run it. The project needs one command that runs every automated check: the tests and the stack's usual static check (a type checker, or a linter where there is none), and CI that runs it on every push once the repository has a hosted remote. The plan sets up whatever is missing as the first increment, before feature code, unless the human decided to leave it out; the Agent does not make that decision.
 - Report actionable issues, each with supporting evidence from the Spec, code, a prototype or data. Treat a hypothetical risk without evidence as an open question, not a blocker.
 
 Resolve and verify material blockers, then confirm the design is ready to implement before writing significant code. Small changes can use lightweight checks. The review of **existing code** for design feasibility is *not* a review of new implementation.
@@ -19,6 +20,7 @@ Resolve and verify material blockers, then confirm the design is ready to implem
 ## Within the Implementation Loop: review implemented code
 
 - Run relevant tests and check obvious regressions.
+- Check that the check named for each acceptance criterion exists and passes, and that no existing test was weakened to fit the code.
 - Review the **new code diff** for correctness, security, readability and maintainability.
 - Check the diff's effect on codebase design: whether it follows existing patterns or introduces one later Agents will copy, whether module interfaces stay small relative to the behavior they hide, and whether names match the ubiquitous language in `docs/domain.md`, or the Spec's terms while `docs/domain.md` has no content yet.
 - Compare code behavior against Spec and acceptance criteria.

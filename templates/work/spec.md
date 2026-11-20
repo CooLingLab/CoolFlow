@@ -32,7 +32,13 @@ To decide. A separate `tasks.md` is optional; record critical dependencies here.
 
 ## Verification plan
 
-To decide.
+For each acceptance criterion, the check that will prove it. Write the automated checks before the implementation.
+
+| Acceptance criterion | Check | Kind |
+| --- | --- | --- |
+| To decide | To decide | automated test, type or lint constraint, or manual |
+
+Design constraints enforced by types, lint rules or tests instead of review: To decide. Before feature code, the project needs one command that runs every automated check: the tests and the stack's usual static check (a type checker, or a linter where there is none), and CI that runs it once the repository has a hosted remote. Leaving any of these out is the human's decision: record it here.
 
 ## Review and approvals
 

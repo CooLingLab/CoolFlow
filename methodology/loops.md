@@ -16,7 +16,7 @@ The first two Loops are primarily associated with their named stages; the third 
 
 **Goal:** make the *design*, expressed through the Spec, clear, correct, and implementable.
 
-- When a selected objective enters this Loop, draft its unified `spec.md`; earlier discovery may have used the work directory without a Spec. The Spec carries context, goals/non-goals, behavior and acceptance criteria, technical decisions, trade-offs, implementation strategy, and verification. Optional PRD or detailed design can be linked without duplicating content.
+- When a selected objective enters this Loop, draft its unified `spec.md`; earlier discovery may have used the work directory without a Spec. The Spec carries context, goals/non-goals, behavior and acceptance criteria, technical decisions, trade-offs, implementation strategy, and a verification plan that names the check proving each acceptance criterion. Optional PRD or detailed design can be linked without duplicating content.
 - Independent review is preferably fresh-context. The reviewer reads the **current Spec draft**, linked references and relevant **existing code**, rather than inheriting the drafter's assumptions.
 - Seek missing cases, risky assumptions, overengineering, incompatibilities, feasibility issues, and unclear implementation steps. Back each finding with evidence from the Spec, code, a prototype or data; an unsupported hypothetical risk is an open question, not a blocker.
 - Refine the Spec and verify that important blockers are resolved. The human decides product-critical trade-offs.
@@ -33,6 +33,7 @@ The first two Loops are primarily associated with their named stages; the third 
 **Goal:** implement the approved behavior and obtain evidence that it works.
 
 - The coding Agent normally manages its own tasks in-session; CoolFlow does not require a persistent task file.
+- Start from the Spec's verification plan: write the tests for the acceptance criteria before the implementation and see them fail, then build until they pass. Before feature code, the project needs one command that runs every automated check: the tests and the stack's usual static check (a type checker, or a linter where there is none), and CI that runs it once the repository has a hosted remote; leaving any of these out is the human's decision. Exploratory, visual and trivial edits may verify afterward.
 - Run relevant tests and review the changed code for correctness, security, maintainability and regressions, including whether it introduces a pattern that later Agents will copy.
 - When a fixed defect could recur, enforce the fix at the strongest practical layer (architecture or API, then types, lint, tests or CI checks) before writing a rule; see the [correction hierarchy](../standards/documentation.md#correction-hierarchy).
 - Check implementation against the **approved Spec and acceptance criteria**, not just the test suite.
