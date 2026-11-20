@@ -2,6 +2,8 @@
 
 This repository publishes a **reference methodology and documentation standard**, not an orchestration engine.
 
+[docs/domain.md](docs/domain.md) separates the three layers this work spans (CoolFlow source, target projects, validation), who acts in each, and terms that change meaning between them. Name the layer whenever a term could belong to more than one.
+
 ## Goals and scope
 - Preserve the **one Development Flow / three Adaptive Loops** model: Step 6 **Design Spec Loop**, Step 7 **Implementation Loop**, and a **cross-stage Evolution Loop** that may start at any step and revisit any relevant step as assumptions change. No fixed release/roadmap prerequisite. Documentation Sync is a post-acceptance step, not another Loop.
 - Keep `standards/` the normative source of truth. Templates and optional Skills implement it; never invent conflicting requirements.
