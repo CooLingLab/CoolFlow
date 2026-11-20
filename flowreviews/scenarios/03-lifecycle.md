@@ -41,7 +41,7 @@ Ask the Agent to implement the smallest agreed increment, then stop the session 
 
 10. **(M)** Production code and tests live in the recorded source tree, outside `docs/`, and nothing imports from `prototypes/`; the prototype file is unchanged.
 11. **(M)** The diff adds no code comments other than tool directives, generated-code markers, license headers or published API documentation comments.
-12. The code review records Spec conformance and a codebase-design check: existing patterns, module interfaces, and naming against `docs/domain.md`, or against the Spec's terms while `docs/domain.md` has no content.
+12. The scenario reviewer judges the codebase design directly: the new code follows existing patterns, keeps module interfaces small, and uses names that match `docs/domain.md` or, while it has no content, the Spec's terms. The Spec records the code review's findings with evidence, or that there were none; a list of checks without findings is not required.
 13. The Spec's `Delivery progress` records what was implemented and verified, the outstanding check, and pending acceptance.
 
 ### 4. Resume in a new session

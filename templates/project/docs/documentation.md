@@ -236,7 +236,7 @@ A complete Spec should be comprehensible by a new Agent and provide:
 - User requirements and concrete acceptance criteria.
 - Design/architecture decisions and major alternative trade-offs.
 - Repository layout: source and test paths, kept outside `docs/`, and the build, run and test commands, with `none` where a step does not exist.
-- Review records: design review findings with their evidence, and after coding, the code review of Spec conformance and codebase design: existing patterns followed, module interfaces, and names checked against `docs/domain.md` or, until it has content, the Spec's terms.
+- Review records: design review findings with their evidence, and after coding, the code review's findings on Spec conformance and codebase design (existing patterns, module interfaces, names against `docs/domain.md` or, until it has content, the Spec's terms) with their evidence, or a note that there were none.
 - Implementation strategy, dependencies and meaningful validation method.
 - Open questions / assumptions clearly distinguished from decisions.
 

@@ -38,7 +38,7 @@ To decide.
 
 To decide. Record independent design review findings with their evidence, and important human decisions when applicable. Findings without evidence stay open questions, not blockers.
 
-After coding, record the code review: Spec conformance, and codebase design (existing patterns followed, module interfaces, names checked against `docs/domain.md` or this Spec's terms), each with evidence.
+After coding, record the code review's findings on Spec conformance and codebase design (existing patterns, module interfaces, names against `docs/domain.md` or this Spec's terms) with their evidence, or note that there were none.
 
 Acceptance tier (planned, before implementation): To decide (`high`, `standard` or `low`, with the supporting facts; only when the project declares an acceptance policy).
 
