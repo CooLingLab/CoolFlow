@@ -81,6 +81,29 @@ An independent reviewer inspects the tree, Git history, diffs, Specs, review rec
 
 ## Execution record
 
+**2026-11-20 — partial rerun of phases 3–4 and 7a, after `527205e` and `108b1e8`. Independent review: 7 PASS (10, 11, 13–16, 24), 1 FAIL (12 under its earlier wording; PASS under the current one).**
+
+Phases 3–4 started from the second run's approved Spec, with `AGENTS.md`, `docs/documentation.md` and `docs/development-flow.md` upgraded to `527205e`; that Spec predates the template's code-review line. Phase 7a started from the second run's phase 6 state, upgraded the same way, with the operator replacing the `AGENTS.md` link to the archived Spec by a link to the feature record, then the same seeded regression.
+
+| Criterion | Result | Evidence |
+| --- | --- | --- |
+| 10, 11 | PASS | Code in `src/`, `bin/` and `test/`, no import from `docs/`, prototype untouched; only the shebang added as a comment. |
+| 12 | PASS under the current wording | Names match the Spec's Terms (`habit`, `checkIns`, `today`, `currentStreak`) and module interfaces are small (`run`, `load`/`save`, four streak functions). The Spec records the code review's eight findings and their disposition. Under the earlier wording it failed: no record of patterns or naming. |
+| 13 | PASS | Delivery progress recorded `implemented`, `partially_verified` with 62/62 in one zone, the matrix and Node 22 not run, and `pending`. |
+| 14 | PASS | The resume session listed the tree, then read `docs/coolflow.yml` (`auto`), then opened the Spec. No `AGENTS.md` in either fixture linked `docs/work/` after the upgrade; phase 3 linked `product.md` and `roadmap.md` instead. |
+| 15, 16 | PASS | It ran the matrix (5 × 62) in the same Spec; review fixes brought 5 × 66; no new files. |
+| 24 | PASS | One-line fix traced to the seeded commit; new `docs/work/004-streak-regression/spec.md` with the defect, feature-record link, criteria and `pending` acceptance; archive and `docs/features/` unchanged; the executor cited the `AGENTS.md` rule 6 pointer and asked for acceptance. The short Spec's frontmatter claimed `approved` without an approval. |
+
+Findings about CoolFlow itself:
+
+- The rule 6 pointer in `AGENTS.md` made the archived-fix rule discoverable: the executor never read that part of `docs/documentation.md`.
+- Criterion 14 cannot distinguish compliance from luck in `auto` mode: the executor's grep for the context-preference table matched nothing, and picking the unique active record is what an executor ignoring the mode would also do. Only a `manual` fixture tests the rule.
+- `AGENTS.md` conventions referred to "the habit-cli Spec's criterion 6" in prose; the link rule does not cover a prose reference that goes stale on archiving.
+- After review fixes, Delivery progress rows contradicted each other (Implementation "not yet reviewed" beside a completed Review row) and cited a review file outside the repository.
+- The code review again checked conformance and module split but not naming; rewording criterion 12 changed what is measured, not executor behavior.
+
+Fidelity limits: partial rerun on fixtures from the second run; the operator commissioned the code review and asked for it to be recorded "per project documents"; `auto` mode only; the 7a seed broke existing tests; executors read Node installation paths outside the project; one model, one run per phase; Node 22 untested.
+
 **2026-11-19 — second full run, after the rule changes in `80520aa`. Independent review: 21 PASS, 5 FAIL (6, 12, 14, 21, 24), 0 NOT VERIFIED.**
 
 Setup as in the first run, with templates from CoolFlow `80520aa` and the same operator answers where the questions matched. Reviews were relayed to authors as a file instead of inline. Phase 6 reused the existing `normalizeName`; the seed added `status` and `history` with their own `trim()` path.
